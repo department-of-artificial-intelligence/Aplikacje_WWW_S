@@ -52,8 +52,8 @@ namespace SchoolRegister.Web
             services.AddApplicationInsightsTelemetry(Configuration);
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+            // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddSession(options =>
@@ -65,7 +65,7 @@ namespace SchoolRegister.Web
             {
                 options.UseSqlServer(_connectionString); // SQL SERVER
 
-            });
+        });
             services.AddDefaultIdentity<User>()
              .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");

@@ -11,12 +11,15 @@ namespace SchoolRegister.BLL.Entities
        // public double AverageGrade { get; }
       //  IDictionary<string, double> AverageGradePerSubject { get; }
         public IList<Grade> Grades { get; set; }
-        public Group Group { get; set; }
 
+        public Group Group { get; set; }
+        [ForeignKey("Group")]
+        public int GroupId { get; set; }
         //public Student() { }
 
+        public Parent Parent { get; set; } //! 08/04/2020
         [ForeignKey("Parent")]
-        public int?  ParentID { get; set; }
+        public int?  ParentId { get; set; }
 
         [NotMapped] //  EF ignoruje(obliczane dopiero na poziomie aplikacji)
         public double AverageGrade => Math.Round(Grades.Average(g => (int)g.GradeValue), 1);
