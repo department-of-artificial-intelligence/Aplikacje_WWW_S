@@ -15,9 +15,9 @@ namespace SchoolRegister.BLL.Entities
         public string Name { get; set; }
 
         //[NotMapped]
-        public IList<Student> Students { get; set; }
+        public virtual IList<Student> Students { get; set; }
 
         //[NotMapped]
-        public IList<SubjectGroup> SubjectGroups { get; set; }
+        public virtual IList<SubjectGroup> SubjectGroups { get; set; }
     }
 }

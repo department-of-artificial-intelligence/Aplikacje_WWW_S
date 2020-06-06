@@ -1,0 +1,32 @@
+﻿@using SchoolRegister.BLL.Entities
+@model IDictionary<string, List<GradeScale>>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer["SubjectName"]
+            </th>
+            <th>
+                @Localizer["Grades"]
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Key)
+                </td>
+                <td>
+                    @string.Join(", ", item.Value.Select(g => ((int)g).ToString()))
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SchoolRegister.ViewModels.VMs
 {
@@ -15,5 +13,6 @@ namespace SchoolRegister.ViewModels.VMs
         public IList<GroupVm> Groups { get; set; }
 
         public string TeacherName { get; set; }
+        public int? TeacherId { get; set; }
     }
 }

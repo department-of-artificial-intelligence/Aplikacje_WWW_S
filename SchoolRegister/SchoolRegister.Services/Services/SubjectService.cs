@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace SchoolRegister.Services.Services
 {
@@ -24,6 +23,7 @@ namespace SchoolRegister.Services.Services
             {
                 throw new ArgumentNullException($"Dto of type is null");
             }
+
             var subjectEntity = Mapper.Map<Subject>(addOrUpdateDto);
             if (addOrUpdateDto.Id == null || addOrUpdateDto.Id == 0)
             {
@@ -37,25 +37,27 @@ namespace SchoolRegister.Services.Services
             var subjectVm = Mapper.Map<SubjectVm>(subjectEntity);
             return subjectVm;
         }
+
         public SubjectVm GetSubject(Expression<Func<Subject, bool>> filterPredicate)
         {
             if (filterPredicate == null)
                 throw new ArgumentNullException($"Predicate is null");
             Subject subjectEntity = _dbContext.Subjects
-            .Include(s => s.Teacher)
-           .Include(s => s.SubjectGroups)
-            .ThenInclude(sg => sg.Group)
-            .FirstOrDefault(filterPredicate);
+                .Include(s => s.Teacher)
+                .Include(s => s.SubjectGroups)
+                  .ThenInclude(sg => sg.Group)
+                .FirstOrDefault(filterPredicate);
             SubjectVm subjectVm = Mapper.Map<SubjectVm>(subjectEntity);
             return subjectVm;
         }
+
         public IEnumerable<SubjectVm> GetSubjects(Expression<Func<Subject, bool>> filterPredicate = null)
         {
             var subjectEntities = _dbContext.Subjects
-            .Include(s => s.Teacher)
-            .Include(s => s.SubjectGroups)
-            .ThenInclude(sg => sg.Group)
-            .AsQueryable();
+                .Include(s => s.Teacher)
+                .Include(s => s.SubjectGroups)
+                    .ThenInclude(sg => sg.Group)
+                .AsQueryable();
             if (filterPredicate != null)
             {
                 subjectEntities = subjectEntities.Where(filterPredicate);

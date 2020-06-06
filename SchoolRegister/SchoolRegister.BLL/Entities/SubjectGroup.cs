@@ -8,12 +8,12 @@ namespace SchoolRegister.BLL.Entities
 {
     public class SubjectGroup
     {
-        public Group Group { get; set; }
+        public virtual Group Group { get; set; }
 
         //[Key][ForeignKey("Group")]   //  jest w metodach
         public int GroupId { get; set; }
 
-        public Subject Subject { get; set; }
+        public virtual Subject Subject { get; set; }
 
         //[Key][ForeignKey("Subject")]  //  jest w metodach
         public int SubjectId { get; set; }

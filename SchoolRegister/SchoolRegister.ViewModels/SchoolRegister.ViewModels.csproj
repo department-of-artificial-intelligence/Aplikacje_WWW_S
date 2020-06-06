@@ -5,8 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="VMs\stare\**" />
+    <EmbeddedResource Remove="VMs\stare\**" />
+    <None Remove="VMs\stare\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DTOs\stare\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DTOs\stare\_ValidationScriptsPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolRegister.BLL\SchoolRegister.BLL.csproj" />
   </ItemGroup>
 
 </Project>

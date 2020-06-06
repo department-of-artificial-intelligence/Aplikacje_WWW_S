@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SchoolRegister.Services.Services
 {
-    public class BaseService : IDisposable
+    public abstract class BaseService: IDisposable
     {
         protected readonly ApplicationDbContext _dbContext;
         private bool _disposed;
@@ -21,7 +21,6 @@ namespace SchoolRegister.Services.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)

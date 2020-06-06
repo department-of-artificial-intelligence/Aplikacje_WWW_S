@@ -25,22 +25,25 @@ namespace SchoolRegister.DAL.EF
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(_connectionStringDto.ConnectionString);
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(_connectionStringDto.ConnectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             // Fluent API commands
             modelBuilder.Entity<User>()
-            .ToTable("AspNetUsers")
-            .HasDiscriminator<int>("UserType")
-            .HasValue<User>(0)
-            .HasValue<Student>(1)
-            .HasValue<Parent>(2)
-            .HasValue<Teacher>(3);
+                .ToTable("AspNetUsers")
+                .HasDiscriminator<int>("UserType")
+                .HasValue<User>((int)RoleValue.User)
+                .HasValue<Student>((int)RoleValue.Student)
+                .HasValue<Parent>((int)RoleValue.Parent)
+                .HasValue<Teacher>((int)RoleValue.Teacher);
 
             modelBuilder.Entity<SubjectGroup>()
             .HasKey(sg => new { sg.GroupId, sg.SubjectId });
+
             modelBuilder.Entity<SubjectGroup>()
             .HasOne(g => g.Group)
             .WithMany(sg => sg.SubjectGroups)
@@ -51,6 +54,19 @@ namespace SchoolRegister.DAL.EF
             .WithMany(sg => sg.SubjectGroups)
             .HasForeignKey(s => s.SubjectId)
             .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Group>()
+                .Property(g => g.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<Grade>()
+                .HasKey(g => new { g.DateOfIssue, g.StudentId, g.SubjectId });
+
+            modelBuilder.Entity<Grade>()
+                .HasOne(s => s.Student)
+                .WithMany(sg => sg.Grades)
+                .HasForeignKey(s => s.StudentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

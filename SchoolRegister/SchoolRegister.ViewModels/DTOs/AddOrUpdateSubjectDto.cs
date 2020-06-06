@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SchoolRegister.ViewModels.DTOs
 {
@@ -15,6 +12,6 @@ namespace SchoolRegister.ViewModels.DTOs
         public string Description { get; set; }
 
         [Required]
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
     }
 }
