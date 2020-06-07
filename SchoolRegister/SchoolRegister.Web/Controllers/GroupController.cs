@@ -13,7 +13,9 @@ using Microsoft.Extensions.Logging;
 
 namespace SchoolRegister.Web.Controllers
 {
-    [Authorize(Roles = "Teacher, Admin, Student, Parent")]
+
+    [Authorize(Roles = "Teacher, Admin")]
+
     public class GroupController : BaseController<GroupController>
     {
         private readonly IGroupService _groupService;

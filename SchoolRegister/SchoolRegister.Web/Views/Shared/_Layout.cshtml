@@ -6,15 +6,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] @Localizer["SchoolRegister"]</title>
-
+    <title>@ViewData["Title"] - @Localizer["SchoolRegister"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
@@ -30,14 +29,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@Localizer["SchoolRegister"]</a>
+                <a asp-area="" asp-controller="Subject" asp-action="Index" class="navbar-brand">@Localizer["SchoolRegister"]</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Subject" asp-action="Index">@Localizer["Subjects"]</a></li>
-                    <li><a asp-area="" asp-controller="Group" asp-action="Index">@Localizer["Groups"]</a></li>
-                    <li><a asp-area="" asp-controller="Student" asp-action="Index">@Localizer["Students"]</a></li>
-                    <li><a asp-area="" asp-controller="Teacher" asp-action="Index">@Localizer["Teachers"]</a></li>
+                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="" asp-controller="Subject" asp-action="Index">@Localizer["Subjects"]</a></li>
+                        <li><a asp-area="" asp-controller="Group" asp-action="Index">@Localizer["Groups"]</a></li>}
+                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin") || User.IsInRole("Parent"))
+                    {
+                        <li><a asp-area="" asp-controller="Student" asp-action="Index">@Localizer["Students"]</a></li>}
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li><a asp-area="" asp-controller="Student" asp-action="Details">@Localizer["Students"]</a></li>}
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Chat" asp-action="Index">@Localizer["Chat"]</a></li>}
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -50,7 +58,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2020 - SchoolRegister.Web</p>
+            <p>&copy; 2019 - @Localizer["SchoolRegister"]</p>
         </footer>
     </div>
 
@@ -66,11 +74,11 @@
                 crossorigin="anonymous"
                 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
-                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>

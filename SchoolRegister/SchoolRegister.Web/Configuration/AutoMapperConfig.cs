@@ -4,6 +4,7 @@ using SchoolRegister.ViewModels.DTOs;
 using SchoolRegister.ViewModels.VMs;
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SchoolRegister.Web.Configuration
 {
@@ -37,6 +38,15 @@ namespace SchoolRegister.Web.Configuration
                         .GroupBy(g => g.Subject.Name)
                         .Select(g => new { SubjectName = g.Key, Grades = g.Select(gl => gl.GradeValue).ToList() })
                         .ToDictionary(x => x.SubjectName, x => x.Grades)));
+
+                mapper.CreateMap<GroupVm, SelectListItem>()
+                    .ForMember(x => x.Text, y => y.MapFrom(z => z.Name))
+                    .ForMember(x => x.Value, y => y.MapFrom(z => z.Id));
+                mapper.CreateMap<StudentVm, SelectListItem>()
+                    .ForMember(x => x.Text, y => y.MapFrom(z => z.UserName))
+                    .ForMember(x => x.Value, y => y.MapFrom(z => z.Id));
+                //....... other maps.........
+                //....
             });
             return configurationExpression;
         }

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SchoolRegister.ViewModels.VMs.SubjectVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TeacherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Groups.Count)
+    </td>
+    <td>
+        @Html.ActionLink(Localizer["Edit"].Value, "AddOrEditSubject", new { id = item.Id }) |
+        @Html.ActionLink(Localizer["Details"].Value, "Details", new { id = item.Id }) |
+        @Html.ActionLink(Localizer["AttachSubjecttoGroup"].Value, "AttachSubjectToGroup", "Group", new { subjectId = item.Id })|
+        @Html.ActionLink(Localizer["DetachSubjecttoGroup"].Value, "DetachSubjectToGroup", "Group", new { subjectId = item.Id })|
+    </td>
+</tr>}

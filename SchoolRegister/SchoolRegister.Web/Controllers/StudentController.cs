@@ -12,6 +12,10 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
+using SchoolRegister.Web.Extensions;
+using System.Collections.ObjectModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SchoolRegister.Web.Controllers
 {
@@ -34,20 +38,31 @@ namespace SchoolRegister.Web.Controllers
             _gradeService = gradeService;
         }
                 
-        public IActionResult Index()
+        public IActionResult Index(string filterValue = null)
         {
+            Expression<Func<Student, bool>> filterPredicate = null;
+            if (!string.IsNullOrWhiteSpace(filterValue))
+            {                
+                filterPredicate = x => (x.LastName.Contains(filterValue)) || (x.FirstName.Contains(filterValue));
+
+            }
+            bool isAjax = HttpContext.Request.Headers["x-requested-with"] == "XMLHttpRequest";
 
             IEnumerable<StudentVm> studentsVm = null;
-            StudentVm studentVm = null;
             if (User.Identity.IsAuthenticated && User.IsInRole("Parent"))
             {
                 var parent = _userManager.GetUserAsync(User).Result;
-                studentsVm = _studentService.GetStudents(s => s.ParentId == parent.Id);
+                studentsVm = _studentService.GetStudents(filterPredicate).Where(s => s.ParentId == parent.Id);
+                
+                if (isAjax)
+                {
+                    return PartialView("_StudentTableDataPartial", studentsVm);
+                }
             }
             else if(User.Identity.IsAuthenticated && User.IsInRole("Student"))
             {
                 var student = _userManager.GetUserAsync(User).Result;
-                studentVm = _studentService.GetStudent(s => s.Id == student.Id);
+                studentsVm = _studentService.GetStudents(s => s.Id == student.Id);                
             }
             else if (User.Identity.IsAuthenticated && User.IsInRole("Teacher"))
             {
@@ -57,7 +72,12 @@ namespace SchoolRegister.Web.Controllers
             }
             else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                studentsVm = _studentService.GetStudents();
+                studentsVm = _studentService.GetStudents(filterPredicate);
+
+                if (isAjax)
+                {
+                    return PartialView("_StudentTableDataPartial", studentsVm);
+                }
             }
             return View(studentsVm);
         }

@@ -6,6 +6,12 @@
 }
 <h2>@ViewData["Title"]</h2>
 
+<div class="row">
+    <div class="col-lg-4">
+        <input id="students-filter-input" class="form-control" type="text" placeholder="filter" />
+    </div>
+</div>
+
 
 <table class="table">
     <thead>
@@ -28,34 +34,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GroupName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AverageGrade)
-                </td>
-                <td>
-                    @Html.ActionLink(Localizer["SendEmailToParent"].Value, "SendEmailToParent", "Teacher", new { studentId = item.Id }) |
-                    @Html.ActionLink(Localizer["AddGrade"].Value, "AddGrade", "Teacher", new { studentId = item.Id }) |
-                    @Html.ActionLink(Localizer["Details"].Value, "Details", new { studentId = item.Id }) |
-                    @Html.ActionLink(Localizer["AttachStudentToGroup"].Value, "AttachStudentToGroup", new { studentId = item.Id }) |
-                    @Html.ActionLink(Localizer["DetachStudentFromGroup"].Value, "DetachStudentToGroup", new { studentId = item.Id }) |
-
-                </td>
-            </tr>
-        }
+    <tbody class="student-table-data">
+        <partial name="_StudentTableDataPartial" model="Model" />
     </tbody>
 </table>

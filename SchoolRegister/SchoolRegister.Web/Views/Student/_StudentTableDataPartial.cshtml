@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SchoolRegister.ViewModels.VMs.StudentVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ParentName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GroupName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AverageGrade)
+    </td>
+    <td>
+        @Html.ActionLink(Localizer["SendEmailToParent"].Value, "SendEmailToParent", "Teacher", new { studentId = item.Id }) |
+        @Html.ActionLink(Localizer["AddGrade"].Value, "AddGrade", "Teacher", new { studentId = item.Id }) |
+        @Html.ActionLink(Localizer["Details"].Value, "Details", new { studentId = item.Id }) |
+        @Html.ActionLink(Localizer["AttachStudentToGroup"].Value, "AttachStudentToGroup", new { studentId = item.Id }) |
+        @Html.ActionLink(Localizer["DetachStudentFromGroup"].Value, "DetachStudentToGroup", new { studentId = item.Id }) |
+
+    </td>
+</tr>}

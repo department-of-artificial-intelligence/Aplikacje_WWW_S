@@ -4,8 +4,13 @@
 @{
     ViewData["Title"] = Localizer["Index"];
 }
-
 <h2>@Localizer["Subject"]</h2>
+
+<div class="row">
+    <div class="col-lg-4">
+        <input id="subjects-filter-input" class="form-control" type="text" placeholder="filter" />
+    </div>
+</div>
 
 <p>
     <a asp-action="AddOrEditSubject">@Localizer["CreateNew"]</a>
@@ -14,47 +19,20 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                <label>@Localizer["Name"]</label>
             </th>
             <th>
-                @Localizer[@Html.DisplayNameFor(model => model.Name)]
+                <label>@Localizer["Description"]</label>
             </th>
             <th>
-                @Localizer[@Html.DisplayNameFor(model => model.Description)]
+                <label>@Localizer["TeacherName"]</label>
             </th>
             <th>
-                @Localizer[@Html.DisplayNameFor(model => model.TeacherName)]
+                <label>@Localizer["GroupsCount"]</label>
             </th>
-            <th>
-                @Localizer[@Html.DisplayNameFor(model => model.TeacherId)]
-            </th>
-            <th></th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>                    
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TeacherName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TeacherId)
-                </td>
-                <td>
-                    @Html.ActionLink(Localizer["Edit"].Value, "AddOrEditSubject", new { id = item.Id }) |
-                    @Html.ActionLink(Localizer["Details"].Value, "Details", new { id = item.Id }) 
-                </td>
-            </tr>
-        }
+    <tbody class="subjects-table-data">
+        <partial name="_SubjectsTableDataPartial" model="Model" />
     </tbody>
 </table>
