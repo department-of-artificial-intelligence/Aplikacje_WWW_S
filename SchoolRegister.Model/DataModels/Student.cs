@@ -20,6 +20,6 @@ namespace SchoolRegister.BLL.DataModels
         public Group Group { get; set; }
         public int? GroupId { get; set; }
         public Parent Parent { get; set; }
-        public int? ParentId { get; set; } 
+        public int? ParentId { get; set; }
     }
 }
