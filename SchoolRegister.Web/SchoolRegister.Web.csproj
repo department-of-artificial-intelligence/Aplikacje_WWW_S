@@ -25,9 +25,4 @@
     <ProjectReference Include="..\SchoolRegister.Services\SchoolRegister.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
-
 </Project>

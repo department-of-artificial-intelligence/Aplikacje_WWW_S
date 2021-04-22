@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.DAL", "SchoolRegister.DAL\SchoolRegister.DAL.csproj", "{94C76C9B-DD82-4C23-924E-9B7B639FABD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.DAL", "SchoolRegister.DAL\SchoolRegister.DAL.csproj", "{94C76C9B-DD82-4C23-924E-9B7B639FABD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.Model", "SchoolRegister.Model\SchoolRegister.Model.csproj", "{D025FBB6-2E4F-415A-AEAC-2F3677139291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Model", "SchoolRegister.Model\SchoolRegister.Model.csproj", "{D025FBB6-2E4F-415A-AEAC-2F3677139291}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.Services", "SchoolRegister.Services\SchoolRegister.Services.csproj", "{674DC684-D60B-4C80-89EB-87097BC60CB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Services", "SchoolRegister.Services\SchoolRegister.Services.csproj", "{674DC684-D60B-4C80-89EB-87097BC60CB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.ViewModels", "SchoolRegister.ViewModels\SchoolRegister.ViewModels.csproj", "{46A4DC01-6E8F-4009-B972-BA28CC9A9B53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.ViewModels", "SchoolRegister.ViewModels\SchoolRegister.ViewModels.csproj", "{46A4DC01-6E8F-4009-B972-BA28CC9A9B53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.Web", "SchoolRegister.Web\SchoolRegister.Web.csproj", "{B7AEA611-2998-472A-898F-4CB240A1B53B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Web", "SchoolRegister.Web\SchoolRegister.Web.csproj", "{B7AEA611-2998-472A-898F-4CB240A1B53B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolRegister.Tests", "SchoolRegister.Tests\SchoolRegister.Tests.csproj", "{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Tests", "SchoolRegister.Tests\SchoolRegister.Tests.csproj", "{C17B98AB-502E-4841-8B44-CF23F501FC89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{94C76C9B-DD82-4C23-924E-9B7B639FABD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -85,23 +88,17 @@ Global
 		{B7AEA611-2998-472A-898F-4CB240A1B53B}.Release|x64.Build.0 = Release|Any CPU
 		{B7AEA611-2998-472A-898F-4CB240A1B53B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B7AEA611-2998-472A-898F-4CB240A1B53B}.Release|x86.Build.0 = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|x64.Build.0 = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Debug|x86.Build.0 = Debug|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|x64.ActiveCfg = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|x64.Build.0 = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|x86.ActiveCfg = Release|Any CPU
-		{E5ADB0F0-90D9-4373-B76A-8993F51F5F29}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4E7DFBBB-5D9C-414B-822F-6A37AF492CCA}
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|x64.Build.0 = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Debug|x86.Build.0 = Debug|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|x64.ActiveCfg = Release|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|x64.Build.0 = Release|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|x86.ActiveCfg = Release|Any CPU
+		{C17B98AB-502E-4841-8B44-CF23F501FC89}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
