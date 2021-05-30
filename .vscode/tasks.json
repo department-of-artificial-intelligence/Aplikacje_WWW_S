@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/SchoolRegister.Api/SchoolRegister.Api.csproj",
+                "${workspaceFolder}/SchoolRegister.Web/SchoolRegister.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/SchoolRegister.Api/SchoolRegister.Api.csproj",
+                "${workspaceFolder}/SchoolRegister.Web/SchoolRegister.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/SchoolRegister.Api/SchoolRegister.Api.csproj",
+                "${workspaceFolder}/SchoolRegister.Web/SchoolRegister.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
