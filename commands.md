@@ -24,7 +24,7 @@ dotnet ef migrations add Initial --project SchoolRegister.DAL/SchoolRegister.DAL
 
 ### remove the newest migration
 ```
-dotnet ef migrations remove  --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
+dotnet ef migrations remove --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
 ### update database to newest migration
