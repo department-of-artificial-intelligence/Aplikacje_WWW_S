@@ -3,37 +3,37 @@
 ## Lab 2 (Entity Framework Core)
 
 ### solution/project compilation
-```
+```console
 dotnet build
 ```
 
 ### solution/project clean
-```
+```console
 dotnet clean
 ```
 
 ### solution/project restore
-```
+```console
 dotnet restore
 ```
 
 ### create migration with name Initial
-```
+```console
 dotnet ef migrations add Initial --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
 ### remove the newest migration
-```
+```console
 dotnet ef migrations remove --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
 ### update database to newest migration
-```
+```console
 dotnet ef database update --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
 ### drop database
-```zsh
+```console
 dotnet ef database drop --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
