@@ -33,7 +33,7 @@ dotnet ef database update --project SchoolRegister.DAL/SchoolRegister.DAL.csproj
 ```
 
 ### drop database
-```bat
+```zsh
 dotnet ef database drop --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
 ```
 
