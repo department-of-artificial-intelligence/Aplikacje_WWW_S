@@ -17,6 +17,11 @@ dotnet clean
 dotnet restore
 ```
 
+### update Entity Framework Tools to given version
+```console
+dotnet tool update --global dotnet-ef --version 6.0.9
+```
+
 ### create migration with name Initial
 ```console
 dotnet ef migrations add Initial --project SchoolRegister.DAL/SchoolRegister.DAL.csproj --startup-project SchoolRegister.Web/SchoolRegister.Web.csproj
