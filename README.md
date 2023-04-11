@@ -54,11 +54,11 @@
 ### Uruchomienie dokumentacji
 W trakcie trwania kolokwium mogą Państwo korzystać z dostarczonej dokumentacji offline. Aby ją uruchomić proszę wykonać poniższe kroki:
 1) Proszę uruchomić Visual Studio 2022. A następnie wybrać opcję `continue without code`.
-    <img src="Img/vs1.png" width=400 height=270></img>
+    ![Alt text](Img/vs1.png?raw=true)
 2) W kolejnym kroku proszę wybrać `Help -> View Help`.
-    <img src="Img/vs2.png" width=400 height=270></img>
+    ![Alt text](Img/vs2.png?raw=true)
 3) Proszę przy pomocy wyszukiwarki znaleźć interesujące zagadnienie.
-    <img src="Img/vs3.png" width=400 height=270></img>
+    ![Alt text](Img/vs3.png?raw=true)
 ### Proszę przejść do wykonywania zadań
 
 ```diff
