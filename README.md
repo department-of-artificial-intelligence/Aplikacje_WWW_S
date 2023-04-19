@@ -60,7 +60,7 @@ W trakcie trwania kolokwium mogą Państwo korzystać z dostarczonej dokumentacj
 ```
 
 ### Umieszenie rozwiązania w archiwum
-1)  Po otrzymaniu oceny proszę w folderze `Kolokwium` wykonać poniższe polecenia.
+1)  Po zakończeniu kolokwium proszę w folderze `Kolokwium` wykonać poniższe polecenia.
     ```powershell
     Remove-Item Kolokwium/bin -Recurse -Force
     Remove-Item Kolokwium/obj -Recurse -Force
