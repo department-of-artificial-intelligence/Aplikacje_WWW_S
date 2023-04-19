@@ -9,8 +9,6 @@
 
     <img src="Img/open_folder2.png" width=400 height=250></img>
 
-    <img src="Img/open_folder3a.png" width=400 height=350></img>
-
 3) Proszę otworzyć plik `Kolokwium -> appsettings.json` a następnie podmienić wartość `Database` connection stringa podając swoje imię i nazwisko (bez znaków diakrytycznych) zamiast `Imie_Nazwisko`. Dzięki temu w momencie zastosowania pierwszej migracji utworzy się nowa baza danych zaczynającą się Państwa imieniem i nazwiskiem.
     ```json
     {
@@ -54,6 +52,7 @@
 ### Uruchomienie dokumentacji
 W trakcie trwania kolokwium mogą Państwo korzystać z dostarczonej dokumentacji Microsoft Learn. 
 [https://learn.microsoft.com](https://learn.microsoft.com)
+
 ### Proszę przejść do wykonywania zadań
 
 ```diff
