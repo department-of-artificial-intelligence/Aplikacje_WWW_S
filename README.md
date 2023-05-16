@@ -37,14 +37,14 @@
     ```
 7) Proszę upewnić się że narzędzia `dotnet-ef tool update` oraz `dotnet-aspnet-codegenerator` są poprawnie zainstalowane, w tym celu proszę wykonać poniższe polecenia.    
     ```
-    dotnet tool update --global dotnet-ef --version 5.0.3
-    dotnet tool install -g dotnet-aspnet-codegenerator --version 5.0.2
+    dotnet tool update --global dotnet-ef --version 6.0.10
+    dotnet tool update -g dotnet-aspnet-codegenerator --version 6.0.10
     ```
     
 8) W celu weryfikacji poprawności działania aplikacji proszę ją uruchomić.
 
     ```
-    dotnet run --project Kolokwium.Web\Kolokwium.Web.csproj
+    dotnet run --project Kolokwium.Web
     ```
 
     Aplikacja powinna być dostępna pod adresem: [http://localhost:5000](http://localhost:5000).
@@ -53,7 +53,7 @@
 8) Analogicznie należy uruchomić aplikację Web API.
   
     ```
-    dotnet run --project Kolokwium.API\Kolokwium.API.csproj
+    dotnet run --project Kolokwium.API
     ```
    Web API powinno być dostępne pod adresem: `http://localhost:5050/api/{controller}` 
 
@@ -71,20 +71,20 @@
 ### Umieszenie rozwiązania w archiwum
 1)  Po otrzymaniu oceny proszę w folderze `Kolokwium` wykonać poniższe polecenia.
     ```powershell
-    rmdir Kolokwium.Web/obj -recurse
-    rmdir Kolokwium.Web/bin -recurse
-    rmdir Kolokwium.API/obj -recurse
-    rmdir Kolokwium.API/bin -recurse
-    rmdir Kolokwium.ViewModel/obj -recurse
-    rmdir Kolokwium.ViewModel/bin -recurse
-    rmdir Kolokwium.Test/obj -recurse
-    rmdir Kolokwium.Test/bin -recurse
-    rmdir Kolokwium.Services/obj -recurse
-    rmdir Kolokwium.Services/bin -recurse
-    rmdir Kolokwium.DAL/obj -recurse
-    rmdir Kolokwium.DAL/bin -recurse
-    rmdir Kolokwium.Model/obj -recurse
-    rmdir Kolokwium.Model/bin -recurse    
+    Remove-Item Kolokwium.Web/bin -Recurse -Force
+    Remove-Item Kolokwium.Web/obj -Recurse -Force
+    Remove-Item Kolokwium.API/bin -Recurse -Force
+    Remove-Item Kolokwium.API/obj -Recurse -Force
+    Remove-Item Kolokwium.ViewModel/bin -Recurse -Force
+    Remove-Item Kolokwium.ViewModel/obj -Recurse -Force
+    Remove-Item Kolokwium.Test/bin -Recurse -Force
+    Remove-Item Kolokwium.Test/obj -Recurse -Force
+    Remove-Item Kolokwium.Services/bin -Recurse -Force
+    Remove-Item Kolokwium.Services/obj -Recurse -Force
+    Remove-Item Kolokwium.DAL/bin -Recurse -Force
+    Remove-Item Kolokwium.DAL/obj -Recurse -Force
+    Remove-Item Kolokwium.Model/bin -Recurse -Force
+    Remove-Item Kolokwium.Model/obj -Recurse -Force  
     
     ```
     Proszę się upewnić że foldery `bin` i `obj` zostały usunięte ze wszystkich projektów.
@@ -94,7 +94,7 @@
 2)  Następnie proszę spakować rozwiązanie przy pomocy poniższego kodu. Plik `Rozwiazanie_Kolokwium.zip` będzie znajdował sie w folderze `Kolokwium`
 
     ```
-    tar caf Rozwiazanie_Kolokwium.zip --exclude=./Rozwiazanie_Kolokwium.zip . 
+    tar caf Rozwiazanie_Kolokwium.zip --exclude=./Rozwiazanie_Kolokwium.zip Kolokwium 
     ```
     
 3)  Proszę przejść pod adres [Archiver](http://ik2a.kik.pcz.czest.pl/archiver/TestArchive/Index)
