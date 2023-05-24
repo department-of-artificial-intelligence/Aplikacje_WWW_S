@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Kolokwium.DAL\Kolokwium.DAL.csproj" />
     <ProjectReference Include="..\Kolokwium.Model\Kolokwium.Model.csproj" />
+    <ProjectReference Include="..\Kolokwium.ViewModel\Kolokwium.ViewModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
