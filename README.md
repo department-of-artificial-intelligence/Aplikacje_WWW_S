@@ -69,7 +69,7 @@
 ```
 
 ### Umieszenie rozwiązania w archiwum
-1)  PPo zakończeniu kolokwium proszę w folderze `Kolokwium` wykonać poniższe polecenia.
+1)  Po zakończeniu kolokwium proszę w folderze `Kolokwium` wykonać poniższe polecenia.
     ```powershell
     Remove-Item Kolokwium/Kolokwium.Web/bin -Recurse -Force
     Remove-Item Kolokwium/Kolokwium.Web/obj -Recurse -Force
