@@ -69,22 +69,22 @@
 ```
 
 ### Umieszenie rozwiązania w archiwum
-1)  Po otrzymaniu oceny proszę w folderze `Kolokwium` wykonać poniższe polecenia.
+1)  PPo zakończeniu kolokwium proszę w folderze `Kolokwium` wykonać poniższe polecenia.
     ```powershell
-    Remove-Item Kolokwium.Web/bin -Recurse -Force
-    Remove-Item Kolokwium.Web/obj -Recurse -Force
-    Remove-Item Kolokwium.API/bin -Recurse -Force
-    Remove-Item Kolokwium.API/obj -Recurse -Force
-    Remove-Item Kolokwium.ViewModel/bin -Recurse -Force
-    Remove-Item Kolokwium.ViewModel/obj -Recurse -Force
-    Remove-Item Kolokwium.Test/bin -Recurse -Force
-    Remove-Item Kolokwium.Test/obj -Recurse -Force
-    Remove-Item Kolokwium.Services/bin -Recurse -Force
-    Remove-Item Kolokwium.Services/obj -Recurse -Force
-    Remove-Item Kolokwium.DAL/bin -Recurse -Force
-    Remove-Item Kolokwium.DAL/obj -Recurse -Force
-    Remove-Item Kolokwium.Model/bin -Recurse -Force
-    Remove-Item Kolokwium.Model/obj -Recurse -Force  
+    Remove-Item Kolokwium/Kolokwium.Web/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Web/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.API/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.API/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.ViewModel/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.ViewModel/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Test/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Test/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Services/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Services/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.DAL/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.DAL/obj -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Model/bin -Recurse -Force
+    Remove-Item Kolokwium/Kolokwium.Model/obj -Recurse -Force  
     
     ```
     Proszę się upewnić że foldery `bin` i `obj` zostały usunięte ze wszystkich projektów.
