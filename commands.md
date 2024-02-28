@@ -1,5 +1,5 @@
 # Commands required during the lab
-
+#
 ## Lab 2 (Entity Framework Core)
 
 ### solution/project compilation
