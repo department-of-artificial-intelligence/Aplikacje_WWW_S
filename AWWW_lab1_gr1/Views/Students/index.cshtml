@@ -1,0 +1,11 @@
+@model List<Student>
+
+<div>
+    <h2>Students</h2>
+    <ul>
+        @foreach (var student in Model)
+        {
+            <li><a asp-controller="Student" asp-action="index" asp-route-id=@student.Id>@student.FirstName @student.LastName</a></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,11 @@
+@model Student
+
+
+<div>
+    <h2>Student Info</h2>
+    <p>Student Name: @Model.FirstName @Model.LastName</p>
+    <p>Student nr: @Model.IndexNr</p>
+    <p>Student BirtDate: @Model.DateOfBirth.ToShortDateString()</p>
+    <p>Field of study @Model.FieldOfStudy</p>
+</div>
+
