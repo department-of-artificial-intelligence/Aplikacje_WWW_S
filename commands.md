@@ -1,48 +1,59 @@
+# test
+
 # Commands required during the lab
 
 ## Lab 2 (Entity Framework Core)
 
 ### solution/project compilation
+
 ```console
 dotnet build
 ```
 
 ### solution/project clean
+
 ```console
 dotnet clean
 ```
 
 ### solution/project restore
+
 ```console
 dotnet restore
 ```
 
 ### update Entity Framework Tools to given version
+
 ```console
 dotnet tool update --global dotnet-ef --version 6.0.9
 ```
 
 ### create migration with name Initial
+
 ```console
 dotnet ef migrations add Initial --project SchoolRegister.DAL --startup-project SchoolRegister.Web
 ```
 
 ### remove the newest migration
+
 ```console
 dotnet ef migrations remove --project SchoolRegister.DAL --startup-project SchoolRegister.Web
 ```
 
 ### update database to newest migration
+
 ```console
 dotnet ef database update --project SchoolRegister.DAL --startup-project SchoolRegister.Web
 ```
 
 ### drop database
+
 ```console
 dotnet ef database drop --project SchoolRegister.DAL --startup-project SchoolRegister.Web
 ```
 
 ### Database Data SQL Script
+
 ```sql
 -- DELETE ALL DATA FROM TABLES
 DELETE FROM [dbo].[Grades];
@@ -52,10 +63,10 @@ DELETE FROM [dbo].[Subjects];
 DELETE FROM [dbo].[AspNetUserRoles];
 DELETE FROM [dbo].[AspNetUsers];
 DELETE FROM [dbo].[Groups];
-DELETE FROM [dbo].[AspNetRoles]; 
+DELETE FROM [dbo].[AspNetRoles];
 GO
 
-SET IDENTITY_INSERT [dbo].[AspNetRoles] ON 
+SET IDENTITY_INSERT [dbo].[AspNetRoles] ON
 
 INSERT [dbo].[AspNetRoles] ([Id], [Name], [NormalizedName], [ConcurrencyStamp], [RoleValue]) VALUES (3, N'Teacher', N'TEACHER', N'097087b9-f582-442c-8c98-7c5a7795098f', 3)
 INSERT [dbo].[AspNetRoles] ([Id], [Name], [NormalizedName], [ConcurrencyStamp], [RoleValue]) VALUES (1, N'Student', N'STUDENT', N'ae41df1a-6e54-465f-b52e-847fcc0029c7', 1)
@@ -64,14 +75,14 @@ INSERT [dbo].[AspNetRoles] ([Id], [Name], [NormalizedName], [ConcurrencyStamp], 
 SET IDENTITY_INSERT [dbo].[AspNetRoles] OFF
 
 GO
-SET IDENTITY_INSERT [dbo].[Groups] ON 
+SET IDENTITY_INSERT [dbo].[Groups] ON
 
 INSERT [dbo].[Groups] ([Id], [Name]) VALUES (1, N'IO')
 INSERT [dbo].[Groups] ([Id], [Name]) VALUES (2, N'PAI')
 INSERT [dbo].[Groups] ([Id], [Name]) VALUES (3, N'AIP_Erasmus+')
 SET IDENTITY_INSERT [dbo].[Groups] OFF
 GO
-SET IDENTITY_INSERT [dbo].[AspNetUsers] ON 
+SET IDENTITY_INSERT [dbo].[AspNetUsers] ON
 --PASSWORD FOR ALL USERS: User1234
 INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [FirstName], [LastName], [RegistrationDate], [UserType], [GroupId], [ParentId], [Title]) VALUES (1, N't1@eg.eg', N'T1@EG.EG', N't1@eg.eg', N'T1@EG.EG', 0, N'AQAAAAEAACcQAAAAEL5luXXr+auYHroKazQLIljJqou2ERCuex8Hwco9xkjwBuE3y7IkN0IMf2XX5YGylg==', N'2ZS2NADB4BES3WUMYKTDGU72KCZ2W7VP', N'efb5fcaf-87da-4010-9a1d-57677910e0fa', NULL, 0, 0, NULL, 1, 0, N'Adam', N'Bednarski', CAST(N'2010-01-01T00:00:00.0000000' AS DateTime2), 3, NULL, NULL, N'mgr inż.')
 INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [FirstName], [LastName], [RegistrationDate], [UserType], [GroupId], [ParentId], [Title]) VALUES (2, N't2@eg.eg', N'T2@EG.EG', N't2@eg.eg', N'T2@EG.EG', 0, N'AQAAAAEAACcQAAAAEL5luXXr+auYHroKazQLIljJqou2ERCuex8Hwco9xkjwBuE3y7IkN0IMf2XX5YGylg==', N'B6E24AVVZ4PGOYSXOCBCZG7JDFQQDRJU', N'da94c1dc-9e31-4e0d-b9b5-2d11e042b1a5', NULL, 0, 0, NULL, 1, 0, N'Jan', N'Nowak', CAST(N'2010-11-12T00:00:00.0000000' AS DateTime2), 3, NULL, NULL, N'mgr')
@@ -102,7 +113,7 @@ INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (10, 1)
 INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (11, 4)
 
 GO
-SET IDENTITY_INSERT [dbo].[Subjects] ON 
+SET IDENTITY_INSERT [dbo].[Subjects] ON
 
 INSERT [dbo].[Subjects] ([Id], [Name], [Description], [TeacherId]) VALUES (1, N'Aplikacje WWW', N'Aplikacje webowe', 1)
 INSERT [dbo].[Subjects] ([Id], [Name], [Description], [TeacherId]) VALUES (2, N'Programowanie obiektowe', N'Programowanie obiektowe jest przedmiotem realizującym przykłady programowanie obiektowego', 1)
