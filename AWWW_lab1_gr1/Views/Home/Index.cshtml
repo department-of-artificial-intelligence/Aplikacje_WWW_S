@@ -1,0 +1,23 @@
+@addTagHelper * , Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>@ViewBag.Title</h1>
+<p>Witamy na steonie glownej</p>
+<p>
+    Artykuly:
+
+    <ul>
+        <li><a asp-controller="article" asp-action="article">Artykul 1</a></li>
+    </ul>
+</p>
+
+</body>
+</html>
+
+
+
