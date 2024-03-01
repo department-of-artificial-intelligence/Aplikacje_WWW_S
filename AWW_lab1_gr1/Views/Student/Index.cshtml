@@ -1,0 +1,11 @@
+@model AWW_lab1_gr1.Models.Student;
+
+<h2 class="page-title">Studenci</h2>
+<ul>
+  @foreach (var item in ViewBag.students)
+  {
+    <li>
+      <a asp-controller="Student" asp-action="Show" asp-route-id="@item.Id">@item.FirstName @item.LastName</a>
+    </li>
+  }
+</ul>
