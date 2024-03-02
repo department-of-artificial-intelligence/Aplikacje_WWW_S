@@ -2,7 +2,7 @@ using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 
     public class ArticleController : Controller{
-        public IActionResult Index(int id=1)
+        public IActionResult Index(int id)
         {
             var articles = new List<Article>
             {

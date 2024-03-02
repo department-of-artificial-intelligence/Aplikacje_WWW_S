@@ -1,0 +1,22 @@
+@model AWWW_lab1_gr1.Models.Student
+
+<h1>Student nr @Model.Id</h1>
+<p>
+    Imie: @Model.FirstName
+</p>
+
+<p>
+   Nazwisko: @Model.LastName
+</p>
+
+<p>
+    Data urodzenia: @Model.DateOfBirth.ToShortDateString()
+</p>
+
+<p>
+    Numer indeksu: @Model.IndexNr
+</p>
+
+<p>
+    Field of study: @Model.FieldOfStudy
+</p>
