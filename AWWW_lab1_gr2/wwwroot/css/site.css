@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+p {
+	margin: 0;
+	font-size: 1.2em;
+}
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+li {
+	margin: 10px 0;
+}
+li:hover {
+	background-color: #f2f2f2;
+	color: red;
+}
