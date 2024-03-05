@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 public class ArticleController : Controller
 {
-    public IActionResult Index(int id = 1) 
+    public IActionResult Index(int id) 
     {
         var articles = new List<Article>
         {
@@ -26,6 +26,6 @@ public class ArticleController : Controller
             }
         };
 
-        return View(articles[id-1]);
+        return View(articles.FirstOrDefault(a => a.Id == id));
     }
 }
