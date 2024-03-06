@@ -6,4 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot - kopiować\**" />
+    <Content Remove="wwwroot - kopiować\**" />
+    <EmbeddedResource Remove="wwwroot - kopiować\**" />
+    <None Remove="wwwroot - kopiować\**" />
+  </ItemGroup>
+
 </Project>

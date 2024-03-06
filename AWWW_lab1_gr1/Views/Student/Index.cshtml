@@ -1,0 +1,24 @@
+﻿<h1>@ViewBag.Title</h1>
+<ul>
+    @if (ViewBag.StudentsCount != null || ViewBag.StudentsName != null)
+    {
+        for (int i = 0; i < ViewBag.StudentsCount; i++)
+        {
+            @if (ViewBag.StudentsName[i] != null)
+            { // Check for null and valid index
+                <li><a asp-controller="Student" asp-action="Index" asp-route-id="@i" >@ViewBag.StudentsName[i]</a></li>
+            }
+            else
+            {
+                <li>Student name unavailable</li>
+                // Handle null case
+            }
+        }
+    }
+    else
+    {
+        <li>No students found</li>
+        // Handle case where neither is set
+    }
+</ul>
+
