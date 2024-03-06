@@ -1,11 +1,10 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <h1>@ViewBag.Title</h1>
-
-<p>Witamy na stronie głównej</p>
-
+<p>Witamy na stronie głownej</p>
 <p>
-    Artykuły:
+    Artykuł:
     <ul>
-        <li><a asp-controller="article" asp-action="index">Artykuł</a></li>
+    <li><a asp-controller="article" asp-action="index" asp-rount-id=1>Artykuł 1</a></li>
+    <li><a asp-controller="article" asp-action="index" asp-rount-id=1>Artykuł 2</a></li>
+    <li><a asp-controller="article" asp-action="index" asp-rount-id=1>Artykuł 3</a></li>
     </ul>
 </p>
