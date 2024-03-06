@@ -1,5 +1,7 @@
 using System;
 
+namespace AWWW_lab1_gr5
+{
     public class Student
     {
         public int Id { get; set; }
@@ -10,6 +12,8 @@ using System;
         public string? FieldOfStudy { get; set; }
     }
 
+}
+    
 
 
 
