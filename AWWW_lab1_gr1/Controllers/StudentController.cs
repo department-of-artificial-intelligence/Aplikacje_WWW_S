@@ -5,10 +5,10 @@ namespace AWWW_lab1_gr1.Controllers
 {
     public class StudentController : Controller
     {
-        public IActionResult Index()
+        private IList<Student>? _students;
+        public StudentController()
         {
-            ViewBag.Title = "Student list";
-            var students = new List<Student>() {
+            _students = new List<Student>() {
                 new Student()
                 {
                   Id = 1,
@@ -35,35 +35,35 @@ namespace AWWW_lab1_gr1.Controllers
                   IndexNr = 33333,
                   DateOfBirth = new DateTime(1998, 3, 8),
                   FieldOfStudy = "Historia"
-                },
-                new Student()
-                {
-                  Id = 4,
-                  FirstName = "Maria",
-                  LastName = "Malinowska",
-                  IndexNr = 44444,
-                  DateOfBirth = new DateTime(2000, 7, 22),
-                  FieldOfStudy = "Psychologia"
-                },
-                new Student()
-                {
-                  Id = 5,
-                  FirstName = "Tomasz",
-                  LastName = "Kwiatkowski",
-                  IndexNr = 55555,
-                  DateOfBirth = new DateTime(1997, 10, 1),
-                  FieldOfStudy = "Zarządzanie"
                 }
             };
-            ViewBag.StudentsCount = students.Count;
+        }
+        public IActionResult Students()
+        {
+            ViewBag.Title = "Student list";
+
+            if (_students == null) { return View(); }
+
+            ViewBag.StudentsCount = _students.Count;
 
             var studentsName = new List<string>();
-            foreach (var student in students)
+            foreach (var student in _students)
             {
                 studentsName.Add(student.FirstName + " " + student.LastName);
             }
             ViewBag.StudentsName = studentsName;
 
+            return View();
+        }
+
+        public IActionResult Index(int id = 1)
+        {
+            ViewBag.Title = "Student Info";
+
+            if (_students != null && _students.Count > id)
+            {
+                return View(_students[id]);
+            }
             return View();
         }
     }

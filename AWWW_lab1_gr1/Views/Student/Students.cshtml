@@ -1,0 +1,22 @@
+﻿<h1>@ViewBag.Title</h1>
+<ul>
+    @if (ViewBag.StudentsCount != null || ViewBag.StudentsName != null)
+    {
+        for (int i = 0; i < ViewBag.StudentsCount; i++)
+        {
+            @if (ViewBag.StudentsName[i] != null)
+            { 
+                <li><a asp-controller="student" asp-action="index" asp-route-id="@i" >@ViewBag.StudentsName[i]</a></li>
+            }
+            else
+            {
+                <li>Student name unavailable</li>
+            }
+        }
+    }
+    else
+    {
+        <li>No students found</li>
+    }
+</ul>
+
