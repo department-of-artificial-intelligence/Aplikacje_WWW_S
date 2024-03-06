@@ -1,0 +1,13 @@
+<h1>Lista studentów</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Student student in @ViewBag.studenci){
+        <li>Student @student.Id: <ul>
+                <li>Imie: @student.FirstName</li>
+                <li>Nazwisko: @student.LastName</li>
+                <li>Nr indeksu: @student.IndexNr</li>
+                <li><a asp-controller="studenci" asp-action="wybrany" asp-route-id=@student.Id>Szczegółowe informacje</a></li>
+            </ul>
+        </li>
+    }
+</ul>
