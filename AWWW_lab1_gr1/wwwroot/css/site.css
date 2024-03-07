@@ -1,2 +1,35 @@
-﻿body {
-}
+﻿* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-size: 24px;
+  height: 100vh; }
+
+header {
+  height: 10%;
+  background-color: gray; }
+  header nav {
+    height: 100%; }
+    header nav ul {
+      height: 100%;
+      display: flex;
+      text-align: center;
+      justify-content: left;
+      align-items: center;
+      padding: 40px; }
+      header nav ul li {
+        list-style-type: none;
+        padding-right: 30px; }
+
+main {
+  background-color: whitesmoke;
+  height: 85%; }
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5%;
+  background-color: gray; }
