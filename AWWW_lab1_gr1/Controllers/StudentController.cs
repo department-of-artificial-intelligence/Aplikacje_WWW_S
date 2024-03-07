@@ -2,6 +2,8 @@
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 
+namespace MvcApp.Controllers
+{
 public class StudentController : Controller {
     public IActionResult Index(int id=1) {
         var students = new List<Student>
@@ -25,10 +27,11 @@ public class StudentController : Controller {
                 FirstName = "Andrzej",
                 LastName = "Zieliński",
                 DateOfBirth = new DateTime(2001, 11, 05),
-                FieldOfStudy = "Programowanie stron internetowych"
+                FieldOfStudy = "Programowanie aplikacji internetowych"
             }
         };
 
         return View(students[id-1]);
     }
+}
 }

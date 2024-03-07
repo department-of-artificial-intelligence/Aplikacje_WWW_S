@@ -1,22 +1,28 @@
+
 @model AWWW_lab1_gr1.Models.Student
 
-<h1>Student nr @Model.Id</h1>
-<p>
-    Imie: @Model.FirstName
-</p>
 
-<p>
-   Nazwisko: @Model.LastName
-</p>
+    <h1 class="title">Student nr @Model.Id</h1>
+    
+    <p class="text-block">
+        Imie: @Model.FirstName
+    </p>
 
-<p>
-    Data urodzenia: @Model.DateOfBirth.ToShortDateString()
-</p>
+    <p class="text-block">
+    Nazwisko: @Model.LastName
+    </p>
 
-<p>
-    Numer indeksu: @Model.IndexNr
-</p>
+    <p class="text-block">
+        Data urodzenia: @Model.DateOfBirth.ToShortDateString()
+    </p>
 
-<p>
-    Field of study: @Model.FieldOfStudy
-</p>
+    <p class="text-block">
+        Numer indeksu: @Model.IndexNr
+    </p>
+
+    <p class="text-block">
+        Field of study: @Model.FieldOfStudy
+    </p>
+
+
+

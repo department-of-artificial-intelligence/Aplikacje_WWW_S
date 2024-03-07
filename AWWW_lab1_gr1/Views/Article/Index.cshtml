@@ -1,10 +1,10 @@
 @model AWWW_lab1_gr1.Models.Article
 
-<h1>@Model.Title</h1>
-<p>
+<h1 class="title">@Model.Title</h1>
+<p class="text-block">
     Data utworzenia: @Model.CreationDate.ToShortDateString()
 </p>
 
-<p>
+<p class="text-block">
     @Model.Content
 </p>

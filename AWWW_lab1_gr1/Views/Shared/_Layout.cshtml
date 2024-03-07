@@ -5,22 +5,24 @@
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
     </head>
     <body>
-        <header>
-            <nav>
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            @RenderBody()
-        </main>
+        <div class="wrapper">
+            <header>
+                <nav>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                @RenderBody()
+            </main>
 
-        <footer>
-            &copy; 2024
-        </footer>
+            <footer>
+                &copy; 2024
+            </footer>
+        </div>
     </body>
 
 </html>
