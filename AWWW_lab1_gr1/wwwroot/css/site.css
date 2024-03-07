@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.text
+{
+    font-size: 20px;
+}
+
+.artykul
+{
+    width: 750px;
+    background-color: white;
+    margin: 0;
+    border-radius: 3px;
+    
+}
+
+
+.artykul1
+{
+    font-size: 25px;
+    margin: 15px;
+}
+.artykul2
+{   margin: 3px;
+    background-color: whitesmoke;
+    font-size: 25px;
+    border-radius: 3px;
+    width: 150px;
+
+}
+.navig
+{
+    background-color: red;
+    height: auto;
+    size:100%;
+    font-size: 25px;
+}
+
+.cont
+{
+    background-color: black;
+    border-radius: 3px;
+    width: 500px;
+}
+
+.cont p {
+     margin: 20px;
+}
+
+.footer
+{
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%; 
+    background-color: black;
+    font-size: 25px;
+    
+}
