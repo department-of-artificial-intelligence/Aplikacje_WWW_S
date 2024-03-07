@@ -4,17 +4,7 @@ using AWWW_lab1_gr2.Models;
 
 namespace AWWW_lab1_gr2.Controllers{
     public class ArticleController :Controller{
-        public IActionResult Index(){
-            var article = new Article
-            {
-                Id = 1,
-                Title = "Artykuł 1",
-                Content = "Lorem ipsum...",
-                CreationDate = DateTime.Now
-            };
-            return View(article);
-        }
-        /*
+        
         public IActionResult Index(int id=1){
             var articles = new List<Article>
             {
@@ -39,7 +29,5 @@ namespace AWWW_lab1_gr2.Controllers{
             };
             return View(articles[id-1]);
         }
-        */
     }
-
 }

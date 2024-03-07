@@ -1,0 +1,7 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Student>
+Lista Studentów:<br>
+<ol>
+    @foreach(AWWW_lab1_gr2.Models.Student element in Model){
+        <li><a asp-controller="student" asp-action="details" asp-route-id=@element.Id>@element.FirstName @element.LastName</a><br></li>
+    }
+</ol>

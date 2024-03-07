@@ -1,0 +1,13 @@
+body{
+    background-color: grey;
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6, a{
+    background-color: darkgrey;
+    border-radius: 10px;
+    padding: 2px 5px;
+}
+
+li{
+    margin:5px;
+}
