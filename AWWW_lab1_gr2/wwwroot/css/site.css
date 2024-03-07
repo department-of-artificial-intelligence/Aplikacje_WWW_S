@@ -1,0 +1,19 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+h2{
+    color: rgb(48, 244, 244);
+}
+a{
+    text-decoration: none;
+    color:rgb(129, 219, 219);
+}
+a:hover{
+    text-decoration: underline;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}

@@ -1,0 +1,9 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Student>
+<h2>Lista Studentow</h2>
+<ul>
+    @foreach (var student in Model){
+        <li>
+            <a asp-controller="Student" asp-action="StudentInfo" asp-route-id="@student.Id">@student.FirstName @student.LastName</a>
+        </li>
+    }
+</ul>
