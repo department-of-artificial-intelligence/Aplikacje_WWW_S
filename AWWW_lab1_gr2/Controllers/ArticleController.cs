@@ -15,14 +15,29 @@ public class ArticleController : Controller{
         throw new NotImplementedException();
     }
 
-    public IActionResult Index(){
-        var article = new Article{
-            Id = 1,
-            Title = "Artykul 1",
-            Content = "Lorem ipsum...",
-            CreationDate = DateTime.Now 
+    public IActionResult Index(int id=1){
+        var articles =new List<Article>
+        {
+            new Article{
+            Id=1,
+            Title="Artykul 1",
+            Content="lorem Ipsum..",
+            CreationDate=DateTime.Now
+            },
+            new Article{
+            Id=2,
+            Title="Artykul 2",
+            Content="lorem Ipsum..",
+            CreationDate=DateTime.Now
+            },
+            new Article{
+            Id=3,
+            Title="Artykul 3",
+            Content="lorem Ipsum..",
+            CreationDate=DateTime.Now
+            }
+            
         };
-        return View(article);
+        return View(articles[id-1]);
     }
-
 }
