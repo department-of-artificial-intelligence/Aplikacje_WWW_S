@@ -1,11 +1,11 @@
-@model Student;
+@model IEnumerable<Student>
 
-<h1>@Model.FirstName @Model.LastName</h1>
+<h1>Lista studentów</h1>
 
-<p class="studentDetails">
-    Imię: @Model.FirstName<br>
-    Nazwisko: @Model.LastName<br>
-    Nr. indeksu: @Model.IndexNr<br>
-    Data urodzenia: @Model.DateOfBirth.ToShortDateString()<br>
-    Kieunek: @Model.FieldOfStudy
+<p>
+    <ul>
+        @foreach(Student item in Model){
+            <li><a asp-controller='student' asp-action='details' asp-route-id=@item.Id>@item.FirstName @item.LastName</a></li>
+        }
+    </ul>
 </p>
