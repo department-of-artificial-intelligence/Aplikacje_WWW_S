@@ -1,0 +1,137 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #f8f9fa;
+  padding: 10px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #343a40;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+main {
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-title {
+  color: #007bff;
+}
+
+.welcome-text {
+  font-size: 18px;
+  color: #28a745;
+}
+
+.article-list,
+.student-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.article-list li,
+.student-list li {
+  margin-bottom: 10px;
+}
+
+.article-list a,
+.student-list a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Styl dla nagłówka h1 z modelu */
+.model-title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styl dla h2 */
+.article-title {
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styl dla daty utworzenia */
+.creation-date {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Styl dla treści artykułu */
+.article-content {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Styl dla kontenera sekcji studenta */
+.student-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Styl dla nagłówka "Student" */
+.student-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Styl dla sekcji ze szczegółowymi informacjami */
+.student-details {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* Styl dla listy ze szczegółami */
+.student-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Styl dla elementów listy ze szczegółami */
+.student-details li {
+  margin-bottom: 5px;
+}
