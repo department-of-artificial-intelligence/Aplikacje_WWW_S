@@ -1,4 +1,4 @@
-@model Article
+@model Article;
 
 <h1>@Model.Title</h1>
 
@@ -6,4 +6,6 @@
     Data utworzenia: @Model.CreationDate.ToShortDateString()
 </p>
 
-<p>@Model.Content</p>
+<p>
+    @Model.Content
+</p>
