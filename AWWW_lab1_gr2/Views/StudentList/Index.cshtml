@@ -1,14 +1,19 @@
 @model IEnumerable<AWWW_lab1_gr2.Models.Student>
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1> 
+        </div>
 
-<h1>@ViewBag.Title</h1>
-
-<div>
-    <ul>
-        @foreach (var student in Model){
-        <li>
-           <a asp-controller="studentlist" asp-action="details" asp-route-id="@student.Id">@student.FirstName @student.LastName</a> 
-        </li>
-        }
-    </ul>
+        <div>
+            <ul>
+                @foreach (var student in Model){
+                <li>
+                <a asp-controller="studentlist" asp-action="details" asp-route-id="@student.Id">@student.FirstName @student.LastName</a> 
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
 </div>
 

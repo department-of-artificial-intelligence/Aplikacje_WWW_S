@@ -7,6 +7,7 @@ body {
     font-family:Arial, Helvetica, sans-serif; 
     display: flex; 
     flex-direction: column; 
+    overflow-x:hidden; 
 }
 
 ul {
@@ -20,13 +21,13 @@ a {
 
 /* Nav */
 nav {
-    height: 50px; 
+    height: 3rem; 
     display: flex; 
     flex-direction: row; 
     background-color: rgb(86, 86, 250); 
-    justify-content: right; 
+    justify-content: left; 
     align-items: center; 
-    position: fixed; 
+    position: sticky; 
     top: 0px; 
     width: 100vw; 
 }
@@ -50,13 +51,8 @@ nav ul li a:hover {
 main { 
     display: flex; 
     flex-direction: column; 
-    justify-content: left; 
-    align-items: left; 
-    position:relative; 
-    top: 50px; 
-    height: 80vh; 
-    width: 100vw; 
-    margin: 1rem; 
+    /* height: 100vh; 
+    width: 100vw;  */
 }
 
 h1{
@@ -68,8 +64,38 @@ h2 {
 
 /* Article */
 
-.home {
+.main {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 90vh; 
+    width: 100vw; 
+}
+
+.container {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: left; 
+    padding: 3rem; 
     margin-top: 1rem; 
+    margin: auto;
+    border: 1px solid black; 
+    box-shadow: 2px 7px 10px rgb(1,1,1,0.7);
+}
+
+.container-article {
+    width: 80vw; 
+}
+
+.title {
+    text-align: center; 
+    margin-bottom: 1rem; 
+    background-color: rgb(86, 86, 250); 
+    padding: 1rem; 
+    color: white; 
+    text-shadow: 1px 1px 1px rgb(1,1,1,1); 
 }
 
 .home-p {
@@ -97,6 +123,9 @@ li a:hover{
 
 /* Footer */
 footer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     background-color: rgb(47, 47, 139);
     text-align: center; 
     padding: 0.5rem; 
