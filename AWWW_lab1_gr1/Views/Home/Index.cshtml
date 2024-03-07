@@ -1,15 +1,26 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<head>
+     <link rel="stylesheet" href="~/css/site.css" />
+</head>
 
-   <h1> @ViewBag.Title </h1>
-   <P>Witam na stonie glownej</P>
+@model AWWW_lab1_gr1.Models.Student 
+<h1>@ViewBag.Title</h1> 
+ 
+<p class="text">Witamy na stronie glównej</p> 
+ <div class="artyk">
+<p> 
+    <span>Artykuły:</span>
+    <ul> 
+        <li><a asp-controller="article" asp-action="index" asp-route-id="1">Artykuł 1</a></li> 
+        <li><a asp-controller="article" asp-action="index" asp-route-id="2">Artykuł 2</a></li> 
+        <li><a asp-controller="article" asp-action="index" asp-route-id="3">Artykuł 3</a></li> 
+    </ul> 
 
-   <p>
-         Artykuly:
-         <ul>
-             <li><a asp-controller="article" asp-action="Article">Artykul 1</a></li>
-         </ul>
+     <span>Studenty:</span>
+        <ul>         
+        <li><a asp-controller="student" asp-action="index" asp-route-id="1">Student1</a></li> 
+        <li><a asp-controller="student" asp-action="index" asp-route-id="2">Student2</a></li> 
+        <li><a asp-controller="student" asp-action="index" asp-route-id="3">Student3</a></li> 
+    </ul> 
+</p>
 
-
-   </p>
-
-
+</div>
