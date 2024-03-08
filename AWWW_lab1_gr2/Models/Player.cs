@@ -14,6 +14,6 @@ namespace AWWW_lab1_gr2.Models
         public string? Country{get;set;}
         public DateTime BirthDate{get;set;}
         public IList<Position> Positions{get;set;} = null!;
-        public Team? Team{get;set;}
+        public Team Team{get;set;} = null!;
     }
 }

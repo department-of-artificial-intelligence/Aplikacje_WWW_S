@@ -8,25 +8,12 @@ namespace AWWW_lab1_gr2.Models
     public class Article
     {
         public int Id {get;set;}
-        public string Title{get;set;}
-        public string Lead{get;set;}
-        public string Content{get;set;}
-        public DateTime CreationDate{get;set;}
-        public Author? Author{get;set;}
-
-        public Article(){
-            Id = 1;
-            Title = "";
-            Lead = "";
-            Content = "";
-            CreationDate = DateTime.Now;
-            Author = null;
-        }public Article(int id, string title, string lead, string content, DateTime creationDate){
-            Id = id;
-            Title = title;
-            Lead = lead;
-            Content = content;
-            CreationDate = creationDate;
-        }
+        public string Title{get;set;} = null!;
+        public string Lead{get;set;} = null!;
+        public string Content{get;set;} = null!;
+        public DateTime CreationDate{get;set;} = null!;
+        public Author? Author{get;set;} = null!;
+        public IList<Tag>? Tags{get;set;} = null!;
+        public Match? Match{get;set;}
     }
 }

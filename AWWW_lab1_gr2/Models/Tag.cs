@@ -9,9 +9,5 @@ namespace AWWW_lab1_gr2.Models
     {
         public int ID{get;set;}
         public string Name{get;set;} = null!;
-        public IList<Article> Articles{get;set;}
-        public Tag(){
-            Articles = new List<Article>();
-        }
     }
 }
