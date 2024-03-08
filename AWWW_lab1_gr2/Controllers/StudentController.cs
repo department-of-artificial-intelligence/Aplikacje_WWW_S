@@ -1,6 +1,3 @@
-// Następnie proszę o utworzenie kontrolera i widoku umożliwiającego wyświetlenie w formie listy imion i
-// nazwisk trzech predefiniowanych studentów. Widok ten powinien też zawierać odnośnik pozwalający na
-// wyświetlenie szczegółowych informacji o wybranym studencie.
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 
