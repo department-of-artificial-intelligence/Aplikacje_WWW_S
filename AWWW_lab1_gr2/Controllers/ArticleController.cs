@@ -8,7 +8,7 @@ public class ArticleController:Controller{
             new Article{
                 Id = 1,
                 Title = "Artykuł 1",
-                Content = "Lorem ispum...",
+                Content = "Lorem ispdum...",
                 CreationDate = DateTime.Now
             },
 
