@@ -1,27 +1,8 @@
-@model AWWW_lab1_gr2.Models.Student
-
-<h1>@ViewBag.Title</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <td>Imie</td>
-            <td>Nazwisko</td>
-            <td>Numer indeksu</td>
-            <td>Data urodzenia</td>
-            <td>Kierunek</td>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model != null)
-        {
-            <th>@Model.Id</th>
-            <td>@Model.FirstName</td>
-            <td>@Model.LastName</td>
-            <td>@Model.IndexNr</td>
-            <td>@Model.DateOfBirth.ToShortDateString()</td>
-            <td>@Model.FieldOfStudy</td>
-        }
-    </tbody>
-</table>
+<ul>
+    <li><a asp-controller="Student" asp-action="Details" asp-route-id="@Model[0].Id">@Model[0].FirstName @Model[0].LastName</a>
+    </li>
+    <li><a asp-controller="Student" asp-action="Details" asp-route-id="2">@Model[1].FirstName @Model[1].LastName</a>
+    </li>
+    <li><a asp-controller="Student" asp-action="Details" asp-route-id="3">@Model[2].FirstName @Model[2].LastName</a>
+    </li>
+</ul>

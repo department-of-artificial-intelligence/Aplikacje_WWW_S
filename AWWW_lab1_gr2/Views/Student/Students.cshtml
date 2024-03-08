@@ -1,23 +1,10 @@
 @model AWWW_lab1_gr2.Models.Student
 
-<h1>@ViewBag.Title</h1>
-<ul>
-    @if (ViewBag.StudentsCount != null || ViewBag.StudentsName != null)
-    {
-        for (int i = 0; i < ViewBag.StudentsCount; i++)
-        {
-            @if (ViewBag.StudentsName[i] != null)
-            { 
-                <li><a asp-controller="student" asp-action="index" asp-route-id="@i" >@ViewBag.StudentsName[i]</a></li>
-            }
-            else
-            {
-                <li>Student name unavailable</li>
-            }
-        }
-    }
-    else
-    {
-        <li>No students found</li>
-    }
-</ul>
+<h2>Szczegóły Studenta</h2>
+
+<p><strong>ID:</strong> @Model.Id</p>
+<p><strong>Imię:</strong> @Model.FirstName</p>
+<p><strong>Nazwisko:</strong> @Model.LastName</p>
+<p><strong>Numer indeksu:</strong> @Model.IndexNr</p>
+<p><strong>Data urodzenia:</strong> @Model.DateOfBirth.ToString("dd/MM/yyyy")</p>
+<p><strong>Kierunek studiów:</strong> @Model.FieldOfStudy</p>
