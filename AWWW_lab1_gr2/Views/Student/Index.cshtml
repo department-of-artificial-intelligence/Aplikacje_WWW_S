@@ -1,0 +1,27 @@
+@model AWWW_lab1_gr2.Models.Student
+
+<h1>@ViewBag.Title</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <td>Imie</td>
+            <td>Nazwisko</td>
+            <td>Numer indeksu</td>
+            <td>Data urodzenia</td>
+            <td>Kierunek</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null)
+        {
+            <th>@Model.Id</th>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.IndexNr</td>
+            <td>@Model.DateOfBirth.ToShortDateString()</td>
+            <td>@Model.FieldOfStudy</td>
+        }
+    </tbody>
+</table>
