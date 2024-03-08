@@ -1,11 +1,18 @@
 <h1>@ViewBag.Title</h1>
 
+
 <p>Witamy na stronie głównej</p>
 
 <p>
     Artykuły:
     <ul>
-        <li><a asp-controller="article" asp-action="index">Artykuł 1</a></li>
+        <li><a asp-controller="article" asp-action="index" asp-route-id=1>Artykuł 1</a></li>
+        <li><a asp-controller="article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
+        <li><a asp-controller="article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
+
+
+
 
     </ul>
+    <a asp-controller="students" asp-action="index" >Lista studentów</a>
 </p>
