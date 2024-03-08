@@ -13,7 +13,7 @@ namespace AWWW_lab1_gr2.Controllers
                 Firstname="jakub"
             },
 
-
+//223
         };
        
        return View(Studenci[id-1]);
