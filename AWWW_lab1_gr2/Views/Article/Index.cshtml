@@ -1,8 +1,4 @@
-<h1>@ViewBag.Title</h1>
-<p>witamy</p>
-<p>
-    bazinga:
-    <ul>
-        <li><a asp-controller="article" asp-action="index">dssdsdafasdfasdf</a></li>
-    </ul>
-</p>
+@model Article // samo article działa pełna wersja nie nwm czemu 
+<h1>@Model.Title</h1>
+<p>data utwrzoenia:@Model.CreationDate.ToShortDateString()</p>
+<p>@Model.Content</p>
