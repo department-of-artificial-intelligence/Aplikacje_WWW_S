@@ -40,7 +40,7 @@ namespace AWWW_lab1_gr1.Controllers
         }
         public IActionResult Students()
         {
-            ViewBag.Title = "Student list";
+            ViewBag.Title = "Lista studentów";
 
             if (_students == null) { return View(); }
 
