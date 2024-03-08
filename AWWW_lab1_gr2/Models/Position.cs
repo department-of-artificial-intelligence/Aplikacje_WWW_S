@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace AWWW_lab1_gr2.Models
 {
-    public class Category
+    public class Position
     {
         public int ID{get;set;}
         public string Name{get;set;} = null!;
-        public IList<Article> Articles{get;set;}
-        public Category(){
-            Articles = new List<Article>();
-        }
     }
 }

@@ -8,6 +8,10 @@ namespace AWWW_lab1_gr2.Models
     public class Tag
     {
         public int ID{get;set;}
-        public String Name{get;set;}
+        public string Name{get;set;} = null!;
+        public IList<Article> Articles{get;set;}
+        public Tag(){
+            Articles = new List<Article>();
+        }
     }
 }
