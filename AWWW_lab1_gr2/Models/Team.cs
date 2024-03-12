@@ -7,8 +7,9 @@ namespace AWWW_lab1_gr2.Models
 {
     public class Team
     {
-        public int? HomeTeamId {get; set;}
-        public int? AwayTeamId {get; set;}
+        public int TeamId {get; set;}
+        // public int? HomeTeamId {get; set;}
+        // public int? AwayTeamId {get; set;}
         public string Name {get; set;} = null!; 
         public string Country {get; set;} = null!; 
         public string City {get; set;} = null!; 
