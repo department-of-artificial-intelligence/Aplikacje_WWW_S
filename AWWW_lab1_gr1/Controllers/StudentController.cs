@@ -9,7 +9,7 @@ public class StudentController:Controller
         {
             new Student 
             {
-                ID = 1, 
+                Id = 1, 
                 FirstName = "Naz", 
                 LastName = "James",
                 IndexNr = 1337, 
@@ -19,7 +19,7 @@ public class StudentController:Controller
 
             new Student 
             {
-                ID = 2, 
+                Id = 2, 
                 FirstName = "Nilgen", 
                 LastName = "Nu",
                 IndexNr = 1488, 
@@ -29,7 +29,7 @@ public class StudentController:Controller
 
             new Student 
             {
-                ID = 3, 
+                Id = 3, 
                 FirstName = "Kasha", 
                 LastName = "Porter",
                 IndexNr = 2289, 
