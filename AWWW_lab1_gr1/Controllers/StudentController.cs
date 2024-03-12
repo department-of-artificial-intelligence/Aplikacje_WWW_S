@@ -20,7 +20,7 @@ public class StudentController:Controller
             new Student 
             {
                 Id = 2, 
-                FirstName = "Nilgen", 
+                FirstName = "Nu", 
                 LastName = "Nu",
                 IndexNr = 1488, 
                 DateOfBirth = new DateTime(2003,2,26),
@@ -34,7 +34,7 @@ public class StudentController:Controller
                 LastName = "Porter",
                 IndexNr = 2289, 
                 DateOfBirth = new DateTime(2008,4,2),
-                FieldOfStudy = "Fizyka"
+                FieldOfStudy = "Fizyk"
             }
 
 
