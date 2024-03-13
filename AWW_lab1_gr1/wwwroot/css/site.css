@@ -1,3 +1,7 @@
+:root {
+  --main-padding: 60px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +20,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px;
+  padding: 20px var(--main-padding);
 }
 
 .site-header h1 {
@@ -42,11 +46,26 @@ body {
 }
 
 main {
-  padding: 40px 20px;
+  padding: 40px var(--main-padding);
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.page-subtitle {
+  margin: 40px 0 20px 0;
 }
 
 .site-footer {
   background-color: rgb(26, 26, 63);
   color: rgb(221, 221, 221);
-  padding: 20px;
+  padding: 20px var(--main-padding);
+}
+
+.list {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
