@@ -2,10 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 public class ArticleController : Controller
 {
-    public IActionResult Index(int id) 
+    private List<Article> articles = new List<Article>
     {
-        var articles = new List<Article>
-        {
             new Article {
                 Id = 1,
                 Title = "Artykuł 1",
@@ -25,7 +23,15 @@ public class ArticleController : Controller
                 CreationDate = DateTime.Now
             }
         };
+    public IActionResult Index() 
+    {
+        
 
-        return View(articles.FirstOrDefault(a => a.Id == id));
+        return View(articles);
+    }
+
+    public IActionResult Details(int id) {
+        var art = articles.FirstOrDefault(a => a.Id == id);
+        return View(art);
     }
 }

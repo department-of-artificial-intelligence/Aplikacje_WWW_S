@@ -4,7 +4,7 @@ public class HomeController:Controller
 {
     public IActionResult Index() 
     {
-        ViewBag.Title = "Home";
+        ViewBag.Title="Home";
         return View();
     }
 }

@@ -2,20 +2,4 @@
 
 <p>Witamy na stronie głównej</p>
 
-
-<h3>Artykuły:</h3>
-        @if (Model != null)
-        {
-            foreach (var article in Model) { 
-                <p><a asp-controller="Article" asp-action="Index" asp-route-id="@article.Id">Artykuł</a></p>
-            }
-        }
-<p>
-        Studenci:
-
-        <ul>
-            <li><a asp-controller="Student" asp-action="Index">Student 1</a></li>
-            <li><a asp-controller="Student" asp-action="Index">Student 2</a></li>
-            <li><a asp-controller="Student" asp-action="Index">Student 3</a></li>
-        </ul>
-    </p>
+        
