@@ -1,7 +1,14 @@
-h1 {
-	color: red;
+header, footer {
+    background-color: #333;
+    color: #fff;
+    height: 5vh;
+}
+header ul li {
+    list-style: none;
 }
 
-p {
-	background-color: pink;
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;  
 }

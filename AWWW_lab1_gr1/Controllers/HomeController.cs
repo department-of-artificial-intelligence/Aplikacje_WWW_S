@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using AWWW_lab1_gr1.Models;
 
-public class HomeController:Controller
+namespace AWWW_lab1_gr1.Controllers
 {
-    public IActionResult Index() 
+    public class HomeController : Controller
     {
-        ViewBag.Title="Home";
-        return View();
+        public IActionResult Index()
+        {
+            ViewBag.Title = "Home";
+            return View();
+        }
     }
 }

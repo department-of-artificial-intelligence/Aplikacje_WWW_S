@@ -1,36 +1,41 @@
 using Microsoft.AspNetCore.Mvc;
+using AWWW_lab1_gr1.Models;
 
-public class StudentController : Controller {
-    public IActionResult Index(int id = 1) 
+public class StudentController : Controller
+{
+    public IActionResult Index(int id = 1)
     {
-        var students = new List<Student> 
+        var students = new List<Student>
         {
-            new Student {
+            new Student
+            {
                 Id = 1,
                 FirstName = "Mateusz",
                 LastName = "Janik",
-                IndexNr = 134948,
-                DateOfBirth = DateTime.Now.AddYears(-20),
-                FieldOfStudy = "PAI"
+                IndexNr = 671209,
+                DateOfBirth = new DateTime(2001, 8, 23),
+                FieldOfStudy = "Computer Science"
             },
-            new Student {
+            new Student
+            {
                 Id = 2,
                 FirstName = "Jan",
-                LastName = "Kowalski",
-                IndexNr = 172973,
-                DateOfBirth = DateTime.Now.AddYears(-20),
-                FieldOfStudy = "PAI"
-            },
-            new Student {
-                Id = 3,
-                FirstName = "Marcin",
                 LastName = "Nowak",
-                IndexNr = 134583,
-                DateOfBirth = DateTime.Now.AddYears(-20),
-                FieldOfStudy = "PAI"
+                IndexNr = 134512,
+                DateOfBirth = new DateTime(2002, 4, 3),
+                FieldOfStudy = "Computer Science"
+            },
+            new Student
+            {
+                Id = 3,
+                FirstName = "Kamil",
+                LastName = "Bu³a",
+                IndexNr = 139837,
+                DateOfBirth = new DateTime(2002, 7, 19),
+                FieldOfStudy = "Artifical Inteligence"
             }
         };
 
-        return View(students[id-1]);
+        return View(students[id - 1]);
     }
 }
