@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Copperplate, fantasy;
     margin: 0;
     padding: 0;
     background: url("https://images.unsplash.com/photo-1487564149407-9fb3522e2ceb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -22,7 +22,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 ul li a {
@@ -37,4 +37,15 @@ ul li a {
 
 ul li a:hover {
     background-color: #ddd;
+}
+
+
+footer {
+    position: fixed;
+    background-color: #333;
+    color:#fff;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
 }

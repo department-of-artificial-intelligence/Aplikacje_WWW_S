@@ -10,31 +10,31 @@ public class StudentController:Controller
             new Student 
             {
                 Id = 1, 
-                FirstName = "Naz", 
-                LastName = "James",
+                FirstName = "Bob", 
+                LastName = "Bobson",
                 IndexNr = 1337, 
                 DateOfBirth = new DateTime(2004,3,12),
-                FieldOfStudy = "Math"
+                FieldOfStudy = "Computer science"
             },
 
             new Student 
             {
                 Id = 2, 
-                FirstName = "Nu", 
-                LastName = "Nu",
+                FirstName = "Rayan", 
+                LastName = "Gosling",
                 IndexNr = 1488, 
                 DateOfBirth = new DateTime(2003,2,26),
-                FieldOfStudy = "Engl"
+                FieldOfStudy = "English"
             },
 
             new Student 
             {
                 Id = 3, 
-                FirstName = "Kasha", 
-                LastName = "Porter",
+                FirstName = "Bill", 
+                LastName = "Wilkins",
                 IndexNr = 2289, 
                 DateOfBirth = new DateTime(2008,4,2),
-                FieldOfStudy = "Fizyk"
+                FieldOfStudy = "Math"
             }
 
 
