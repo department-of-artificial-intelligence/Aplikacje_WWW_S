@@ -18,5 +18,7 @@ namespace AWWW_lab2_gr2.Models
 
         public virtual ICollection<MatchPlayer> MatchPlayers {  get; set; }
 
+        public int PositionId {  get; set; }
+        public virtual Position Position { get; set; }
     }
 }

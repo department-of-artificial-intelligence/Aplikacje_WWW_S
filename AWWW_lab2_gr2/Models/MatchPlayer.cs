@@ -19,6 +19,7 @@ namespace AWWW_lab2_gr2.Models
 
         public virtual ICollection<MatchEvent> MatchEvents { get; set; }
 
-
+        public int MatchId {  get; set; }
+        public virtual Match Match { get; set; }
     }
 }

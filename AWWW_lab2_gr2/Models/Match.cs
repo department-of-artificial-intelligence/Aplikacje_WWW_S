@@ -19,6 +19,8 @@ namespace AWWW_lab2_gr2.Models
         public int AwayTeamId { get; set; }
         public virtual Team AwayTeam { get; set; }
 
-        public virtual ICollection<Match> Matches { get; set; }
+        public virtual ICollection<MatchPlayer> MatchPlayers { get; set; }
+
+        public virtual ICollection<MatchEvent> MatchEvents { get; set; }
     }
 }

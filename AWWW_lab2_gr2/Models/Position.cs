@@ -12,6 +12,6 @@ namespace AWWW_lab2_gr2.Models
 
         public virtual ICollection<MatchPlayer> MatchPlayers { get; set; }
 
-
+        public virtual ICollection<Player> Players { get; set; }
     }
 }
