@@ -12,8 +12,10 @@ namespace AWWW_lab2_gr2.Models
         public string? Country {get; set;}
         public string? City {get; set;}
         public DateTime FoundingDate {get; set;}
-
         public virtual ICollection<Player> Players {get; set;}
         public virtual League League {get; set;}
+        public int LeagueId { get; set; }
+        public virtual ICollection<Match> AwayMatches { get; set; }
+        public virtual ICollection<Match> HomeMatches { get; set; }
     }
 }
