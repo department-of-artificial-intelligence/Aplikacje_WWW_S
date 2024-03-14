@@ -29,7 +29,7 @@ public class StudentController : Controller
             {
                 Id = 3,
                 FirstName = "Kamil",
-                LastName = "Bu≥a",
+                LastName = "Bu≈Ça",
                 IndexNr = 139837,
                 DateOfBirth = new DateTime(2002, 7, 19),
                 FieldOfStudy = "Artifical Inteligence"
