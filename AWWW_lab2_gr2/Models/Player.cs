@@ -9,8 +9,7 @@ public class Player
     public string? Country { get; set; }
     public DateTime BirthDate { get; set; }
     public ICollection<MatchPlayer> MatchPlayers { get; set; }
-    public int PositionId { get; set; }
-    public Position Position { get; set; } = null!;
+    public ICollection<Position> Position { get; set; }
     public int TeamId { get; set; }
     public Team Team { get; set; } = null!;
 }

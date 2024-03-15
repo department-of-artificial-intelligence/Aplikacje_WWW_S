@@ -10,6 +10,7 @@ public class Team
     public DateTime FoundingDate { get; set; }
     public int LeagueId { get; set; }
     public League League { get; set; } = null!;
-    public ICollection<Match> Matches { get; set; }
+    public ICollection<Match> HomeMatches { get; set; }
+    public ICollection<Match> AwayMatches { get; set; }
     public ICollection<Player> Players { get; set; }
 }
