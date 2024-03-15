@@ -11,7 +11,7 @@ public class Comment{
        [Display(Name = "Title")]
        public string Title{get; set;}
 
-       [StringLength(50)]
+       [StringLength(500)]
        [Display(Name = "Content")]
        public string Content {get; set;}
 

@@ -13,7 +13,7 @@ public class Match{
        [Display(Name = "Date")]
        public DateTime Date {get; set;}
 
-       [StringLength(50)]
+       [StringLength(500)]
         [Display(Name = "Stadium")]
        public string Stadium {get; set;}
 

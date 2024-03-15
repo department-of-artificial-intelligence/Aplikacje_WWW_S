@@ -12,13 +12,13 @@ public class Article{
        [Display(Name = "Title")]
        public string? Title{get; set;}
 
-        [StringLength(50)]
+        [StringLength(500)]
         [Display(Name = "Lead")]
        public string Lead {get;set;}
 
-       [StringLength(50)]
+       [StringLength(5000)]
        [Display(Name = "Content")]
-       public string? Content {get; set;}
+       public string Content {get; set;}
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
