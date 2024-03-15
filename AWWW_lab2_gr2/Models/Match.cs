@@ -14,5 +14,7 @@ namespace AWWW_lab2_gr2.Models
         public List<Article> articles = new List<Article>();
 
         public Team[] teams = new Team[2];
+        public List<MatchEvent> matchEvents = new List<MatchEvent>();
+        public List<MatchPlayer> matchPlayers = new List<MatchPlayer>();
     }
 }

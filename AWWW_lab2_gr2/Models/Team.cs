@@ -15,5 +15,6 @@ namespace AWWW_lab2_gr2.Models
 
         public List<Match> matches = new List<Match>();
         public League league {get; set;} = null!;
+        public List<Player> player = new List<Player>();
     }
 }
