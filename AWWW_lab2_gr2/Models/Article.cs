@@ -21,9 +21,9 @@ namespace AWWW_lab2_gr2.Models
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        public virtual ICollection<ArticleTag> ArticleTags { get; set;}
+        public virtual ICollection<Tag> Tags { get; set;}
 
-        public int MatchId { get; set; }
+        public int? MatchId { get; set; }
         public virtual Match Match { get; set; }
 
         
