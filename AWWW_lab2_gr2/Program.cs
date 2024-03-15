@@ -1,24 +1,27 @@
+using AWWW_lab2_gr2;
 using Microsoft.EntityFrameworkCore;
-using WebApi.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+var connectionString = builder.Configuration.GetConnectionString("MyConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.MapGet("/users", (CancellationToken cancellationToken) =>
+if (!app.Environment.IsDevelopment())
 {
-    using var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    return dbContext.Users.ToListAsync(cancellationToken);
-});
+    app.UseExceptionHandler("/Home/Error");
+}
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

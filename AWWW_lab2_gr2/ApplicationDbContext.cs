@@ -3,9 +3,9 @@ using AWWW_lab2_gr2.Models;
 
 namespace AWWW_lab2_gr2
 {
-    public class AppDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Author> Authors { get; set; }

@@ -18,7 +18,7 @@ namespace AWWW_lab2_gr2.Models
 
         public int LeagueId { get; set; }
         public League League { get; set; }
-
+        
         public virtual ICollection<Player> Players { get; set; }
     }
 }
