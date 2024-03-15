@@ -7,4 +7,7 @@ public class League
 
     public string? Country{get;set;}
     public int Level{get;set;}
+
+    public ICollection<Team>? Teams{get;set;}
+    
 }

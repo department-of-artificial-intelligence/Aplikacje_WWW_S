@@ -5,4 +5,5 @@ public class Comment
     public string? Title{get;set;}
     public string? Content{get;set;}
 
+    public Article? Article{get;set;}
 }

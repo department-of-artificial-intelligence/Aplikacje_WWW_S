@@ -8,4 +8,8 @@ public class Player
     public string? Country{get;set;}
     public DateTime BirthDate{get;set;}
 
+    public Team? Team{get;set;}
+    public ICollection<Position>? Positions{get;set;}
+    public ICollection<MatchPlayer>? MatchPlayers{get;set;}
+
 }
