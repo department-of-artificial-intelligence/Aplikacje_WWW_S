@@ -18,7 +18,7 @@ body {
     font-weight: 600;
 }
 
-/* Стилизация ссылок как кнопок */
+
 a {
     display: inline-block;
     margin: 10px;
@@ -40,7 +40,7 @@ a:hover {
     background-color: #0056b3;
 }
 
-/* Центрирование элементов и учет отступов */
+
 .container {
     background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
     background-size: 180% 180%;

@@ -1,7 +1,7 @@
 namespace AWWW_lab1_gr1.Models;
 public class Student
 {
-    public int Id {get; set;}
+    public int StudentId {get; set;}
     public string FirstName {get; set;}
     public string LastName {get; set;}
     public int IndexNr {get; set;}
