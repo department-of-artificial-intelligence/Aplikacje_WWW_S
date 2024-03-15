@@ -7,5 +7,8 @@ namespace AWWW_lab1_gr2.Models
         public string? Title { get; set; }
         public string? Content { get; set; }
         public DateTime CreationDate { get; set; }
+        public Author? Author {get; set;}
+        public IList<Tag>? Tags{get; set;}
+        public Match? Match{get; set;}
     }
 }
