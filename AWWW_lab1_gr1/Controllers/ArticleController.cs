@@ -12,6 +12,7 @@ public class ArticleController:Controller
             Title = "Artykul 1", 
             Content = "Lorem ipsum...", 
             CreationDate = DateTime.Now 
+            
             }, 
             new Article{ 
             ID = 2, 
