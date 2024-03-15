@@ -3,6 +3,6 @@ public class Category
 { 
     public int Id {get; set;}
     public string? Name {get; set;}=null!;
-    public IList<Article> Articles {get; set;}
+    public IList<Article> Articles {get; set;}=null!;
 }
 }
