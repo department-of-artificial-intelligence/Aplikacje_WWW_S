@@ -24,40 +24,21 @@ namespace AWWW_lab2_gr2
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Lab2_gr2;Trusted_Connection=True;");
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Article>(entity =>
-            {
-                entity
-                    .HasOne(a => a.Author)
-                    .WithMany(b => b.Articles)
-                    .HasForeignKey(a => a.AuthorId)
-                    .IsRequired();
-
-                entity
-                    .HasOne(a => a.Category)
-                    .WithMany(b => b.Articles)
-                    .HasForeignKey(a => a.CategoryId)
-                    .IsRequired();
-
-                entity
-                    .HasMany(a => a.Comments)
-                    .WithOne(b => b.Article)
-                    .HasForeignKey(a => a.ArticleId);
-
-                entity
-                    .HasMany(a => a.Tags)
-                    .WithMany(b => b.Articles);
-
-                entity
-                    .HasOne(a => a.Match)
-                    .WithMany(b => b.Articles)
-                    .HasForeignKey(a => a.MatchId)
-                    .IsRequired(false);
-            });
+            modelBuilder.Entity<Match>()
+            .HasOne(m => m.HomeTeam)
+            .WithMany(t => t.HomeMatches)
+            .HasForeignKey(m => m.HomeTeamId)
+            .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Match>()
+            .HasOne(m => m.AwayTeam)
+            .WithMany(t => t.AwayMatches)
+            .HasForeignKey(m => m.AwayTeamId)
+            .OnDelete(DeleteBehavior.NoAction);
         }
     } 
 }
