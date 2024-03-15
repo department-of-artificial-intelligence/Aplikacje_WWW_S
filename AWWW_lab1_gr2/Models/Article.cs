@@ -13,9 +13,4 @@ public class Article{
     public Match ?Match {get; set;}
     public ICollection<Comment> Comments {get; set;}=null!;
     public ICollection<Tag> Tags {get; set;}=null!;
-
-
-
-
-
 }

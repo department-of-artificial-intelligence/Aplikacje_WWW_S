@@ -1,0 +1,13 @@
+@model AWWW_lab1_gr2.Models.Comment
+
+<h1>Dodaj Komentarz</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Title">Tytul:</label>
+        <textarea asp-for="Title" class="w3-input w3-border"></textarea>
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>

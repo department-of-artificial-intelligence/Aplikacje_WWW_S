@@ -1,6 +1,6 @@
 namespace AWWW_lab1_gr2.Models;
 public class Tag{
-    public int Id;
-    public string ?Name;
+    public int Id { get; set; }
+    public string ?Name { get; set; }
     public ICollection<Article> Articles {get; set;}=null!;
 }
