@@ -1,0 +1,12 @@
+@model AWWW_lab1_gr1.Models.Author
+
+<h1>Authors</h1>
+<p><a asp-action="Add">Add Author</a></p>
+
+@foreach(var item in Model)
+{
+     @item.FirstName
+     @item.LastName
+
+
+}

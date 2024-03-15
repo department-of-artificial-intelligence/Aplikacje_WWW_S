@@ -5,7 +5,7 @@ namespace AWWW_lab1_gr1.Models;
 
 public class Article
 { 
-    public required int ID{get;set;}
+    public required int Id{get;set;}
     public string? Title{get;set;} 
  
     public string? Lead{get;set;} 
