@@ -1,31 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 
-public class ArticleController:Controller{
+public class TagController:Controller{
     public IActionResult Index(int itemid){
 
-        var articles = new List<Article>{
-            new Article{
+        var tags = new List<Tag>{
+            new Tag{
                 Id = 1,
-                Title = "Artykuł 1",
-                Content = "Lorem ispum...",
-                CreationDate = DateTime.Now
+                Name = "Ekstremalne"
             },
 
-            new Article{
+            new Tag{
                 Id = 2,
-                Title = "Artykuł 2",
-                Content = "Lorem ispum...",
-                CreationDate = DateTime.Now
+                Name = "Dla kobiet"
             },
 
-            new Article{
+            new Tag{
                 Id = 3,
-                Title = "Artykuł 3",
-                Content = "Lorem ispum...",
-                CreationDate = DateTime.Now
+                Name = "Dla dzieci"
             }
         };
-        return View(articles[itemid-1]);
+        return View(tags[itemid-1]);
     }
 }

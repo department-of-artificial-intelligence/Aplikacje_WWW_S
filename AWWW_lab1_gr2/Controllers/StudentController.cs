@@ -5,7 +5,7 @@ public class StudentController:Controller{
     public IActionResult Index(int itemid){
         var studenci = new List<Student>{
             new Student{
-                ID = 1,
+                Id = 1,
                 FirstName = "Kamil",
                 LastName = "Zdun",
                 IndexNr = 12121,
@@ -13,7 +13,7 @@ public class StudentController:Controller{
                 FieldOfStudy = "Tynkarstwo"
             },
             new Student{
-                ID = 2,
+                Id = 2,
                 FirstName = "Paweł",
                 LastName = "Jumper",
                 IndexNr = 12345,
@@ -21,7 +21,7 @@ public class StudentController:Controller{
                 FieldOfStudy = "Akrobatyka"
             },
             new Student{
-                ID = 3,
+                Id = 3,
                 FirstName = "Marson",
                 LastName = "Marson",
                 IndexNr = 11111,
