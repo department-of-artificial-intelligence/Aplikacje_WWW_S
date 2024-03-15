@@ -1,16 +1,15 @@
-namespace AWWW_lab1_gr1.Models;
+namespace AWWW_lab2_gr1.Models;
 public class Article
 {
-    public int Id {get; set;}
-    public string Title {get; set;}
-    public string Content {get; set;}
-    public DateTime CreationDate {get; set;}
+  public int Id { get; set; }
+  public string Title { get; set; }
+  public string Lead { get; set; }
+  public string Content { get; set; }
+  public DateTime CreationDate { get; set; }
 
-    public Article(int Id, string Title, string Content, DateTime CreationDate)
-    {
-        this.Id = Id;
-        this.Title = Title;
-        this.Content = Content;
-        this.CreationDate = CreationDate;
-  }
+  public Author Author { get; set; }
+  public Category Category { get; set; }
+  public ICollection<Comment> Comments { get; set; }
+  public Match? Match { get; set; }
+  public ICollection<Tag> Tags { get; set; }
 }
