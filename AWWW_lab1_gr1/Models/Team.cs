@@ -5,6 +5,7 @@ public class Team{
    public string Country{get;set;}
    public string City{get;set;}
    public DateTime FoundingDate {get;set;}
-public virtual ICollection<Match> Matches {get;set;}
+public virtual ICollection<Match> AwayMatches {get;set;}
+public virtual ICollection<Match> HomeMatches {get;set;}
 public virtual ICollection<Player> Players { get; set; }
 }

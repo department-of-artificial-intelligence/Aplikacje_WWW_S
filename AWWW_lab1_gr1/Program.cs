@@ -1,4 +1,5 @@
-using AWWW_lab1_gr1;
+using AWWW_lab1_gr1.DAL;
+using AWWW_lab1_gr1.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

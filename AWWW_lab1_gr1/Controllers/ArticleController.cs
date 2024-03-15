@@ -8,20 +8,20 @@ public class ArticleController:Controller
        var articles = new List<Article> 
         { 
             new Article{ 
-            ID = 1, 
+            Id = 1, 
             Title = "Artykul 1", 
             Content = "Lorem ipsum...", 
             CreationDate = DateTime.Now 
             
             }, 
             new Article{ 
-            ID = 2, 
+            Id = 2, 
             Title = "Artykul 2", 
             Content = "Lorem ipsum...", 
             CreationDate = DateTime.Now 
             }, 
             new Article{ 
-            ID = 3, 
+            Id = 3, 
             Title = "Artykul 3", 
             Content = "Lorem ipsum...", 
             CreationDate = DateTime.Now 
