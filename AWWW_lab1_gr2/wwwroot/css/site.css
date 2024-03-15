@@ -121,6 +121,18 @@ li a:hover{
 
 
 
+/* Forms */
+
+.form form {
+    display:flex; 
+    flex-direction: column; 
+}
+
+.form form > * {
+    margin-bottom: 0.5rem; 
+}
+
+
 /* Footer */
 footer {
     display: flex; 
