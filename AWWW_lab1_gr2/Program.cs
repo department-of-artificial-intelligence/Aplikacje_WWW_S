@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
+var connectionString = builder.Configuration.GetConnectionString("MyConnection");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

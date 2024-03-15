@@ -11,6 +11,6 @@ namespace AWWW_lab1_gr2.Models
         public DateTime Date{get;set;}
         public string? Stadium{get;set;}
         public Team HomeTeam{get;set;} = null!;
-        public Team NotHomeTeam{get;set;} = null!;
+        public Team AwayTeam{get;set;} = null!;
     }
 }
