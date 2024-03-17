@@ -1,5 +1,3 @@
-@model ICollection<AWWW_lab1_gr1.Models.Student>
-
 <div class="container">
     <h1 class="main-title">@ViewBag.Title</h1>
 
@@ -11,15 +9,6 @@
             <li><a asp-controller="article" asp-action="index" asp-route-id=1>Artykuł 1</a></li>
             <li><a asp-controller="article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
             <li><a asp-controller="article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
-        </ul>
-    </div>
-
-    <div>
-        <h2>Studenci:</h2>
-        <ul class="student-list">
-            <li><a asp-controller="student" asp-action="index" asp-route-id=1>Mateusz Janik</a></li>
-            <li><a asp-controller="student" asp-action="index" asp-route-id=2>Jan Nowak</a></li>
-            <li><a asp-controller="student" asp-action="index" asp-route-id=3>Kamil Buła</a></li>
         </ul>
     </div>
 </div>
