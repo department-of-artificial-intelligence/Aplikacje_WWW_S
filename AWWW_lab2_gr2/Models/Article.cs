@@ -14,17 +14,17 @@ namespace AWWW_lab2_gr2.Models
         public DateTime CreationDate { get; set; }
 
         public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
+        public virtual Author Author { get; set; } = null!;
 
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Category? Category { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
 
-        public virtual ICollection<Tag> Tags { get; set;}
+        public virtual ICollection<Tag>? Tags { get; set;}
 
         public int? MatchId { get; set; }
-        public virtual Match Match { get; set; }
+        public virtual Match? Match { get; set; }
 
         
     }
