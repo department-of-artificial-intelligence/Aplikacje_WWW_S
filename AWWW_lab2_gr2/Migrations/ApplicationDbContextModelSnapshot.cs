@@ -110,6 +110,7 @@ namespace AWWW_lab2_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -131,6 +132,7 @@ namespace AWWW_lab2_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -147,12 +149,14 @@ namespace AWWW_lab2_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Country")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -178,6 +182,7 @@ namespace AWWW_lab2_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Stadium")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -203,7 +208,7 @@ namespace AWWW_lab2_gr2.Migrations
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MatchPlayerId")
+                    b.Property<int?>("MatchPlayerId")
                         .HasColumnType("int");
 
                     b.Property<int>("Minute")
@@ -266,23 +271,21 @@ namespace AWWW_lab2_gr2.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Country")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
 
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.HasIndex("TeamId");
 
@@ -298,6 +301,7 @@ namespace AWWW_lab2_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -314,6 +318,7 @@ namespace AWWW_lab2_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -330,9 +335,11 @@ namespace AWWW_lab2_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FoundingDate")
@@ -342,6 +349,7 @@ namespace AWWW_lab2_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -364,6 +372,21 @@ namespace AWWW_lab2_gr2.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("ArticleTag");
+                });
+
+            modelBuilder.Entity("PlayerPosition", b =>
+                {
+                    b.Property<int>("PlayersId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PositionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayersId", "PositionsId");
+
+                    b.HasIndex("PositionsId");
+
+                    b.ToTable("PlayerPosition");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr2.Models.Article", b =>
@@ -437,9 +460,7 @@ namespace AWWW_lab2_gr2.Migrations
 
                     b.HasOne("AWWW_lab2_gr2.Models.MatchPlayer", "MatchPlayer")
                         .WithMany("MatchEvents")
-                        .HasForeignKey("MatchPlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MatchPlayerId");
 
                     b.Navigation("EventType");
 
@@ -477,19 +498,11 @@ namespace AWWW_lab2_gr2.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr2.Models.Player", b =>
                 {
-                    b.HasOne("AWWW_lab2_gr2.Models.Position", "Position")
-                        .WithMany("Players")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("AWWW_lab2_gr2.Models.Team", "Team")
                         .WithMany("Players")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Position");
 
                     b.Navigation("Team");
                 });
@@ -516,6 +529,21 @@ namespace AWWW_lab2_gr2.Migrations
                     b.HasOne("AWWW_lab2_gr2.Models.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PlayerPosition", b =>
+                {
+                    b.HasOne("AWWW_lab2_gr2.Models.Player", null)
+                        .WithMany()
+                        .HasForeignKey("PlayersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab2_gr2.Models.Position", null)
+                        .WithMany()
+                        .HasForeignKey("PositionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -567,8 +595,6 @@ namespace AWWW_lab2_gr2.Migrations
             modelBuilder.Entity("AWWW_lab2_gr2.Models.Position", b =>
                 {
                     b.Navigation("MatchPlayers");
-
-                    b.Navigation("Players");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr2.Models.Team", b =>

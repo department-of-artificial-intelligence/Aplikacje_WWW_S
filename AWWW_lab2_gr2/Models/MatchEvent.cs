@@ -16,7 +16,7 @@ namespace AWWW_lab2_gr2.Models
         public int MatchId { get; set; }
         public virtual Match? Match { get; set; }
 
-        public int MatchPlayerId { get; set; }
+        public int? MatchPlayerId { get; set; }
         public virtual MatchPlayer? MatchPlayer { get; set; }
     }
 }
