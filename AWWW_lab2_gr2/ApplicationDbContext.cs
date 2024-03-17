@@ -39,6 +39,8 @@ namespace AWWW_lab2_gr2
             .WithMany(t => t.AwayMatches)
             .HasForeignKey(m => m.AwayTeamId)
             .OnDelete(DeleteBehavior.NoAction);
+
+            
         }
     } 
 }
