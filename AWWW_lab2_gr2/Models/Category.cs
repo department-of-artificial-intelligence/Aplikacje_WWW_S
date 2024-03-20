@@ -8,6 +8,6 @@ namespace AWWW_lab2_gr2.Models{
         
         public int Id {get; set;}
         public string Name {get; set;} = null!;
-        public ICollection<Article>? Articles {get; set;}
+        public virtual ICollection<Article>? Articles {get; set;}
     }
 }

@@ -10,9 +10,9 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public DateTime StartTime {get; set;}
         public DateTime EndTime {get; set;}
-        public Match Match {get; set;} = null!;
-        public ICollection<MatchEvent>? MatchEvents {get; set;}
-        public Position Position {get; set;} = null!;
-        public Player Player {get; set;} = null!;
+        public virtual Match Match {get; set;} = null!;
+        public virtual ICollection<MatchEvent>? MatchEvents {get; set;}
+        public virtual Position Position {get; set;} = null!;
+        public virtual Player Player {get; set;} = null!;
     }
 }

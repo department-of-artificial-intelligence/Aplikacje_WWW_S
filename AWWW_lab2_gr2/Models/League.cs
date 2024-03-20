@@ -9,6 +9,6 @@ namespace AWWW_lab2_gr2.Models{
         public string Name {get; set;} = null!;
         public string Country {get; set;} = null!;
         public int Level {get; set;}
-        public ICollection<Team>? Teams {get; set;}
+        public virtual ICollection<Team>? Teams {get; set;}
     }
 }

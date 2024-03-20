@@ -11,10 +11,10 @@ namespace AWWW_lab2_gr2.Models{
         public string Lead {get; set;} = null!;
         public string Content {get; set;} = null!;
         public DateTime CreationDate {get; set;}
-        public Author ArticleAuthor {get; set;} = null!;
-        public Category ArticleCategory {get; set;} = null!;
-        public Match? AboutMatch {get; set;}
-        public ICollection<Comment>? Comments {get; set;}
-        public ICollection<Tag>? Tags {get; set;}
+        public virtual Author ArticleAuthor {get; set;} = null!;
+        public virtual Category ArticleCategory {get; set;} = null!;
+        public virtual Match? AboutMatch {get; set;}
+        public virtual ICollection<Comment>? Comments {get; set;}
+        public virtual ICollection<Tag>? Tags {get; set;}
     }
 }

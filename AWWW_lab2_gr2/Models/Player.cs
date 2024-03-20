@@ -10,8 +10,8 @@ namespace AWWW_lab2_gr2.Models{
         public string LastName {get; set;} = null!;
         public string Country {get; set;} = null!;
         public DateTime BirthDate {get; set;}
-        public Team Team {get; set;} = null!;
-        public ICollection<MatchPlayer>? MatchPlayers {get; set;}
-        public ICollection<Position> Positions {get; set;} = null!;
+        public virtual Team Team {get; set;} = null!;
+        public virtual ICollection<MatchPlayer>? MatchPlayers {get; set;}
+        public virtual ICollection<Position> Positions {get; set;} = null!;
     }
 }
