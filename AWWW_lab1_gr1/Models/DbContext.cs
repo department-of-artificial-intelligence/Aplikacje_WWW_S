@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class MyDbContext : DbContext
 {
-    
-    public string DbPath { get; }
-
     public DbSet<Author> Authors { get; set; }
     public DbSet<Article> Articles { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -36,7 +33,7 @@ public class MyDbContext : DbContext
     .OnDelete(DeleteBehavior.NoAction);
     }
 
-    public MyDbContext(DbContextOptions<LabOneContext> options)
+    public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)
         {}
 
