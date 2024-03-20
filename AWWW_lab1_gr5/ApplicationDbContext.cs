@@ -1,25 +1,25 @@
 using Microsoft.EntityFrameworkCore;
-using AWWW_lab2_gr5.Models;
+using AWWW_lab1_gr5.Models;
 
-namespace AWWW_lab2_gr5
+namespace AWWW_lab1_gr5
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Article> Articles { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<EventType> EventTypes { get; set; }
-        public DbSet<League> Leagues { get; set; }
-        public DbSet<Match> Matches { get; set; }
-        public DbSet<MatchEvent> MatchEvents { get; set; }
-        public DbSet<MatchPlayer> MatchPlayers { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Team> Teams { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<EventType> EventTypes { get; set; }
+        public virtual DbSet<League> Leagues { get; set; }
+        public virtual DbSet<Match> Matches { get; set; }
+        public virtual DbSet<MatchEvent> MatchEvents { get; set; }
+        public virtual DbSet<MatchPlayer> MatchPlayers { get; set; }
+        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

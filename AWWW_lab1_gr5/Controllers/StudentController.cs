@@ -1,3 +1,4 @@
+using AWWW_lab1_gr5;
 using Microsoft.AspNetCore.Mvc;
 
 public class StudentController : Controller
