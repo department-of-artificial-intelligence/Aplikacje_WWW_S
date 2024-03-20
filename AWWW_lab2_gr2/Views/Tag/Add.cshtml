@@ -1,0 +1,10 @@
+﻿@model AWWW_lab2_gr2.Models.Tag;
+
+<div class="text-center">
+	<h1>Dodaj nowy tag</h1>
+	<form asp-controller="tag" asp-action="add" method="post">
+		<label asp-for="Name">Nazwa nowego tagu:</label>
+		<input asp-for="Name" />
+		<button type="submit" class="btn btn-primary">Dodaj</button>
+	</form>
+</div>

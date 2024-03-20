@@ -1,0 +1,12 @@
+﻿@model AWWW_lab2_gr2.Models.Category;
+
+<div class="text-center">
+	<h1>Dodaj kategorie</h1>
+	<form asp-controller="category" asp-action="add" method="post">
+		<p>
+			<label asp-for="Name">Nazwa kategorii:</label>
+			<input asp-for="Name" />
+		</p>
+		<button type="submit">Dodaj</button>
+	</form>
+</div>

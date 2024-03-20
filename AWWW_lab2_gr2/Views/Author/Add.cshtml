@@ -1,0 +1,16 @@
+﻿@model AWWW_lab2_gr2.Models.Author;
+
+<div class="text-center">
+<h1>Dodaj autora</h1>
+<form asp-controller="author" asp-action="add" method="post" class="w3-container">
+	<p>
+		<label asp-for="FirstName">Imie:</label>
+		<input asp-for="FirstName" class="w3-input w3-border" />
+	</p>
+	<p>
+		<label asp-for="LastName">Nazwisko:</label>
+		<input asp-for="LastName" class="w3-input w3-border" />
+	</p>
+	<button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+</div>

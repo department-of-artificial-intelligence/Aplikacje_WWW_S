@@ -1,0 +1,14 @@
+﻿@model AWWW_lab2_gr2.Models.Position;
+
+<div class="text-center">
+	<h1>Dodaj nowa pozycje</h1>
+	<form asp-controller="position" asp-action="add" method="post">
+		<p>
+			<label asp-for="Name">Nazwa:</label>
+			<input asp-for="Name" />
+		</p>
+		<p>
+			<button type="submit" class="btn btn-primary">Dodaj</button>
+		</p>
+	</form>
+</div>
