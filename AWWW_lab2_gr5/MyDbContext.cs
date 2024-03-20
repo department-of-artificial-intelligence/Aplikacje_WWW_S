@@ -1,23 +1,23 @@
-﻿using AS_lab2_gr2_RW.Models;
+﻿using AWWW_lab1_gr5.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AS_lab2_gr2_RW
+namespace AWWW_lab1_gr5
 {
-	public class MyDbContext : DbContext
-	{
-		public DbSet<Article> Articles { get; set; }
-		public DbSet<Author> Authors { get; set; }
-		public DbSet<Category> Categories { get; set; }
-		public DbSet<Comment> Comments { get; set; }
-		public DbSet<EventType> EventTypes { get; set; }
-		public DbSet<League> Leagues { get; set; }
-		public DbSet<Match> Matches { get; set; }
-		public DbSet<MatchEvent> MatchEvents { get; set; }
-		public DbSet<MatchPlayer> MatchPlayers { get; set; }
-		public DbSet<Player> Players { get; set; }
-		public DbSet<Position> Positions { get; set; }
-		public DbSet<Tag> Tags { get; set; }
-		public DbSet<Team> Teams { get; set; }
+    public class MyDbContext : DbContext
+    {
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<League> Leagues { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<MatchEvent> MatchEvents { get; set; }
+        public DbSet<MatchPlayer> MatchPlayers { get; set; }
+        public DbSet<Player> Players { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
