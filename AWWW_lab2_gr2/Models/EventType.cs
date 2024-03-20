@@ -10,8 +10,8 @@ public class EventType{
 
        [StringLength(50)]
        [Display(Name = "Name")]
-       public string Name {get; set;}
+       public string Name {get; set;} = null!;
 
-       public virtual ICollection<MatchEvent> MatchEvents {get;set;}
+       public virtual ICollection<MatchEvent>? MatchEvents {get;set;}
       
 }

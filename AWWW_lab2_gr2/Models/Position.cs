@@ -9,8 +9,8 @@ public class Position{
 
        [StringLength(50)]
        [Display(Name = "Name")]
-       public string Name {get; set;}
+       public string Name {get; set;} =null!;
 
-       public virtual ICollection<MatchPlayer> MatchPlayers {get;set;}
-       public virtual ICollection<Player> Players {get;set;}
+       public virtual ICollection<MatchPlayer>? MatchPlayers {get;set;}
+       public virtual ICollection<Player>? Players {get;set;}
 }

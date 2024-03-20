@@ -7,26 +7,30 @@ using AWWW_lab1_gr5.Models;
 
     public class AuthorController : Controller
     {
-        public IAutshorResult Index(int id=1)
+        private readonly ApplicationDbContext _context;
+
+        public AuthorController(ApplicationDbContext context)
         {
-            var authors = new List<Author>{
-                new Author{
-                    Id = 1,
-                    FirstName = "Pawel",
-                    LastName = "Ciura"
-                },
-                new Author{
-                    Id = 2,
-                    FirstName = "Andrzej",
-                    LastName = "Biały",
-                },
-                new Author{
-                    Id = 3,
-                    FirstName = "Matej",
-                    LastName = "Błaszczykiewicz",
-                }
-            };
-            
-            return View(students[id-1]);
+            _context = context;
         }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Author author)
+        {
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+            return View("Added", author);
+        }
+
     }
+    

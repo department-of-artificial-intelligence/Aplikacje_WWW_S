@@ -7,23 +7,26 @@ using AWWW_lab2_gr2.Models;
 
 public class TagController : Controller{
 
-    public ITagResult Index(int id=1)
-        {
-            var tags = new List<Tag>{
-                new Tag{
-                    Id = 1,
-                    Name = "Tag 1"
-                },
-                new Tag{
-                    Id = 2,
-                    Name = "Tag 2"
-                },
-                new Tag{
-                    Id = 3,
-                    Name = "Tag 3"
-                }
-            };
-            
-            return View(articles[id-1]);
-        }
+    private readonly ApplicationDbContext _context;
+		public TagController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+		public IActionResult Index()
+		{
+			return View();
+		}
+
+		public IActionResult Add()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Add(Tag tag)
+		{
+			_context.Tags.Add(tag);
+			_context.SaveChanges();
+			return View("Added", tag);
+}
 }

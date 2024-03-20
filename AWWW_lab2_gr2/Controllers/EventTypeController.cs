@@ -7,23 +7,27 @@ using AWWW_lab2_gr2.Models;
 
 public class EventTypeController : Controller{
 
-    public IEventTypeResult Index(int id=1)
-        {
-            var eventTypes = new List<EventType>{
-                new EventType{
-                    Id = 1,
-                    Name = "EventType 1"
-                },
-                new EventType{
-                    Id = 2,
-                    Name = "EventType 2"
-                },
-                new EventType{
-                    Id = 3,
-                    Name = "EventType 3"
-                }
-            };
-            
-            return View(articles[id-1]);
-        }
+    private readonly ApplicationDbContext _context;
+		public EventTypeController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+
+		public IActionResult Index()
+		{
+			return View();
+		}
+
+		public IActionResult Add()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Add(EventType eventType)
+		{
+			_context.EventTypes.Add(eventType);
+			_context.SaveChanges();
+			return View("Added", eventType);
+		}
 }

@@ -10,16 +10,16 @@ public class Player{
 
        [StringLength(50)]
        [Display(Name = "First Name")]
-       public string FirstName{get; set;}
+       public string FirstName{get; set;} = null!;
        
        [StringLength(50)]
        [Column("LastName")]
        [Display(Name = "Last Name")]
-       public string LastName {get; set;}
+       public string LastName {get; set;} = null!;
 
         [StringLength(50)]
         [Display(Name = "Country")]
-       public string Country {get; set;}
+       public string Country {get; set;} = null!;
 
        [DataType(DataType.Date)]
        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -27,11 +27,9 @@ public class Player{
        public DateTime BirthDate{get; set;}
 
        //
-        public virtual Team Team {get;set;}
+        public virtual Team? Team {get;set;}
         public int TeamId {get;set;}
         
-        public virtual ICollection<Position> Positions {get;set;}
-        public int PositionId {get;set;}
-
-        public virtual ICollection<MatchPlayer> MatchPlayers {get;set;}
+        public virtual ICollection<Position> Positions {get;set;} = null!;
+        public virtual ICollection<MatchPlayer>? MatchPlayers {get;set;}
 }

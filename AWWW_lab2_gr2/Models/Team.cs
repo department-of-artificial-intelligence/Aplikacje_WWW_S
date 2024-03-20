@@ -10,15 +10,15 @@ public class Team{
 
       [StringLength(50)]
       [Display(Name = "Name")]
-      public string Name{get; set;}
+      public string Name{get; set;} = null!;
 
       [StringLength(50)]
       [Display(Name = "Country")]
-      public string Country{get; set;}
+      public string Country{get; set;}= null!;
       
       [StringLength(50)]
       [Display(Name = "City")]
-      public string City{get; set;}
+      public string City{get; set;}= null!;
 
       [DataType(DataType.Date)]
       [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -26,10 +26,10 @@ public class Team{
       public DateTime FoundingDate {get; set;}
 
       //
-      public virtual ICollection<Match> Matches {get;set;}
-      public virtual ICollection<Player> Players {get;set;}
+      public virtual ICollection<Match>? Matches {get;set;}
+      public virtual ICollection<Player>? Players {get;set;}
       
-      public virtual League League {get;set;}
+      public virtual League? League {get;set;}
       public int LeagueId {get;set;}
        
       

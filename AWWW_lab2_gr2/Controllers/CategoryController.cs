@@ -7,23 +7,27 @@ using AWWW_lab2_gr2.Models;
 
 public class CategoryController : Controller{
 
-    public ICategoryResult Index(int id=1)
-        {
-            var categoryes = new List<Category>{
-                new Category{
-                    Id = 1,
-                    Name = "Category 1"
-                },
-                new Category{
-                    Id = 2,
-                    Name = "Category 2"
-                },
-                new Category{
-                    Id = 3,
-                    Name = "Category 3"
-                }
-            };
-            
-            return View(articles[id-1]);
-        }
+    
+		public CategoryController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+
+		public IActionResult Index()
+		{
+			return View();
+		}
+
+		public IActionResult Add()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Add(Category category)
+		{
+			_context.Categories.Add(category);
+			_context.SaveChanges();
+			return View("Added", category);
+		}
 }

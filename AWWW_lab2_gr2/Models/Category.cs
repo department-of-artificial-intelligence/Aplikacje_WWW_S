@@ -10,7 +10,7 @@ public class Category{
        
        [StringLength(50)]
        [Display(Name = "Name")]
-       public string? Name{get; set;}
-       public virtual ICollection<Article> Articles{get; set;}
+       public string Name{get; set;} = null?;
+       public virtual ICollection<Article>? Articles{get; set;}
 
 }

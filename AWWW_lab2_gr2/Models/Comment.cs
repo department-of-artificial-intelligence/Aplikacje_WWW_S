@@ -9,13 +9,13 @@ public class Comment{
 
        [StringLength(50)]
        [Display(Name = "Title")]
-       public string Title{get; set;}
+       public string? Title{get; set;}
 
        [StringLength(500)]
        [Display(Name = "Content")]
-       public string Content {get; set;}
+       public string Content {get; set;} = null;
 
        public int ArticleId {get;set;}
-        public virtual Article Article {get;set;}
+        public virtual Article? Article {get;set;}
       
 }

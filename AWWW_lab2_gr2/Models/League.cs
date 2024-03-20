@@ -10,17 +10,17 @@ public class League{
 
       [StringLength(50)]
       [Display(Name = "Name")]
-      public string Name{get; set;}
+      public string Name{get; set;} = null!;
 
       [StringLength(50)]
       [Display(Name = "Country")]
-      public string Country{get; set;}
+      public string Country{get; set;} = null!;
       
       [Display(Name = "Level")]
       public int Level{get; set;}
 
 
-      public virtual ICollection<Team> Teams{get; set;}
+      public virtual ICollection<Team>? Teams{get; set;}
        
       
 }

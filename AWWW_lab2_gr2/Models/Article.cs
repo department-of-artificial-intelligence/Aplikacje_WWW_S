@@ -14,11 +14,11 @@ public class Article{
 
         [StringLength(500)]
         [Display(Name = "Lead")]
-       public string Lead {get;set;}
+       public string? Lead {get;set;}
 
        [StringLength(5000)]
        [Display(Name = "Content")]
-       public string Content {get; set;}
+       public string? Content {get; set;}
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -31,16 +31,12 @@ public class Article{
         public int AuthorId{get; set;}
 
 
-        public virtual Category Category{get; set;}
+        public virtual Category? Category{get; set;}
         public int CategoryId{get; set;}
         
-        public virtual Tag Tag{get; set;}
-        public int TagId{get; set;}
+        public virtual ICollection<Tag>? Tag{get; set;}
 
-        public virtual Match Match{get; set;}
-        public int MatchId{get; set;}
-
-        public virtual ICollection<Comment> Comments{get; set;}
+        public virtual ICollection<Comment>? Comments{get; set;}
 
         public virtual Match? Match {get;set;}
         public int? MatchId {get;set;}

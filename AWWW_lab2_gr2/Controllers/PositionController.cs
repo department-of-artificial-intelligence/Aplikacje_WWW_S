@@ -7,23 +7,28 @@ using AWWW_lab2_gr2.Models;
 
 public class PositionController : Controller{
 
-    public IPositionResult Index(int id=1)
-        {
-            var Positions = new List<Position>{
-                new Position{
-                    Id = 1,
-                    Name = "Position 1"
-                },
-                new Position{
-                    Id = 2,
-                    Name = "Position 2"
-                },
-                new Position{
-                    Id = 3,
-                    Name = "Position 3"
-                }
-            };
-            
-            return View(articles[id-1]);
+    private readonly ApplicationDbContext _context;
+		public PositionController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+
+		public IActionResult Index()
+		{
+			return View();
+		}
+
+		public IActionResult Add()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Add(Position position)
+		{
+			_context.Positions.Add(position);
+			_context.SaveChanges();
+			return View("Added", position);
+		}turn View(articles[id-1]);
         }
 }

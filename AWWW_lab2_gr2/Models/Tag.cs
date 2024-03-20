@@ -6,9 +6,7 @@ public class Tag{
 
        [StringLength(50)]
        [Display(Name = "Name")]
-       public string Name{get; set;}
+       public string Name{get; set;} = null!;
 
-       public int ArticleId {get;set;}
-        public virtual Article Article {get;set;}
-      
+       public virtual ICollection<Article>? Articles { get; set; }
 }
