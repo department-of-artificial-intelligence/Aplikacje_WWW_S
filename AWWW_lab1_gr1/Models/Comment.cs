@@ -1,10 +1,7 @@
+public class Comment {
+    public int Id { get; set; }
 
-namespace AWWW_lab1_gr1.Models;
-
-    public class Comment
-    {
-        public int CommentId {get; set;}
-        public string Title {get;set;}
-        public string Content {get; set;}
-
-    }
+    public required string Title { get; set; }
+    public required string Content { get; set; }
+    
+}
