@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-public class  DbContext{
+namespace AWWW_lab1_gr1.Models;
+public class DbContext{
 
   public string DbPath { get; }
     public DbSet<Article> Articles { get; set; }
