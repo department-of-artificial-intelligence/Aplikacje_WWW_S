@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr2.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240321163517_Initial Create")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,30 +135,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasKey("EventTypeId");
 
                     b.ToTable("EventTypes", (string)null);
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.League", b =>
-                {
-                    b.Property<int>("LeagueId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeagueId"));
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LeagueId");
-
-                    b.ToTable("Leagues", (string)null);
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Match", b =>
@@ -355,16 +334,11 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Property<DateTime>("FoundingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TeamId");
-
-                    b.HasIndex("LeagueId");
 
                     b.ToTable("Teams", (string)null);
                 });
@@ -497,13 +471,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Team", b =>
-                {
-                    b.HasOne("AWWW_lab1_gr2.Models.League", null)
-                        .WithMany("Teams")
-                        .HasForeignKey("LeagueId");
-                });
-
             modelBuilder.Entity("ArticleTag", b =>
                 {
                     b.HasOne("AWWW_lab1_gr2.Models.Article", null)
@@ -552,11 +519,6 @@ namespace AWWW_lab1_gr2.Migrations
             modelBuilder.Entity("AWWW_lab1_gr2.Models.EventType", b =>
                 {
                     b.Navigation("MatchEvents");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.League", b =>
-                {
-                    b.Navigation("Teams");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Match", b =>

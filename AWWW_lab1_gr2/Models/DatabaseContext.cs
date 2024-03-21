@@ -8,19 +8,21 @@ using Microsoft.EntityFrameworkCore;
 public class DatabaseContext: DbContext { 
     public DatabaseContext() {} 
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options){}
-    DbSet<Article> Articles {get; set;}
-    DbSet<Author> Authors {get; set;}
-    DbSet<Category> Categories {get; set;}
-    DbSet<Comment> Comments {get; set;}
-    DbSet<EventType> EventTypes {get; set;}
-    DbSet<Match> Matches {get; set;}
-    DbSet<MatchEvent> MatchEvents {get; set;}
-    DbSet<MatchPlayer> MatchPlayers {get; set;}
-    DbSet<Player> Players {get; set;}
-    DbSet<Position> Positions {get; set;}
-    DbSet<Student> Students {get; set;}
-    DbSet<Tag> Tags {get; set;}
-    DbSet<Team> Teams {get; set;}
+    public DbSet<Article> Articles {get; set;}
+    public DbSet<Author> Authors {get; set;}
+    public DbSet<Category> Categories {get; set;}
+    public DbSet<Comment> Comments {get; set;}
+    public DbSet<EventType> EventTypes {get; set;}
+    public DbSet<Match> Matches {get; set;}
+    public DbSet<MatchEvent> MatchEvents {get; set;}
+    public DbSet<MatchPlayer> MatchPlayers {get; set;}
+    public DbSet<Player> Players {get; set;}
+    public DbSet<Position> Positions {get; set;}
+    public DbSet<Student> Students {get; set;}
+    public DbSet<Tag> Tags {get; set;}
+    public DbSet<Team> Teams {get; set;}
+
+    public DbSet<League> Leagues {get; set;}
 
     // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     // {
@@ -92,6 +94,10 @@ public class DatabaseContext: DbContext {
         });
         modelBuilder.Entity<Team>(entity => {
             entity.ToTable("Teams"); 
+
+        });
+        modelBuilder.Entity<League>(entity => {
+            entity.ToTable("Leagues"); 
 
         });
     }

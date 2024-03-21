@@ -11,7 +11,7 @@ public class StudentListController: Controller {
         {
             new Student
             {
-                StudentId = 1,
+                Id = 1,
                 FirstName = "Szymon",
                 LastName = "Marciniak",
                 IndexNr = 1111,
@@ -20,7 +20,7 @@ public class StudentListController: Controller {
             },
             new Student
             {
-                StudentId = 2,
+                Id = 2,
                 FirstName = "Kuba",
                 LastName = "Nowak",
                 IndexNr = 1112,
@@ -29,7 +29,7 @@ public class StudentListController: Controller {
             },
             new Student
             {
-                StudentId = 3,
+                Id = 3,
                 FirstName = "Anna",
                 LastName = "Kowalska",
                 IndexNr = 1113,
@@ -51,7 +51,7 @@ public class StudentListController: Controller {
 
     public IActionResult Details(int id){
         var students = GetStudents(); 
-        var student = students.FirstOrDefault(s => s.StudentId == id); 
+        var student = students.FirstOrDefault(s => s.Id == id); 
 
         if(student == null){
             return NotFound(); 
