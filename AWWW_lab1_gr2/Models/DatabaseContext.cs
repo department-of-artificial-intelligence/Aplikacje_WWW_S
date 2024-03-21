@@ -22,6 +22,12 @@ public class DatabaseContext: DbContext {
     DbSet<Tag> Tags {get; set;}
     DbSet<Team> Teams {get; set;}
 
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     base.OnConfiguring(optionsBuilder);
+    //     optionsBuilder.UseLazyLoadingProxies(); 
+    // }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Match>()
