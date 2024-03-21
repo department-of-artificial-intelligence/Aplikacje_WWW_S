@@ -1,35 +1,23 @@
-using System.Net.Mime;
-namespace AWWW_lab2_gr2.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-public class Player{
-       public int Id {get; set;}
+namespace AWWW_lab2_gr2.Models
+{
+    public class Player
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Country { get; set; } = null!;
+        public DateTime BirthDate { get; set; }
 
-       [StringLength(50)]
-       [Display(Name = "First Name")]
-       public string FirstName{get; set;} = null!;
-       
-       [StringLength(50)]
-       [Column("LastName")]
-       [Display(Name = "Last Name")]
-       public string LastName {get; set;} = null!;
+        public int TeamId {  get; set; }
+        public virtual Team? Team {  get; set; }
 
-        [StringLength(50)]
-        [Display(Name = "Country")]
-       public string Country {get; set;} = null!;
+        public virtual ICollection<MatchPlayer>? MatchPlayers {  get; set; }
 
-       [DataType(DataType.Date)]
-       [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-       [Display(Name = "Birth Date")]
-       public DateTime BirthDate{get; set;}
-
-       //
-        public virtual Team? Team {get;set;}
-        public int TeamId {get;set;}
-        
-        public virtual ICollection<Position> Positions {get;set;} = null!;
-        public virtual ICollection<MatchPlayer>? MatchPlayers {get;set;}
+        public virtual ICollection<Position> Positions { get; set; } = null!;
+    }
 }

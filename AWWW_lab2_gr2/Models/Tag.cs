@@ -1,12 +1,15 @@
-using System.Net.Mime;
-namespace AWWW_lab2_gr2.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-public class Tag{
-       public int Id{get; set;}
+namespace AWWW_lab2_gr2.Models
+{
+    public class Tag
+    {
+        public int Id { get ; set; }
+        public string Name { get; set; } = null!;
 
-       [StringLength(50)]
-       [Display(Name = "Name")]
-       public string Name{get; set;} = null!;
-
-       public virtual ICollection<Article>? Articles { get; set; }
+        public virtual ICollection<Article>? Articles { get; set; }
+    }
 }

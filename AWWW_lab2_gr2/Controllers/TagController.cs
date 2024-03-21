@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr2.Models;
 
-public class TagController : Controller{
-
-    private readonly ApplicationDbContext _context;
-		public TagController(ApplicationDbContext context)
+namespace AWWW_lab2_gr2.Controllers
+{
+	public class TagController : Controller
+	{
+		private readonly MyDbContext _context;
+		public TagController(MyDbContext context)
 		{
 			_context = context;
 		}
@@ -28,5 +26,6 @@ public class TagController : Controller{
 			_context.Tags.Add(tag);
 			_context.SaveChanges();
 			return View("Added", tag);
-}
+		}
+	}
 }

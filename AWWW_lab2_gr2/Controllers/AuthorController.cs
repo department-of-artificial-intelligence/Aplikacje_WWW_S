@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using AWWW_lab1_gr5.Models;
+using AWWW_lab2_gr2.Models;
 
+namespace AWWW_lab2_gr2.Controllers
+{
     public class AuthorController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly MyDbContext _context;
 
-        public AuthorController(ApplicationDbContext context)
+        public AuthorController(MyDbContext context)
         {
             _context = context;
         }
@@ -31,6 +29,5 @@ using AWWW_lab1_gr5.Models;
             _context.SaveChanges();
             return View("Added", author);
         }
-
     }
-    
+}

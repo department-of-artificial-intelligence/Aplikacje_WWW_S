@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr2.Models;
 
-public class PositionController : Controller{
-
-    private readonly ApplicationDbContext _context;
-		public PositionController(ApplicationDbContext context)
+namespace AWWW_lab2_gr2.Controllers
+{
+	public class PositionController : Controller
+	{
+		private readonly MyDbContext _context;
+		public PositionController(MyDbContext context)
 		{
 			_context = context;
 		}
@@ -29,6 +27,6 @@ public class PositionController : Controller{
 			_context.Positions.Add(position);
 			_context.SaveChanges();
 			return View("Added", position);
-		}turn View(articles[id-1]);
-        }
+		}
+	}
 }

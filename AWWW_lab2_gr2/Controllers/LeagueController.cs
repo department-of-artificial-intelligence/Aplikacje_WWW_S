@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using AWWW_lab1_gr5.Models;
+using AWWW_lab2_gr2.Models;
 
-    public class LeadController : Controller
-    {
-        private readonly ApplicationDbContext _context;
-		public LeagueController(ApplicationDbContext context)
+namespace AWWW_lab2_gr2.Controllers
+{
+	public class LeagueController : Controller
+	{
+		private readonly MyDbContext _context;
+		public LeagueController(MyDbContext context)
 		{
 			_context = context;
 		}
@@ -30,4 +28,5 @@ using AWWW_lab1_gr5.Models;
 			_context.SaveChanges();
 			return View("Added", league);
 		}
-    }
+	}
+}

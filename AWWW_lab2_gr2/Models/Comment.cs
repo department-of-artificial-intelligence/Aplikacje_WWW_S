@@ -1,21 +1,17 @@
-using System.Net.Mime;
-namespace AWWW_lab2_gr2.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-public class Comment{
-       public int Id {get; set;}
+using System.Linq;
+using System.Threading.Tasks;
 
-       [StringLength(50)]
-       [Display(Name = "Title")]
-       public string? Title{get; set;}
+namespace AWWW_lab2_gr2.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string Content { get; set; } = null!;
 
-       [StringLength(500)]
-       [Display(Name = "Content")]
-       public string Content {get; set;} = null;
-
-       public int ArticleId {get;set;}
-        public virtual Article? Article {get;set;}
-      
+        public int ArticleId { get; set; }
+        public virtual Article? Article { get; set; }
+    }
 }

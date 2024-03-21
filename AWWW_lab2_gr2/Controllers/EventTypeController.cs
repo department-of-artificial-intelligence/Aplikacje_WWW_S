@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr2.Models;
+using Microsoft.AspNetCore.Mvc;
 
-public class EventTypeController : Controller{
-
-    private readonly ApplicationDbContext _context;
-		public EventTypeController(ApplicationDbContext context)
+namespace AWWW_lab2_gr2.Controllers
+{
+	public class EventTypeController : Controller
+	{
+		private readonly MyDbContext _context;
+		public EventTypeController(MyDbContext context)
 		{
 			_context = context;
 		}
@@ -30,4 +28,5 @@ public class EventTypeController : Controller{
 			_context.SaveChanges();
 			return View("Added", eventType);
 		}
+	}
 }

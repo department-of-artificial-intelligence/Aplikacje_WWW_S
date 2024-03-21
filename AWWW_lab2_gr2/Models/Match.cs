@@ -1,34 +1,26 @@
-using System.Net.Mime;
-namespace AWWW_lab2_gr2.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-public class Match{
-       public int Id {get; set;}
+namespace AWWW_lab2_gr2.Models
+{
+    public class Match
+    {
+        public int Id { get; set; }
+        public DateTime Date { get ; set; }
+        public string Stadium { get; set; } = null!;
 
-       [DataType(DataType.Date)]
-       [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-       [Display(Name = "Date")]
-       public DateTime Date {get; set;}
+        public virtual ICollection<Article>? Articles { get; set; }
 
-       [StringLength(500)]
-        [Display(Name = "Stadium")]
-       public string Stadium {get; set;} = null!;
+        public int HomeTeamId { get; set; }
+        public virtual Team? HomeTeam { get; set; }
 
-       //
-       public virtual ICollection<Article>? Articles {get;set;}
+        public int AwayTeamId { get; set; }
+        public virtual Team? AwayTeam { get; set; }
 
-       public virtual ICollection<MatchEvent>? MatchEvents {get;set;}
+        public virtual ICollection<MatchPlayer>? MatchPlayers { get; set; }
 
-       public virtual ICollection<MatchPlayer>? MatchPlayers {get;set;}
-
-
-       public int HomeTeamId { get; set; }
-       public int AwayTeamId { get; set; }
-       public virtual Team? HomeTeam { get; set; }
-       public virtual Team? AwayTeam { get; set; }
-
-      
+        public virtual ICollection<MatchEvent>? MatchEvents { get; set; }
+    }
 }
