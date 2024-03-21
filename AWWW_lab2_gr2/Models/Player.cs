@@ -12,8 +12,9 @@ namespace AWWW_lab2_gr2.Models
         public string?LastName { get; set; }
         public string? Country { get; set; }
         public DateTime BirthDate { get; set; }
-        public virtual Team Team {get; set;}
-        public virtual ICollection<Position> Positions {get; set;}
-        public virtual ICollection<MatchPlayer> MatchPlayers {get; set;}
+        public int TeamId { get; set; }
+        public virtual Team? Team {get; set;}
+        public virtual ICollection<Position>? Positions {get; set;}
+        public virtual ICollection<MatchPlayer>? MatchPlayers {get; set;}
     }
 }
