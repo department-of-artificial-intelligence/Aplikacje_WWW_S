@@ -16,8 +16,8 @@ namespace AWWW_lab2_gr2.Models
         public Author Author { get; set; } = null!;
         public int AuthorId { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
+        public virtual ICollection<Category>? Categories { get; set; }
         public virtual ICollection<Tag>? Tags { get; set; }
         public virtual Match? Match { get; set; }
     }

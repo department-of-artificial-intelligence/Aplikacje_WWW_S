@@ -11,6 +11,6 @@ namespace AWWW_lab2_gr2.Models
         public string? name {get; set;}
         public string? Coutry {get; set;}
 
-        public virtual ICollection<Team> Teams {get; set;}
+        public virtual ICollection<Team>? Teams {get; set;}
     }
 }
