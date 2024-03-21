@@ -11,7 +11,10 @@ namespace AWWW_lab1_gr2.Models
         public DateTime Date {get;set;}
         public string Stadium {get;set;} = null!;
         public virtual ICollection<Article>? Articles {get;set;}
-        public virtual Tuple<Team,Team> Teams {get;set;} = null!;
+        public virtual Team HomeTeam {get;set;} = null!;
+        public virtual int HomeTeamId {get;set;}
+        public virtual Team AwayTeam {get;set;} = null!;
+        public virtual int AwayTeamId {get;set;}
         public virtual ICollection<MatchEvent>? MatchEvents {get;set;}
         public virtual ICollection<MatchPlayer>? MatchPlayers {get;set;}
     }

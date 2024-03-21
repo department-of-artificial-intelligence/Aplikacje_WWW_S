@@ -1,0 +1,15 @@
+@model ICollection<AWWW_lab1_gr2.Models.Author>;
+
+<h1>Lista autorów</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Author autor in @Model){
+        <li>Autor @autor.Id: <ul>
+                <li>Imie: @autor.FirstName</li>
+                <li>Nazwisko: @autor.LastName</li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h2><a asp-controller="author" asp-action="Dodaj">Dodaj</a></h2>

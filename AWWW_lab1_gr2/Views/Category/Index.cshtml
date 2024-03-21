@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab1_gr2.Models.Category>;
+
+<h1>Lista Kategorii</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Category cat in @Model){
+        <li>Kategoria @cat.Id: <ul>
+                <li>Nazwa: @cat.Name</li>
+            </ul>
+        </li>
+    }
+</ul>

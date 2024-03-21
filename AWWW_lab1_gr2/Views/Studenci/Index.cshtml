@@ -1,7 +1,8 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Student>;
 <h1>Lista studentów</h1>
 
 <ul>
-    @foreach (AWWW_lab1_gr2.Models.Student student in @ViewBag.studenci){
+    @foreach (AWWW_lab1_gr2.Models.Student student in Model){
         <li>Student @student.Id: <ul>
                 <li>Imie: @student.FirstName</li>
                 <li>Nazwisko: @student.LastName</li>
