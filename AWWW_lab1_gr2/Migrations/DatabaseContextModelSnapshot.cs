@@ -245,7 +245,7 @@ namespace AWWW_lab1_gr2.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -264,7 +264,7 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentId");
 
                     b.ToTable("Students", (string)null);
                 });
