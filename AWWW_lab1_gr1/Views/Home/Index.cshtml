@@ -1,24 +1,42 @@
+@model List<AWWW_lab1_gr1.Models.Article>
+
+<h1>@ViewBag.Title</h1>
+
+<p>Witamy na stronie głównej</p>
+
+@if (Model != null)
+{
+    foreach (var article in Model)
+    {
+        <p>
+            <div class="w3-card">
+                <header class="w3-container w3-blue">
+                    <h1>@article.Title</h1>
+                    @if (@article.Author != null)
+                    {
+                        <h2>@(article.Author.FirstName + " " + article.Author.LastName)</h2>
+                    }
+                </header>
+
+                <div class="w3-container">
+                    <p>@article.Lead</p>
+                    <p><a asp-controller="article" asp-action="index" asp-route-id="@article.Id">Czytaj dalej</a></p>
+                </div>
+
+                <footer class="w3-container w3-blue">
+                    <h5>
+                        @article.CreationDate.ToShortDateString()
+                        @if(@article.Tags != null)
+                        {
+                            @foreach (var tag in @article.Tags)
+                                @(tag.Name + " ")
+                        }
+                    </h5>
+                </footer>
+            </div>
+        </p>
+    }
+}
 
 
-<div class="container">
-<p>
-    Artykuły:
 
-    <ul>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=1>Artykuł 1</a></li>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
-    </ul>
-</p>
-
-<p >
-    Studenci:
-
-    <ul>
-        <li><a asp-controller="student" asp-action="index" asp-route-id=1>Student 1</a></li>
-        <li><a asp-controller="student" asp-action="index" asp-route-id=2>Student 2</a></li>
-        <li><a asp-controller="student" asp-action="index" asp-route-id=3>Student 3</a></li>
-    </ul>
-</p>
-
-</div>

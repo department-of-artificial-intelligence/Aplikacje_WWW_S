@@ -6,9 +6,9 @@ public class MatchPlayer {
 
     public  DateTime EndTime {get; set;}
 
-    public Player Player {get; set;}
+    public required Player Player {get; set;}
 
-    public Match Match {get; set;}
+    public required Match Match {get; set;}
 
-    public Position Position {get; set;}
+    public required Position Position {get; set;}
 }

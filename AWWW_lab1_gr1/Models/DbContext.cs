@@ -15,6 +15,7 @@ using System.Reflection.Emit;
         public virtual DbSet<MatchPlayer> MatchPlayers { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Tag> Tags {get;set;}
 
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
