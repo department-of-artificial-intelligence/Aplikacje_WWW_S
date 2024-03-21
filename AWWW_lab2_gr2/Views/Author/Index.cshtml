@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Author>;
+
+<h1>Autorzy</h1>
+
+<a asp-controller="author" asp-action="add">Dodaj autora</a>
+
+<ul>
+    @foreach(AWWW_lab2_gr2.Models.Author item in Model){
+        <li>@item.FirstName @item.LastName</li>
+    }
+</ul>

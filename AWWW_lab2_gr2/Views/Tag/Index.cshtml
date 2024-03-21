@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Tag>;
+    
+<h1>Tagi</h1>
+
+<a asp-controller="tag" asp-action="add">Dodaj tag</a>
+
+<ul>
+    @foreach(AWWW_lab2_gr2.Models.Tag item in Model){
+        <li>@item.Name</li>
+    }
+</ul>

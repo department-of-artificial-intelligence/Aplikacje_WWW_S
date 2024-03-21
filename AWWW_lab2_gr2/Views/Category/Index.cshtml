@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Category>;
+    
+<h1>Kategorie</h1>
+
+<a asp-controller="category" asp-action="add">Dodaj kategorię</a>
+
+<ul>
+    @foreach(AWWW_lab2_gr2.Models.Category item in Model){
+        <li>@item.Name</li>
+    }
+</ul>

@@ -3,19 +3,19 @@ using AWWW_lab2_gr2.Models;
 
 public class MyDbContext : DbContext {
     
-    DbSet<Article> Articles {get; set;}
-    DbSet<Author> Authors {get; set;}
-    DbSet<Category> Categories {get; set;}
-    DbSet<Comment> Comments {get;set;}
-    DbSet<EventType> EventTypes {get;set;}
-    DbSet<League> Leagues {get;set;}
-    DbSet<Match> Matches {get;set;}
-    DbSet<MatchEvent> MatchEvents {get;set;}
-    DbSet<MatchPlayer> MatchPlayers {get;set;}
-    DbSet<Player> Players {get;set;}
-    DbSet<Position> Positions {get;set;}
-    DbSet<Tag> Tags {get;set;}
-    DbSet<Team> Teams {get;set;}
+    public virtual DbSet<Article> Articles {get; set;}
+    public virtual DbSet<Author> Authors {get; set;}
+    public virtual DbSet<Category> Categories {get; set;}
+    public virtual DbSet<Comment> Comments {get;set;}
+    public virtual DbSet<EventType> EventTypes {get;set;}
+    public virtual DbSet<League> Leagues {get;set;}
+    public virtual DbSet<Match> Matches {get;set;}
+    public virtual DbSet<MatchEvent> MatchEvents {get;set;}
+    public virtual DbSet<MatchPlayer> MatchPlayers {get;set;}
+    public virtual DbSet<Player> Players {get;set;}
+    public virtual DbSet<Position> Positions {get;set;}
+    public virtual DbSet<Tag> Tags {get;set;}
+    public virtual DbSet<Team> Teams {get;set;}
     
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options){
 
