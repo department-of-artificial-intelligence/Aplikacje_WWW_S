@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 
-public class PositionController:Controller{
+public class MatchEventsController:Controller{
     public IActionResult Index(){
-        ViewBag.Title = "Studenci";
+        ViewBag.Title = "Lista zdarzeń";
         return View();
     }
 }

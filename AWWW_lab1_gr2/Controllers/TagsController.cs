@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 
-public class CategoriesController:Controller{
+public class TagsController:Controller{
     public IActionResult Index(){
-        ViewBag.Title = "Kategorie";
+        ViewBag.Title = "Tagi";
         return View();
     }
 }
