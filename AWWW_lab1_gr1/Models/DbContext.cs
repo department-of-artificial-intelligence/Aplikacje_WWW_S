@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-namespace AWWW_lab1_gr1.Models;
-public class DbContext{
+using AWWW_lab1_gr1.Models;
+public class LabDbContext : DbContext{
 
-  public string DbPath { get; }
+    public string DbPath { get; }
     public DbSet<Article> Articles { get; set; }
     public DbSet<Author> Authors { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -19,6 +19,9 @@ public class DbContext{
      public DbSet<Tag> Tags { get; set; }
     public DbSet<Team> Teams { get; set; }
 
+  public LabDbContext(DbContextOptions<LabDbContext> options) : base(options){
+
+  }
      protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
     modelBuilder.Entity<Match>()

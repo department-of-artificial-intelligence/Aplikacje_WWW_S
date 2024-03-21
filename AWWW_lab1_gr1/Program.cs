@@ -1,11 +1,13 @@
+using AWWW_lab1_gr1.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<LabDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DatabaseStringContext")));
 
 
@@ -15,7 +17,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    var context = services.GetRequiredService<DbContext>();
+    var context = services.GetRequiredService<LabDbContext>();
     context.Database.EnsureCreated();
 }
 

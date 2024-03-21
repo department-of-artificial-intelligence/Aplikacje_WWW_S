@@ -13,6 +13,8 @@ public class Match {
     public  List<MatchEvent> MatchEvents { get; set; }
 
     public List<Article> Articles { get; set; }
-    public required virtual Team HomeTeam { get; set; }
-    public required virtual Team AwayTeam { get; set; }
+    public virtual Team HomeTeam { get; set; }
+    public virtual Team AwayTeam { get; set; }
+    public int HomeTeamId { get; set; }
+    public int AwayTeamId { get; set; }
 }
