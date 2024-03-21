@@ -16,12 +16,12 @@ public class AuthorsController : Controller {
         return View(await dbContext.Authors.ToListAsync());
     }
 
-    public IActionResult Create() {
+    public IActionResult Add() {
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Author author) {
+    public async Task<IActionResult> Add(Author author) {
         if (ModelState.IsValid) {
             dbContext.Add(author);
             await dbContext.SaveChangesAsync();

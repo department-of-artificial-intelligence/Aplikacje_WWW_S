@@ -1,12 +1,14 @@
-@model AWWW_lab1_gr1.Models.Author
-
-<h1>Authors</h1>
-<p><a asp-action="Add">Add Author</a></p>
-
-@foreach(var item in Model)
-{
-     @item.FirstName
-     @item.LastName
-
-
-}
+@model IEnumerable<Author>
+ 
+<h2>Authors List</h2>
+<p><a asp-action="Create">Add Author</a></p>
+<table class="table">
+     <tr><th>First Name</th><th>Last Name</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+        </tr>
+    }
+</table>

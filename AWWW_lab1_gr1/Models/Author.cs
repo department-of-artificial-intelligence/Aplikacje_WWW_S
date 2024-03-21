@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
+
 namespace AWWW_lab1_gr1.Models;
 
 public class Author

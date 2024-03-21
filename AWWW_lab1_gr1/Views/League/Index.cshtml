@@ -1,0 +1,14 @@
+@model IEnumerable<League>
+   <h1>League List</h1>
+   <p><a asp-action="Add">Add League</a></p> 
+   <table class="table">
+     <tr><th>Name</th><th>Counry</th><th>Level</th></tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Counry</td>
+            <td>@item.Level</td>
+        </tr>
+    }
+   </table>
