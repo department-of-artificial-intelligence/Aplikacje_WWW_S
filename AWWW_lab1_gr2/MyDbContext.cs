@@ -1,8 +1,15 @@
-using System.Data.Entity;
-namespace AWWW_lab1_gr2.Models
-{
-    public class DbContext:DbContext
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AWWW_lab1_gr2.Models;
+using Microsoft.EntityFrameworkCore;
+
+    public class MyDbContext:DbContext
     {
+        public MyDbContext(DbContextOptions<MyDbContext> options):base(options)
+        {
+        }
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -19,18 +26,15 @@ namespace AWWW_lab1_gr2.Models
         public DbSet<Team> Teams { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
             modelBuilder.Entity<Match>()
             .HasOne(m => m.HomeTeam)
             .WithMany(t => t.HomeMatches)
-            .HasForeignKey(m => m.HomeTeamId)
+            .HasForeignKey(m => m.Id)
             .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Match>()
-            .HasOne(m => m.AwayTeam)
+            .HasOne(m => m.Opponents)
             .WithMany(t => t.AwayMatches)
-            .HasForeignKey(m => m.AwayTeamId)
+            .HasForeignKey(m => m.Id)
             .OnDelete(DeleteBehavior.NoAction);
         }
     }
-}
