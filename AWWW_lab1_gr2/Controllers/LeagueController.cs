@@ -3,20 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AWWW_lab1_gr2.Controllers
 {
-    public class TagController : Controller
+    public class LeagueController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public TagController(MyDbContext dbContext)
+        public LeagueController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index(int id)
         {
-            var tag = _dbContext.Tag.FirstOrDefault(a => a.Id == id);
-            if (tag != null)
-                return View(tag);
+            var league = _dbContext.League.FirstOrDefault(a => a.Id == id);
+            if (league != null)
+                return View(league);
             return View("Error");
         }
         public IActionResult Add()
@@ -25,11 +25,11 @@ namespace AWWW_lab1_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Tag tag)
+        public IActionResult Add(League league)
         {
-            _dbContext.Tag.Add(tag); 
+            _dbContext.League.Add(league); 
             _dbContext.SaveChanges();
-            return View("Added",tag); 
+            return View("Added",league); 
         }
     }
 }

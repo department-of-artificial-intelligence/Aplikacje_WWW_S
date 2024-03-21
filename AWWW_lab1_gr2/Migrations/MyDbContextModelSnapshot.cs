@@ -273,15 +273,10 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.HasIndex("TeamId");
 
@@ -363,6 +358,21 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("ArticleTag");
+                });
+
+            modelBuilder.Entity("PlayerPosition", b =>
+                {
+                    b.Property<int>("PlayersId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PositionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayersId", "PositionsId");
+
+                    b.HasIndex("PositionsId");
+
+                    b.ToTable("PlayerPosition");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Article", b =>
@@ -462,7 +472,7 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasOne("AWWW_lab1_gr2.Models.Position", "Position")
                         .WithMany("MatchPlayers")
                         .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Match");
@@ -474,19 +484,11 @@ namespace AWWW_lab1_gr2.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Player", b =>
                 {
-                    b.HasOne("AWWW_lab1_gr2.Models.Position", "Position")
-                        .WithMany("Players")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("AWWW_lab1_gr2.Models.Team", "Team")
                         .WithMany("Players")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Position");
 
                     b.Navigation("Team");
                 });
@@ -513,6 +515,21 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasOne("AWWW_lab1_gr2.Models.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PlayerPosition", b =>
+                {
+                    b.HasOne("AWWW_lab1_gr2.Models.Player", null)
+                        .WithMany()
+                        .HasForeignKey("PlayersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab1_gr2.Models.Position", null)
+                        .WithMany()
+                        .HasForeignKey("PositionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -564,8 +581,6 @@ namespace AWWW_lab1_gr2.Migrations
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Position", b =>
                 {
                     b.Navigation("MatchPlayers");
-
-                    b.Navigation("Players");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Team", b =>

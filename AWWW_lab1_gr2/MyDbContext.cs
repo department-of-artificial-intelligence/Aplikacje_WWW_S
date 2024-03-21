@@ -25,6 +25,14 @@ public class MyDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<MatchPlayer>()
+        .HasOne(mp => mp.Position)
+        .WithMany(p => p.MatchPlayers)
+        .HasForeignKey(mp => mp.PositionId)
+        .OnDelete(DeleteBehavior.NoAction);
+
         modelBuilder.Entity<Match>()
         .HasOne(m => m.HomeTeam)
        .WithMany(t => t.HomeMatches)
