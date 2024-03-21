@@ -4,10 +4,13 @@ public class MatchEvent {
 
     public int Minute { get; set; }
 
-    public Match Match { get; set; }
+    public required Match Match { get; set; }
 
-    public MatchPlayer MatchPlayer { get; set; }
+    public int MatchId { get; set; }
+    public MatchPlayer? MatchPlayer { get; set; }
 
-    public EventType EventType { get; set; }
+    public required EventType EventType { get; set; }
+
+    
 
 }

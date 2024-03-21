@@ -13,4 +13,8 @@ public class Team {
     public List<Player>? Players { get; set; }
 
     public required League League { get; set; }
+
+    public required List<Match> HomeMatches {get;set;}
+
+    public required List<Match> AwayMatches {get;set;}
 }

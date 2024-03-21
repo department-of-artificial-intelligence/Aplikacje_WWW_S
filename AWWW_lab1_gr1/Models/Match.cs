@@ -4,11 +4,16 @@ public class Match {
 
     public  DateTime Date { get; set; }
 
-    public  string Stadium { get; set; }
+    public required string Stadium { get; set; }
 
-    public List<MatchPlayer> MatchPlayers { get; set; }
+    public required List<MatchPlayer> MatchPlayers { get; set; }
 
-    public  List<MatchEvent> MatchEvents { get; set; }
+    public required List<MatchEvent> MatchEvents { get; set; }
 
-    public List<Article> Articles { get; set; }
+    public required List<Article> Articles { get; set; }
+
+    public  int HomeTeamId {get;set;}
+    public  int AwayTeamId {get;set;}
+    public required Team HomeTeam {get;set;}
+    public required Team AwayTeam {get;set;}
 }
