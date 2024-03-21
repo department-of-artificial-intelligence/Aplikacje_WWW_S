@@ -11,10 +11,13 @@ namespace AWWW_lab2_gr2.Models
         public DateTime Date {get; set;}
         public string Statium {get; set;} = null!;
 
-        public List<Article> articles = new List<Article>();
 
-        public Team[] teams = new Team[2];
-        public List<MatchEvent> matchEvents = new List<MatchEvent>();
-        public List<MatchPlayer> matchPlayers = new List<MatchPlayer>();
+        public int HomeTeamId {get; set;}
+        public int AwayTeamId {get; set;}
+        public virtual ICollection<Article>? articles {get;set;}
+        public virtual Team HomeTeam{get;set;} = null!;
+        public virtual Team AwayTeam{get;set;} = null!;
+        public virtual ICollection<MatchEvent>? matchEvents {get;set;}
+        public virtual ICollection<MatchPlayer>? matchPlayers {get;set;}
     }
 }

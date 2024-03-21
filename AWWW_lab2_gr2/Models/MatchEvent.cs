@@ -10,8 +10,8 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public int Minute {get; set;}
 
-        public Match match {get;set;} = null!;
-        public EventType eventType {get;set;} = null!;
-        public MatchPlayer? matchPlayer {get;set;}
+        public virtual Match match {get;set;} = null!;
+        public virtual EventType eventType {get;set;} = null!;
+        public virtual MatchPlayer? matchPlayer {get;set;}
     }
 }

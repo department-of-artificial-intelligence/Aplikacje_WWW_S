@@ -10,6 +10,6 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public string Name {get;set;} = null!;
 
-        public List<Article> articles = new List<Article>();
+        public virtual ICollection<Article>? articles {get;set;}
     }
 }

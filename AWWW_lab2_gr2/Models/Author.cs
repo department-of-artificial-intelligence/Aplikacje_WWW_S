@@ -11,6 +11,6 @@ namespace AWWW_lab2_gr2.Models
         public string FirstName {get;set;} = null!;
         public string LastName {get;set;} = null!;
 
-        public List<AWWW_lab2_gr2.Models.Article> articles = new List<Article>();
+        public virtual ICollection<AWWW_lab2_gr2.Models.Article>? articles {get;set;}
     }
 }

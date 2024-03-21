@@ -13,10 +13,10 @@ namespace AWWW_lab2_gr2.Models
         public string Country {get; set;} = null!;
         public DateTime BirthDate {get;set;}
 
-        public Team team {get; set;} = null!;
-        public List<Position> position = new List<Position>(); //= null!
+        public virtual Team team {get; set;} = null!;
+        public virtual ICollection<Position> position {get;set;} = null!; //= null!
         //do zrobienia
-        public List<MatchPlayer> matchPlayers = new List<MatchPlayer>();
+        public virtual ICollection<MatchPlayer>? matchPlayers {get;set;}
  
     }
 }

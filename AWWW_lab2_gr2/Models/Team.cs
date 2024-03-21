@@ -13,8 +13,9 @@ namespace AWWW_lab2_gr2.Models
         public string City {get;set;} = null!;
         public DateTime FoundingDate {get;set;}
 
-        public List<Match> matches = new List<Match>();
-        public League league {get; set;} = null!;
-        public List<Player> player = new List<Player>();
+        public virtual ICollection<Match>? HomeMatches {get;set;}
+         public virtual ICollection<Match>? AwayMatches {get;set;}
+        public virtual League league {get; set;} = null!;
+        public virtual ICollection<Player>? player {get;set;}
     }
 }

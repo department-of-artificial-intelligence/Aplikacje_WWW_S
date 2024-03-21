@@ -10,6 +10,6 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public string Name {get;set;} = null!;
 
-        public List<MatchEvent> matchEvents = new List<MatchEvent>();
+        public virtual ICollection<MatchEvent>? matchEvents {get;set;}
     }
 }

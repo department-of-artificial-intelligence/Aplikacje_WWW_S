@@ -11,9 +11,9 @@ namespace AWWW_lab2_gr2.Models
         public DateTime StartTime {get; set;}
         public DateTime EndTime {get; set;}
 
-        public Match match {get; set;} = null!;
-        public List<MatchEvent> matchEvents = new List<MatchEvent>();
-        public Position position {get;set;} = null!;
-        public Player player {get;set;} = null!;
+        public virtual Match match {get; set;} = null!;
+        public virtual ICollection<MatchEvent>? matchEvents {get;set;}
+        public virtual Position position {get;set;} = null!;
+        public virtual Player player {get;set;} = null!;
     }
 }

@@ -10,7 +10,7 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public string Name {get; set;} = null!;
 
-        public List<MatchPlayer> matchPlayers = new List<MatchPlayer>();
-        public List<Player> player = new List<Player>();
+        public virtual ICollection<MatchPlayer>? matchPlayers {get;set;}
+        public virtual ICollection<Player>? player {get;set;}
     }
 }
