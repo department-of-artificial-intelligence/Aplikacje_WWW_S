@@ -6,4 +6,9 @@ public class Player{
     public string LastName{get;set;} = "";
     public string City {get;set;} = "";
     public DateTime BirthDate{get;set;}
+
+    public MatchPlayer MatchPlayer{get; set;}
+
+    public List<Position> Positions{get; set;}
+    
 }
