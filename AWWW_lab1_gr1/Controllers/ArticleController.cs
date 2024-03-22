@@ -1,35 +1,62 @@
+using AWWW_lab1_gr1.Models;
+using AWWW_lab1_gr1.Data;
 using Microsoft.AspNetCore.Mvc;
-//using AWWW_lab1_gr1.Models;
 
-public class ArticleController : Controller
+namespace AWWW_lab1_gr1.Controllers
 {
-    public IActionResult Index(int id = 1)
+    public class ArticleController : Controller
     {
-        var articles = new List<Article>
+        public IActionResult Index(int id = 1)
         {
-            new Article
+            var articles = new List<Article>
             {
-                Id = 1,
-                Title = "ArtykuÅ‚ 1",
-                Content = "Lorem ipsum...",
-                CreationDate = DateTime.Now
-            },
-            new Article
-            {
-                Id = 2,
-                Title = "ArtykuÅ‚ 2",
-                Content = "Dolor sit amet...",
-                CreationDate = DateTime.Now
-            },
-            new Article
-            {
-                Id = 3,
-                Title = "ArtykuÅ‚ 3",
-                Content = "Consectetur adipiscing elit...",
-                CreationDate = DateTime.Now
-            }
-        };
+                new Article
+                {
+                    Id = 1,
+                    Title = "Artyku³ 1",
+                    Content = "Lorem ipsum...",
+                    CreationDate = DateTime.Now
+                },
+                new Article
+                {
+                    Id = 2,
+                    Title = "Artyku³ 2",
+                    Content = "Dolor sit amet...",
+                    CreationDate = DateTime.Now
+                },
+                new Article
+                {
+                    Id = 3,
+                    Title = "Artyku³ 3",
+                    Content = "Consectetur adipiscing elit...",
+                    CreationDate = DateTime.Now
+                }
+            };
 
-        return View(articles[id - 1]);
+            return View(articles[id - 1]);
+        }
+
+        /*
+        private readonly MyDBContext _dbContext;
+
+        public ArticleController(MyDBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public IActionResult Index(int id)
+        {
+            Article? article = _dbContext.Articles!.FirstOrDefault(a => a.Id == id); 
+            return View(article);
+        }
+
+        public IActionResult Add(Article article) 
+        {
+            article.CreationDate = DateTime.Now;
+            _dbContext.Articles!.Add(article);
+            _dbContext.SaveChanges();
+            return View();
+        }
+        */
     }
 }

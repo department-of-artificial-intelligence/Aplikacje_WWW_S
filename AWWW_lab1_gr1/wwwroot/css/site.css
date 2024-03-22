@@ -10,5 +10,6 @@ header ul li {
 header ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.5rem;  
+    font-size: 1.5rem;
+    padding: 10px;
 }

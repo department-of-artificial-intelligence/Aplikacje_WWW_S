@@ -1,3 +1,5 @@
+@model ICollection<AWWW_lab1_gr1.Models.Author>
+
 <div class="container">
     <h1 class="main-title">@ViewBag.Title</h1>
 
@@ -10,5 +12,16 @@
             <li><a asp-controller="article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
             <li><a asp-controller="article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
         </ul>
+    </div>
+
+    <div>
+        <h2>Autorzy:</h2>
+        @if (Model != null)
+        {
+            @foreach(var author in Model)
+            {
+                <p><a asp-controller="author" asp-action="index" asp-route-id="@author.Id">@(author.FirstName + " " + author.LastName)</a></p>
+            }
+        }
     </div>
 </div>
