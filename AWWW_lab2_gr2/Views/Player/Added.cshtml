@@ -1,0 +1,22 @@
+﻿@model AWWW_lab2_gr2.Models.Player;
+
+<div class="text-center">
+    <h1>Dodano nowego gracza</h1>
+    <p>@Model.FirstName</p>
+    <p>@Model.LastName</p>
+    <p>@Model.Country</p>
+    <p>@Model.BirthDate</p>
+    @if(@Model.Team != null)
+    {
+        <p>@Model.Team.Name</p>
+    }
+    <p>
+    @if (@Model.Positions != null)
+    {
+        @foreach (var position in @Model.Positions)
+            @(position.Name + " ")
+    }
+    </p>
+
+    <a class="btn btn-primary" asp-controller="home" asp-action="index">Home</a>
+</div>
