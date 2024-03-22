@@ -10,6 +10,6 @@ namespace AWWW_lab2_gr2.Models
         public int Id {get; set;}
         public string title {get; set;}
         public string content{get;set;}
-        public Articles artykul{get;set;}
+        public Articles artykul{get;set;}=null!;
     }
 }

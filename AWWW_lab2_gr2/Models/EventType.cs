@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace AWWW_lab2_gr2.Models
 {
-    public class Tag
+    public class EventType
     {
-        public int Id {get; set;}
+        public int Id{get;set;}
         public string Name{get;set;}
-        public ICollection<Articles> cArt {get;set;}
+        public ICollection<MatchEvent> events{get;set;}
+                
+        
     }
 }
