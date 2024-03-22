@@ -8,8 +8,8 @@
         public List<Article> Articles { get; set; } = null!;
         public Team HomeTeam { get; set; } = null!;
         public Team AwayTeam { get; set; } = null!;
-        public Team HomeTeamId { get; set; } = null!;
-        public Team AwayTeamId { get; set; } = null!;
+        public int HomeTeamId { get; set; }
+        public int AwayTeamId { get; set; }
         public List<MatchPlayer> MatchPlayers { get; set; } = null !;
         public List<MatchEvent> MatchEvents { get; set; } = null!;
     }

@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 // added
-var connectionString = builder.Configuration.GetConnectionString("MyConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<MyDBContext>(x => x.UseSqlServer(connectionString));
 //
 

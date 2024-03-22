@@ -4,20 +4,7 @@
 {
     @foreach(var aut in Model) 
     {
-        <div class="Author">
-            <h1 class="model-title">Id: @aut.Id</h1>
-
-            <h2 class="article-title">Imiê: @aut.FirstName</h2>
-
-            <h2 class="article-title">Nazwisko: @aut.LastName</h2>
-
-            @foreach(var article in aut.Articles)
-            {
-                <div class="AuthorListArticles">
-                    <h2>@article.Id</h2>
-                </div>
-            }
-        </div>
+        <h3><a asp-action="details" asp-controller="author" asp-route-id="@aut.Id">@aut.Id, @(aut.FirstName + " " + aut.LastName)</a></h3>
     }
 
 }

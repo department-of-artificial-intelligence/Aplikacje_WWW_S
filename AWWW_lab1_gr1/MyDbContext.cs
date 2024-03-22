@@ -43,25 +43,10 @@ namespace AWWW_lab1_gr1.Data
                 {
                     Id = 1,
                     FirstName = "Mateusz",
-                    LastName = "Janik",
-                    Articles = new List<Article>()
-                    {
-                        new Article
-                        {
-                            Id = 1,
-                            Title = "First article",
-                            Lead = "Read it",
-                            Content = "Some Content",
-                            CreationDate = DateTime.Now,
-                            Author = new Author(),
-                            Category = new Category(),
-                            Tags = new List<Tag>(),
-                            Comments = new List<Comment>(),
-                            Match = new Match() {}
-                        }
-                    }
+                    LastName = "Janik"
                 }
             });
+            
         }
     }  
 }

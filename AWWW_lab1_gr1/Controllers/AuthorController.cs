@@ -18,5 +18,11 @@ namespace AWWW_lab1_gr1.Controllers
             List<Author> author = _dbContext.Authors!.ToList();
             return View(author);
         }
+
+        public IActionResult Details(int id) 
+        {
+            Author? author = _dbContext.Authors!.FirstOrDefault(x => x.Id == id);
+            return View(author);
+        }
     }
 }

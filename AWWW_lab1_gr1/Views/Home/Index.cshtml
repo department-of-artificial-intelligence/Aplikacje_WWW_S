@@ -6,22 +6,10 @@
     <p class="welcome-text">Witamy na stronie głównej</p>
 
     <div>
-        <h2>Artykuły:</h2>
-        <ul class="article-list">
-            <li><a asp-controller="article" asp-action="index" asp-route-id=1>Artykuł 1</a></li>
-            <li><a asp-controller="article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
-            <li><a asp-controller="article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
-        </ul>
+        <h2><a asp-controller="article" asp-action="index">Artykuły:</a></h2>
     </div>
 
     <div>
-        <h2>Autorzy:</h2>
-        @if (Model != null)
-        {
-            @foreach(var author in Model)
-            {
-                <p><a asp-controller="author" asp-action="index" asp-route-id="@author.Id">@(author.FirstName + " " + author.LastName)</a></p>
-            }
-        }
+        <h2><a asp-controller="author" asp-action="index">Autorzy:</a></h2>
     </div>
 </div>

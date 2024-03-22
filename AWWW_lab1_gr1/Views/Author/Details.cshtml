@@ -1,0 +1,14 @@
+﻿@model AWWW_lab1_gr1.Models.Author
+
+<h2>Id: @Model.Id</h2>
+<h2>First Name: @Model.FirstName</h2>
+<h2>Last Name: @Model.LastName</h2>
+<hr />
+@if (Model.Articles != null)
+{
+    @foreach (var article in Model.Articles)
+    {
+        <h2><a asp-action="Details" asp-controller="Article" asp-route-id="@article.Id"></a></h2>
+    }
+}
+

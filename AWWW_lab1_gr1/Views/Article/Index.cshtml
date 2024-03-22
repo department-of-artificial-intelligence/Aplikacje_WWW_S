@@ -1,13 +1,14 @@
-@model AWWW_lab1_gr1.Models.Article
+@model ICollection<AWWW_lab1_gr1.Models.Article>
 
-<h1 class="model-title">@Model.Title</h1>
+@if (Model != null)
+{
+    @foreach (var art in Model)
+    {
+        <div class="Article">
+            <h2>@art.Title</h2>
+            <h3>@art.Lead</h3>
+            <p><a asp-action="details" asp-asp-controller="Article" asp-route-itemid="@art.Id">Czytaj dalej</a></p>
+        </div>
+    }
 
-<h2 class="article-title">Artykuł</h2>
-
-<p class="creation-date">
-    Data utworzenia: @Model.CreationDate.ToShortDateString()
-</p>
-
-<p class="article-content">
-    @Model.Content
-</p>
+}
