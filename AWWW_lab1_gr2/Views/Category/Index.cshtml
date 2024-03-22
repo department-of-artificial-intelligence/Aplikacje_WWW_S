@@ -6,7 +6,11 @@
     @foreach (AWWW_lab1_gr2.Models.Category cat in @Model){
         <li>Kategoria @cat.Id: <ul>
                 <li>Nazwa: @cat.Name</li>
+                <li>Artykuły: @if(cat.Articles != null) {cat.Articles.ToString();}</li>
+                <li><a asp-controller="category" asp-action="Dodaj" asp-route-id="@cat.Id">Edytuj</a></li>
             </ul>
         </li>
     }
 </ul>
+
+<h3><a asp-controller="category" asp-action="Dodaj">Dodaj</a></h3>

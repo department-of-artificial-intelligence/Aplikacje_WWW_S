@@ -1,0 +1,13 @@
+@model AWWW_lab1_gr2.Models.Category
+<h1>@ViewBag.Header</h1>
+
+<form asp-action="dodaj" method="post">
+    <input asp-for="Id" type="hidden"/>
+    <p>
+        <label asp-for="Name">Nazwa:</label>
+        <input asp-for="Name"/>
+    </p>
+    <p>
+        <button type="submit">@ViewBag.ButtonText</button>
+    </p>    
+</form>

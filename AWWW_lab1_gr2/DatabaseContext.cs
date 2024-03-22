@@ -19,7 +19,7 @@ namespace AWWW_lab1_gr2
         public virtual DbSet<MatchEvent> MatchEvents {get;set;}
         public virtual DbSet<MatchPlayer> MatchPlayers {get;set;}
         public virtual DbSet<Player> Players {get;set;}
-        public virtual DbSet<Position> Postitions {get;set;}
+        public virtual DbSet<Position> Positions {get;set;}
         public virtual DbSet<Tag> Tags {get;set;}
         public virtual DbSet<Team> Teams {get;set;}
 

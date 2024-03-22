@@ -9,33 +9,33 @@ using Microsoft.Extensions.Logging;
 
 namespace AWWW_lab1_gr2.Controllers
 {
-    public class CategoryController : Controller
+    public class EventTypeController : Controller
     {
-        private readonly ILogger<CategoryController> _logger;
+        private readonly ILogger<EventTypeController> _logger;
         private readonly DatabaseContext asd;
-        public CategoryController(DatabaseContext databaseContext, ILogger<CategoryController> logger){
+        public EventTypeController(DatabaseContext databaseContext, ILogger<EventTypeController> logger){
             asd = databaseContext;
             _logger = logger;
         }
         
 
         public IActionResult Index(){
-            return View(asd.Categories.ToList()!);
+            return View(asd.EventTypes.ToList()!);
         }
         public IActionResult Dodaj(int id = -1)
         {
 
             if (id != -1)
             {
-                var category = asd.Categories!
+                var eventType = asd.EventTypes!
                     .FirstOrDefault(a => a.Id == id);
-                @ViewBag.Header = "Edytuj kategorię";
+                @ViewBag.Header = "Edytuj typ zdarzenia";
                 @ViewBag.ButtonText = "Edytuj";
-                return View(category);
+                return View(eventType);
             }
             else
             {
-                @ViewBag.Header = "Dodaj kategorię";
+                @ViewBag.Header = "Dodaj typ zdarzenia";
                 @ViewBag.ButtonText = "Dodaj";
                 return View();
             }
@@ -43,19 +43,19 @@ namespace AWWW_lab1_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Dodaj(Category category)
+        public IActionResult Dodaj(EventType eventType)
         {
-            if (category.Id != 0)
+            if (eventType.Id != 0)
             {
-                var a = asd.Categories!.FirstOrDefault(a => a.Id == category.Id);
+                var a = asd.EventTypes!.FirstOrDefault(a => a.Id == eventType.Id);
                 if (a != null)
                 {
-                    a.Name = category.Name;
+                    a.Name = eventType.Name;
                 }
             }
             else
             {
-                asd.Categories!.Add(category);
+                asd.EventTypes!.Add(eventType);
             }
             asd.SaveChanges();
             return RedirectToAction("Index");

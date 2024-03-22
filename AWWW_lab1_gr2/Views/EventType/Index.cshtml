@@ -1,0 +1,16 @@
+@model ICollection<AWWW_lab1_gr2.Models.EventType>;
+
+<h1>Lista Typów Zdarzeń</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.EventType eventType in @Model){
+        <li>Liga @eventType.Id: <ul>
+                <li>Nazwa: @eventType.Name</li>
+                <li>Zdarzenia: @if(eventType.MatchEvents != null) {eventType.MatchEvents.ToString();}</li>
+                <li><a asp-controller="eventtype" asp-action="Dodaj" asp-route-id="@eventType.Id">Edytuj</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h3><a asp-controller="eventtype" asp-action="Dodaj">Dodaj</a></h3>

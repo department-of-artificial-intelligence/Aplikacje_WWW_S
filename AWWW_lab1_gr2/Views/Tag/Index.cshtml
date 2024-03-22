@@ -1,0 +1,16 @@
+@model ICollection<AWWW_lab1_gr2.Models.Tag>;
+
+<h1>Lista Tagów</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Tag tag in @Model){
+        <li>Liga @tag.Id: <ul>
+                <li>Nazwa: @tag.Name</li>
+                <li>Artykuły: @if(tag.Articles != null) {tag.Articles.ToString();}</li>
+                <li><a asp-controller="tag" asp-action="Dodaj" asp-route-id="@tag.Id">Edytuj</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h3><a asp-controller="tag" asp-action="Dodaj">Dodaj</a></h3>

@@ -3,39 +3,39 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using AWWW_lab1_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using AWWW_lab1_gr2.Models;
 
 namespace AWWW_lab1_gr2.Controllers
 {
-    public class CategoryController : Controller
+    public class LeagueController : Controller
     {
-        private readonly ILogger<CategoryController> _logger;
+        private readonly ILogger<LeagueController> _logger;
         private readonly DatabaseContext asd;
-        public CategoryController(DatabaseContext databaseContext, ILogger<CategoryController> logger){
+        public LeagueController(DatabaseContext databaseContext, ILogger<LeagueController> logger){
             asd = databaseContext;
             _logger = logger;
         }
         
 
         public IActionResult Index(){
-            return View(asd.Categories.ToList()!);
+            return View(asd.Leagues.ToList()!);
         }
         public IActionResult Dodaj(int id = -1)
         {
 
             if (id != -1)
             {
-                var category = asd.Categories!
+                var league = asd.Leagues!
                     .FirstOrDefault(a => a.Id == id);
-                @ViewBag.Header = "Edytuj kategorię";
+                @ViewBag.Header = "Edytuj ligę";
                 @ViewBag.ButtonText = "Edytuj";
-                return View(category);
+                return View(league);
             }
             else
             {
-                @ViewBag.Header = "Dodaj kategorię";
+                @ViewBag.Header = "Dodaj ligę";
                 @ViewBag.ButtonText = "Dodaj";
                 return View();
             }
@@ -43,19 +43,19 @@ namespace AWWW_lab1_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Dodaj(Category category)
+        public IActionResult Dodaj(League league)
         {
-            if (category.Id != 0)
+            if (league.Id != 0)
             {
-                var a = asd.Categories!.FirstOrDefault(a => a.Id == category.Id);
+                var a = asd.Leagues!.FirstOrDefault(a => a.Id == league.Id);
                 if (a != null)
                 {
-                    a.Name = category.Name;
+                    a.Name = league.Name;
                 }
             }
             else
             {
-                asd.Categories!.Add(category);
+                asd.Leagues!.Add(league);
             }
             asd.SaveChanges();
             return RedirectToAction("Index");

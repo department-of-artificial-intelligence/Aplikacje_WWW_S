@@ -7,9 +7,11 @@
         <li>Autor @autor.Id: <ul>
                 <li>Imie: @autor.FirstName</li>
                 <li>Nazwisko: @autor.LastName</li>
+                <li>Artykuły: @if(autor.Articles != null) {autor.Articles.ToString();}</li>
+                <li><a asp-controller="author" asp-action="Dodaj" asp-route-id="@autor.Id">Edytuj</a></li>
             </ul>
         </li>
     }
 </ul>
 
-<h2><a asp-controller="author" asp-action="Dodaj">Dodaj</a></h2>
+<h3><a asp-controller="author" asp-action="Dodaj">Dodaj</a></h3>

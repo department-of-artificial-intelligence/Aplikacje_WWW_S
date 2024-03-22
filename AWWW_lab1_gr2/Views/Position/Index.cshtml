@@ -1,0 +1,17 @@
+@model ICollection<AWWW_lab1_gr2.Models.Position>;
+
+<h1>Lista Pozycji</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Position position in @Model){
+        <li>Liga @position.Id: <ul>
+                <li>Nazwa: @position.Name</li>
+                <li>Zawodnicy: @if(position.Players != null) {position.Players.ToString();}</li>
+                <li>Zawodnicy Meczu: @if(position.MatchPlayers != null) {position.MatchPlayers.ToString();}</li>
+                <li><a asp-controller="position" asp-action="Dodaj" asp-route-id="@position.Id">Edytuj</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h3><a asp-controller="position" asp-action="Dodaj">Dodaj</a></h3>

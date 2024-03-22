@@ -1,0 +1,16 @@
+@model ICollection<AWWW_lab1_gr2.Models.League>;
+
+<h1>Lista Lig</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.League league in @Model){
+        <li>Liga @league.Id: <ul>
+                <li>Nazwa: @league.Name</li>
+                <li>Drużyny: @if(league.Teams != null) {league.Teams.ToString();}</li>
+                <li><a asp-controller="league" asp-action="Dodaj" asp-route-id="@league.Id">Edytuj</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h3><a asp-controller="league" asp-action="Dodaj">Dodaj</a></h3>

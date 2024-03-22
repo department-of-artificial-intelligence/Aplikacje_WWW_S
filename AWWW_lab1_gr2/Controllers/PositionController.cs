@@ -3,39 +3,39 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using AWWW_lab1_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using AWWW_lab1_gr2.Models;
 
 namespace AWWW_lab1_gr2.Controllers
 {
-    public class CategoryController : Controller
+    public class PositionController : Controller
     {
-        private readonly ILogger<CategoryController> _logger;
+        private readonly ILogger<PositionController> _logger;
         private readonly DatabaseContext asd;
-        public CategoryController(DatabaseContext databaseContext, ILogger<CategoryController> logger){
+        public PositionController(DatabaseContext databaseContext, ILogger<PositionController> logger){
             asd = databaseContext;
             _logger = logger;
         }
         
 
         public IActionResult Index(){
-            return View(asd.Categories.ToList()!);
+            return View(asd.Positions.ToList()!);
         }
         public IActionResult Dodaj(int id = -1)
         {
 
             if (id != -1)
             {
-                var category = asd.Categories!
+                var position = asd.Positions!
                     .FirstOrDefault(a => a.Id == id);
-                @ViewBag.Header = "Edytuj kategorię";
+                @ViewBag.Header = "Edytuj pozycję";
                 @ViewBag.ButtonText = "Edytuj";
-                return View(category);
+                return View(position);
             }
             else
             {
-                @ViewBag.Header = "Dodaj kategorię";
+                @ViewBag.Header = "Dodaj pozycję";
                 @ViewBag.ButtonText = "Dodaj";
                 return View();
             }
@@ -43,19 +43,19 @@ namespace AWWW_lab1_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Dodaj(Category category)
+        public IActionResult Dodaj(Position position)
         {
-            if (category.Id != 0)
+            if (position.Id != 0)
             {
-                var a = asd.Categories!.FirstOrDefault(a => a.Id == category.Id);
+                var a = asd.Positions!.FirstOrDefault(a => a.Id == position.Id);
                 if (a != null)
                 {
-                    a.Name = category.Name;
+                    a.Name = position.Name;
                 }
             }
             else
             {
-                asd.Categories!.Add(category);
+                asd.Positions!.Add(position);
             }
             asd.SaveChanges();
             return RedirectToAction("Index");
