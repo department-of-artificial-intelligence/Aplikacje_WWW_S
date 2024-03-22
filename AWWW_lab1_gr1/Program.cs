@@ -26,10 +26,4 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapDefaultControllerRoute();
-
-
-
-
-
-
 app.Run();

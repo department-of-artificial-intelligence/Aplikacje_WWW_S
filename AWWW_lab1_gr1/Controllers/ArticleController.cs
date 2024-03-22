@@ -1,31 +1,43 @@
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-public class ArticleController : Controller{
-public IActionResult Index(int id = 1)
-{
-    var articles = new List<Article>
+
+
+
+    public class ArticleController : Controller
     {
-        new Article{
-            Id = 1,
-            Title = "Artykul 1",
-            Content = "Lorem ipsum...",
-            CreationDate = DateTime.Now
-        },
-        new Article{
-            Id = 2,
-            Title = "Artykul 2",
-            Content = "Lorem ipsum...",
-            CreationDate = DateTime.Now
-        },
-        new Article{
-            Id = 3,
-            Title = "Artykul 3",
-            Content = "Lorem ipsum...",
-            CreationDate = DateTime.Now
+        private readonly LabDbContext _dbContext;
+
+        public ArticleController(LabDbContext dbContext)
+        {
+            _dbContext = dbContext;
         }
-    };
-    return View(articles[id-1]);
-    
-}
-}
+
+        public IActionResult Index(int id)
+        {
+            var article = _dbContext.Articles.FirstOrDefault(a => a.Id == id); //Repository.Articles.ToList()[id];
+            if (article != null)
+                return View(article);
+            return View("Error");
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Article article)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Articles.Add(article); //Repository.AddArticle(article);
+                _dbContext.SaveChanges();
+                return View("Added", article);
+            }
+            return View("Error");
+        }
+    }
+   
+
