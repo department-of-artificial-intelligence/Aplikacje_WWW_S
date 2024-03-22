@@ -124,17 +124,11 @@ namespace AWWW_lab2_gr2.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Stadium = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HomeTeamId = table.Column<int>(type: "int", nullable: false),
-                    AwayTeamId = table.Column<int>(type: "int", nullable: false),
-                    MatchId = table.Column<int>(type: "int", nullable: true)
+                    AwayTeamId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Matches", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Matches_Matches_MatchId",
-                        column: x => x.MatchId,
-                        principalTable: "Matches",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Matches_Teams_AwayTeamId",
                         column: x => x.AwayTeamId,
@@ -339,8 +333,7 @@ namespace AWWW_lab2_gr2.Migrations
                         name: "FK_MatchEvents_Matches_MatchId",
                         column: x => x.MatchId,
                         principalTable: "Matches",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -377,11 +370,6 @@ namespace AWWW_lab2_gr2.Migrations
                 name: "IX_Matches_HomeTeamId",
                 table: "Matches",
                 column: "HomeTeamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Matches_MatchId",
-                table: "Matches",
-                column: "MatchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MatchEvents_EventTypeId",

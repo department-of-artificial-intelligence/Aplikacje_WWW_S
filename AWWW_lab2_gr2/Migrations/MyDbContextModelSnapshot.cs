@@ -173,9 +173,6 @@ namespace AWWW_lab2_gr2.Migrations
                     b.Property<int>("HomeTeamId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MatchId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Stadium")
                         .HasColumnType("nvarchar(max)");
 
@@ -184,8 +181,6 @@ namespace AWWW_lab2_gr2.Migrations
                     b.HasIndex("AwayTeamId");
 
                     b.HasIndex("HomeTeamId");
-
-                    b.HasIndex("MatchId");
 
                     b.ToTable("Matches");
                 });
@@ -392,7 +387,7 @@ namespace AWWW_lab2_gr2.Migrations
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr2.Models.Match", "Match")
-                        .WithMany()
+                        .WithMany("Articles")
                         .HasForeignKey("MatchId");
 
                     b.Navigation("Author");
@@ -427,10 +422,6 @@ namespace AWWW_lab2_gr2.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("AWWW_lab2_gr2.Models.Match", null)
-                        .WithMany("Articles")
-                        .HasForeignKey("MatchId");
-
                     b.Navigation("AwayTeam");
 
                     b.Navigation("HomeTeam");
@@ -447,7 +438,7 @@ namespace AWWW_lab2_gr2.Migrations
                     b.HasOne("AWWW_lab2_gr2.Models.Match", "Match")
                         .WithMany("MatchEvents")
                         .HasForeignKey("MatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr2.Models.MatchPlayer", "MatchPlayer")

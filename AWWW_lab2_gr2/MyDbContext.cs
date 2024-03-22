@@ -6,6 +6,10 @@ namespace AWWW_lab2_gr2.Models
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Match>().HasMany(m => m.MatchEvents).WithOne(me => me.Match).HasForeignKey(me => me.MatchId).OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Match>().HasOne(m => m.HomeTeam).WithMany(l => l.HomeMatches).HasForeignKey(m => m.HomeTeamId).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Match>().HasOne(m => m.AwayTeam).WithMany(l => l.AwayMatches).HasForeignKey(m => m.AwayTeamId).OnDelete(DeleteBehavior.NoAction);

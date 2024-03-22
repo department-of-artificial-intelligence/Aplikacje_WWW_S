@@ -6,7 +6,7 @@ public class Match
     public int Id { get; set; }
     public DateTime Date { get; set; }
     public string? Stadium { get; set; }
-    public ICollection<Match> Articles { get; set; }
+    public ICollection<Article> Articles { get; set; }
     public int HomeTeamId { get; set; }
     public Team HomeTeam { get; set; } = null!;
     public int AwayTeamId { get; set; }
