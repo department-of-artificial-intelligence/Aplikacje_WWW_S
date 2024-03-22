@@ -4,21 +4,21 @@ public class Article {
 
     public int AuthorId {get;set;}
 
-    public string Lead { get; set; }
+    public required string Lead { get; set; }
 
-    public  string Title { get; set; }
+    public  required string Title { get; set; }
 
-    public string Content { get; set; }
+    public required string Content { get; set; }
 
     public List<Comment>? Comments { get; set; }
 
-    public  Author Author { get; set; }
+    public required Author Author { get; set; }
 
-    public  Category Category { get; set; }
+    public  required Category Category { get; set; }
 
-    public List<Tag> Tags { get; set; }
+    public required List<Tag> Tags { get; set; }
 
-    public Match Match { get; set; }
+    public required Match Match { get; set; }
 
     public DateTime CreationDate { get; set; }
 }

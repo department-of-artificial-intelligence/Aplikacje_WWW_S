@@ -3,20 +3,18 @@ using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class HomeController : Controller
+    public class CategoryController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public HomeController(MyDbContext dbContext)
+        public CategoryController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public IActionResult Index()
         {
-            ViewBag.Title = "Home";
-
-            var articles = _dbContext.Articles.ToList(); 
-            return View(articles);
+            var category = _dbContext.Categories!.ToList(); 
+            return View(category);
         }
     }
 }

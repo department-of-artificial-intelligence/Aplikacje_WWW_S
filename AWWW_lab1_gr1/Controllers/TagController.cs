@@ -3,20 +3,18 @@ using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class HomeController : Controller
+    public class TagController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public HomeController(MyDbContext dbContext)
+        public TagController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public IActionResult Index()
         {
-            ViewBag.Title = "Home";
-
-            var articles = _dbContext.Articles.ToList(); 
-            return View(articles);
+            var tag = _dbContext.Tags!.ToList(); 
+            return View(tag);
         }
     }
 }
