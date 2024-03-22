@@ -1,0 +1,15 @@
+@model IEnumerable<Category>
+
+ <h1>Category List</h1>
+
+<p ><a asp-action="Add">Add Category</a></p>
+<table class="table">
+    <tr><th>Name</th></tr>
+    @foreach(var item in Model)
+    {
+       <tr>
+           <td>@item.Name</td>
+       </tr>
+    }
+
+</table>

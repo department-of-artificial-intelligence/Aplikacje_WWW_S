@@ -1,0 +1,25 @@
+@model League
+
+<form asp-action="Add" asp-controller="leagues">
+
+<p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+  
+<p>
+        <label asp-for="Country">Country</label><br />
+        <input type="text" asp-for="Country" />
+    </p>
+<p>
+        <label asp-for="Level">Level</label><br />
+        <input type="text" asp-for="Level" />
+    </p>
+
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+
+</form>

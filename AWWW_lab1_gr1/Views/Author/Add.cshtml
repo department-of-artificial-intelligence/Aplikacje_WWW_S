@@ -1,0 +1,16 @@
+@model Author
+ 
+<h2>Add author</h2>
+<form asp-action="Add" asp-controller="authors">
+    <p>
+        <label asp-for="FirstName">First Name</label><br />
+        <input type="text" asp-for="FirstName" />
+    </p>
+    <p>
+        <label asp-for="LastName">Last Name</label><br />
+        <input type="text" asp-for="LastName" />
+    </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>

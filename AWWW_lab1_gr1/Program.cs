@@ -1,10 +1,9 @@
-using AWWW_lab1_gr1.DAL;
-using AWWW_lab1_gr1.Models;
+using AWWW_lab1_gr1;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<MyDbContext>(options =>
+builder.Services.AddDbContext<MeBdContext>(options =>
 {
 
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
