@@ -1,11 +1,16 @@
-public class Match{
-    public int ID{get; set;}
-    public required string Stadium{get;set;}
-    public DateTime Date{get;set;}
+using System.Net.NetworkInformation;
 
-    public required List<MatchPlayer> MatchPlayers { get; set; }
-
-    public  List<MatchEvent>? MatchEvents { get; set; }
-
-    public List<Article>? Articles { get; set; }
+namespace AWWW_lab1_gr1.Models{
+    public class Match{
+        public int ID{get; set;}
+        public required string Stadium{get;set;}
+        public DateTime Date{get;set;}
+         virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<MatchPlayer> MatchPlayers { get; set; }
+        public virtual ICollection<MatchEvent> MatchEvents { get; set; }
+        public int HomeTeamID {get; set;}
+        public int AwayTeamID {get; set;}
+        public virtual Team HomeTeam {get; set;}
+        public virtual Team AwayTeam {get; set;}
+    }
 }

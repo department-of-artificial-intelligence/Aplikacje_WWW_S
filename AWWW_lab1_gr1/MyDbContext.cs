@@ -1,8 +1,7 @@
 ﻿using AWWW_lab1_gr1.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net.NetworkInformation;
 
-namespace AWWW_lab1_gr1
+namespace AWWW_lab1_gr5
 {
     public class MyDbContext : DbContext
     {
@@ -35,13 +34,13 @@ namespace AWWW_lab1_gr1
             modelBuilder.Entity<Match>()
             .HasOne(m => m.HomeTeam)
             .WithMany(t => t.HomeMatches)
-            .HasForeignKey(m => m.HomeTeamId)
+            .HasForeignKey(m => m.HomeTeamID)
             .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Match>()
             .HasOne(m => m.AwayTeam)
             .WithMany(t => t.AwayMatches)
-            .HasForeignKey(m => m.AwayTeamId)
+            .HasForeignKey(m => m.AwayTeamID)
             .OnDelete(DeleteBehavior.NoAction);
         }
     }
