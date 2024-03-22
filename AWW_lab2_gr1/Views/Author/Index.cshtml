@@ -1,0 +1,8 @@
+@model List<AWW_lab2_gr1.Models.Author>
+
+<h2 class="page-title">Authors</h2>
+
+@foreach (var item in Model)
+{
+  <li><a asp-action="Details" asp-route-id="@item.Id" asp-controller="Author">@item.FirstName @item.LastName</a></li>
+}

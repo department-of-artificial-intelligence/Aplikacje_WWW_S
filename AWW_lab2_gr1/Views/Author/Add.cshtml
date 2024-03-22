@@ -1,0 +1,17 @@
+@model AWW_lab2_gr1.Models.Author
+
+<h2 class="page-title">Add new Author</h2>
+
+<form asp-route="Add" method="post">
+  <div class="form-element">
+    <label asp-for="FirstName">Firstname:</label>
+    <input type="text" asp-for="FirstName">
+  </div>
+
+  <div class="form-element">
+    <label asp-for="LastName">Lastname:</label>
+    <input type="text" asp-for="LastName">
+  </div>
+
+  <button type="submit">Add</button>
+</form>
