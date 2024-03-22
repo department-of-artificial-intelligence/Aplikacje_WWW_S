@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.EventType>;
+    
+<h1>rodzaje wydarzeń</h1>
+
+<a asp-controller="eventtype" asp-action="add">Dodaj rodzaj wydarzenia</a>
+
+<ul>
+    @foreach(AWWW_lab2_gr2.Models.EventType item in Model){
+        <li>@item.Name</li>
+    }
+</ul>

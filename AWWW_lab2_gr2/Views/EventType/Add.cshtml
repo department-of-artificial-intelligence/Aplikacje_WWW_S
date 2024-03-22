@@ -1,12 +1,11 @@
-@model AWWW_lab2_gr2.Models.Tag;
+@model AWWW_lab2_gr2.Models.EventType;
 
-<h1>Wprowadź dane tagu</h1>
+<h1>Wprowadź dane typu wydarzenia</h1>
 
-<form method="post" asp-controller="tag" asp-action="add">
+<form method="post" asp-controller="eventtype" asp-action="add">
     <p>
         <label asp-for="Name" for="name">Name:</label><br>
         <input asp-for="Name" type="text" name="name">
-        <p class="errorMsg">@ViewBag.Error</p>
     </p>
     <p>
         <button type="submit">Submit</button>

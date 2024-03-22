@@ -1,8 +1,8 @@
-@model AWWW_lab2_gr2.Models.Tag;
+@model AWWW_lab2_gr2.Models.Position;
 
-<h1>Wprowadź dane tagu</h1>
+<h1>Wprowadź dane pozycji</h1>
 
-<form method="post" asp-controller="tag" asp-action="add">
+<form method="post" asp-controller="position" asp-action="add">
     <p>
         <label asp-for="Name" for="name">Name:</label><br>
         <input asp-for="Name" type="text" name="name">
@@ -11,4 +11,5 @@
     <p>
         <button type="submit">Submit</button>
     </p>
+
 </form>

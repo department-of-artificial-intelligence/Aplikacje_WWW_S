@@ -7,3 +7,8 @@ body{
 .navbar-nav{
     background-color: aquamarine;
 }
+
+.errorMsg{
+    color: red;
+    font-weight: bold;
+}

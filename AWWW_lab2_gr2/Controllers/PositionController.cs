@@ -1,42 +1,42 @@
 using AWWW_lab2_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class TagController : Controller{
+public class PositionController : Controller{
     
     private readonly MyDbContext _dbContext;
     
-    public TagController(MyDbContext dbContext){
+    public PositionController(MyDbContext dbContext){
         _dbContext = dbContext;
     }
     
     public IActionResult Index(){
-        var tags = _dbContext.Tags!.ToList();
-        return View(tags);
+        var positions = _dbContext.Positions!.ToList();
+        return View(positions);
     }
     
     public IActionResult Add(int id = -1){
         if (id != -1){
-            var tag = _dbContext.Tags!.FirstOrDefault(a=>a.Id==id);
-            return View(tag);
+            var position = _dbContext.Positions!.FirstOrDefault(a=>a.Id==id);
+            return View(position);
         }else{
             return View();
         }
     }
     
     [HttpPost]
-    public IActionResult Add(Tag tag){
-        if(tag.Name == null){
+    public IActionResult Add(Position position){
+        if(position.Name == null){
             ViewBag.Error = "Pole name jest wymagane";
             return View();
         }
         
-        if (tag.Id != 0){
-            var a = _dbContext.Tags!.FirstOrDefault(a=>a.Id == tag.Id);
+        if (position.Id != 0){
+            var a = _dbContext.Positions!.FirstOrDefault(a=>a.Id == position.Id);
             if(a != null){
-                a.Name = tag.Name;
+                a.Name = position.Name;
             }
         }else{
-            _dbContext.Tags!.Add(tag);
+            _dbContext.Positions!.Add(position);
         }
         _dbContext.SaveChanges();
         return RedirectToAction("Index");

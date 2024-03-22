@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Position>;
+    
+<h1>Pozycje</h1>
+
+<a asp-controller="position" asp-action="add">Dodaj pozycję</a>
+
+<ul>
+    @foreach(AWWW_lab2_gr2.Models.Position item in Model){
+        <li>@item.Name</li>
+    }
+</ul>
