@@ -1,5 +1,36 @@
+body{
+    background-color: beige;
+}
 nav ul{
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+}
+
+.navbar-nav{
+    background-color: aquamarine;
+    height: 80px;
+    font-size: 40px;
+    text-decoration: none;
+    border: 2px solid black;
+}
+.navbar-nav a{
+    text-decoration: none;
+    color:black;
+}
+
+nav{
+    height: 100px;
+}
+
+h1{
+    font-size: 40px;
+    color: red;
+}
+label{
+    width: 100px;
+    float: left;
+    overflow: hidden;
 }
