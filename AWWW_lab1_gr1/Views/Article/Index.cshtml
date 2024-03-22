@@ -1,9 +1,9 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<h1>@ViewBag.Title</h1>
+@model AWWW_lab1_gr1.Models.Article
 
-    <ul>
-        <li> Pierniki </li>
-        <li> Chrupki </li>
-        <li> Bulki </li>
-        <li> Cukierki </li>
-    </ul>
+<h1>@Model.Title</h1>
+<p>
+  Data utworzenia: @Model.CreationDate.ToShortDateString()
+</p>
+<p>
+  @Model.Content
+</p>
