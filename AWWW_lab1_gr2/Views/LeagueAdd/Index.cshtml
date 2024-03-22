@@ -1,0 +1,14 @@
+
+@model AWWW_lab1_gr2.Models.League;
+
+<h1>@ViewBag.Title</h1>
+
+
+<form class="Form_Dodaj" asp-action="Add">
+    <label>Nazwa: <input asp-for="Name" type="text"></label>
+    <label>Państwo: <input asp-for="Country" type="text"></label>
+    <label>Poziom: <input asp-for="Level" type="number"></label>
+    <div class="Przycisk_Dodaj">
+        <input type="submit" value="Dodaj"/>
+    </div>
+</form>

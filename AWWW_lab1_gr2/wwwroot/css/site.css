@@ -41,3 +41,12 @@ h1{
     color: red;
     font-size: large;
 }
+
+
+/*Formularze*/
+.Form_Dodaj{
+    background-color: lightskyblue;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
