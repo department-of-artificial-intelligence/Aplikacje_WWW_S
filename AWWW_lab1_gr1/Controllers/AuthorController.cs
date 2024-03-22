@@ -3,16 +3,17 @@ using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-public class Author: Controller{
-DbContext bdContext;
+public class AuthorController: Controller{
+MyDbContext bdContext;
 
-public Author (DbContext bdContext){
+public AuthorController (MyDbContext bdContext){
    this.bdContext=bdContext;
 }
 
-public async Task<IActionResult> Index(){
-    return View(await dbContext.Authors.ToListAsync());
-}
+public async Task<IActionResult> Index()
+     {
+        return View(await bdContext.Authors.ToListAsync());
+     }
 
 public IActionResult Add(){
    return View();
@@ -21,13 +22,13 @@ public IActionResult Add(){
 [HttpPost]
 
 public async Task<IActionResult> Add(Author author){
-   if (ModelState.IsValid){
-      bdContext.Add(author);
-      await bdContext.SaveChangesAsyns();
-      return RedirectToAction("Index");
-
-   }
-   return Viev(author);
+   if(ModelState.IsValid)
+           {
+               bdContext.Add(author);
+               await bdContext.SaveChangesAsync();
+               return RedirectToAction("Index");
+           }
+   return View(author);
 }
 
 }

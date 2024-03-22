@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 public class EventTypeController: Controller
 {
-    DbContext bdContext;
+    MyDbContext bdContext;
 
-    public EventTypeController(DbContext bdContext)
+    public EventTypeController(MyDbContext bdContext)
     {
         this.bdContext = bdContext;
     }

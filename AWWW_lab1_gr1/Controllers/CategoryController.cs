@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 public class CategoryControler: Controller 
 {
-     DbContext bdContext;
+     MyDbContext bdContext;
 
-     public CategoryControler(DbContext bdContext)
+     public CategoryControler(MyDbContext bdContext)
      {
           this.bdContext = bdContext;
      }

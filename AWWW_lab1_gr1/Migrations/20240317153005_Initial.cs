@@ -12,7 +12,7 @@ namespace AWWW_lab1_gr1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Authorss",
+                name: "Authors",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace AWWW_lab1_gr1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authorss", x => x.Id);
+                    table.PrimaryKey("PK_Authors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,9 +112,9 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_Authorss_AuthorId",
+                        name: "FK_Articles_Authors_AuthorId",
                         column: x => x.AuthorId,
-                        principalTable: "Authorss",
+                        principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -408,7 +408,7 @@ namespace AWWW_lab1_gr1.Migrations
                 name: "MatchEvents");
 
             migrationBuilder.DropTable(
-                name: "Authorss");
+                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "Categories");

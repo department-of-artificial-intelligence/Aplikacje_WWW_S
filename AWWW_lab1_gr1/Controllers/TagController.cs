@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 public class TagController:Controller
 {
-    DbContext bdContext;
+    MyDbContext bdContext;
 
-    public TagController(DbContext bdContext)
+    public TagController(MyDbContext bdContext)
     {
         this.bdContext = bdContext;
     }
 
     public async Task<IActionResult> Index()
     {
-        return View(await dbcontext.Tags.ToListAsync());
+        return View(await bdContext.Tags.ToListAsync());
     }
 
     public IActionResult Add()

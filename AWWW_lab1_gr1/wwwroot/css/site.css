@@ -41,7 +41,7 @@ body{
 
 .cont
 {
-    background-color: black;
+    background-color: blue;
     border-radius: 3px;
     width: 500px;
 }
@@ -56,7 +56,7 @@ body{
     text-align: center;
     bottom: 0;
     width: 100%; 
-    background-color: black;
+    background-color: red;
     font-size: 25px;
     
 }

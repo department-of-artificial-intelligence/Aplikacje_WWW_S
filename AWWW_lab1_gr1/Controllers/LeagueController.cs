@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 public class LeagueController:Controller
 {
-    DbContext bdContext;
+    MyDbContext bdContext;
 
-    public LeagueController(DbContext bdContext)
+    public LeagueController(MyDbContext bdContext)
     {
-        this.bdcontext = bdContext;
+        this.bdContext = bdContext;
     }
 
     public async Task<IActionResult> Index()

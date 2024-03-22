@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 public class PositionController:Controller
 {
-    DbContext bdContext;
+    MyDbContext bdContext;
 
-    public PositionController(DbContext bdContext)
+    public PositionController(MyDbContext bdContext)
     {
-        this.bdcontext= bdContext;
+        this.bdContext= bdContext;
     }
 
     public async Task<IActionResult> Index()
     {
-        return View(await bdcontext.Positions.ToListAsync());
+        return View(await bdContext.Positions.ToListAsync());
     }
 
     public IActionResult Add()
