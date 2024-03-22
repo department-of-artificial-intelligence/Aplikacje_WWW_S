@@ -7,8 +7,9 @@ public class Team
   public string City { get; set; }
   public DateTime FoundingDate { get; set; }
 
-  public ICollection<League> League { get; set; }
-  public ICollection<MatchPlayer> MatchPlayers { get; set; }
-  public ICollection<Match> Matches { get; set; }
+  public League League { get; set; }
+  public ICollection<Match> HomeMatches { get; set; }
+  public ICollection<Match> AwayMatches { get; set; }
+  public ICollection<Player> Players { get; set; }
 
 }

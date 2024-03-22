@@ -6,5 +6,5 @@ public class MatchEvent
 
   public EventType EventType { get; set; }
   public Match Match { get; set; }
-  public MatchPlayer MatchPlayer { get; set; }
+  public MatchPlayer? MatchPlayer { get; set; }
 }

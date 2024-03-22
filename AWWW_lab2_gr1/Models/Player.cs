@@ -8,6 +8,6 @@ public class Player
   public DateTime BirthDate { get; set; }
 
   public Team Team { get; set; }
-  public Position Position { get; set; }
-  public ICollection<MatchPlayer> MatchPlayer { get; set; }
+  public ICollection<Position> Position { get; set; }
+  public ICollection<MatchPlayer> MatchPlayers { get; set; }
 }
