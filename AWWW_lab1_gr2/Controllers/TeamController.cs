@@ -18,6 +18,7 @@ public class TeamController: Controller {
     public IActionResult Form() {
         ViewBag.Title = "Dodawanie druzyny"; 
         var leagueList = _context.Leagues; 
+        ViewBag.Leagues = leagueList; 
         return View(); 
     }
 
