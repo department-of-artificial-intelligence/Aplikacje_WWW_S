@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using AWWW_lab2_gr2.Models;
+using AWWW_lab2_gr2;
 
 var builder = WebApplication.CreateBuilder(args);
 

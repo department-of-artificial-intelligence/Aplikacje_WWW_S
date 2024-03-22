@@ -12,7 +12,7 @@ namespace AWWW_lab2_gr2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Authors",
+                name: "Author",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +22,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
+                    table.PrimaryKey("PK_Author", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -35,11 +35,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventTypes",
+                name: "EventType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -48,11 +48,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventTypes", x => x.Id);
+                    table.PrimaryKey("PK_EventType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Leagues",
+                name: "League",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -63,11 +63,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Leagues", x => x.Id);
+                    table.PrimaryKey("PK_League", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Positions",
+                name: "Position",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -76,11 +76,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Positions", x => x.Id);
+                    table.PrimaryKey("PK_Position", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tags",
+                name: "Tag",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -89,11 +89,11 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tags", x => x.Id);
+                    table.PrimaryKey("PK_Tag", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teams",
+                name: "Team",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -106,17 +106,17 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teams", x => x.Id);
+                    table.PrimaryKey("PK_Team", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Teams_Leagues_LeagueId",
+                        name: "FK_Team_League_LeagueId",
                         column: x => x.LeagueId,
-                        principalTable: "Leagues",
+                        principalTable: "League",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Matches",
+                name: "Matche",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -128,21 +128,21 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Matches", x => x.Id);
+                    table.PrimaryKey("PK_Matche", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Matches_Teams_AwayTeamId",
+                        name: "FK_Matche_Team_AwayTeamId",
                         column: x => x.AwayTeamId,
-                        principalTable: "Teams",
+                        principalTable: "Team",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Matches_Teams_HomeTeamId",
+                        name: "FK_Matche_Team_HomeTeamId",
                         column: x => x.HomeTeamId,
-                        principalTable: "Teams",
+                        principalTable: "Team",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Players",
+                name: "Player",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -155,17 +155,17 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.Id);
+                    table.PrimaryKey("PK_Player", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Players_Teams_TeamId",
+                        name: "FK_Player_Team_TeamId",
                         column: x => x.TeamId,
-                        principalTable: "Teams",
+                        principalTable: "Team",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Articles",
+                name: "Article",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -179,28 +179,28 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Articles", x => x.Id);
+                    table.PrimaryKey("PK_Article", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_Authors_AuthorId",
+                        name: "FK_Article_Author_AuthorId",
                         column: x => x.AuthorId,
-                        principalTable: "Authors",
+                        principalTable: "Author",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Articles_Categories_CategoryId",
+                        name: "FK_Article_Category_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Articles_Matches_MatchId",
+                        name: "FK_Article_Matche_MatchId",
                         column: x => x.MatchId,
-                        principalTable: "Matches",
+                        principalTable: "Matche",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "MatchPlayers",
+                name: "MatchPlayer",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -213,23 +213,23 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MatchPlayers", x => x.Id);
+                    table.PrimaryKey("PK_MatchPlayer", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MatchPlayers_Matches_MatchId",
+                        name: "FK_MatchPlayer_Matche_MatchId",
                         column: x => x.MatchId,
-                        principalTable: "Matches",
+                        principalTable: "Matche",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchPlayers_Players_PlayerId",
+                        name: "FK_MatchPlayer_Player_PlayerId",
                         column: x => x.PlayerId,
-                        principalTable: "Players",
+                        principalTable: "Player",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchPlayers_Positions_PositionId",
+                        name: "FK_MatchPlayer_Position_PositionId",
                         column: x => x.PositionId,
-                        principalTable: "Positions",
+                        principalTable: "Position",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -245,15 +245,15 @@ namespace AWWW_lab2_gr2.Migrations
                 {
                     table.PrimaryKey("PK_PlayerPosition", x => new { x.PlayersId, x.PositionId });
                     table.ForeignKey(
-                        name: "FK_PlayerPosition_Players_PlayersId",
+                        name: "FK_PlayerPosition_Player_PlayersId",
                         column: x => x.PlayersId,
-                        principalTable: "Players",
+                        principalTable: "Player",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayerPosition_Positions_PositionId",
+                        name: "FK_PlayerPosition_Position_PositionId",
                         column: x => x.PositionId,
-                        principalTable: "Positions",
+                        principalTable: "Position",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -269,21 +269,21 @@ namespace AWWW_lab2_gr2.Migrations
                 {
                     table.PrimaryKey("PK_ArticleTag", x => new { x.ArticlesId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_ArticleTag_Articles_ArticlesId",
+                        name: "FK_ArticleTag_Article_ArticlesId",
                         column: x => x.ArticlesId,
-                        principalTable: "Articles",
+                        principalTable: "Article",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ArticleTag_Tags_TagsId",
+                        name: "FK_ArticleTag_Tag_TagsId",
                         column: x => x.TagsId,
-                        principalTable: "Tags",
+                        principalTable: "Tag",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "Comment",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -294,17 +294,17 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_Comment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Articles_ArticleId",
+                        name: "FK_Comment_Article_ArticleId",
                         column: x => x.ArticleId,
-                        principalTable: "Articles",
+                        principalTable: "Article",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MatchEvents",
+                name: "MatchEvent",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -316,39 +316,39 @@ namespace AWWW_lab2_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MatchEvents", x => x.Id);
+                    table.PrimaryKey("PK_MatchEvent", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MatchEvents_EventTypes_EventTypeId",
+                        name: "FK_MatchEvent_EventType_EventTypeId",
                         column: x => x.EventTypeId,
-                        principalTable: "EventTypes",
+                        principalTable: "EventType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchEvents_MatchPlayers_MatchPlayerId",
+                        name: "FK_MatchEvent_MatchPlayer_MatchPlayerId",
                         column: x => x.MatchPlayerId,
-                        principalTable: "MatchPlayers",
+                        principalTable: "MatchPlayer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchEvents_Matches_MatchId",
+                        name: "FK_MatchEvent_Matche_MatchId",
                         column: x => x.MatchId,
-                        principalTable: "Matches",
+                        principalTable: "Matche",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_AuthorId",
-                table: "Articles",
+                name: "IX_Article_AuthorId",
+                table: "Article",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_CategoryId",
-                table: "Articles",
+                name: "IX_Article_CategoryId",
+                table: "Article",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_MatchId",
-                table: "Articles",
+                name: "IX_Article_MatchId",
+                table: "Article",
                 column: "MatchId");
 
             migrationBuilder.CreateIndex(
@@ -357,49 +357,54 @@ namespace AWWW_lab2_gr2.Migrations
                 column: "TagsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_ArticleId",
-                table: "Comments",
+                name: "IX_Comment_ArticleId",
+                table: "Comment",
                 column: "ArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matches_AwayTeamId",
-                table: "Matches",
+                name: "IX_Matche_AwayTeamId",
+                table: "Matche",
                 column: "AwayTeamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matches_HomeTeamId",
-                table: "Matches",
+                name: "IX_Matche_HomeTeamId",
+                table: "Matche",
                 column: "HomeTeamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchEvents_EventTypeId",
-                table: "MatchEvents",
+                name: "IX_MatchEvent_EventTypeId",
+                table: "MatchEvent",
                 column: "EventTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchEvents_MatchId",
-                table: "MatchEvents",
+                name: "IX_MatchEvent_MatchId",
+                table: "MatchEvent",
                 column: "MatchId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchEvents_MatchPlayerId",
-                table: "MatchEvents",
+                name: "IX_MatchEvent_MatchPlayerId",
+                table: "MatchEvent",
                 column: "MatchPlayerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchPlayers_MatchId",
-                table: "MatchPlayers",
+                name: "IX_MatchPlayer_MatchId",
+                table: "MatchPlayer",
                 column: "MatchId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchPlayers_PlayerId",
-                table: "MatchPlayers",
+                name: "IX_MatchPlayer_PlayerId",
+                table: "MatchPlayer",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchPlayers_PositionId",
-                table: "MatchPlayers",
+                name: "IX_MatchPlayer_PositionId",
+                table: "MatchPlayer",
                 column: "PositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Player_TeamId",
+                table: "Player",
+                column: "TeamId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerPosition_PositionId",
@@ -407,13 +412,8 @@ namespace AWWW_lab2_gr2.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Players_TeamId",
-                table: "Players",
-                column: "TeamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Teams_LeagueId",
-                table: "Teams",
+                name: "IX_Team_LeagueId",
+                table: "Team",
                 column: "LeagueId");
         }
 
@@ -424,46 +424,46 @@ namespace AWWW_lab2_gr2.Migrations
                 name: "ArticleTag");
 
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "Comment");
 
             migrationBuilder.DropTable(
-                name: "MatchEvents");
+                name: "MatchEvent");
 
             migrationBuilder.DropTable(
                 name: "PlayerPosition");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "Tag");
 
             migrationBuilder.DropTable(
-                name: "Articles");
+                name: "Article");
 
             migrationBuilder.DropTable(
-                name: "EventTypes");
+                name: "EventType");
 
             migrationBuilder.DropTable(
-                name: "MatchPlayers");
+                name: "MatchPlayer");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "Author");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Category");
 
             migrationBuilder.DropTable(
-                name: "Matches");
+                name: "Matche");
 
             migrationBuilder.DropTable(
-                name: "Players");
+                name: "Player");
 
             migrationBuilder.DropTable(
-                name: "Positions");
+                name: "Position");
 
             migrationBuilder.DropTable(
-                name: "Teams");
+                name: "Team");
 
             migrationBuilder.DropTable(
-                name: "Leagues");
+                name: "League");
         }
     }
 }
