@@ -11,4 +11,7 @@ public class Team
     public League? League{get;set;}
     public ICollection<Player>? Players{get;set;}
 
+    public ICollection<Match>? HomeMatches {get;set;}
+    public ICollection<Match>? AwayMatches {get;set;}
+
 }

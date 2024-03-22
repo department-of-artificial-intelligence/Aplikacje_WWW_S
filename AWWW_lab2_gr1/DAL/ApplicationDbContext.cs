@@ -20,18 +20,13 @@ namespace DAL
         {
             base.OnConfiguring(optionsBuilder);
             //configuration commands            
-            optionsBuilder.UseLazyLoadingProxies(); //enable lazy loading proxies
+            //optionsBuilder.UseLazyLoadingProxies(); //enable lazy loading proxies
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(modelBuilder);
             // Fluent API commands
-           
-        }
-/*
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
         modelBuilder.Entity<Match>()
         .HasOne(m => m.HomeTeam)
         .WithMany(t => t.HomeMatches)
@@ -42,6 +37,12 @@ namespace DAL
         .WithMany(t => t.AwayMatches)
         .HasForeignKey(m => m.AwayTeamId)
         .OnDelete(DeleteBehavior.NoAction);
+           
+        }
+
+/*        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+  
         }*/
 
 
