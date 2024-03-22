@@ -1,0 +1,25 @@
+@model AWWW_lab1_gr2.Models.League
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="form form-league">
+            <form asp-action="Add" asp-controller="league">
+                @* <input type="text" name="authorId" id="id">
+                <input type="text" name="authorFirstName" id="firstName">
+                <input type="text" name="authorLastName" id="lastName"> *@
+                @* <label asp-for="LeagueId"></label>
+                <input asp-for="LeagueId"> *@
+                <label asp-for="Country"></label>
+                <input asp-for="Country">
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <label asp-for="Level"></label>
+                <input asp-for="Level">
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</div>

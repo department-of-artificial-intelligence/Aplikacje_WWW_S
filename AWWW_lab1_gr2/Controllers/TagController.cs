@@ -10,7 +10,13 @@ public class TagController: Controller {
     }
 
     public IActionResult Index() {
-        ViewBag.Title = "Dodawanie kategorii"; 
+        ViewBag.Title = "Tagi"; 
+        var tags = _context.Tags;
+        return View(tags); 
+    }
+
+    public IActionResult Form() {
+        ViewBag.Title = "Dodawanie tagu"; 
         return View(); 
     }
 

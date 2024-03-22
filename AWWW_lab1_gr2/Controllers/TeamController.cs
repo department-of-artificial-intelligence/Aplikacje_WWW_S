@@ -3,28 +3,29 @@ using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 using Microsoft.AspNetCore.Components.Web;
 
-public class PositionController: Controller {
+public class TeamController: Controller {
     private readonly DatabaseContext _context; 
-    public PositionController(DatabaseContext context){
+    public TeamController(DatabaseContext context){
         _context = context; 
     }
 
     public IActionResult Index() {
-        ViewBag.Title = "Pozycje"; 
-        var positions = _context.Positions;
-        return View(positions); 
+        ViewBag.Title = "Druzyny"; 
+        var teams = _context.Teams;
+        return View(teams); 
     }
 
     public IActionResult Form() {
-        ViewBag.Title = "Dodawanie pozycji"; 
+        ViewBag.Title = "Dodawanie druzyny"; 
+        var leagueList = _context.Leagues; 
         return View(); 
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public IActionResult Add(Position position) {
+    public IActionResult Add(Team team) {
         if(ModelState.IsValid){
 
-            _context.Positions.Add(position); 
+            _context.Teams.Add(team); 
             _context.SaveChanges(); 
             return RedirectToAction("Index"); 
         }

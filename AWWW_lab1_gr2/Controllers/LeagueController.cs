@@ -10,7 +10,13 @@ public class LeagueController: Controller {
     }
 
     public IActionResult Index() {
-        ViewBag.Title = "Dodawanie kategorii"; 
+        ViewBag.Title = "Ligi"; 
+        var leagues = _context.Leagues;
+        return View(leagues); 
+    }
+
+    public IActionResult Form() {
+        ViewBag.Title = "Dodawanie ligi"; 
         return View(); 
     }
 

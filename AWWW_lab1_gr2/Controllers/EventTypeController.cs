@@ -11,7 +11,13 @@ public class EventTypeController: Controller {
 
 
     public IActionResult Index() {
-        ViewBag.Title = "Dodawanie rodzaju wydarzenia"; 
+        ViewBag.Title = "Rodzaje wydarzen"; 
+        var eventTypes = _context.EventTypes;
+        return View(eventTypes); 
+    }
+
+    public IActionResult Form() {
+        ViewBag.Title = "Dodawanie rodzaju wydarzen"; 
         return View(); 
     }
 

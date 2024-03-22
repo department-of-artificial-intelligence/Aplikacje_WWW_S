@@ -1,23 +1,20 @@
-@model AWWW_lab1_gr2.Models.Author
+@model IEnumerable<AWWW_lab1_gr2.Models.Author>
+
 
 <div class="main">
     <div class="container">
         <div class="title">
             <h1>@ViewBag.Title</h1>
         </div>
-        <div class="form form-author">
-            <form asp-action="Add" asp-controller="Author">
-                @* <input type="text" name="authorId" id="id">
-                <input type="text" name="authorFirstName" id="firstName">
-                <input type="text" name="authorLastName" id="lastName"> *@
-                @* <label asp-for="AuthorId"></label>
-                <input asp-for="AuthorId"> *@
-                <label asp-for="FirstName"></label>
-                <input asp-for="FirstName">
-                <label asp-for="LastName"></label>
-                <input asp-for="LastName">
-                <input type="submit">
-            </form>
+        <div class="authors">
+            @foreach(var author in Model){
+                <li>
+                    <div asp-route-id="@author.AuthorId">@author.FirstName @author.LastName</div> 
+                </li>
+            }
+        </div>
+        <div class="addAuthor">
+            <a asp-action="form" asp-controller="author">Dodaj autora</a>
         </div>
     </div>
 </div>

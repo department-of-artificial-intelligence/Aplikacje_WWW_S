@@ -10,6 +10,12 @@ public class CategoryController: Controller {
     }
 
     public IActionResult Index() {
+        ViewBag.Title = "Kategorie"; 
+        var categories = _context.Categories;
+        return View(categories); 
+    }
+
+    public IActionResult Form() {
         ViewBag.Title = "Dodawanie kategorii"; 
         return View(); 
     }

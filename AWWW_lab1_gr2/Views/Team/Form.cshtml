@@ -1,0 +1,24 @@
+@model AWWW_lab1_gr2.Models.Team
+@inject AWWW_lab1_gr2.Models.League League
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="form form-team">
+            <form asp-action="Add" asp-controller="Team">
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <label asp-for="Country"></label>
+                <input asp-for="Country">
+                <label asp-for="City"></label>
+                <input asp-for="City">
+                <label asp-for="FoundingDate"></label>
+                <input asp-for="FoundingDate">
+                <select asp-for="@League.LeagueId"></select>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</div>

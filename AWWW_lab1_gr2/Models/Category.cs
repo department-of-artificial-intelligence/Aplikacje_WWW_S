@@ -12,7 +12,7 @@ namespace AWWW_lab1_gr2.Models
         public int CategoryId {get; set;}
         [DisplayName("Category Name")]
 
-        public string? Name {get; set;}
+        public string Name {get; set;} = null!; 
         public ICollection<Article>? Articles {get; set;}
     }
 }

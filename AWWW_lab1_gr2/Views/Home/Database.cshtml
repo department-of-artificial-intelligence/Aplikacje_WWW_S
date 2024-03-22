@@ -1,0 +1,24 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Author>
+ 
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+            <h2>Witamy na stronie bazy danych</h2>
+        </div>
+        <div class="Baza">
+            <p class="home-p home-matches">
+                <ul>
+                    <li><a asp-controller="author" asp-action="index">Autorzy</a> </li>
+                    <li><a asp-controller="category" asp-action="index">Kategorie</a> </li>
+                    <li><a asp-controller="tag" asp-action="index">Tagi</a> </li>
+                    <li><a asp-controller="league" asp-action="index">Ligi</a> </li>
+                    <li><a asp-controller="eventtype" asp-action="index">Rodzaje wydarzen</a> </li>
+                    <li><a asp-controller="position" asp-action="index">Pozycje</a> </li>
+                    <li><a asp-controller="team" asp-action="index">Druzyny</a></li>
+                </ul>
+            </p>
+        </div>
+
+    </div>
+</div>

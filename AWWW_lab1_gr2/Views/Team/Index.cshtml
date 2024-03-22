@@ -1,0 +1,22 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Team>
+
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="teams">
+            @foreach(var team in Model){
+                <li>
+                    <div asp-route-id="@team.TeamId">@team.Name 
+                        @team.Country @team.City @team.League @team.FoundingDate
+                    </div> 
+                </li>
+            }
+        </div>
+        <div class="addTeam">
+            <a asp-action="form" asp-controller="Team">Dodaj druzyne</a>
+        </div>
+    </div>
+</div>

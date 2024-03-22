@@ -9,7 +9,14 @@ public class AuthorController: Controller {
     public AuthorController(DatabaseContext context){
         _context = context; 
     }
+
     public IActionResult Index() {
+        ViewBag.Title = "Autorzy"; 
+        var authors = _context.Authors;
+        return View(authors); 
+    }
+
+    public IActionResult Form() {
         ViewBag.Title = "Dodawanie autora"; 
         return View(); 
     }
@@ -20,9 +27,10 @@ public class AuthorController: Controller {
 
             _context.Authors.Add(author); 
             _context.SaveChanges(); 
-            return RedirectToAction("Home"); 
+            return RedirectToAction("Index"); 
         }
-        return RedirectToAction("Index"); 
+        return RedirectToAction("Form"); 
     }
+
 
 }

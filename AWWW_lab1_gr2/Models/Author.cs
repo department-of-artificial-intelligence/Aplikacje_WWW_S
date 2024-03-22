@@ -12,9 +12,9 @@ namespace AWWW_lab1_gr2.Models
         public int AuthorId {get; set;}
 
         [DisplayName("First Name")]
-        public string? FirstName {get; set;}
+        public string FirstName {get; set;} = null!; 
         [DisplayName("Last Name")]
-        public string? LastName {get; set;}
+        public string LastName {get; set;} = null!; 
         public ICollection<Article>? Articles {get; set;}
 
 
