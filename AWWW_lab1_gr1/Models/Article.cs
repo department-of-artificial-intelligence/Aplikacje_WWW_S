@@ -18,6 +18,6 @@ public class Article
     // * - *
     public ICollection<Tag>? Tags { get; set; }
 
-    
+    public required ICollection<Match> Matches {get; set;}
 
 }

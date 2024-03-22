@@ -6,5 +6,7 @@ public class MatchEvent
     public Match Match { get; set; } = null!;
     public int EventTypeId { get; set; }
     public EventType EventType { get; set; } = null!;
+
+    
  
 }

@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using AWWW_lab1_gr1.Models;
 
 
 namespace AWWW_lab1_gr1 {
     public class MyDbContext : DbContext {
-        
+        public string DbPath { get; }
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
@@ -18,6 +20,7 @@ namespace AWWW_lab1_gr1 {
         public virtual DbSet<MatchPlayer> MatchPlayers { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Match>()
@@ -31,8 +34,16 @@ namespace AWWW_lab1_gr1 {
                 .HasForeignKey(m => m.AwayTeamId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
+
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        {
+
+        }
+
+        
     }
-    
+
+   
 
      
 

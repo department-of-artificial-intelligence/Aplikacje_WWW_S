@@ -10,5 +10,6 @@ public class AuthorController : Controller {
     public AuthorController (MyDbContext dbContext){
         this.DbContext = dbContext;
     } 
+    
 
 }

@@ -11,5 +11,5 @@ public class Player
     public Team Team { get; set; } = null!;
 
     public ICollection<MatchPlayer>? MatchPlayers { get; set; }
-
+    public required ICollection<Position> Positions { get; set; }
 }
