@@ -16,5 +16,22 @@ namespace AWWW_lab1_gr1.Controllers
             var league = _dbContext.Leagues!.ToList(); 
             return View(league);
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(League league)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Leagues.Add(league);
+                _dbContext.SaveChanges();
+                return View("Added", league);
+            }
+            return View("Error");
+        }
     }
 }

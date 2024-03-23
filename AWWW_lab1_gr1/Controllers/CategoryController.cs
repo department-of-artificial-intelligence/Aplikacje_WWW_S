@@ -16,5 +16,22 @@ namespace AWWW_lab1_gr1.Controllers
             var category = _dbContext.Categories!.ToList(); 
             return View(category);
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Categories.Add(category);
+                _dbContext.SaveChanges();
+                return View("Added", category);
+            }
+            return View("Error");
+        }
     }
 }

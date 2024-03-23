@@ -3,18 +3,18 @@ using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class PositionController : Controller
+    public class EventTypeController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public PositionController(MyDbContext dbContext)
+        public EventTypeController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public IActionResult Index()
         {
-            var position = _dbContext.Positions!.ToList(); 
-            return View(position);
+            var eventType = _dbContext.EventTypes!.ToList(); 
+            return View(eventType);
         }
 
         public IActionResult Add()
@@ -23,13 +23,13 @@ namespace AWWW_lab1_gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Position position)
+        public IActionResult Add(EventType eventType)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Positions.Add(position);
+                _dbContext.EventTypes.Add(eventType);
                 _dbContext.SaveChanges();
-                return View("Added", position);
+                return View("Added", eventType);
             }
             return View("Error");
         }
