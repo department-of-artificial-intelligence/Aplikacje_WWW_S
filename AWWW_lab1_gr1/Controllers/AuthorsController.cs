@@ -11,10 +11,14 @@ public class AuthorsController : Controller {
         this.dbContext = dbContext;
     }
     public async Task<IActionResult> Index() {
-         
+        try{var authors = await dbContext.Authors.ToListAsync();} 
+        catch(Exception ex){}
 
-        return View(await dbContext.Authors.ToListAsync());
+     
+        return View();
     }
+
+
 
     public IActionResult Add() {
         return View();
