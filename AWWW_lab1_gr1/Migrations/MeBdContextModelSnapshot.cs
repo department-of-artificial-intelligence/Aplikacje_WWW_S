@@ -24,11 +24,11 @@ namespace AWWW_lab1_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Article", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuthorsId")
                         .HasColumnType("int");
@@ -51,7 +51,7 @@ namespace AWWW_lab1_gr1.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("AuthorsId");
 
@@ -59,7 +59,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("MatchId");
 
-                    b.ToTable("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Author", b =>
@@ -80,7 +80,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Category", b =>
@@ -92,7 +92,6 @@ namespace AWWW_lab1_gr1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -108,7 +107,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ArticleID")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -119,7 +118,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticleID");
+                    b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -138,7 +137,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventType");
+                    b.ToTable("EventTypes");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.League", b =>
@@ -162,7 +161,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("League");
+                    b.ToTable("Leagues");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Match", b =>
@@ -173,8 +172,14 @@ namespace AWWW_lab1_gr1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AwayTeamId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("HomeTeamId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Stadium")
                         .IsRequired()
@@ -182,7 +187,11 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Match");
+                    b.HasIndex("AwayTeamId");
+
+                    b.HasIndex("HomeTeamId");
+
+                    b.ToTable("Matches");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.MatchEvent", b =>
@@ -213,7 +222,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("MatchPlayerId");
 
-                    b.ToTable("MatchEvent");
+                    b.ToTable("MatchEvents");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.MatchPlayer", b =>
@@ -247,7 +256,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("MatchPlayer");
+                    b.ToTable("MatchPlayers");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Player", b =>
@@ -280,7 +289,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Player");
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Position", b =>
@@ -297,7 +306,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Position");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Tag", b =>
@@ -314,7 +323,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Team", b =>
@@ -347,37 +356,22 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("LeagueId");
 
-                    b.ToTable("Team");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("ArticleTag", b =>
                 {
-                    b.Property<int>("ArticlesID")
+                    b.Property<int>("ArticlesId")
                         .HasColumnType("int");
 
                     b.Property<int>("TagsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ArticlesID", "TagsId");
+                    b.HasKey("ArticlesId", "TagsId");
 
                     b.HasIndex("TagsId");
 
                     b.ToTable("ArticleTag");
-                });
-
-            modelBuilder.Entity("MatchTeam", b =>
-                {
-                    b.Property<int>("MatchesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeamsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MatchesId", "TeamsId");
-
-                    b.HasIndex("TeamsId");
-
-                    b.ToTable("MatchTeam");
                 });
 
             modelBuilder.Entity("PlayerPosition", b =>
@@ -424,11 +418,30 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr1.Models.Article", "Article")
                         .WithMany("Comments")
-                        .HasForeignKey("ArticleID")
+                        .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("AWWW_lab1_gr1.Models.Match", b =>
+                {
+                    b.HasOne("AWWW_lab1_gr1.Models.Team", "AwayTeam")
+                        .WithMany("AwayMatches")
+                        .HasForeignKey("AwayTeamId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab1_gr1.Models.Team", "HomeTeam")
+                        .WithMany("HomeMatches")
+                        .HasForeignKey("HomeTeamId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("AwayTeam");
+
+                    b.Navigation("HomeTeam");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.MatchEvent", b =>
@@ -509,28 +522,13 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr1.Models.Article", null)
                         .WithMany()
-                        .HasForeignKey("ArticlesID")
+                        .HasForeignKey("ArticlesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab1_gr1.Models.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MatchTeam", b =>
-                {
-                    b.HasOne("AWWW_lab1_gr1.Models.Match", null)
-                        .WithMany()
-                        .HasForeignKey("MatchesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab1_gr1.Models.Team", null)
-                        .WithMany()
-                        .HasForeignKey("TeamsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -601,6 +599,10 @@ namespace AWWW_lab1_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Team", b =>
                 {
+                    b.Navigation("AwayMatches");
+
+                    b.Navigation("HomeMatches");
+
                     b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
