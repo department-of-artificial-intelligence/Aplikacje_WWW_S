@@ -1,3 +1,6 @@
+using System.Runtime.InteropServices;
+using AWWW_lab1_gr5;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();

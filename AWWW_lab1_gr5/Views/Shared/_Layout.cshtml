@@ -7,18 +7,18 @@
     <body>
         <header>
             <nav>
-
+                <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+            </ul>
             </nav>
         </header>
         <main>
             @RenderBody()
         </main>
         <footer>
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-            </ul>
+            copy 2024
         </footer>
     </body>
 </html>
