@@ -9,18 +9,17 @@ using Microsoft.Extensions.Logging;
 namespace AWWW_lab1_gr5.Controllers
 {
     [Route("[controller]")]
-    public class HomeController : Controller
+    public class AuthorController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<AuthorController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public AuthorController(ILogger<AuthorController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            ViewBag.Title="Home";
             return View();
         }
 
