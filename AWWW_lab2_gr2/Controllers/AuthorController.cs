@@ -13,7 +13,13 @@ namespace AWWW_lab2_gr2.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index()
+        {
+            var authors = _dbContext.Author.ToList();
+            return View(authors);            
+        }
+
+        public IActionResult Details(int id)
         {
             var author = _dbContext.Author.FirstOrDefault(a => a.Id == id);
             if (author != null)
@@ -24,6 +30,7 @@ namespace AWWW_lab2_gr2.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Add(Author author)
         {

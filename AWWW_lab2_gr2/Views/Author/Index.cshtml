@@ -1,11 +1,13 @@
-@model AWWW_lab2_gr2.Models.Author
+@model IEnumerable<AWWW_lab2_gr2.Models.Author>
 
-<h1>Autor</h1>
+<h1>Autors</h1>
 
 <div class="w3-card">
-
-    <div class="w3-container">
-        <p>@Model.FirstName</p>
-        <p>@Model.LastName</p>
-    </div>
+    @foreach (var author in Model)
+    {
+        <div class="w3-container">
+            <p>@author.FirstName</p>
+            <p>@author.LastName</p>
+        </div>
+    }
 </div>

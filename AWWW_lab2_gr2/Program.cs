@@ -3,10 +3,12 @@ using AWWW_lab2_gr2;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString));
+
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("MyConnection");
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
@@ -16,5 +18,4 @@ app.UseHttpsRedirection();
 app.MapDefaultControllerRoute();
 
 // app.MapGet("/", () => "Hello World!");
-
 app.Run();
