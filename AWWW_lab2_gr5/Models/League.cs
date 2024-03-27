@@ -7,7 +7,5 @@ namespace AWWW_lab1_gr5.Models
         public string Country { get; set; }
         public int Level { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
-
-
     }
 }
