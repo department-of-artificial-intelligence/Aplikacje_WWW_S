@@ -1,0 +1,23 @@
+﻿@model AS_l2.Models.Article
+
+<h1>Dodaj artykuł</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Title">Tytuł:</label>
+        <input asp-for="Title" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="Lead">Lead:</label>
+        <textarea asp-for="Lead" class="w3-input w3-border"></textarea>
+    </p>
+    <p>
+        <label asp-for="Content">Treść:</label>
+        <textarea asp-for="Content" class="w3-input w3-border"></textarea>
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
+
+

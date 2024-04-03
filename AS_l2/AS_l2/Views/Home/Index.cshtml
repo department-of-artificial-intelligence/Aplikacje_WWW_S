@@ -1,0 +1,31 @@
+﻿@model ICollection<AS_l2.Models.Article>
+
+<h1>@ViewBag.Title</h1>
+
+<p>Witamy na stronie głównej</p>
+
+@if (Model != null)
+{
+    foreach (var article in Model)
+    {
+        <p>
+            <div class="w3-card">
+                <header class="w3-container w3-blue">
+                    <h1>@article.Title</h1>
+                </header>
+
+                <div class="w3-container">
+                    <p>@article.Lead</p>
+                    <p><a asp-controller="article" asp-action="index" asp-route-id="@article.Id">Czytaj dalej</a></p>
+                </div>
+
+                <footer class="w3-container w3-blue">
+                    <h5>@article.CreationDate.ToShortDateString()</h5>
+                </footer>
+            </div>
+        </p>
+    }
+}
+
+
+
