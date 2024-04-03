@@ -19,7 +19,7 @@ dotnet restore
 
 ### update Entity Framework Tools to given version
 ```console
-dotnet tool update --global dotnet-ef --version 6.0.9
+dotnet tool update --global dotnet-ef --version 8.0.2
 ```
 
 ### create migration with name Initial
