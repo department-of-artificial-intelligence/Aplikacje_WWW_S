@@ -1,15 +1,18 @@
-@model AWWW_lab1_gr5.Models.Author
+@model AWWW_lab1_gr5.Author
 
-<h2>Create Author</h2>
+<h1>Dodaj authora</h1>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label for="FirstName">First Name:</label>
-        <input type="text" id="FirstName" name="FirstName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="LastName">Last Name:</label>
-        <input type="text" id="LastName" name="LastName" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="FirstName">Imie:</label>
+        <input asp-for="FirstName" class="w3-input w3-border"/>
+    </p>
+
+    <p>
+        <label asp-for="LastName">Nazwisko:</label>
+        <input asp-for="LastName" class="w3-input w3-border" />
+    </p>
+
+
+
 </form>

@@ -220,7 +220,7 @@ namespace AWWW_lab1_gr5.Migrations
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MatchPlayerId")
+                    b.Property<int?>("MatchPlayerId")
                         .HasColumnType("int");
 
                     b.Property<int>("Minute")
@@ -445,13 +445,13 @@ namespace AWWW_lab1_gr5.Migrations
                     b.HasOne("AWWW_lab1_gr5.Models.Team", "AwayTeam")
                         .WithMany("AwayMatches")
                         .HasForeignKey("AwayTeamId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab1_gr5.Models.Team", "HomeTeam")
                         .WithMany("HomeMatches")
                         .HasForeignKey("HomeTeamId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AwayTeam");
@@ -475,9 +475,7 @@ namespace AWWW_lab1_gr5.Migrations
 
                     b.HasOne("AWWW_lab1_gr5.Models.MatchPlayer", "MatchPlayer")
                         .WithMany("MatchEvents")
-                        .HasForeignKey("MatchPlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MatchPlayerId");
 
                     b.Navigation("EventType");
 

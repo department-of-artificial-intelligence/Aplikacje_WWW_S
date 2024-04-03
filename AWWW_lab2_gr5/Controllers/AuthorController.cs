@@ -1,10 +1,15 @@
+using AWWW_lab1_gr5.Models;
+using Microsoft.AspNetCore.Mvc;
+
+
+
 namespace AWWW_lab1_gr5.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly MyDbContext _context;
 
-        public AuthorController(ApplicationDbContext context)
+        public AuthorController(MyDbContext context)
         {
             _context = context;
         }
@@ -23,14 +28,9 @@ namespace AWWW_lab1_gr5.Controllers
         [HttpPost]
         public IActionResult Create(Author author)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(author);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(author);
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+            return View("Added", author);
         }
     }
 }
