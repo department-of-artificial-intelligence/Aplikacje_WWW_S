@@ -1,7 +1,8 @@
+using System.Data;
 namespace AWWW_lab1_gr5.Models;
 
-    public class Article
-    {
+public class Article
+{ 
     public required int Id {get;set;}
     public string Title { get; set; } = null!;
  
