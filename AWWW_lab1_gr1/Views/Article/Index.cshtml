@@ -1,9 +1,20 @@
 @model AWWW_lab1_gr1.Models.Article
 
-<h1>@Model.Title</h1>
-<p>
-    Data utworzenia: @Model.CreationDate.ToShortDateString()
-</p>
-<p>
-    @Model.Content
-</p>
+<h1>Article</h1>
+
+<div class="w3-card">
+    <header class="w3-container w3-blue">
+        <h1>@Model.Title</h1>
+    </header>
+
+    <div class="w3-container">
+        <p>@Model.Lead</p>
+        <p>@Model.Content</p>
+    </div>
+
+    <footer class="w3-container w3-blue">
+        <h5>@Model.CreationDate.ToShortDateString()</h5>
+    <footer>
+</div>
+
+
