@@ -49,9 +49,6 @@
     
 8) Jeśli aplikacja działa poprawnie proszę ją zamknąć przy pomocy kombinacji klawiszy `ctrl + c`.
 
-### Uruchomienie dokumentacji
-W trakcie trwania kolokwium mogą Państwo korzystać z dostarczonej dokumentacji Microsoft Learn. 
-[https://learn.microsoft.com](https://learn.microsoft.com)
 
 ### Proszę przejść do wykonywania zadań
 
