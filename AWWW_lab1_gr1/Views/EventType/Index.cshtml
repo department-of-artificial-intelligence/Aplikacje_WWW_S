@@ -1,0 +1,13 @@
+@model IEnumerable<EventType>
+ 
+<h2>EventTypes List</h2>
+<p><a asp-action="Create">Add EventType</a></p>
+<table class="table">
+     <tr><th>Name</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>

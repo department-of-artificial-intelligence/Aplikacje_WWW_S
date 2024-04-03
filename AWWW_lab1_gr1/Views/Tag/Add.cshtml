@@ -1,0 +1,13 @@
+@model Tag
+ 
+<h2>Add Tag</h2>
+<form asp-action="create" asp-controller="tags">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>
