@@ -9,7 +9,7 @@
         <div class="authors">
             @foreach(var league in Model){
                 <li>
-                    <div asp-route-id="@league.LeagueId">@league.Name @league.Country @league.Level</div> 
+                    <div asp-route-id="@league.LeagueId">@league.LeagueId @league.Name @league.Country @league.Level</div> 
                 </li>
             }
         </div>

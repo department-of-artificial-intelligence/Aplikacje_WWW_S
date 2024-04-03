@@ -31,7 +31,7 @@ namespace AWWW_lab1_gr2.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,7 @@ namespace AWWW_lab1_gr2.Migrations
                 {
                     TagId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,7 +119,7 @@ namespace AWWW_lab1_gr2.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FoundingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LeagueId = table.Column<int>(type: "int", nullable: true)
+                    LeagueId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -128,7 +128,8 @@ namespace AWWW_lab1_gr2.Migrations
                         name: "FK_Teams_Leagues_LeagueId",
                         column: x => x.LeagueId,
                         principalTable: "Leagues",
-                        principalColumn: "LeagueId");
+                        principalColumn: "LeagueId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

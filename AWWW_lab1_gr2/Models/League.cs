@@ -12,5 +12,6 @@ namespace AWWW_lab1_gr2.Models
         public string Country {get; set;} = null!; 
         public int Level {get; set;}
         public ICollection<Team>? Teams {get; set;}
+
     }
 }

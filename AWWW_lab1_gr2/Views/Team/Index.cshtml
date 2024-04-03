@@ -5,16 +5,24 @@
     <div class="container">
         <div class="title">
             <h1>@ViewBag.Title</h1>
+            @* @if (ViewBag.Success == null){
+                <script>
+                    alert("Druzyna nie zostala dodana"); 
+                </script>
+            } *@
         </div>
         <div class="teams">
             @foreach(var team in Model){
                 <li>
                     <div asp-route-id="@team.TeamId">@team.Name 
-                        @team.Country @team.City @team.League @team.FoundingDate
+                        @team.Country @team.City @team.LeagueId @team.FoundingDate
                     </div> 
                 </li>
             }
         </div>
+
+
+
         <div class="addTeam">
             <a asp-action="form" asp-controller="Team">Dodaj druzyne</a>
         </div>

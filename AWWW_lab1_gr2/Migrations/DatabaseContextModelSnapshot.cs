@@ -88,6 +88,7 @@ namespace AWWW_lab1_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryId");
@@ -331,6 +332,7 @@ namespace AWWW_lab1_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagId"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TagId");
@@ -357,7 +359,7 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Property<DateTime>("FoundingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LeagueId")
+                    b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -503,7 +505,9 @@ namespace AWWW_lab1_gr2.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr2.Models.League", null)
                         .WithMany("Teams")
-                        .HasForeignKey("LeagueId");
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ArticleTag", b =>
