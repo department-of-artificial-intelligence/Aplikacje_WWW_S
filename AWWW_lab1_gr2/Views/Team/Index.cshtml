@@ -5,11 +5,11 @@
     <div class="container">
         <div class="title">
             <h1>@ViewBag.Title</h1>
-            @* @if (ViewBag.Success == null){
+            @if (ViewBag.Success == false){
                 <script>
                     alert("Druzyna nie zostala dodana"); 
                 </script>
-            } *@
+            }
         </div>
         <div class="teams">
             @foreach(var team in Model){

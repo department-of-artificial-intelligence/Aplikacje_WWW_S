@@ -4,6 +4,11 @@
     <div class="container">
         <div class="title">
             <h1>@ViewBag.Title</h1>
+            @if (ViewBag.Success == false){
+                <script>
+                    alert("Druzyna nie zostala dodana"); 
+                </script>
+            }
         </div>
 
 
@@ -18,7 +23,7 @@
                 <input asp-for="City">
                 <label asp-for="FoundingDate"></label>
                 <input asp-for="FoundingDate">
-                <input type="hidden" asp-for="LeagueId" />
+                @* <input type="hidden" asp-for="LeagueId" /> *@
                 <label asp-for="LeagueId"></label>
                 <select asp-for="LeagueId" asp-items="@ViewBag.Leagues"></select>
                 <input type="submit">

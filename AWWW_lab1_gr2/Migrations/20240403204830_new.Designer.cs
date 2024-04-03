@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr2.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240403141646_new")]
+    [Migration("20240403204830_new")]
     partial class @new
     {
         /// <inheritdoc />
@@ -506,11 +506,13 @@ namespace AWWW_lab1_gr2.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Team", b =>
                 {
-                    b.HasOne("AWWW_lab1_gr2.Models.League", null)
+                    b.HasOne("AWWW_lab1_gr2.Models.League", "League")
                         .WithMany("Teams")
                         .HasForeignKey("LeagueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("League");
                 });
 
             modelBuilder.Entity("ArticleTag", b =>

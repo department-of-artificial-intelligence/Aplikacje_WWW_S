@@ -44,6 +44,11 @@ public class DatabaseContext: DbContext {
         .HasForeignKey(m => m.AwayTeamId)
         .OnDelete(DeleteBehavior.NoAction);
 
+        modelBuilder.Entity<Team>()
+            .HasOne(t => t.League)
+            .WithMany(l => l.Teams)
+            .HasForeignKey(t => t.LeagueId); 
+
 
         modelBuilder.Entity<Article>(entity => {
             entity.ToTable("Articles"); 
