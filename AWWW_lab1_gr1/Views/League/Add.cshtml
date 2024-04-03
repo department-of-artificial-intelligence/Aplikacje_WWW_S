@@ -1,0 +1,17 @@
+﻿@model AWWW_lab1_gr1.Models.League
+
+<form method="post">
+    <p>
+        <label asp-for="Name">Name: </label>
+        <input asp-for="Name" type="text"/>
+    </p>
+    <p>
+        <label asp-for="Country">Country: </label>
+        <input asp-for="Country" type="text" />
+    </p>
+    <p>
+        <label asp-for="Level">Level: </label>
+        <input asp-for="Level" type="number" />
+    </p>
+    <button type="submit">Dodaj</button>
+</form>

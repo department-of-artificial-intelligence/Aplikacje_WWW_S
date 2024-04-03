@@ -1,0 +1,13 @@
+﻿@model ICollection<AWWW_lab1_gr1.Models.Position>
+
+<p><a asp-action="Add" asp-controller="Position">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach (var pos in Model)
+    {
+        <div class="Position">
+            <p><a asp-action="Details" asp-controller="Position" asp-route-id="@pos.Id">@pos.Id, @pos.Name</a></p>
+        </div>
+    }
+}

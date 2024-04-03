@@ -1,0 +1,24 @@
+﻿@model AWWW_lab1_gr1.Models.Position
+
+<h2>Id: @Model.Id</h2>
+<h2>Name: @Model.Name</h2>
+<hr />
+<h2>Match Players:</h2>
+
+@if(Model.MatchPlayers != null)
+{
+    @foreach(var Matchplayer in Model.MatchPlayers)
+    {
+        <p><a asp-action="Details" asp-controller="MatchPlayer" asp-route-id="@Matchplayer.Id">@Matchplayer.Id</a></p>
+    }
+}
+
+<hr />
+<h2>Players: </h2>
+@if(Model.Players != null)
+{
+    @foreach(var player in Model.Players)
+    {
+        <p><a asp-action="Details" asp-controller="Player" asp-route-id="@player/Id">@player.FirstName, @player.LastName</a></p>
+    }
+}

@@ -1,0 +1,13 @@
+﻿@model AWWW_lab1_gr1.Models.EventType
+
+<h2>Id: @Model.Id</h2>
+<h2>Name: @Model.Name</h2>
+<hr />
+
+@if(Model.MatchEvents != null)
+{
+    @foreach(var matev in Model.MatchEvents)
+    {
+        <p><a asp-action="Details" asp-controller="MatchEvent" asp-route-id="@matev.Id">@matev.Id</a></p>
+    }
+}

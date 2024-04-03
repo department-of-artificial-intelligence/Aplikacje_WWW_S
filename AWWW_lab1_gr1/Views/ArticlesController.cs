@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 
-namespace AWWW_lab1_gr1.Controllers
+namespace AWWW_lab1_gr1.Views
 {
     public class ArticlesController : Controller
     {
@@ -60,7 +60,7 @@ namespace AWWW_lab1_gr1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-   
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Lead,Content,CreationDate,AuthorId,CategoryId,MatchId")] Article article)
         {
             if (ModelState.IsValid)
@@ -98,6 +98,7 @@ namespace AWWW_lab1_gr1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Lead,Content,CreationDate,AuthorId,CategoryId,MatchId")] Article article)
         {
             if (id != article.Id)
@@ -154,6 +155,7 @@ namespace AWWW_lab1_gr1.Controllers
 
         // POST: Articles/Delete/5
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var article = await _context.Articles.FindAsync(id);

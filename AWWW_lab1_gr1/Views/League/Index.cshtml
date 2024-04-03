@@ -1,0 +1,13 @@
+﻿@model ICollection<AWWW_lab1_gr1.Models.League>
+
+<p><a asp-action="Add" asp-controller="League">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach (var lea in Model)
+    {
+        <div class="League">
+            <p><a asp-action="Details" asp-controller="League" asp-route-id="@lea.Id">@lea.Id, @lea.Name</a></p>
+        </div>
+    }
+}

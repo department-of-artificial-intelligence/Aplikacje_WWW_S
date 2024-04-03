@@ -5,27 +5,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class AuthorController : Controller
+    public class CategoryController : Controller
     {
         private readonly MyDBContext _dbContext;
 
-        public AuthorController(MyDBContext dbContext)
+        public CategoryController(MyDBContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            List<Author> authors = _dbContext.Authors!.ToList();
-            return View(authors);
+            List<Category> categories = _dbContext.Categories!.ToList();
+            return View(categories);
         }
 
         public IActionResult Details(int id) 
         {
-            Author? author = _dbContext.Authors
-                            .Include(a => a.Articles)
-                            .FirstOrDefault(x => x.Id == id);
-            return View(author);
+            Category? category = _dbContext.Categories
+                .Include(a => a.Articles)
+                .FirstOrDefault(a => a.Id == id);
+            return View(category);
         }
 
         public IActionResult Add()
@@ -34,12 +34,11 @@ namespace AWWW_lab1_gr1.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Add(Author author)
+        public IActionResult Add(Category category)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Authors!.Add(author);
+                _dbContext.Categories.Add(category);
                 _dbContext.SaveChanges();
             }
             return RedirectToAction("Index");

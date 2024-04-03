@@ -1,13 +1,14 @@
 ﻿@model AWWW_lab1_gr1.Models.Article
 
-<h1 class="model-title">@Model.Title</h1>
+<h1>@Model.Title</h1>
 
-<h2 class="article-title">Artykuł</h2>
+<h2>Artykuł</h2>
 
-<p class="creation-date">
+<p>
     Data utworzenia: @Model.CreationDate.ToShortDateString()
 </p>
 
 <p class="article-content">
     @Model.Content
 </p>
+<p>Autor: <a asp-controller="Author" asp-action="Details" asp-route-id="@Model.Author.Id">@Model.Author.FirstName @Model.Author.LastName</a></p>

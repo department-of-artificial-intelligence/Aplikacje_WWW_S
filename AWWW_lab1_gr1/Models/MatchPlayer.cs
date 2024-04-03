@@ -8,6 +8,6 @@
         public Match Match { get; set; } = null!;
         public Position Position { get; set; } = null!;
         public Player Player { get; set; } = null!;
-        public List<MatchEvent> MatchEvents { get; set; } = null!;
+        public List<MatchEvent>? MatchEvents { get; set; }
     }
 }

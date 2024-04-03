@@ -8,7 +8,7 @@
 {
     @foreach (var article in Model.Articles)
     {
-        <h2><a asp-action="Details" asp-controller="Article" asp-route-id="@article.Id"></a></h2>
+        <h2><a asp-action="Details" asp-controller="Article" asp-route-id="@article.Id">@article.Title</a></h2>
     }
 }
 

@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public List<MatchPlayer> MatchPlayers { get; set; } = null!;
-        public List<Player> Players { get; set; } = null!;
+        public List<MatchPlayer>? MatchPlayers { get; set; }
+        public List<Player>? Players { get; set; }
     }
 }

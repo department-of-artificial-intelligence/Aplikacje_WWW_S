@@ -1,10 +1,11 @@
 @model ICollection<AWWW_lab1_gr1.Models.Author>
 
+<p><a asp-action="Add" asp-controller="Author">Dodaj</a></p>
+
 @if (Model != null)
 {
     @foreach(var aut in Model) 
     {
-        <h3><a asp-action="details" asp-controller="author" asp-route-id="@aut.Id">@aut.Id, @(aut.FirstName + " " + aut.LastName)</a></h3>
+        <h3><a asp-action="Details" asp-controller="Author" asp-route-id="@aut.Id">@aut.Id, @(aut.FirstName + " " + aut.LastName)</a></h3>
     }
-
 }

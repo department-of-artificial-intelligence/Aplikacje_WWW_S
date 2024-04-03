@@ -1,5 +1,3 @@
-using AWWW_lab1_gr1.Models;
-
 namespace AWWW_lab1_gr1.Models
 {
     public class Article
@@ -13,8 +11,8 @@ namespace AWWW_lab1_gr1.Models
         public int AuthorId { get; set; }
         public Category Category { get; set; } = null!;
         public int CategoryId { get; set; }
-        public List<Tag> Tags { get; set; } = null!;
-        public List<Comment> Comments { get; set; } = null!;
+        public List<Tag>? Tags { get; set; }
+        public List<Comment>? Comments { get; set; }
         public Match? Match { get; set; }
         public int MatchId {  get; set; }
     }

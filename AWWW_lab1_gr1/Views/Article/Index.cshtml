@@ -1,5 +1,7 @@
 @model ICollection<AWWW_lab1_gr1.Models.Article>
 
+<p><a asp-action="Add" asp-controller="Article">Dodaj</a></p>
+
 @if (Model != null)
 {
     @foreach (var art in Model)
@@ -7,8 +9,7 @@
         <div class="Article">
             <h2>@art.Title</h2>
             <h3>@art.Lead</h3>
-            <p><a asp-action="details" asp-asp-controller="Article" asp-route-itemid="@art.Id">Czytaj dalej</a></p>
+            <p><a asp-action="Details" asp-controller="Article" asp-route-id="@art.Id">Czytaj dalej</a></p>
         </div>
     }
-
 }

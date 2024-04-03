@@ -1,0 +1,13 @@
+﻿@model ICollection<AWWW_lab1_gr1.Models.EventType>
+
+<p><a asp-action="Add" asp-controller="EventType">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach (var evt in Model)
+    {
+        <div class="EventType">
+            <p><a asp-action="Details" asp-controller="EventType" asp-route-id="@evt.Id">@evt.Id, @evt.Name</a></p>
+        </div>
+    }
+}

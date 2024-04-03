@@ -4,6 +4,7 @@ using AWWW_lab1_gr1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr1.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    partial class MyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240330200118_m2")]
+    partial class m2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -527,7 +530,7 @@ namespace AWWW_lab1_gr1.Migrations
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Team", b =>
                 {
                     b.HasOne("AWWW_lab1_gr1.Models.League", "League")
-                        .WithMany("Teams")
+                        .WithMany("Team")
                         .HasForeignKey("LeagueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -587,7 +590,7 @@ namespace AWWW_lab1_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.League", b =>
                 {
-                    b.Navigation("Teams");
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Match", b =>

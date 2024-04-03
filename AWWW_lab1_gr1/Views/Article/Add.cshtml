@@ -2,21 +2,33 @@
 
 <h1>Dodaj artykuł</h1>
 
-<form asp-action="Add" method="get" class="w3-container">
+<form asp-action="Add" method="post">
     <p>
         <label asp-for="Title">Tytuł:</label>
-        <input asp-for="Title" class="w3-input w3-border" />
+        <input asp-for="Title"/>
     </p>
     <p>
         <label asp-for="Lead">Lead:</label>
-        <textarea asp-for="Lead" class="w3-input w3-border"></textarea>
+        <textarea asp-for="Lead"></textarea>
     </p>
     <p>
         <label asp-for="Content">Treść:</label>
-        <textarea asp-for="Content" class="w3-input w3-border"></textarea>
+        <textarea asp-for="Content"></textarea>
     </p>
     <p>
-        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+        <label asp-for="AuthorId">Autor:</label>
+        <select asp-for="AuthorId" asp-items="ViewBag.AuthorId"></select>
+    </p>
+    <p>
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" asp-items="ViewBag.CategoryId"></select>
+    </p>
+    <p>
+        <label asp-for="MatchId"></label>
+        <select asp-for="MatchId" asp-items="ViewBag.MatchId"></select>
+    </p>
+    <p>
+        <button type="submit">Dodaj</button>
     </p>
 </form>
 

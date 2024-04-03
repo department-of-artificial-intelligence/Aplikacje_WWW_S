@@ -1,0 +1,15 @@
+﻿@model AWWW_lab1_gr1.Models.League
+
+<h2>Id: @Model.Id</h2>
+<h2>Name: @Model.Name</h2>
+<h2>Country: @Model.Country</h2>
+<h2>Level: @Model.Level</h2>
+<hr />
+
+@if(Model.Teams != null)
+{
+    @foreach(var team in Model.Teams)
+    {
+        <p><a asp-action="Details" asp-controller="Team" asp-route-id="@team.Id">@team.Id, @team.Name</a></p>
+    }
+}

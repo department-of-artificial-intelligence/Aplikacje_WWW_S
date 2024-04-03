@@ -1,0 +1,13 @@
+﻿@model ICollection<AWWW_lab1_gr1.Models.Category>
+
+<p><a asp-action="Add" asp-controller="Category">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach (var cat in Model)
+    {
+        <div class="Category">
+            <p><a asp-action="Details" asp-controller="Category" asp-route-id="@cat.Id">@cat.Id, @cat.Name</a></p>
+        </div>
+    }
+}
