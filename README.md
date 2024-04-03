@@ -34,8 +34,8 @@
     ```
 6) Proszę upewnić się że narzędzia `dotnet-ef tool update` oraz `dotnet-aspnet-codegenerator` są poprawnie zainstalowane, w tym celu proszę wykonać poniższe polecenia.    
     ```
-    dotnet tool update --global dotnet-ef --version 6.0.10
-    dotnet tool update -g dotnet-aspnet-codegenerator --version 6.0.10
+    dotnet tool update --global dotnet-ef --version 8.0.2
+    dotnet tool update -g dotnet-aspnet-codegenerator --version 8.0.2
     ```
     
 7) W celu weryfikacji poprawności działania aplikacji proszę ją uruchomić.
@@ -75,7 +75,7 @@ W trakcie trwania kolokwium mogą Państwo korzystać z dostarczonej dokumentacj
     tar caf Rozwiazanie_Kolokwium.zip --exclude=./Rozwiazanie_Kolokwium.zip Kolokwium 
     ```
     
-3)  Proszę przejść pod adres [Archiver](http://ik2a.kik.pcz.czest.pl/archiver/TestArchive/Index)
+3)  Proszę przejść pod adres [Archiver](https://ik2a.kik.pcz.pl/archiver/TestArchive/Index)
 4)  Następnie proszę wybrać Państwa test i kilknąć przycisk `Link`.
 
     ![Alt text](Img/ArchiverUpload1.png?raw=true)
