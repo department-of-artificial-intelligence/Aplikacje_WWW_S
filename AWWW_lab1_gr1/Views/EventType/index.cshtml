@@ -1,0 +1,15 @@
+@using AWWW_lab1_gr1.Models
+@model IEnumerable<EventType>
+ 
+
+ <h1>EventType List</h1>
+ <p><a asp-action="Add">Add EventType</a></p>
+ <table class="table">
+<tr><th>Name</th></tr>
+@foreach(var item in Model)
+{
+    <tr>
+        <td> @item.Name</td>
+    </tr>
+}
+ </table>   

@@ -1,0 +1,14 @@
+@using AWWW_lab1_gr1.Models
+@model Category
+ 
+<h2>Add category</h2>
+<form asp-action="create" asp-controller="categories">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>

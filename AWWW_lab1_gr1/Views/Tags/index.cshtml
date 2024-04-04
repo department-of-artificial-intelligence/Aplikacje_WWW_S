@@ -1,0 +1,17 @@
+@using AWWW_lab1_gr1.Models
+@model IEnumerable<Tag>
+
+
+ <h1>Tag List</h1>
+
+<p ><a asp-action="Add">Add Tag</a></p>
+<table class="table">
+    <tr><th>Name</th></tr>
+    @foreach(var item in Model)
+    {
+       <tr>
+           <td>@item.Name</td>
+       </tr>
+    }
+
+</table>

@@ -1,0 +1,17 @@
+@using AWWW_lab1_gr1.Models
+@model IEnumerable<Position>
+   
+
+ <h1>Position List</h1>
+
+<p ><a asp-action="Add">Add Position</a></p>
+<table class="table">
+    <tr><th>Name</th></tr>
+    @foreach(var item in Model)
+    {
+       <tr>
+           <td>@item.Name</td>
+       </tr>
+    }
+
+</table>

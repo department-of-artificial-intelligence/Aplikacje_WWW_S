@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr1.Models;
+using Microsoft.EntityFrameworkCore;
 
 
  public class StudentController:Controller{
