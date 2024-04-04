@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWW_lab2v1_gr2.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240322104007_InitialMigration")]
+    [Migration("20240404211728_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -113,7 +113,6 @@ namespace AWW_lab2v1_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -185,7 +184,6 @@ namespace AWW_lab2v1_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Stadium")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -274,15 +272,12 @@ namespace AWW_lab2v1_gr2.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TeamId")
@@ -304,7 +299,6 @@ namespace AWW_lab2v1_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -321,7 +315,6 @@ namespace AWW_lab2v1_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -338,11 +331,9 @@ namespace AWW_lab2v1_gr2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FoundingDate")
@@ -352,7 +343,6 @@ namespace AWW_lab2v1_gr2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
