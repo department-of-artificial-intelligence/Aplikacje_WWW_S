@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
     public IActionResult Index(int id=1)
     {
         var articles = new List<Article>
-        {/*
+        {
             new Article{
             ID = 1,
             Title = "Artykul 1",
@@ -43,7 +43,7 @@ using Microsoft.EntityFrameworkCore;
             Tags = new List<Tag>(){}
             }
         
-  */
+  
         };
         return View(articles[id-1]);
     }

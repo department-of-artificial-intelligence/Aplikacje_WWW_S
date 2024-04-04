@@ -1,5 +1,8 @@
 using AWWW_lab1_gr1.Models;
+using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 namespace AWWW_lab1_gr1;
 public class MyDbContext : DbContext
 {
@@ -34,6 +37,7 @@ public class MyDbContext : DbContext
      .WithMany(t => t.HomeMatches)
      .HasForeignKey(m => m.HomeTeamId)
      .OnDelete(DeleteBehavior.NoAction);
+
       modelBuilder.Entity<Match>()
       .HasOne(m => m.AwayTeam)
      .WithMany(t => t.AwayMatches)
