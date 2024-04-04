@@ -1,0 +1,8 @@
+@model AWWW_lab2_gr2.Models.League;
+
+<form asp-controller="league" asp-action="add" method="POST">
+    Nazwa: <input type="text" asp-for="Name"><br>
+    Kraj: <input type="text" asp-for="Country"><br>
+    Poziom: <input type="number" asp-for="Level"><br>
+    <input type="submit" value="Wyślij">
+</form>

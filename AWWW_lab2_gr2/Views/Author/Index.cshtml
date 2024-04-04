@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab2_gr2.Models.Author>
+
+<a asp-controller="author" asp-action="add">Dodaj Autora</a>
+<br>
+
+Lista Autorów:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.Author element in Model){
+        <li>@element.FirstName @element.LastName </li>
+    }
+</ol>
+

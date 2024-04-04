@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab2_gr2.Models.EventType>
+
+<a asp-controller="eventType" asp-action="add">Dodaj typ wydarzeń</a>
+<br><br>
+
+Lista typów wydarzeń:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.EventType element in Model){
+        <li>@element.Name</li>
+    }
+</ol>
+

@@ -1,0 +1,8 @@
+@model AWWW_lab2_gr2.Models.Author;
+
+<form asp-controller="author" asp-action="add" method="POST">
+    Imię: <input type="text" asp-for="FirstName"><br>
+    Nazwisko: <input type="text" asp-for="LastName"><br>
+
+    <input type="submit" value="Wyślij">
+</form>

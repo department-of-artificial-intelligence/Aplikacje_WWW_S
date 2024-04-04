@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab2_gr2.Models.Position>
+
+<a asp-controller="position" asp-action="add">Dodaj pozycję</a>
+<br><br>
+
+Lista pozycji:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.Position element in Model){
+        <li>@element.Name</li>
+    }
+</ol>
+

@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab2_gr2.Models.Tag>
+
+<a asp-controller="tag" asp-action="add">Dodaj Tag</a>
+<br><br>
+
+Lista Tagów:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.Tag element in Model){
+        <li>@element.Name</li>
+    }
+</ol>
+

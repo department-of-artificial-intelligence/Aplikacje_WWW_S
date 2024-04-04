@@ -1,0 +1,12 @@
+@model ICollection<AWWW_lab2_gr2.Models.Category>
+
+<a asp-controller="category" asp-action="add">Dodaj Kategorię</a>
+<br><br>
+
+Lista Kategorii:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.Category element in Model){
+        <li>@element.Name</li>
+    }
+</ol>
+

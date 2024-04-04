@@ -14,8 +14,7 @@ namespace AWWW_lab2_gr2.Models
         public DateTime BirthDate {get;set;}
 
         public virtual Team team {get; set;} = null!;
-        public virtual ICollection<Position> position {get;set;} = null!; //= null!
-        //do zrobienia
+        public virtual ICollection<Position> position {get;set;} = null!;
         public virtual ICollection<MatchPlayer>? matchPlayers {get;set;}
  
     }
