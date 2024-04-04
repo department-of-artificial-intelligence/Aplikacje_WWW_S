@@ -1,16 +1,14 @@
-@model AWWW_lab1_gr1.Models.Tag
+@model ICollection<AWWW_lab1_gr1.Models.Tag>
 
-<h1>Tag</h1>
+<p><a asp-action="Add" asp-controller="Tag">Dodaj</a></p>
 
-<div class="w3-card">
-    <header class="w3-container w3-blue">
-        
-    </header>
+@if (Model != null)
+{
+    @foreach(var tag in Model) 
+    {
+        <h3><a asp-action="Index" asp-controller="Tag" asp-route-id="@tag.Id">@tag.Id, @(tag.Name)</a></h3>
+    }
+}
 
-    <div class="w3-container">
-        <p>@Model.Name</p>
-    </div>
-    
-</div>
 
 

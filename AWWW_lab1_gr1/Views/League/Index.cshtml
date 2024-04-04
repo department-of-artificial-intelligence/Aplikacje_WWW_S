@@ -1,18 +1,14 @@
-@model AWWW_lab1_gr1.Models.League
+@model ICollection<AWWW_lab1_gr1.Models.League>
 
-<h1>League</h1>
+<p><a asp-action="Add" asp-controller="League">Dodaj</a></p>
 
-<div class="w3-card">
-    <header class="w3-container w3-blue">
-        
-    </header>
+@if (Model != null)
+{
+    @foreach(var le in Model) 
+    {
+        <h3><a asp-action="Index" asp-controller="League" asp-route-id="@le.Id">@le.Id, @(le.Name + ", " + le.Country + ", " + le.Level)</a></h3>
+    }
+}
 
-    <div class="w3-container">
-        <p>@Model.Name</p>
-        <p>@Model.Country</p>
-        <p>@Model.Level</p>
-    </div>
-    
-</div>
 
 

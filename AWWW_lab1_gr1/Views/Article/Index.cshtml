@@ -1,20 +1,17 @@
-@model AWWW_lab1_gr1.Models.Article
+@model ICollection<AWWW_lab1_gr1.Models.Article>
 
-<h1>Article</h1>
+<p><a asp-action="Index" asp-controller="Article">Dodaj</a></p>
 
-<div class="w3-card">
-    <header class="w3-container w3-blue">
-        <h1>@Model.Title</h1>
-    </header>
+@if (Model != null)
+{
+    @foreach(var art in Model) 
+    {
+        <h3><a asp-action="Index" asp-controller="Article" asp-route-id="@art.Id">@art.Id, @(art.Title)</a></h3>
+    }
+}
 
-    <div class="w3-container">
-        <p>@Model.Lead</p>
-        <p>@Model.Content</p>
-    </div>
 
-    <footer class="w3-container w3-blue">
-        <h5>@Model.CreationDate.ToShortDateString()</h5>
-    <footer>
-</div>
+
+
 
 

@@ -1,14 +1,11 @@
-@model AWWW_lab1_gr1.Models.Author
+@model ICollection<AWWW_lab1_gr1.Models.Author>
 
-<h1>Author</h1>
+<p><a asp-action="Add" asp-controller="Author">Dodaj</a></p>
 
-<div class="w3-card">
-
-    <div class="w3-container">
-        <p>@Model.FirstName</p>
-        <p>@Model.LastName</p>
-    </div>
-
-</div>
-
-
+@if (Model != null)
+{
+    @foreach(var aut in Model) 
+    {
+        <h3><a asp-action="Index" asp-controller="Author" asp-route-id="@aut.Id">@aut.Id, @(aut.FirstName + " " + aut.LastName)</a></h3>
+    }
+}
