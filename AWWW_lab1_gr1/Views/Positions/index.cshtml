@@ -2,14 +2,15 @@
 @model IEnumerable<Position>
    
 
- <h1>Position List</h1>
+ <h2>Position List</h2>
 
-<p ><a asp-action="Add">Add Position</a></p>
+<p ><a asp-action="Create">Add Position</a></p>
 <table class="table">
     <tr><th>Name</th></tr>
     @foreach(var item in Model)
     {
        <tr>
+            <td>@item.ID</td>
            <td>@item.Name</td>
        </tr>
     }
