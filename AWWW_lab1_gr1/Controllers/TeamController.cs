@@ -1,6 +1,7 @@
 ﻿using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab1_gr1.Controllers
@@ -19,6 +20,12 @@ namespace AWWW_lab1_gr1.Controllers
         }
         public IActionResult Create()
         {
+            ViewData["Leagues"] = _dbContext.Leagues
+                .Select(l => new SelectListItem
+                {
+                    Text = $"ID: {l.Id}, NAME: {l.Name}, COUNTRY: {l.Country}",
+                    Value = l.Id.ToString(),
+                });
             return View();
         }
 
@@ -27,7 +34,7 @@ namespace AWWW_lab1_gr1.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return NotFound();
+                return View(team);
             }
             _dbContext.Teams.Add(team);
             await _dbContext.SaveChangesAsync();
