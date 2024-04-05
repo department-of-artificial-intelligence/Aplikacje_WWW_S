@@ -1,0 +1,22 @@
+﻿@model AWWW_lab3_gr2.Models.League;
+
+<div class="text-center">
+	<h1>Dodaj nowa lige</h1>
+	<form asp-controller="league" asp-action="add" method="post">
+		<p>
+			<label asp-for="Name">Nazwa ligi:</label>
+			<input asp-for="Name" />
+		</p>
+		<p>
+			<label asp-for="Country">Nazwa kraju:</label>
+			<input asp-for="Country" />
+		</p>
+		<p>
+			<label asp-for="Level">Poziom:</label>
+			<input asp-for="Level" />
+		</p>
+		<p>
+			<button type="submit" class="btn btn-primary">Add</button>
+		</p>
+	</form>
+</div>

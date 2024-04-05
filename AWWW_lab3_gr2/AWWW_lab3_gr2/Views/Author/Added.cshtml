@@ -1,0 +1,10 @@
+﻿@model AWWW_lab3_gr2.Models.Author;
+
+<h1>Dodano autora</h1>
+
+<div class="w3-card">
+	<p>Imie: @Model.FirstName</p>
+	<p>Nazwisko: @Model.LastName</p>
+</div>
+
+<p class="text-center"><a asp-controller="home" asp-action="index" class="w3-btn w3-border">Home</a></p>

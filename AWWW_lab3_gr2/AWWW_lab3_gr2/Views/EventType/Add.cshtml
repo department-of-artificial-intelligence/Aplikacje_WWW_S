@@ -1,0 +1,14 @@
+﻿@model AWWW_lab3_gr2.Models.EventType;
+
+<div class="text-center">
+	<h1>Dodaj nowy rodzaj wydarzenia</h1>
+	<form asp-controller="eventtype" asp-action="add" method="post">
+		<p>
+			<label asp-for="Name">Nazwa:</label>
+			<input asp-for="Name" />
+		</p>
+		<p>
+			<button type="submit" class="btn btn-primary">Dodaj</button>
+		</p>
+	</form>
+</div>
