@@ -9,9 +9,9 @@
 <table class="table">
     <thead>
         <tr>
-            @if (Model != null && Model.FirstOrDefault()!=null )
+            @if (Model != null  )
             {
-                @foreach (var prop in Model.FirstOrDefault().GetType().GetProperties())
+                @foreach (var prop in Model.FirstOrDefault()!.GetType().GetProperties())
                 {
                     <th scope="col">@prop.Name</th>
                 }

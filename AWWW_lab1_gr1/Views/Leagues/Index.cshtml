@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AWWW_lab1_gr1.Models.MatchEvent>
+﻿@model IEnumerable<AWWW_lab1_gr1.Models.League>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Minute)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventType)
+                @Html.DisplayNameFor(model => model.Country)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Match)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatchPlayer)
+                @Html.DisplayNameFor(model => model.Level)
             </th>
             <th></th>
         </tr>
@@ -31,16 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Minute)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EventType.Id)
+                @Html.DisplayFor(modelItem => item.Country)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Match.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatchPlayer.Id)
+                @Html.DisplayFor(modelItem => item.Level)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

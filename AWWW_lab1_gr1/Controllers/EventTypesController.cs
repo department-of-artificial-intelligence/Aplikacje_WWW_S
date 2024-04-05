@@ -10,23 +10,22 @@ using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class MatchesController : Controller
+    public class EventTypesController : Controller
     {
         private readonly MyDBContext _context;
 
-        public MatchesController(MyDBContext context)
+        public EventTypesController(MyDBContext context)
         {
             _context = context;
         }
 
-        // GET: Matches
+        // GET: EventTypes
         public async Task<IActionResult> Index()
         {
-            var myDBContext = _context.Matches.Include(m => m.AwayTeam).Include(m => m.HomeTeam);
-            return View(await myDBContext.ToListAsync());
+            return View(await _context.EventTypes.ToListAsync());
         }
 
-        // GET: Matches/Details/5
+        // GET: EventTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,45 +33,39 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var match = await _context.Matches
-                .Include(m => m.AwayTeam)
-                .Include(m => m.HomeTeam)
+            var eventType = await _context.EventTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (match == null)
+            if (eventType == null)
             {
                 return NotFound();
             }
 
-            return View(match);
+            return View(eventType);
         }
 
-        // GET: Matches/Create
+        // GET: EventTypes/Create
         public IActionResult Create()
         {
-            ViewData["AwayTeamId"] = new SelectList(_context.Teams, "Id", "Id");
-            ViewData["HomeTeamId"] = new SelectList(_context.Teams, "Id", "Id");
             return View();
         }
 
-        // POST: Matches/Create
+        // POST: EventTypes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,Stadium,HomeTeamId,AwayTeamId")] Match match)
+        public async Task<IActionResult> Create([Bind("Id,Name")] EventType eventType)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(match);
+                _context.Add(eventType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AwayTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.AwayTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.HomeTeamId);
-            return View(match);
+            return View(eventType);
         }
 
-        // GET: Matches/Edit/5
+        // GET: EventTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,24 +73,22 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var match = await _context.Matches.FindAsync(id);
-            if (match == null)
+            var eventType = await _context.EventTypes.FindAsync(id);
+            if (eventType == null)
             {
                 return NotFound();
             }
-            ViewData["AwayTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.AwayTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.HomeTeamId);
-            return View(match);
+            return View(eventType);
         }
 
-        // POST: Matches/Edit/5
+        // POST: EventTypes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,Stadium,HomeTeamId,AwayTeamId")] Match match)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] EventType eventType)
         {
-            if (id != match.Id)
+            if (id != eventType.Id)
             {
                 return NotFound();
             }
@@ -106,12 +97,12 @@ namespace AWWW_lab1_gr1.Controllers
             {
                 try
                 {
-                    _context.Update(match);
+                    _context.Update(eventType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MatchExists(match.Id))
+                    if (!EventTypeExists(eventType.Id))
                     {
                         return NotFound();
                     }
@@ -122,12 +113,10 @@ namespace AWWW_lab1_gr1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AwayTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.AwayTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Teams, "Id", "Id", match.HomeTeamId);
-            return View(match);
+            return View(eventType);
         }
 
-        // GET: Matches/Delete/5
+        // GET: EventTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,36 +124,34 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var match = await _context.Matches
-                .Include(m => m.AwayTeam)
-                .Include(m => m.HomeTeam)
+            var eventType = await _context.EventTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (match == null)
+            if (eventType == null)
             {
                 return NotFound();
             }
 
-            return View(match);
+            return View(eventType);
         }
 
-        // POST: Matches/Delete/5
+        // POST: EventTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var match = await _context.Matches.FindAsync(id);
-            if (match != null)
+            var eventType = await _context.EventTypes.FindAsync(id);
+            if (eventType != null)
             {
-                _context.Matches.Remove(match);
+                _context.EventTypes.Remove(eventType);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MatchExists(int id)
+        private bool EventTypeExists(int id)
         {
-            return _context.Matches.Any(e => e.Id == id);
+            return _context.EventTypes.Any(e => e.Id == id);
         }
     }
 }

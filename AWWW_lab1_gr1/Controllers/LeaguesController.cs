@@ -1,28 +1,26 @@
 ﻿using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class CommentsController : Controller
+    public class LeaguesController : Controller
     {
         private readonly MyDBContext _context;
 
-        public CommentsController(MyDBContext context)
+        public LeaguesController(MyDBContext context)
         {
             _context = context;
         }
 
-        // GET: Comments
+        // GET: Leagues
         public async Task<IActionResult> Index()
         {
-            var myDBContext = _context.Comments.Include(c => c.Article);
-            return View(await myDBContext.ToListAsync());
+            return View(await _context.Leagues.ToListAsync());
         }
 
-        // GET: Comments/Details/5
+        // GET: Leagues/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,42 +28,39 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comments
-                .Include(c => c.Article)
+            var league = await _context.Leagues
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (comment == null)
+            if (league == null)
             {
                 return NotFound();
             }
 
-            return View(comment);
+            return View(league);
         }
 
-        // GET: Comments/Create
+        // GET: Leagues/Create
         public IActionResult Create()
         {
-            ViewData["ArticleId"] = new SelectList(_context.Articles, "Id", "Id");
             return View();
         }
 
-        // POST: Comments/Create
+        // POST: Leagues/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,ArticleId")] Comment comment)
+        public async Task<IActionResult> Create([Bind("Id,Name,Country,Level")] League league)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comment);
+                _context.Add(league);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticleId"] = new SelectList(_context.Articles, "Id", "Id", comment.ArticleId);
-            return View(comment);
+            return View(league);
         }
 
-        // GET: Comments/Edit/5
+        // GET: Leagues/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,23 +68,22 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comments.FindAsync(id);
-            if (comment == null)
+            var league = await _context.Leagues.FindAsync(id);
+            if (league == null)
             {
                 return NotFound();
             }
-            ViewData["ArticleId"] = new SelectList(_context.Articles, "Id", "Id", comment.ArticleId);
-            return View(comment);
+            return View(league);
         }
 
-        // POST: Comments/Edit/5
+        // POST: Leagues/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,ArticleId")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Country,Level")] League league)
         {
-            if (id != comment.Id)
+            if (id != league.Id)
             {
                 return NotFound();
             }
@@ -98,12 +92,12 @@ namespace AWWW_lab1_gr1.Controllers
             {
                 try
                 {
-                    _context.Update(comment);
+                    _context.Update(league);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentExists(comment.Id))
+                    if (!LeagueExists(league.Id))
                     {
                         return NotFound();
                     }
@@ -114,11 +108,10 @@ namespace AWWW_lab1_gr1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticleId"] = new SelectList(_context.Articles, "Id", "Id", comment.ArticleId);
-            return View(comment);
+            return View(league);
         }
 
-        // GET: Comments/Delete/5
+        // GET: Leagues/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,35 +119,34 @@ namespace AWWW_lab1_gr1.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comments
-                .Include(c => c.Article)
+            var league = await _context.Leagues
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (comment == null)
+            if (league == null)
             {
                 return NotFound();
             }
 
-            return View(comment);
+            return View(league);
         }
 
-        // POST: Comments/Delete/5
+        // POST: Leagues/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comment = await _context.Comments.FindAsync(id);
-            if (comment != null)
+            var league = await _context.Leagues.FindAsync(id);
+            if (league != null)
             {
-                _context.Comments.Remove(comment);
+                _context.Leagues.Remove(league);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CommentExists(int id)
+        private bool LeagueExists(int id)
         {
-            return _context.Comments.Any(e => e.Id == id);
+            return _context.Leagues.Any(e => e.Id == id);
         }
     }
 }
