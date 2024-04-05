@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class AuthorController : Controller
+    public class PositionController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public PositionController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Authors!.ToList(); 
-            return View(authors);
+            var positions = _dbContext.Positions!.ToList(); 
+            return View(positions);
         }
 
         public IActionResult Add()
@@ -26,9 +26,9 @@ namespace AWWW_lab1_gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(Position position)
         {
-            _dbContext.Authors!.Add(author); 
+            _dbContext.Positions!.Add(position); 
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }

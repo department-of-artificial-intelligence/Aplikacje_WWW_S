@@ -1,23 +1,23 @@
+
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace AWWW_lab1_gr1.Controllers
 {
-    public class AuthorController : Controller
+    public class TagController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public TagController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Authors!.ToList(); 
-            return View(authors);
+            var tags = _dbContext.Tags!.ToList(); 
+            return View(tags);
         }
 
         public IActionResult Add()
@@ -26,9 +26,9 @@ namespace AWWW_lab1_gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(Tag tag)
         {
-            _dbContext.Authors!.Add(author); 
+            _dbContext.Tags!.Add(tag); 
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
