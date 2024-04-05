@@ -1,13 +1,11 @@
-@model IEnumerable<Category>
- 
-<h2>Categories List</h2>
-<p><a asp-action="Create">Add Category</a></p>
-<table class="table">
-     <tr><th>Name</th></tr>
-    @foreach (var item in Model)
+@model ICollection<AWWW_lab1_gr1.Models.Category>
+
+<p><a asp-action="Add" asp-controller="Category">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach(var category in Model) 
     {
-        <tr>
-            <td>@item.Name</td>
-        </tr>
+        <h3><a asp-action="Index" asp-controller="Category" asp-route-id="@category.Id">@category.Id, @(category.Name)</a></h3>
     }
-</table>
+}

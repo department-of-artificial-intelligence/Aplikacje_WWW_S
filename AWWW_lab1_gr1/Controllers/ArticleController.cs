@@ -1,10 +1,8 @@
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-
-
-
+namespace AWWW_lab1_gr1.Controllers
+{
     public class ArticleController : Controller
     {
         private readonly LabDbContext _dbContext;
@@ -16,7 +14,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
         public IActionResult Index(int id)
         {
-            var article = _dbContext.Articles.FirstOrDefault(a => a.Id == id); //Repository.Articles.ToList()[id];
+            var article = _dbContext.Articles.FirstOrDefault(a => a.Id == id); 
             if (article != null)
                 return View(article);
             return View("Error");
@@ -32,12 +30,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Articles.Add(article); //Repository.AddArticle(article);
+                _dbContext.Articles.Add(article);
                 _dbContext.SaveChanges();
                 return View("Added", article);
             }
             return View("Error");
         }
     }
-   
-
+}

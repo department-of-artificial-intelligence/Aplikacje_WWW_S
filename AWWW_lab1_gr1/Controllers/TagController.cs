@@ -1,34 +1,37 @@
-using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using AWWW_lab1_gr1.Models;
 
-
-public class  TagController : Controller
+namespace AWWW_lab1_gr1.Controllers
+{
+    public class TagController : Controller
     {
         private readonly LabDbContext _dbContext;
 
-        public TagController(LabDbContext _dbContext)
+        public TagController(LabDbContext dbContext)
         {
-            this._dbContext = _dbContext;
+            _dbContext = dbContext;
         }
-        public async Task<IActionResult> Index(){
-           return View(await _dbContext.Authors.ToListAsync());
-    }
-    
-
-    public IActionResult Create() {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(Tag tag) {
-        if (ModelState.IsValid) {
-            _dbContext.Add(tag);
-            await _dbContext.SaveChangesAsync();
-     
-            return RedirectToAction("Index");
+        public IActionResult Index()
+        {
+            var tag = _dbContext.Tags!.ToList(); 
+            return View(tag);
         }
-        return View(tag);
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Tag tag)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Tags.Add(tag);
+                _dbContext.SaveChanges();
+                return View("Added", tag);
+            }
+            return View("Error");
+        }
     }
 }

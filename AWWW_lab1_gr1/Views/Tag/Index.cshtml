@@ -1,13 +1,11 @@
-@model IEnumerable<Tag>
- 
-<h2>Tags List</h2>
-<p><a asp-action="Create">Add Tag</a></p>
-<table class="table">
-     <tr><th>Name</th></tr>
-    @foreach (var item in Model)
+@model ICollection<AWWW_lab1_gr1.Models.Tag>
+
+<p><a asp-action="Add" asp-controller="Tag">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach(var tag in Model) 
     {
-        <tr>
-            <td>@item.Name</td>
-        </tr>
+        <h3><a asp-action="Index" asp-controller="Tag" asp-route-id="@tag.Id">@tag.Id, @(tag.Name)</a></h3>
     }
-</table>
+}

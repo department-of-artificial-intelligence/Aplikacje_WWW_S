@@ -1,13 +1,11 @@
-@model IEnumerable<Position>
- 
-<h2>Positions List</h2>
-<p><a asp-action="Create">Add position</a></p>
-<table class="table">
-     <tr><th>Name</th></tr>
-    @foreach (var item in Model)
+@model ICollection<AWWW_lab1_gr1.Models.Position>
+
+<p><a asp-action="Add" asp-controller="Position">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach(var position in Model) 
     {
-        <tr>
-            <td>@item.Name</td>
-        </tr>
+        <h3><a asp-action="Index" asp-controller="Position" asp-route-id="@position.Id">@position.Id, @(position.Name)</a></h3>
     }
-</table>
+}

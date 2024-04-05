@@ -1,13 +1,13 @@
-@model EventType
- 
-<h2>Add EventType</h2>
-<form asp-action="create" asp-controller="EventTypes">
+@model AWWW_lab1_gr1.Models.EventType
+
+<h1>Add Event Type</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
     <p>
-        <label asp-for="Name">Name</label><br />
-        <input type="text" asp-for="Name" />
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
     </p>
-    
     <p>
-        <input type="submit" value="Create" />
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
     </p>
 </form>

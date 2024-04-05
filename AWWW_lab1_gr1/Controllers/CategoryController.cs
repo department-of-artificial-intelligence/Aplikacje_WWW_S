@@ -1,34 +1,37 @@
-using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using AWWW_lab1_gr1.Models;
 
-
-public class  AuthorController : Controller
+namespace AWWW_lab1_gr1.Controllers
+{
+    public class CategoryController : Controller
     {
         private readonly LabDbContext _dbContext;
 
-        public AuthorController(LabDbContext _dbContext)
+        public CategoryController(LabDbContext dbContext)
         {
-            this._dbContext = _dbContext;
+            _dbContext = dbContext;
         }
-        public async Task<IActionResult> Index(){
-           return View(await _dbContext.Authors.ToListAsync());
-    }
-    
-
-    public IActionResult Create() {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(Category category) {
-        if (ModelState.IsValid) {
-            _dbContext.Add(category);
-            await _dbContext.SaveChangesAsync();
-     
-            return RedirectToAction("Index");
+        public IActionResult Index()
+        {
+            var category = _dbContext.Categories!.ToList(); 
+            return View(category);
         }
-        return View(category);
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Categories.Add(category);
+                _dbContext.SaveChanges();
+                return View("Added", category);
+            }
+            return View("Error");
+        }
     }
 }

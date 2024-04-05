@@ -1,34 +1,37 @@
-using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using AWWW_lab1_gr1.Models;
 
-
-public class  PositionController : Controller
+namespace AWWW_lab1_gr1.Controllers
+{
+    public class PositionController : Controller
     {
         private readonly LabDbContext _dbContext;
 
-        public PositionController(LabDbContext _dbContext)
+        public PositionController(LabDbContext dbContext)
         {
-            this._dbContext = _dbContext;
+            _dbContext = dbContext;
         }
-        public async Task<IActionResult> Index(){
-           return View(await _dbContext.Authors.ToListAsync());
-    }
-    
-
-    public IActionResult Create() {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(Position position) {
-        if (ModelState.IsValid) {
-            _dbContext.Add(position);
-            await _dbContext.SaveChangesAsync();
-     
-            return RedirectToAction("Index");
+        public IActionResult Index()
+        {
+            var position = _dbContext.Positions!.ToList(); 
+            return View(position);
         }
-        return View(position);
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Position position)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Positions.Add(position);
+                _dbContext.SaveChanges();
+                return View("Added", position);
+            }
+            return View("Error");
+        }
     }
 }

@@ -1,34 +1,37 @@
-using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using AWWW_lab1_gr1.Models;
 
-
-public class  LeagueController : Controller
+namespace AWWW_lab1_gr1.Controllers
+{
+    public class LeagueController : Controller
     {
         private readonly LabDbContext _dbContext;
 
-        public LeagueController(LabDbContext _dbContext)
+        public LeagueController(LabDbContext dbContext)
         {
-            this._dbContext = _dbContext;
+            _dbContext = dbContext;
         }
-        public async Task<IActionResult> Index(){
-           return View(await _dbContext.Authors.ToListAsync());
-    }
-    
-
-    public IActionResult Create() {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(League league) {
-        if (ModelState.IsValid) {
-            _dbContext.Add(league);
-            await _dbContext.SaveChangesAsync();
-     
-            return RedirectToAction("Index");
+        public IActionResult Index()
+        {
+            var league = _dbContext.Leagues!.ToList(); 
+            return View(league);
         }
-        return View(league);
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(League league)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Leagues.Add(league);
+                _dbContext.SaveChanges();
+                return View("Added", league);
+            }
+            return View("Error");
+        }
     }
 }
