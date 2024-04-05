@@ -1,0 +1,11 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Team>;
+
+<h1>Drużyny</h1>
+
+<a asp-controller="team" asp-action="add">Dodaj drużynę</a>
+
+<ul>
+    @foreach (AWWW_lab2_gr2.Models.Team item in Model){
+        <li>@item.Name</li>
+    }
+</ul>

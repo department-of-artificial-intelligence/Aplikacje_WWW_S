@@ -1,0 +1,21 @@
+@model AWWW_lab2_gr2.Models.Team;
+
+<h1>Wprowadź dane drużyny</h1>
+
+<form method="post" asp-controller="team" asp-action="add">
+    <p>
+        <label asp-for="Name" for="name">Nazwa:</label><br>
+        <input asp-for="Name" type="text" name="name"><br>
+        <label asp-for="Country" for="country">Kraj:</label><br>
+        <input asp-for="Country" type="text" name="country"><br>
+        <label asp-for="City" for="city">Miasto:</label><br>
+        <input asp-for="City" type="text" name="city"><br>
+        <label asp-for="FoundingDate" for="foundingdate">Data za:</label><br>
+        <input asp-for="FoundingDate" type="date" name="foundingdate"><br>
+        <label asp-for="League" for="league">Liga:</label><br>
+        @Html.DropDownList("LeagueId", (IEnumerable<SelectListItem>)ViewBag.LeagueList, null, new {@class = "form-control"})
+    </p>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form>
