@@ -1,0 +1,5 @@
+{
+    "dataworkspace.excludedProjects": [
+        "Marceli_NowakAppDb/Marceli_NowakAppDb.sqlproj"
+    ]
+}

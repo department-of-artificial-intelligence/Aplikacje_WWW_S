@@ -4,29 +4,29 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-public class LeaguesController:Controller{
+public class TeamsController:Controller{
     private readonly MyDbContext _context;
 
-    public LeaguesController(MyDbContext context)
+    public TeamsController(MyDbContext context)
     {
         _context = context;
     }
     public async Task<IActionResult> Index(){
-        ViewBag.Title = "Lista lig";
-        var data = await _context.Leagues.ToListAsync();
+        ViewBag.Title = "Lista drużyn";
+        var data = await _context.Teams.ToListAsync();
         return View(data);
     }
     
     [HttpPost]
     public async Task<IActionResult> UsunDane(int id)
     {
-        var dane = await _context.Leagues.FindAsync(id);
+        var dane = await _context.Teams.FindAsync(id);
         if (dane == null)
         {
             return NotFound();
         }
 
-        _context.Leagues.Remove(dane);
+        _context.Teams.Remove(dane);
         await _context.SaveChangesAsync();
 
         return RedirectToAction("Index"); // Przekierowanie na widok po usunięciu danych

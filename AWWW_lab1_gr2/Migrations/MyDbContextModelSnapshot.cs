@@ -32,9 +32,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,8 +53,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("MatchId");
 
@@ -82,67 +77,7 @@ namespace AWWW_lab1_gr2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.EventType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EventTypes");
+                    b.ToTable("Author");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.League", b =>
@@ -187,71 +122,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.ToTable("Matches");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.MatchEvent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MatchId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MatchPlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Minute")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventTypeId");
-
-                    b.HasIndex("MatchId");
-
-                    b.HasIndex("MatchPlayerId");
-
-                    b.ToTable("MatchEvents");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.MatchPlayer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MatchId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PostitionId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MatchId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("PostitionId");
-
-                    b.ToTable("MatchPlayers");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Player", b =>
@@ -305,38 +175,7 @@ namespace AWWW_lab1_gr2.Migrations
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FieldOfStudy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IndexNr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
+                    b.ToTable("Position");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Tag", b =>
@@ -358,7 +197,7 @@ namespace AWWW_lab1_gr2.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Team", b =>
@@ -398,10 +237,6 @@ namespace AWWW_lab1_gr2.Migrations
                         .WithMany()
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("AWWW_lab1_gr2.Models.Category", null)
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("AWWW_lab1_gr2.Models.Match", "Match")
                         .WithMany()
                         .HasForeignKey("MatchId");
@@ -409,17 +244,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Match");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Comment", b =>
-                {
-                    b.HasOne("AWWW_lab1_gr2.Models.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Match", b =>
@@ -439,58 +263,6 @@ namespace AWWW_lab1_gr2.Migrations
                     b.Navigation("AwayTeam");
 
                     b.Navigation("HomeTeam");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.MatchEvent", b =>
-                {
-                    b.HasOne("AWWW_lab1_gr2.Models.EventType", "EventType")
-                        .WithMany()
-                        .HasForeignKey("EventTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab1_gr2.Models.Match", "Match")
-                        .WithMany()
-                        .HasForeignKey("MatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab1_gr2.Models.MatchPlayer", "MatchPlayer")
-                        .WithMany()
-                        .HasForeignKey("MatchPlayerId");
-
-                    b.Navigation("EventType");
-
-                    b.Navigation("Match");
-
-                    b.Navigation("MatchPlayer");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.MatchPlayer", b =>
-                {
-                    b.HasOne("AWWW_lab1_gr2.Models.Match", "Match")
-                        .WithMany()
-                        .HasForeignKey("MatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab1_gr2.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab1_gr2.Models.Position", "Postition")
-                        .WithMany()
-                        .HasForeignKey("PostitionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Match");
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Postition");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Player", b =>
@@ -532,11 +304,6 @@ namespace AWWW_lab1_gr2.Migrations
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Article", b =>
                 {
                     b.Navigation("Tags");
-                });
-
-            modelBuilder.Entity("AWWW_lab1_gr2.Models.Category", b =>
-                {
-                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Player", b =>

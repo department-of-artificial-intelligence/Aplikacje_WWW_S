@@ -1,5 +1,5 @@
 @using AWWW_lab1_gr2.Models
-@model IList<League>
+@model IList<Team>
 
  
 <h1 class="h1">@ViewBag.Title</h1>
@@ -8,21 +8,21 @@
     <div class="row table-dark fs-5 fw-bold">
         <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Nazwa</div>
         <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Państwo</div>
-        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Poziom</div>
+        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Liga</div>
         <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Operacje</div>
     </div>
-    @foreach (var lig in Model)
+    @foreach (var te in Model)
     {
         <div class="row">
-            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@lig.Name</div>
-            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@((lig.Country != null) ? lig.Country : "niepodano")</div>
-            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@lig.Level</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@te.Name</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@((te.Country != null) ? te.Country : "niepodano")</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@te.League.Name</div>
             <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-warning">Edytuj</button>
                     <form method="post">
                         <button type="submit" class="btn btn-danger"
-                        formaction='@Url.Action("UsunDane", "Leagues", new { id = @lig.Id })'
+                        formaction='@Url.Action("UsunDane", "Teams", new { id = @te.Id })'
                         >Usuń</button>
                     </form>
                 </div>
@@ -31,4 +31,4 @@
     }
 </div>
 
-<a asp-controller="leagueadd" asp-action="index"><button type="button" class="btn btn-primary">Dodaj ligę</button></a>
+<a asp-controller="teamadd" asp-action="index"><button type="button" class="btn btn-primary">Dodaj drużynę</button></a>

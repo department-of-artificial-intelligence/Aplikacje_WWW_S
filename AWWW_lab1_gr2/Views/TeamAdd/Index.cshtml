@@ -1,5 +1,5 @@
 
-@model AWWW_lab1_gr2.Models.League;
+@model AWWW_lab1_gr2.Models.Team;
 
 <h1 class="h1">@ViewBag.Title</h1>
 
@@ -11,8 +11,8 @@
     <label for="in_country">Państwo: </label>
     <input id="in_country" class="form-control" asp-for="Country" type="text">
 
-    <label for="in_level">Poziom: </label>
-    <input id="in_level" class="form-control" asp-for="Level" type="number" required>
+    <label for="in_city">Miasto: </label>
+    <input id="in_city" class="form-control" asp-for="City" type="text">
 
     <button class="btn btn-primary" type="submit">Dodaj</button>
 </form>

@@ -1,15 +1,21 @@
-
+/*Ogólne*/
 *{
     margin: 0;
 }
-header{
-    width: 100vw;
-    height: 50px;
-    background-color: darkblue;
-    color: white;
+/*Struktura*/
+#Lewy, #Prawy, #Srodek{
+    min-height: calc(100vh - 88px);
+    flex-direction: row;
+}
+#Lewy, #Prawy{
+    width: 10%;
+    background-color: lightskyblue;
+}
+#Srodek{
+    width: 80%;
 }
 main{
-    min-height: calc(100vh - 80px);
+    display: flex;
 }
 footer{
     width: 100vw;
@@ -20,33 +26,8 @@ footer{
     line-height: 30px;
     text-align: right;
 }
-.nav-link{
-    color: white;
-    font-size: 30px;
-    line-height: 50px;
-    text-decoration: none;
-}
-.nav-link:hover{
-    color: goldenrod;
-}
-.navbar-nav{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-h1{
-    color: red;
-    font-size: large;
-}
-
-
-/*Formularze*/
-.Form_Dodaj{
-    background-color: lightskyblue;
-    min-width: 600px;
-    display: flex;
-    flex-direction: column;
+/*Tabele*/
+.Tabela_Wyniki{
+    text-align: center;
+    vertical-align: middle;
 }

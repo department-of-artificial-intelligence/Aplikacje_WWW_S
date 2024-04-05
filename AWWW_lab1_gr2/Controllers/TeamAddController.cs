@@ -1,12 +1,13 @@
 using System;
 using AWWW_lab1_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
-public class LeagueAddController:Controller
+public class TeamAddController:Controller
 {
     private readonly MyDbContext Context;
-    public LeagueAddController(MyDbContext _context){
+    public TeamAddController(MyDbContext _context){
         Context = _context;
     }
+
     [HttpGet]
     public IActionResult Index()
     {
@@ -14,14 +15,14 @@ public class LeagueAddController:Controller
     }
 
     [HttpPost]
-    public IActionResult Add(League league)
+    public IActionResult Add(Team team)
     {
         if (ModelState.IsValid)
         {
-            Context.Leagues.Add(league);
+            Context.Teams.Add(team);
             Context.SaveChanges();
-            return RedirectToAction("Index", "Leagues");
+            return RedirectToAction("Index", "Teams");
         }
-        return View(league);
+        return View(team);
     }
 }
