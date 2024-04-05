@@ -1,13 +1,36 @@
-<h1>Lista autorów</h1>
-<form>
-    <label for="Id">Id:</label>
-    <input type="text" id="Id"/>
-    <br/>
-    <label for="imie">Imię:</label>
-    <input type="text" id="imie"/>
-    <br/>
-    <label for="nazwisko">Nazwisko:</label>
-    <input type="text" id="nazwisko"/>
-    <br/>
-    <input type="button" id="dodaj" value="Dodaj do listy"/>
-</form>
+@using AWWW_lab1_gr2.Models
+
+@model IList<Author>
+
+<h1 class="h1">@ViewBag.Title</h1>
+<a asp-controller="author" asp-action="add"><button type="button">Dodaj autora</button></a>
+
+<div>
+    <div class="row">
+        <div>
+            Imię:
+        </div>
+        <div>
+            Nazwisko:
+        </div>
+    </div>
+    @foreach (var author in Model)
+    {
+        <div class="row">
+            <div>
+                @author.FirstName
+            </div>
+            <div>
+                @author.LastName
+            </div>
+            <div>
+                <form method="post">
+                    <button type="submit" class="btn btn-danger"
+                        formaction='@Url.Action("UsunDane", "Author", new { id = @author.Id })'
+                    >Usuń</button>
+                </form>
+            </div>
+        </div>
+
+    }
+</div>
