@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AWWW_lab2_gr2.Controllers
 {
-    public class AuthorController : Controller
+    public class CategoryController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public CategoryController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Author.ToList();
-            return View(authors);
+            var categories = _dbContext.Category.ToList();
+            return View(categories);
         }
 
         public IActionResult Details(int id)
         {
-            var author = _dbContext.Author.FirstOrDefault(a => a.Id == id);
-            if (author != null)
-                return View(author);
+            var category = _dbContext.Category.FirstOrDefault(a => a.Id == id);
+            if (category != null)
+                return View(category);
             return View("Error");
         }
         public IActionResult Add()
@@ -32,13 +32,13 @@ namespace AWWW_lab2_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(Category category)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Author.Add(author);
+                _dbContext.Category.Add(category);
                 _dbContext.SaveChanges();
-                return View("Added", author);
+                return View("Added", category);
             }
             return View();
         }

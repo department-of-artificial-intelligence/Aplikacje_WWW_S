@@ -1,0 +1,26 @@
+@model AWWW_lab2_gr2.Models.Team
+
+<h1>Dodaj Druzyne</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Name">Nazwa:</label>
+        <input asp-for="Name" class="w3-input w3-border" />
+        <label asp-for="Country">Kraj:</label>
+        <input asp-for="Country" class="w3-input w3-border" />
+        <label asp-for="City">Miasto:</label>
+        <input asp-for="City" class="w3-input w3-border" />
+        <label asp-for="FoundingDate">Data załozenia:</label>
+        <input asp-for="FoundingDate" class="w3-input w3-border" />
+    <div class="form-group">
+        <label asp-for="LeagueId" class="control-label"></label>
+            @Html.DropDownListFor(model => model.LeagueId, (SelectList)ViewBag.Leagues, "Wybierz ligę", new
+                {
+                    @class =
+                     "form-control"
+                })
+        <span asp-validation-for="LeagueId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>

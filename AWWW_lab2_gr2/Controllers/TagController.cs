@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AWWW_lab2_gr2.Controllers
 {
-    public class AuthorController : Controller
+    public class TagController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public TagController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Author.ToList();
-            return View(authors);
+            var tags = _dbContext.Tag.ToList();
+            return View(tags);
         }
 
         public IActionResult Details(int id)
         {
-            var author = _dbContext.Author.FirstOrDefault(a => a.Id == id);
-            if (author != null)
-                return View(author);
+            var tag = _dbContext.Tag.FirstOrDefault(a => a.Id == id);
+            if (tag != null)
+                return View(tag);
             return View("Error");
         }
         public IActionResult Add()
@@ -32,13 +32,13 @@ namespace AWWW_lab2_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(Tag tag)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Author.Add(author);
+                _dbContext.Tag.Add(tag);
                 _dbContext.SaveChanges();
-                return View("Added", author);
+                return View("Added", tag);
             }
             return View();
         }

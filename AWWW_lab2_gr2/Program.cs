@@ -3,7 +3,7 @@ using AWWW_lab2_gr2;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("MyConnection");
 builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();

@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AWWW_lab2_gr2.Controllers
 {
-    public class AuthorController : Controller
+    public class EventTypeController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public EventTypeController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Author.ToList();
-            return View(authors);
+            var eventTypes = _dbContext.EventType.ToList();
+            return View(eventTypes);
         }
 
         public IActionResult Details(int id)
         {
-            var author = _dbContext.Author.FirstOrDefault(a => a.Id == id);
-            if (author != null)
-                return View(author);
+            var eventType = _dbContext.EventType.FirstOrDefault(a => a.Id == id);
+            if (eventType != null)
+                return View(eventType);
             return View("Error");
         }
         public IActionResult Add()
@@ -32,13 +32,13 @@ namespace AWWW_lab2_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(EventType eventType)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Author.Add(author);
+                _dbContext.EventType.Add(eventType);
                 _dbContext.SaveChanges();
-                return View("Added", author);
+                return View("Added", eventType);
             }
             return View();
         }

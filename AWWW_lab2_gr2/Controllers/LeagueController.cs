@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AWWW_lab2_gr2.Controllers
 {
-    public class AuthorController : Controller
+    public class LeagueController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public AuthorController(MyDbContext dbContext)
+        public LeagueController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            var authors = _dbContext.Author.ToList();
-            return View(authors);
+            var leagues = _dbContext.League.ToList();
+            return View(leagues);
         }
 
         public IActionResult Details(int id)
         {
-            var author = _dbContext.Author.FirstOrDefault(a => a.Id == id);
-            if (author != null)
-                return View(author);
+            var league = _dbContext.League.FirstOrDefault(a => a.Id == id);
+            if (league != null)
+                return View(league);
             return View("Error");
         }
         public IActionResult Add()
@@ -32,13 +32,13 @@ namespace AWWW_lab2_gr2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Author author)
+        public IActionResult Add(League league)
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Author.Add(author);
+                _dbContext.League.Add(league);
                 _dbContext.SaveChanges();
-                return View("Added", author);
+                return View("Added", league);
             }
             return View();
         }

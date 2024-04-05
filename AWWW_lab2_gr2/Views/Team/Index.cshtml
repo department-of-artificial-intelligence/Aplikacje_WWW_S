@@ -1,0 +1,16 @@
+@model IEnumerable<AWWW_lab2_gr2.Models.Team>
+
+<h1>Druzyny</h1>
+
+<div class="w3-card">
+    @foreach (var team in Model)
+    {
+        <div class="w3-container">
+            <p>@team.Name</p>
+            <p>@team.Country</p>
+            <p>@team.City</p>
+            <p>@team.FoundingDate</p>
+            <p>@team.LeagueId</p>
+        </div>
+    }
+</div>
