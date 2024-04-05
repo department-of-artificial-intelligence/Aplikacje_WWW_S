@@ -25,6 +25,7 @@
                 <input asp-for="FoundingDate">
                 @* <input type="hidden" asp-for="LeagueId" /> *@
                 <label asp-for="LeagueId"></label>
+                @* <input asp-for="LeagueId"> *@
                 <select asp-for="LeagueId" asp-items="@ViewBag.Leagues"></select>
                 <input type="submit">
             </form>

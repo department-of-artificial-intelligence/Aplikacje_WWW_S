@@ -7,7 +7,11 @@ public class StudentController:Controller {
         var studentsJson = TempData["Students"] as string; 
         if (studentsJson != null){
             var students = JsonSerializer.Deserialize<List<Student>>(studentsJson);
-            return View(students[id-1]); 
+            if(students != null){
+
+                return View(students[id-1]); 
+            } 
+            return RedirectToAction("Index"); 
         } else {
             return RedirectToAction("Index", "Home"); 
         }

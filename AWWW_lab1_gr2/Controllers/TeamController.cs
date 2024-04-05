@@ -31,37 +31,52 @@ public class TeamController: Controller {
 
     [HttpPost, ValidateAntiForgeryToken]
     public IActionResult Add(Team team) {
-        if(ModelState.IsValid){
 
-            if (team.LeagueId <= 0)
-            {
+
+        if (team.LeagueId <= 0){
                 // ViewBag.Success = false;
-                return View(team);
+                return View("Form", team);
+        }
+
+        if(_context.Leagues != null){
+            var league = _context.Leagues.FirstOrDefault(l => l.LeagueId == team.LeagueId);
+
+            if (league is null)
+            {
+                ViewBag.Success = false;
+                ViewBag.Title = "nie ma ligi o takim id"; 
+                return View("Form", team); 
             }
 
-            if(_context.Leagues != null){
-                var league = _context.Leagues.FirstOrDefault(l => l.LeagueId == team.LeagueId);
+            team.League = league; 
+            ViewBag.Title = team.League.Name; 
+            return View("Form", team); 
+        }
 
-                if (league is null)
-                {
-                    ViewBag.Success = false;
-                    return View(team); 
-                }
-
-                team.League = league; 
-            }
+        ModelState.ClearValidationState(nameof(team)); 
+        if(TryValidateModel(team, nameof(team))){
 
             _context.Teams.Add(team);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        ViewBag.Title = "Dodawanie druzyny"; 
 
         ViewBag.Success = false; 
         ViewBag.Leagues = new SelectList(_context.Leagues.ToList(), "LeagueId", "Name", team.LeagueId);
 
         return View("Form", team);
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    public IActionResult Delete(Team team) {
+
+
+
+        _context.Teams.Remove(team); 
+        _context.SaveChanges(); 
+        // return RedirectToAction("Index"); 
+        return View("Index"); 
     }
 
 }

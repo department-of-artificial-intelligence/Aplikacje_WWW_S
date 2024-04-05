@@ -15,8 +15,9 @@
             @foreach(var team in Model){
                 <li>
                     <div asp-route-id="@team.TeamId">@team.Name 
-                        @team.Country @team.City @team.LeagueId @team.FoundingDate
+                        @team.Country @team.City id: @team.LeagueId @team.FoundingDate
                     </div> 
+                    @* <a class="btnDelete" asp-controller="team" asp-action="delete" asp-route-id="@team.TeamId">Usun</a> *@
                 </li>
             }
         </div>

@@ -13,5 +13,6 @@ namespace AWWW_lab1_gr2.Models
         public int Level {get; set;}
         public ICollection<Team>? Teams {get; set;}
         
+
     }
 }
