@@ -1,0 +1,11 @@
+﻿@model ICollection<AWWW_lab1_gr1.Models.Team>
+
+<p><a asp-action="Add" asp-controller="Tag">Dodaj</a></p>
+
+@if(Model != null)
+{
+    @foreach(var tag in Model)
+    {
+        <p><a asp-action="Details" asp-controller="Tag" asp-route-id="@tag.Id">@tag.Id, @tag.Name</a></p>
+    }
+}

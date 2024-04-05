@@ -1,0 +1,28 @@
+﻿@model AWWW_lab1_gr1.Models.Team
+
+<form method="post">
+    <p>
+        <label asp-for="Name">Name: </label>
+        <input asp-for="Name"/>
+    </p>
+    <p>
+        <label asp-for="Country">Country: </label>
+        <input asp-for="Country"/>
+    </p>
+    <p>
+        <label asp-for="City">City: </label>
+        <input asp-for="City"/>
+    </p>
+    <p>
+        <label asp-for="FoundingDate">Founding Date: </label>
+        <input type="date"/>
+    </p>
+    <p>
+        <label asp-for="HomeMatches">Home Matches: </label>
+        <select asp-for="HomeMatches" asp-items="ViewBag.HomeMatches"></select>
+    </p>
+    <p>
+        <button type="submit">Dodaj</button>
+    </p>
+
+</form>
