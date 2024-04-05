@@ -1,0 +1,27 @@
+@model AWWW_lab1_gr2.Models.Team
+
+<h1>Dodaj drużynę</h1>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country"></label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FoundingDate"></label>
+        <input asp-for="FoundingDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LeagueId"></label>
+        <select asp-for="LeagueId" asp-items="ViewBag.Leagues" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj drużynę</button>
+</form>
