@@ -1,0 +1,14 @@
+@model AWWW_lab1_gr2.Models.Author;
+
+<h1 class="h1">@ViewBag.Title</h1>
+
+
+<form class="Form_Dodaj" asp-action="Added">
+    <label for="in_name">Imie: </label>
+    <input id="in_name" class="form-control" asp-for="FirstName" type="text" required>
+
+    <label for="in_country">Nazwisko: </label>
+    <input id="in_country" class="form-control" asp-for="LastName" type="text" required>
+
+    <button class="btn btn-primary" type="submit">Dodaj</button>
+</form>

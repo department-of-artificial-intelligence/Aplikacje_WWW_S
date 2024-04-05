@@ -11,6 +11,8 @@ public class MyDbContext:DbContext
     {
     }
     public DbSet<Article> Articles { get; set; }
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Tag> Tags { get; set; }
     public DbSet<League> Leagues { get; set; }
     public DbSet<Match> Matches { get; set; }
     public DbSet<Player> Players { get; set; }

@@ -1,3 +1,34 @@
-<h1>@ViewBag.Title</h1>
+@using AWWW_lab1_gr2.Models
+@model ICollection<Author>
 
-<p>Lista autorów</p>
+
+<h1 class="h1">@ViewBag.Title</h1>
+
+<div class="Tabela_Wyniki container">
+    <div class="row table-dark fs-5 fw-bold">
+        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Id</div>
+        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Imie</div>
+        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Nazwisko</div>
+        <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6 table-dark">Operacje</div>
+    </div>
+    @foreach (var au in Model)
+    {
+        <div class="row">
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@au.Id</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@au.FirstName</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">@au.LastName</div>
+            <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-warning">Edytuj</button>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger"
+                        formaction='@Url.Action("UsunDane", "Authors", new { id = @au.Id })'
+                        >Usuń</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<a asp-controller="authors" asp-action="add"><button type="button" class="btn btn-primary">Dodaj ligę</button></a>

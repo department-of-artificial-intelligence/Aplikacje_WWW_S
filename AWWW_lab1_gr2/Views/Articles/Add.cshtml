@@ -1,0 +1,23 @@
+@model AWWW_lab1_gr2.Models.Article;
+
+<h1 class="h1">@ViewBag.Title</h1>
+
+
+<form class="Form_Dodaj" asp-action="Added">
+    <label for="in_name">Tytuł: </label>
+    <input id="in_name" class="form-control" asp-for="Title" type="text" required>
+
+    <label for="in_country">Lead: </label>
+    <input id="in_country" class="form-control" asp-for="Lead" type="text" required>
+
+    <label for="in_level">Zawartość: </label>
+    <input id="in_level" class="form-control" asp-for="Content" type="text" required>
+
+    
+    <div class="form-group">
+        <label asp-for="Author" class="control-label"></label>
+        <select asp-for="Author" class="form-control" asp-items="ViewBag.autorzy">@ViewBag.autorzy</select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Dodaj</button>
+</form>

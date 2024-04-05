@@ -1,0 +1,38 @@
+@using AWWW_lab1_gr2.Models
+@model ICollection<Article>
+
+ 
+<h1 class="h1">@ViewBag.Title</h1>
+
+<div class="Tabela_Wyniki container">
+    <div class="row table-dark fs-5 fw-bold">
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Tytul</div>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Lead</div>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Zawartość</div>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Autor</div>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Tagi</div>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6 table-dark">Operacje</div>
+    </div>
+    @foreach (var au in Model)
+    {
+        <div class="row">
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">@au.Title</div>
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">@au.Lead</div>
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">@au.Content</div>
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">@au.Author</div>
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">@au.Tags</div>
+            <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-6">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-warning">Edytuj</button>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger"
+                        formaction='@Url.Action("UsunDane", "Leagues", new { id = @au.Id })'
+                        >Usuń</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<a asp-controller="articles" asp-action="add"><button type="button" class="btn btn-primary">Dodaj Artykuł</button></a>
