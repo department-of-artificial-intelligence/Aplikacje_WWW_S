@@ -4,28 +4,54 @@ using AWWW_lab1_gr2.Models;
 namespace AWWW_lab1_gr2.Controllers
 {
     public class ArticleController : Controller {
-        public IActionResult Index(int id=1) {
-            var articles = new List<Article>{
-                new Article {
-                Id = 1,
-                Title = "Artykuł 1",
-                Content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quod saepe nostrum deserunt similique ullam doloremque corrupti molestiae. Sed nesciunt ab ullam expedita ratione cumque. Consequuntur dolorem inventore vero perferendis.",
-                CreationDate = DateTime.Now
-                },
-                new Article {
-                Id = 2,
-                Title = "Artykuł 2",
-                Content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quod saepe nostrum deserunt similique ullam doloremque corrupti molestiae. Sed nesciunt ab ullam expedita ratione cumque. Consequuntur dolorem inventore vero perferendis.",
-                CreationDate = DateTime.Now
-                },
-                new Article {
-                Id = 3,
-                Title = "Artykuł 3",
-                Content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quod saepe nostrum deserunt similique ullam doloremque corrupti molestiae. Sed nesciunt ab ullam expedita ratione cumque. Consequuntur dolorem inventore vero perferendis.",
-                CreationDate = DateTime.Now
+        private readonly DatabaseContext asd;
+        public ArticleController(DatabaseContext databaseContext){
+            asd = databaseContext;
+        }
+        public IActionResult Index(){
+            return View(asd.Articles.ToList()!);
+        }
+        public IActionResult Dodaj(int id = -1)
+        {
+
+            if (id != -1)
+            {
+                var article = asd.Articles!
+                    .FirstOrDefault(a => a.Id == id);
+                @ViewBag.Header = "Edytuj artykuł";
+                @ViewBag.ButtonText = "Edytuj";
+                return View(article);
+            }
+            else
+            {
+                @ViewBag.Header = "Dodaj artykuł";
+                @ViewBag.ButtonText = "Dodaj";
+                return View();
+            }
+            
+        }
+
+        [HttpPost]
+        public IActionResult Dodaj(Article article)
+        {
+            if (article.Id != 0)
+            {
+                var a = asd.Articles!.FirstOrDefault(a => a.Id == article.Id);
+                if (a != null)
+                {
+                    a.Author = article.Author;
+                    a.Category = article.Category;
+                    a.Comments = article.Comments;
+                    a.Content = article.Content;
+                    a.CreationDate = article.CreationDate;
                 }
-            };
-            return View(articles[id-1]);
+            }
+            else
+            {
+                asd.Articles!.Add(article);
+            }
+            asd.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

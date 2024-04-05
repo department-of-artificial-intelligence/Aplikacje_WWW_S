@@ -1,4 +1,4 @@
-@model AWWW_lab1_gr2.Models.League
+@model AWWW_lab1_gr2.Models.Team
 <h1>@ViewBag.Header</h1>
 
 <form asp-action="dodaj" method="post">
@@ -12,8 +12,16 @@
         <input asp-for="Country"/>
     </p>
     <p>
-        <label asp-for="Level">Poziom:</label>
-        <input asp-for="Level"/>
+        <label asp-for="City">Miasto:</label>
+        <input asp-for="City"/>
+    </p>
+    <p>
+        <label asp-for="FoundingDate">Data założenia:</label>
+        <input asp-for="FoundingDate"/>
+    </p>
+    <p>
+        <label asp-for="League">Liga:</label>
+        <select asp-for="League" asp-items="@ViewBag.LeagueList"/></select>
     </p>
     <p>
         <button type="submit">@ViewBag.ButtonText</button>

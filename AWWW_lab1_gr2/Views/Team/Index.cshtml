@@ -1,0 +1,21 @@
+@model ICollection<AWWW_lab1_gr2.Models.Team>;
+
+<h1>Lista Drużyn</h1>
+
+<ul>
+    @foreach (AWWW_lab1_gr2.Models.Team team in @Model){
+        <li>Drużyna @team.Id: <ul>
+                <li>Nazwa: @team.Name</li>
+                <li>Państwo: @team.Country</li>
+                <li>Miasto: @team.City</li>
+                <li>Data założenia: @team.FoundingDate</li>
+                <li>Liga: @team.League</li>
+                <li>Mecze: @if(team.HomeMatches != null) {team.HomeMatches.ToString();} @if(team.AwayMatches != null) {team.AwayMatches.ToString();}</li>
+                <li>Gracze: @if(team.Players != null) {team.Players.ToString();}</li>
+                <li><a asp-controller="team" asp-action="Dodaj" asp-route-id="@team.Id">Edytuj</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<h3><a asp-controller="team" asp-action="Dodaj">Dodaj</a></h3>
