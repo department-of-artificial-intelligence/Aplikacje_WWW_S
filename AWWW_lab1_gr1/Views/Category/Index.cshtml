@@ -9,7 +9,7 @@
 <table class="table">
     <thead>
         <tr>
-            @if (Model != null)
+            @if (Model != null && Model.FirstOrDefault()!=null )
             {
                 @foreach (var prop in Model.FirstOrDefault().GetType().GetProperties())
                 {
