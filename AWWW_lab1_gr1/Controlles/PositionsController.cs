@@ -17,14 +17,14 @@ public class PositionsController:Controller
         return View(await DbContext.Positions.ToListAsync());
     }
 
-    public IActionResult Add()
+    public IActionResult Create()
     {
         return View();
     }
 
 
     [HttpPost]
-    public async Task<IActionResult> Add(Position position)
+    public async Task<IActionResult> Create(Position position)
     {
         if(ModelState.IsValid)
         {
