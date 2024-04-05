@@ -1,0 +1,35 @@
+﻿@model AWWW_lab2_gr2.Models.Player
+
+@{
+    ViewData["Title"] = "Edytuj Gracza";
+}
+
+<h2>@ViewData["Title"]]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+        <label asp-for="FirstName" class="control-label">Imię:</label>
+        <input asp-for="FirstName" class="form-control" />
+
+        <label asp-for="LastName" class="control-label">Nazwisko:</label>
+        <input asp-for="LastName" class="form-control" />
+
+        <label asp-for="Country" class="control-label">Kraj:</label>
+        <input asp-for="Country" class="form-control" />
+
+        <label asp-for="BirthDate" class="control-label">Data urodzenia:</label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+
+        <label asp-for="TeamId" class="control-label">Drużyna:</label>
+        <select asp-for="TeamId" asp-items="@ViewBag.teamsList" class="form-control"></select>
+
+        <label>Pozycje:</label>
+        @foreach (var position in Model.Positions) // Zakładając, że Player ma kolekcję Positions
+        {
+            <input type="checkbox" name="SelectedPositions" value="@position.Id" @(Html.IsChecked(position.Id)) /> @position.Name
+
+            <br />
+        }
+        
+    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+</form>

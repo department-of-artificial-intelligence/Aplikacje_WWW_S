@@ -24,13 +24,13 @@
             <select asp-for="TeamId" asp-items="@ViewBag.teamsList"></select>
         </p>
         <p>
-            <label asp-for="Positions">Pozycje:</label>
-            @foreach (var position in @ViewBag.positionsList)
+            @foreach (var position in ViewBag.positionsList as List<SelectListItem>)
             {
-                <p>
-                    <label>@position.Text</label>
-                    <input type="checkbox" name="Positions" value="@position.Value" />
-                </p>
+                <div>
+                    <input type="checkbox" name="positions" value="@position.Value" id="position_@position.Value"
+                         @(Model != null && Model.Positions.Any(p => p.Id.ToString() == position.Value) ? "checked" : "") />
+                    <label for="position_@position.Value">@position.Text</label>
+                </div>
             }
         </p>
         <button type="submit" class="btn btn-primary">Dodaj</button>
