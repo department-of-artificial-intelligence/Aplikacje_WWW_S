@@ -6,6 +6,6 @@ namespace AWWW_lab1_gr1.Models{
         public required string Name{get;set;}
         public required string Country{get;set;}
         public int Level{get; set;}
-        public virtual ICollection<Team>? Teams { get; set; }
+        public List<Team>? Teams { get; set; }
     }
 }

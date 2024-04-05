@@ -9,6 +9,5 @@ namespace AWWW_lab1_gr1.Models
 
         public int ArticleID {get; set;}
 
-        public virtual Article Article{get; set;}
     }
 }

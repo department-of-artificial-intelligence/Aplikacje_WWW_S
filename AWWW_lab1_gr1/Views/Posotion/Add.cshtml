@@ -1,0 +1,16 @@
+@using AWWW_lab1_gr1.Models
+@model Position
+
+<h2>Add Position</h2>
+<form asp-action="Create" asp-controller="Positions">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+
+</form>

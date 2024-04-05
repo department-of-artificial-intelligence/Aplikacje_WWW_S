@@ -31,17 +31,18 @@ namespace AWWW_lab1_gr1
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        
         {
             modelBuilder.Entity<Match>()
             .HasOne(m => m.HomeTeam)
             .WithMany(t => t.HomeMatches)
-            .HasForeignKey(m => m.HomeTeamId)
+            .HasForeignKey(m => m.HomeTeamID)
             .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Match>()
             .HasOne(m => m.AwayTeam)
             .WithMany(t => t.AwayMatches)
-            .HasForeignKey(m => m.AwayTeamId)
+            .HasForeignKey(m => m.AwayTeamID)
             .OnDelete(DeleteBehavior.NoAction);
         }
     }
