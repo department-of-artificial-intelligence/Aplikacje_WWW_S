@@ -9,6 +9,8 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 options.UseSqlServer(cs);
 });
 
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

@@ -12,14 +12,16 @@ public class LeagueController:Controller
         this.bdContext = bdContext;
     }
 
-    public async Task<IActionResult> Index()
-    {
-        return View(await bdContext.Tags.ToListAsync());
-    }
-
-    public IActionResult Add()
-    {
-        return View();
+     public async Task<IActionResult> Index() {
+        try
+        {
+            return View(await bdContext.Leagues.ToListAsync());
+        }
+        catch (Exception ex)
+        {
+            
+            return View("Views/League/Index.cshtml");
+        }
     }
 
 
@@ -30,7 +32,7 @@ public class LeagueController:Controller
         {
             bdContext.Add(league);
             await bdContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/League/Add.cshtml");
         }
         return View(league);
     }

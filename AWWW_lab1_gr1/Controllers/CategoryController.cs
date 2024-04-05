@@ -13,15 +13,17 @@ public class CategoryControler: Controller
      }
 
 
-     public async Task<IActionResult> Index()
-     {
-        return View(await bdContext.Categories.ToListAsync());
-     }
-
-     public  IActionResult Add()
-     { 
-       return View(); 
-     }
+     public async Task<IActionResult> Index() {
+        try
+        {
+            return View(await bdContext.Categories.ToListAsync());
+        }
+        catch (Exception ex)
+        {
+            
+            return View("Views/Category/Index.cshtml");
+        }
+    }
 
      [HttpPost]
 
@@ -31,7 +33,7 @@ public class CategoryControler: Controller
            {
                bdContext.Add(category);
                await bdContext.SaveChangesAsync();
-               return RedirectToAction("Index");
+               return RedirectToAction("Views/Category/Add.cshtml");
            }
            return View(category);
      }

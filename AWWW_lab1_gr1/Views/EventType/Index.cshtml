@@ -1,15 +1,11 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<EventType>
- 
+@model ICollection<AWWW_lab1_gr1.Models.EventType>
 
- <h1>EventType List</h1>
- <p><a asp-action="Add">Add EventType</a></p>
- <table class="table">
-<tr><th>Name</th></tr>
-@foreach(var item in Model)
+<p><a asp-action="Add" asp-controller="EventType">Dodaj</a></p>
+
+@if (Model != null)
 {
-    <tr>
-        <td> @item.Name</td>
-    </tr>
+    @foreach(var et in Model) 
+    {
+        <h3><a asp-action="Index" asp-controller="EventType" asp-route-id="@et.Id">@et.Id, @(et.Name)</a></h3>
+    }
 }
- </table>   

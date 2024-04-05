@@ -12,14 +12,16 @@ public class PositionController:Controller
         this.bdContext= bdContext;
     }
 
-    public async Task<IActionResult> Index()
-    {
-        return View(await bdContext.Positions.ToListAsync());
-    }
-
-    public IActionResult Add()
-    {
-        return View();
+    public async Task<IActionResult> Index() {
+        try
+        {
+            return View(await bdContext.Positions.ToListAsync());
+        }
+        catch (Exception ex)
+        {
+            
+            return View("Views/Position/Index.cshtml");
+        }
     }
 
 

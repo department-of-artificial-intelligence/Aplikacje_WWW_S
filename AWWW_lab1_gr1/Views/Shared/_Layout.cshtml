@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/w3-css/w3.css" asp-append-version="true" />
-</head>
-<body>
-   <header>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    </head>
+    <body>
+        <header>
             <nav>
                 <ul class="navbar-nav fleg-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-dark"  asp-controller="home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="students" asp-action="Index">Students</a>
+                        <a class="nav-link text-dark" asp-controller="Student" asp-action="Index">Students</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="authors" asp-action="Index">Authors</a>
+                        <a class="nav-link text-dark" asp-controller="Authors" asp-action="Index">Authors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="categories" asp-action="Index">Categories</a>
+                        <a class="nav-link text-dark" asp-controller="Categories" asp-action="Index">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="tags" asp-action="Index">Tags</a>
+                        <a class="nav-link text-dark" asp-controller="Tags" asp-action="Index">Tags</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="leagues" asp-action="Index">Leagues</a>
+                        <a class="nav-link text-dark" asp-controller="League" asp-action="Index">Leagues</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="EventTypes" asp-action="Index">EventTypes</a>
+                        <a class="nav-link text-dark" asp-controller="EventType" asp-action="Index">EventTypes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="positions" asp-action="Index">Positions</a>
+                        <a class="nav-link text-dark" asp-controller="Position" asp-action="Index">Positions</a>
                     </li>
                 </ul>
             </nav>
-        <main>
-            @RenderBody()
-        </main>
-    
-        <footer class="w3-panel w3-center">
-            &copy; Georgii Gorokhovskyi 2024
+        </header>
+        <main>@RenderBody()</main>
+
+        <footer>
+            &copy; 2024 Georgii Gorokhovskyi
         </footer>
-    </div>
-</body>
+    </body>
+</html>

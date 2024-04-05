@@ -1,17 +1,11 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<League>
-   
+@model ICollection<AWWW_lab1_gr1.Models.League>
 
-   <h1>League List</h1>
-   <p><a asp-action="Add">Add League</a></p> 
-   <table class="table">
-     <tr><th>Name</th><th>Country</th><th>Level</th></tr>
-    @foreach(var item in Model)
+<p><a asp-action="Add" asp-controller="League">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach(var le in Model) 
     {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Country</td>
-            <td>@item.Level</td>
-        </tr>
+        <h3><a asp-action="Index" asp-controller="League" asp-route-id="@le.Id">@le.Id, @(le.Name + ", " + le.Country + ", " + le.Level)</a></h3>
     }
-   </table>
+}

@@ -1,16 +1,11 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<Author>
- 
+@model ICollection<AWWW_lab1_gr1.Models.Author>
 
-<h2>Authors List</h2>
-<p><a asp-action="Create">Add Author</a></p>
-<table class="table">
-     <tr><th>First Name</th><th>Last Name</th></tr>
-    @foreach (var item in Model)
+<p><a asp-action="Add" asp-controller="Author">Dodaj</a></p>
+
+@if (Model != null)
+{
+    @foreach(var aut in Model) 
     {
-        <tr>
-            <td>@item.FirstName</td>
-            <td>@item.LastName</td>
-        </tr>
+        <h3><a asp-action="Index" asp-controller="Author" asp-route-id="@aut.Id">@aut.Id, @(aut.FirstName + " " + aut.LastName)</a></h3>
     }
-</table>
+}

@@ -1,13 +1,17 @@
-<head>
-     <link rel="stylesheet" href="~/css/site.css" />
-</head>
-@model AWWW_lab1_gr1.Models.Student 
- 
- <div class=artykul>
- <p> ID: @Model.ID</p> 
- <p> FirstName:   @Model.FirstName</p> 
- <p> LastName:  @Model.LastName</p>  
- <p> IndexNr:  @Model.IndexNr</p>  
- <p> DateOfBirth:  @Model.DateOfBirth</p>  
- <p>FielOfStudy:   @Model.FieldOfStudy</p>
- </div>
+@model AWWW_lab1_gr1.Models.Student
+
+<p>
+    Imie : @Model.FirstName
+</p>
+<p>
+    Nazwisko : @Model.LastName
+</p>
+<p>
+    Nr indeksu : @Model.IndexNr
+</p>
+<p>
+    Data urodzenia : @Model.DateOfBirth.ToShortDateString()
+</p>
+<p>
+    Kierunek studiów : @Model.FieldOfStudy
+</p>

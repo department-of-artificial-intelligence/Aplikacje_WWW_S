@@ -1,17 +1,11 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<Category>
+@model ICollection<AWWW_lab1_gr1.Models.Category>
 
+<p><a asp-action="Add" asp-controller="Category">Dodaj</a></p>
 
- <h1>Category List</h1>
-
-<p ><a asp-action="Add">Add Category</a></p>
-<table class="table">
-    <tr><th>Name</th></tr>
-    @foreach(var item in Model)
+@if (Model != null)
+{
+    @foreach(var cat in Model) 
     {
-       <tr>
-           <td>@item.Name</td>
-       </tr>
+        <h3><a asp-action="Index" asp-controller="Category" asp-route-id="@cat.Id">@cat.Id, @(cat.Name)</a></h3>
     }
-
-</table>
+}

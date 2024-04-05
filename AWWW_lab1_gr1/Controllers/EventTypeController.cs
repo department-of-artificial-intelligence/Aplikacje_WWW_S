@@ -13,15 +13,14 @@ public class EventTypeController: Controller
     }
 
     public async Task<IActionResult> Index()
-    {
-        return View (await bdContext.EventTypes.ToListAsync()); 
-    }
+     {
+        return View(await bdContext.EventTypes.ToListAsync());
+     }
 
-
-    public IActionResult Add()
-    {
-        return View();
-    }
+     public  IActionResult Add()
+     { 
+       return View("Views/EventType/Index.cshtml"); 
+     }
 
     [HttpPost]
     public async Task<IActionResult> Add(EventType eventType)
@@ -30,7 +29,7 @@ public class EventTypeController: Controller
         {
             bdContext.Add(eventType);
             await bdContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/EventType/Add.cshtml");
         }
         return View(eventType);
     }
