@@ -1,34 +1,38 @@
+﻿using AWWW_lab1_gr1.Data;
 using Microsoft.AspNetCore.Mvc;
-public class ArticleController : Controller
+using Microsoft.EntityFrameworkCore;
+
+namespace AWWW_lab1_gr1.Controllers
 {
-
-    public IActionResult Index(int id = 1)
+    public class ArticleController : Controller
     {
-        var articles = new List<Article>()
+        private readonly MyDBContext _dbContext;
+        public ArticleController(MyDBContext dBContext)
         {
-
-        new Article
-        {
-            Id = 1,
-            Title = "artykuł 1",
-            Content = "lorem impsu",
-            CreationDate = DateTime.Now
-        },
-        new Article
-        {
-            Id =2,
-            Title = "Artykuł 2",
-            Content = "lorem ",
-            CreationDate = DateTime.Now
-                    },
-        new Article
-        {
-            Id =3,
-            Title = "Artykuł 3",
-            Content = "lorem ",
-            CreationDate = DateTime.Now
+            _dbContext = dBContext;
         }
-        };
-        return View(articles[id - 1]);
+
+        public async Task<IActionResult> Index()
+        {
+            using var context = _dbContext;
+            var result = await context.Articles.ToListAsync();
+
+            return View(result);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var result = await _dbContext.Articles.FirstOrDefaultAsync(x => x.Id == id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return View(result);
+        }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AWWW_lab1_gr1.Models.Category>
+
+@{
+    ViewBag.Title = "Kategorie";
+}
+
+<h1>@ViewBag.Title</h1>
+<p><a asp-action="Add">Utworz nowy</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            @if (Model != null)
+            {
+                @foreach (var prop in Model.FirstOrDefault().GetType().GetProperties())
+                {
+                    <th scope="col">@prop.Name</th>
+                }
+            }
+            <th scope="col">
+                Manage
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+        <tr>
+                    <th scope="col">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>
+                        @if(item.Articles != null)
+                        {
+                            @foreach (var article in item.Articles)
+                            {
+                                <p>
+                                    <a asp-controller="Article" asp-action="Details" asp-route-id="@item.Id">
+                                        <strong>@article.Title</strong>
+                                    </a><br />
+                                    @article.Lead
+                                </p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+        </tr>
+                }
+            }
+    </tbody>
+</table>

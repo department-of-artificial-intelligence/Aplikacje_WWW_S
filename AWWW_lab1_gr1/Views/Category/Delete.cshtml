@@ -1,0 +1,27 @@
+﻿@model AWWW_lab1_gr1.Models.Category
+
+@{
+    ViewBag.Title = "Usun kategorie";
+}
+<h1>@ViewBag.Title</h1>
+<h3>Czy na pewno chcesz usunąc?</h3>
+<div>
+    <p>
+        <strong>
+            @Html.DisplayNameFor(m => m.Id):
+        </strong>
+        @Html.DisplayFor(m => m.Id)
+    </p>
+
+    <p>
+        <strong>
+            @Html.DisplayNameFor(m => m.Name):
+        </strong>
+        @Html.DisplayFor(m => m.Name)
+    </p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" /> <br />
+        <a asp-action="Index">Wróc</a>
+    </form>
+</div>

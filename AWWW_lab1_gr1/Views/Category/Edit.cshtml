@@ -1,0 +1,20 @@
+﻿@model AWWW_lab1_gr1.Models.Category
+@{
+    ViewBag.Title = "Edit Category";
+}
+<h1>@ViewBag.Title</h1>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Name">Nazwa</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <button type="submit">Edytuj</button><br />
+    </div>
+</form>
+<div>
+    <a asp-action="Index">Wróc</a>
+</div>

@@ -1,0 +1,43 @@
+﻿@model AWWW_lab1_gr1.Models.Category
+@{
+    ViewBag.Title = "Szczegoly kategorie";
+}
+<h1>@ViewBag.Title</h1>
+<div>
+    <p>
+        <strong>
+            @Html.DisplayNameFor(m=>m.Id): 
+        </strong>
+        @Html.DisplayFor(m => m.Id)
+    </p>
+
+    <p>
+        <strong>
+            @Html.DisplayNameFor(m => m.Name):
+        </strong>
+        @Html.DisplayFor(m => m.Name)
+    </p>
+</div>
+<div>
+    <p> Lista artykułów:</p>
+    <p><em>Ilość: @(Model.Articles?.Count ?? 0)</em></p>
+    @if(Model.Articles != null)
+    {
+        foreach (var item in Model.Articles)
+        {
+            <p>
+                <a asp-controller="Article" asp-action="Details" asp-route-id="@item.Id">
+                    <strong>@item.Title</strong>
+                </a><br />
+                @item.Lead
+            </p>
+        }
+    }
+</div>
+
+<div>
+    <h6>Manage <em> @Model.Name</em></h6>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id">Usuń</a>
+    <a asp-action="Index">Wróc</a>
+</div>
