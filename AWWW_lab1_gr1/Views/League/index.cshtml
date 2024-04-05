@@ -1,16 +1,15 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<League>
+@model ICollection<AWWW_lab1_gr1.Models.League>
  
-<h2>Leagues List</h2>
-<p><a asp-action="Create">Add League</a></p>
+<h2>League List</h2>
+<p><a asp-action="Add">Add League</a></p>
 <table class="table">
      <tr><th>Name</th><th>Country</th><th>Level</th></tr>
-    @foreach (var item in Model)
+    @foreach (var element in Model)
     {
         <tr>
-            <td>@item.Name</td>
-            <td>@item.Country</td>
-            <td>@item.Level</td>
+            <td>@element.Name</td>
+            <td>@element.Country</td>
+            <td>@element.Level</td>
         </tr>
     }
 </table>

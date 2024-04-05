@@ -1,35 +1,36 @@
-using AWWW_lab1_gr1;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
+namespace AWWW_lab1_gr1.Controllers
+{
+    public class AuthorController : Controller
+    {
+        private readonly MyDbContext _dbContext;
 
+        public AuthorController(MyDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
-public class AuthorsController: Controller{
-   MyDbContext DbContext;
+        public IActionResult Index()
+        {
+            var authors = _dbContext.Authors.ToList();
+            return View(authors);
+        }
 
-   public AuthorsController (MyDbContext DbContext){
-      this.DbContext=DbContext;
-   }
+        public IActionResult Add()
+        {
+            return View();
+        }
 
-   public async Task<IActionResult> Index()
-      {
-         return View(await DbContext.Authors.ToListAsync());
-      }
-
-   public IActionResult Add(){
-      return View();
-   }
-
-   [HttpPost]
-
-   public async Task<IActionResult> Add(Author author){
-      if(ModelState.IsValid)
-            {
-                  DbContext.Add(author);
-                  await DbContext.SaveChangesAsync();
-                  return RedirectToAction("Index");
-            }
-      return View(author);
-   }
+        [HttpPost]
+        public IActionResult Add(Author author)
+        {
+            _dbContext.Authors.Add(author);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+    }
 }

@@ -1,37 +1,41 @@
-using AWWW_lab1_gr1;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-public class PositionsController:Controller
+namespace AWWW_lab1_gr1.Controllers
 {
-    MyDbContext DbContext;
-
-    public PositionsController(MyDbContext DbContext)
+    public class PositionsController : Controller
     {
-        this.DbContext= DbContext;
-    }
+        private readonly MyDbContext _dbContext;
 
-    public async Task<IActionResult> Index()
-    {
-        return View(await DbContext.Positions.ToListAsync());
-    }
-
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-
-    [HttpPost]
-    public async Task<IActionResult> Create(Position position)
-    {
-        if(ModelState.IsValid)
+        public PositionsController(MyDbContext dbContext)
         {
-            DbContext.Add(position);
-            await DbContext.SaveChangesAsync();
+            _dbContext = dbContext;
+        }
+
+        public IActionResult Index()
+        {
+            var positions = _dbContext.Positions!.ToList(); 
+            return View(positions);
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Position position)
+        {
+            _dbContext.Positions!.Add(position); 
+            _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
-        return View(position);
+
+
+        
+
+
     }
 }

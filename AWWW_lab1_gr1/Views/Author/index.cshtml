@@ -1,16 +1,14 @@
-@using AWWW_lab1_gr1.Models
-@model IEnumerable<Author>
+@model ICollection<AWWW_lab1_gr1.Models.Author>
  
 <h2>Authors List</h2>
-<p><a asp-action="Create">Add Author</a></p>
+<p><a asp-action="Add">Add Author</a></p>
 <table class="table">
      <tr><th>First Name</th><th>Last Name</th></tr>
-    @foreach (var item in Model)
+    @foreach (var element in Model)
     {
         <tr>
-            <td>@item.ID</td>
-            <td>@item.FirstName</td>
-            <td>@item.LastName</td>
+            <td>@element.FirstName</td>
+            <td>@element.LastName</td>
         </tr>
     }
 </table>
