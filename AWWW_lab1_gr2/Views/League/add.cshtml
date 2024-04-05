@@ -1,0 +1,14 @@
+@model AWWW_lab1_gr2.Models.League
+
+<form class="Form_Dodaj" asp-action="Added">
+    <label for="in_name">Nazwa: </label>
+    <input id="in_name" class="form-control" asp-for="Name" type="text" required><br>
+
+    <label for="in_country">Państwo: </label>
+    <input id="in_country" class="form-control" asp-for="Country" type="text"><br>
+
+    <label for="in_level">Poziom: </label>
+    <input id="in_level" class="form-control" asp-for="Level" type="number" required><br>
+
+    <button class="btn btn-primary" type="submit">Dodaj</button>
+</form>

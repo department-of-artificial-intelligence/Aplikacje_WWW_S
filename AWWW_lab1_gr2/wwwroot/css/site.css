@@ -34,3 +34,12 @@ label{
     float: left;
     overflow: hidden;
 }
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+}
+.row > div{
+    width: 100px;
+    text-align: center;
+}
