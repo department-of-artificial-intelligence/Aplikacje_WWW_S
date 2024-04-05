@@ -35,16 +35,36 @@ public class AuthorController : Controller
   }
   public IActionResult Add()
   {
-    return View();
+    return View("Edit", new Author { FirstName = "", LastName = "" });
+  }
+
+  public IActionResult Edit(int id)
+  {
+    var author = _dbContext.Authors.FirstOrDefault(a => a.Id == id);
+
+    if (author == null)
+    {
+      return View("Error");
+    }
+
+    return View("Edit", author);
   }
 
   [HttpPost]
-  public IActionResult Add(Author author)
+  public IActionResult Save(Author author)
   {
-    Console.WriteLine(author.FirstName);
     Console.WriteLine(ModelState.IsValid);
 
-    _dbContext.Authors.Add(author);
+    Console.WriteLine(author.Id);
+
+    if (author.Id == 0)
+    {
+      _dbContext.Authors.Add(author);
+    }
+    else
+    {
+      _dbContext.Authors.Update(author);
+    }
 
     try
     {
@@ -55,7 +75,24 @@ public class AuthorController : Controller
       return View("Error");
     }
 
-    // return View("Details", author);
     return RedirectToAction("Details", "Author", new { id = author.Id });
+
+    // return View("Details", author);
+  }
+
+  public ActionResult Delete(int id)
+  {
+    // Retrieve data from database based on id
+    Author author = _dbContext.Authors.Find(id);
+
+    if (author == null)
+    {
+      return RedirectToAction("Index");
+    }
+
+    _dbContext.Authors.Remove(author);
+    _dbContext.SaveChanges();
+
+    return RedirectToAction("Index");
   }
 }

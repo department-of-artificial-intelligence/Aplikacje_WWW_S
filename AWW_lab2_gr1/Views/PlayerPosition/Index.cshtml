@@ -1,9 +1,9 @@
-@model List<AWW_lab2_gr1.Models.Author>
+@model List<AWW_lab2_gr1.Models.Position>
 
 <div class="page-header">
   <h2 class="page-title">@ViewBag.Title</h2>
   <div>
-    <a class="primary-button" asp-action="Add">Add new Author</a>
+    <a class="primary-button" asp-action="Add" asp-controller="PlayerPosition">Add new Player Position</a>
   </div>
 </div>
 
@@ -11,8 +11,7 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Name</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -22,8 +21,7 @@
       <tr>
         <td><a asp-action="Details" asp-route-id="@item.Id">@item.Id</a>
         </td>
-        <td>@item.FirstName</td>
-        <td>@item.LastName</td>
+        <td>@item.Name</td>
         <td>
           <div class="action-buttons">
             <a asp-action="Details" asp-route-id="@item.Id" class="primary-button small">Details</a>

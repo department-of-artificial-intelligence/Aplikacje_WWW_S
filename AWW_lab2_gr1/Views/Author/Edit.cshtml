@@ -1,0 +1,36 @@
+@model AWW_lab2_gr1.Models.Author
+
+<h2 class="page-title">
+  @if (Model.Id != 0)
+  {
+    @: Edit Author
+  }
+  else
+  {
+    @: Add new Author
+  }
+</h2>
+<form asp-action="Save" asp-controller="Author" method="post">
+  @Html.HiddenFor(model => model.Id)
+
+  <div class="form-element">
+    <label asp-for="FirstName">Firstname:</label>
+    <input type="text" asp-for="FirstName">
+  </div>
+
+  <div class="form-element">
+    <label asp-for="LastName">Lastname:</label>
+    <input type="text" asp-for="LastName">
+  </div>
+
+  <button class="primary-button" type="submit">
+    @if (Model.Id != 0)
+    {
+      @: Save
+    }
+    else
+    {
+      @: Add
+    }
+  </button>
+</form>

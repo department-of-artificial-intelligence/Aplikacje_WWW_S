@@ -1,0 +1,30 @@
+@model AWW_lab2_gr1.Models.Category
+
+<h2 class="page-title">
+  @if (Model.Id != 0)
+  {
+    @: Edit Category
+  }
+  else
+  {
+    @: Add new Category
+  }
+</h2>
+<form asp-action="Save" asp-controller="Category" method="post">
+  @Html.HiddenFor(model => model.Id)
+  <div class="form-element">
+    <label asp-for="Name">Name:</label>
+    <input type="text" asp-for="Name">
+  </div>
+
+  <button class="primary-button" type="submit">
+    @if (Model.Id != 0)
+    {
+      @: Save
+    }
+    else
+    {
+      @: Add
+    }
+  </button>
+</form>

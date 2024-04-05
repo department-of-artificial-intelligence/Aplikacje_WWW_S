@@ -1,0 +1,36 @@
+@model List<AWW_lab2_gr1.Models.EventType>
+
+<div class="page-header">
+  <h2 class="page-title">@ViewBag.Title</h2>
+  <div>
+    <a class="primary-button" asp-action="Add" asp-controller="EventType">Add new Event Type</a>
+  </div>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td><a asp-action="Details" asp-route-id="@item.ID" asp-controller="EventType">@item.ID</a>
+        </td>
+        <td>@item.Name</td>
+        <td>
+          <div class="action-buttons">
+            <a asp-action="Details" asp-route-id="@item.ID" class="primary-button small">Details</a>
+            <a asp-action="Edit" asp-route-id="@item.ID" class="primary-button small">Edit</a>
+            <a asp-action="Delete" asp-route-id="@item.ID" class="primary-button small danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+
+    }
+  </tbody>
+</table>

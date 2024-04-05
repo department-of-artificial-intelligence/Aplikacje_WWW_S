@@ -1,0 +1,30 @@
+@model AWW_lab2_gr1.Models.EventType
+
+<h2 class="page-title">
+  @if (Model.ID != 0)
+  {
+    @: Edit Event Type
+  }
+  else
+  {
+    @: Add new Event Type
+  }
+</h2>
+<form asp-action="Save" method="post">
+  @Html.HiddenFor(model => model.ID)
+  <div class="form-element">
+    <label asp-for="Name">Name:</label>
+    <input type="text" asp-for="Name">
+  </div>
+
+  <button class="primary-button" type="submit">
+    @if (Model.ID != 0)
+    {
+      @: Save
+    }
+    else
+    {
+      @: Add
+    }
+  </button>
+</form>

@@ -64,7 +64,7 @@ body {
   display: none;
   position: absolute;
   background-color: white;
-  min-width: 160px;
+  min-width: 180px;
   z-index: 1;
   top: 40px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -96,6 +96,12 @@ main {
   margin-bottom: 20px;
 }
 
+.page-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .page-subtitle {
   margin: 40px 0 20px 0;
 }
@@ -111,4 +117,98 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.primary-button {
+  background-color: rgb(13, 13, 144);
+  color: white !important;
+  width: fit-content;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid rgb(13, 13, 144);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primary-button.small {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.primary-button.danger {
+  background-color: rgb(228, 47, 47);
+  border-color: rgb(228, 47, 47);
+}
+
+.primary-button:hover {
+  background-color: transparent;
+  color: rgb(13, 13, 144) !important;
+}
+
+.primary-button.danger:hover {
+  color: rgb(228, 47, 47) !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 350px;
+}
+
+.form-element input,
+.form-element select,
+.form-element textarea {
+  padding: 10px 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 5px;
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+  background-color: #ddd;
+}
+
+.data-table td:last-of-type {
+  width: 150px;
+}
+
+.data-table a {
+  color: inherit;
+}
+
+.action-buttons {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  justify-content: end;
 }
