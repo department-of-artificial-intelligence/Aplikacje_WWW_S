@@ -1,9 +1,25 @@
+@model List<AWWW_lab2_gr2.Models.Author>;
+
 @{
-    ViewData["Title"] = "Add Author ";
+    ViewData["Title"] = "Authors";
 }
 
-<div>
+<h1>Authors</h1>
 
-    <h1>Hello</h1>
-
-<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
