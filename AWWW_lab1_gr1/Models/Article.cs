@@ -1,9 +1,6 @@
 namespace AWWW_lab1_gr1.Models;
 public class Article {
     public int Id { get; set; }
-
-    public int AuthorId {get;set;}
-
     public required string Lead { get; set; }
 
     public  required string Title { get; set; }

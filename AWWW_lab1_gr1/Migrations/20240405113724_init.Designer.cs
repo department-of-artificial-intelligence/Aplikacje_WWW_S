@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr1.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240322122821_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240405113724_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,15 +113,13 @@ namespace AWWW_lab1_gr1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ArticleId")
+                    b.Property<int?>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -290,7 +288,7 @@ namespace AWWW_lab1_gr1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -428,9 +426,7 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr1.Models.Article", "Article")
                         .WithMany("Comments")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ArticleId");
 
                     b.Navigation("Article");
                 });
@@ -510,9 +506,7 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr1.Models.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
                 });

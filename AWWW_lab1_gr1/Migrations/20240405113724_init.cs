@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AWWW_lab1_gr1.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -101,8 +101,8 @@ namespace AWWW_lab1_gr1.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FoundingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LeagueId = table.Column<int>(type: "int", nullable: false)
+                    LeagueId = table.Column<int>(type: "int", nullable: false),
+                    FoundingDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,7 +151,7 @@ namespace AWWW_lab1_gr1.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TeamId = table.Column<int>(type: "int", nullable: false)
+                    TeamId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,8 +160,7 @@ namespace AWWW_lab1_gr1.Migrations
                         name: "FK_Players_Team_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Team",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -170,10 +169,10 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuthorId = table.Column<int>(type: "int", nullable: false),
                     Lead = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     MatchId = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -290,9 +289,9 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArticleId = table.Column<int>(type: "int", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ArticleId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -301,8 +300,7 @@ namespace AWWW_lab1_gr1.Migrations
                         name: "FK_Comments_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

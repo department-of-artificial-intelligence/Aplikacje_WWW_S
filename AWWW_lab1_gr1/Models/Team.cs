@@ -7,7 +7,7 @@ public class Team {
     public required string Country { get; set; }
 
     public required string City { get; set; }
-
+    public int LeagueId { get; set; }
     public required DateTime FoundingDate { get; set; } 
 
     public List<Player>? Players { get; set; }
