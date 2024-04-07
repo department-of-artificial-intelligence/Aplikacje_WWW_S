@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
     public IActionResult Index(int id=1)
     {
         var articles = new List<Article>
-        {/*
+        {
             new Article{
             ID = 1,
             Title = "Artykul 1",
             Content = "Lorem ipsum",
             CreationDate = DateTime.Now,
+            Authors = new Author(){FirstName="asada",LastName="asdas",ID=1},
             Lead = "",
             Category= new Category(){Articles=new List<Article>(),Name="sadsa"},
             Comments=new List<Comment>(){},
@@ -24,8 +25,9 @@ using Microsoft.EntityFrameworkCore;
             Title = "Artykul 2",
             Content = "Lorem ipsum",
             CreationDate = DateTime.Now,
+            Authors = new Author(){FirstName="asada",LastName="asdas",ID=2},
             Lead = "",
-              Category= new Category(){Articles=new List<Article>(),Name="sadsa"},
+            Category= new Category(){Articles=new List<Article>(),Name="sadsa"},
             Comments=new List<Comment>(){},
             Tags = new List<Tag>(){}
             },
@@ -34,13 +36,14 @@ using Microsoft.EntityFrameworkCore;
             Title = "Artykul 3",
             Content = "Lorem ipsum",
             CreationDate = DateTime.Now,
+            Authors = new Author(){FirstName="asada",LastName="asdas",ID=3},
             Lead = "",
             Category= new Category(){Articles=new List<Article>(),Name="sadsa"},
             Comments=new List<Comment>(){},
             Tags = new List<Tag>(){}
             }
         
-  */
+  
         };
         return View(articles[id-1]);
     }

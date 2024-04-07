@@ -1,0 +1,15 @@
+@model ICollection<AWWW_lab1_gr1.Models.League>
+ 
+<h2>League List</h2>
+<p><a asp-action="Add">Add League</a></p>
+<table class="table">
+     <tr><th>Name</th><th>Country</th><th>Level</th></tr>
+    @foreach (var element in Model)
+    {
+        <tr>
+            <td>@element.Name</td>
+            <td>@element.Country</td>
+            <td>@element.Level</td>
+        </tr>
+    }
+</table>

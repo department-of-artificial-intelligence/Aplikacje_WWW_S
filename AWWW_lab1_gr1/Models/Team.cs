@@ -10,4 +10,5 @@ public class Team{
     public virtual ICollection<Match>? AwayMatches{get;set;}
 
     public List<Player>? Players{get;set;}
+    public required League League { get; set; }
 }

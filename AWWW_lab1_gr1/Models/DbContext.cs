@@ -1,5 +1,8 @@
 using AWWW_lab1_gr1.Models;
+using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 namespace AWWW_lab1_gr1;
 public class MyDbContext : DbContext
 {
@@ -17,23 +20,21 @@ public class MyDbContext : DbContext
   public DbSet<Position> Positions { get; set; }
   public DbSet<Tag> Tags { get; set; }
   public DbSet<Team> Teams { get; set; }
-  public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
-  {
-
-  }
+  public MyDbContext(DbContextOptions<MyDbContext> options) : base(options){}
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {
     base.OnConfiguring(optionsBuilder);
   }
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
-    base.OnModelCreating(modelBuilder);
+      base.OnModelCreating(modelBuilder);
     {
       modelBuilder.Entity<Match>()
       .HasOne(m => m.HomeTeam)
      .WithMany(t => t.HomeMatches)
      .HasForeignKey(m => m.HomeTeamId)
      .OnDelete(DeleteBehavior.NoAction);
+
       modelBuilder.Entity<Match>()
       .HasOne(m => m.AwayTeam)
      .WithMany(t => t.AwayMatches)
