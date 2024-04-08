@@ -1,0 +1,26 @@
+﻿@model AWWW_lab2_gr2.Models.Article;
+
+<div class="text-center">
+	<h1>Dodano nowy artykul</h1>
+	<p>@Model.Title</p>
+	<p>@Model.Lead</p>
+	<p>@Model.Content</p>
+	<p>@Model.CreationDate</p>
+	@if (@Model.Author != null)
+	{
+		<p>@(Model.Author.FirstName)</p>
+	}
+	@if (@Model.Category != null)
+	{
+		<p>@(Model.Category.Name)</p>
+	}
+	<p>
+		@if (@Model.Tags != null)
+		{
+			@foreach (var tag in @Model.Tags)
+				@(tag.Name + " ")
+
+		}
+	</p>
+	<a class="btn btn-primary" asp-controller="home" asp-action="index">Home</a>
+</div>

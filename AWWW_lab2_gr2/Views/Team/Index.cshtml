@@ -14,6 +14,7 @@
             <th>Miasto</th>
             <th>Data zalozenia</th>
             <th>Liga</th>
+            <th>Zawodnicy</th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +27,16 @@
                 <td>@team.City</td>
                 <td>@team.FoundingDate.ToShortDateString()</td>
                 <td>@(team.League?.Name ?? "Brak ligi")</td>
+                <td>
+                    @if (team.Players != null)
+                    {
+                        @string.Join(", ", team.Players.Select(player => $"{player.FirstName} {player.LastName}" + (player.Positions != null ? " (" + string.Join(", ", player.Positions.Select(position => position.Name)) + ")" : " (brak pozycji)")))
+                    }
+                    else
+                    {
+                        @:Brak zawodnikow
+                    }
+                </td>
                 <td>
                     <a asp-controller="team" asp-action="edit" asp-route-id="@team.Id" class="btn btn-primary">Edytuj</a>
                 </td>

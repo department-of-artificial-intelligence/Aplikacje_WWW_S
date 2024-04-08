@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AWWW_lab2_gr2.Models.Article>
+
+@{
+    ViewData["Title"] = "Lista artykulow";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Lead</th>
+            <th>Content</th>
+            <th>Creation date</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Tags</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.Title</td>
+                <td>@article.Lead</td>
+                <td>@article.Content</td>
+                <td>@article.CreationDate.ToShortDateString()</td>
+                <td>@(article.Author?.FirstName ?? "Brak autora")</td>
+                <td>@(article.Category?.Name ?? "Brak kategorii")</td>
+                <td>
+                    @if (article.Tags != null)
+                    {
+                        @string.Join(", ", article.Tags.Select(tag => tag.Name));
+                    }
+                    else
+                    {
+                        @:Brak tagow
+                    }
+                </td>
+                <td>
+                    <a asp-controller="article" asp-action="edit" asp-route-id="@article.Id" class="btn btn-primary">Edytuj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="article" asp-action="add" class="btn btn-primary">Dodaj nowy artykul</a>
+

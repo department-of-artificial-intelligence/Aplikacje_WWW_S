@@ -15,7 +15,11 @@ namespace AWWW_lab2_gr2.Controllers
 
 		public IActionResult Index()
 		{
-            var teams = _context.Teams.Include(a => a.League).ToList();
+            var teams = _context.Teams
+				.Include(a => a.League)
+				.Include(a => a.Players)
+                    .ThenInclude(b => b.Positions)
+                .ToList();
             return View(teams);
         }
 
