@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<AWWW_lab2_gr2.Models.Team>
+
 @{
+    ViewData["Title"] = "Lista Druzyn";
 }
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kraj</th>
+            <th>Miasto</th>
+            <th>Data zalozenia</th>
+            <th>Liga</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            <tr>
+                <td>@team.Name</td>
+                <td>@team.Country</td>
+                <td>@team.City</td>
+                <td>@team.FoundingDate.ToShortDateString()</td>
+                <td>@(team.League?.Name ?? "Brak ligi")</td>
+                <td>
+                    <a asp-controller="team" asp-action="edit" asp-route-id="@team.Id" class="btn btn-primary">Edytuj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="team" asp-action="add" class="btn btn-primary">Dodaj nowa druzyne</a>

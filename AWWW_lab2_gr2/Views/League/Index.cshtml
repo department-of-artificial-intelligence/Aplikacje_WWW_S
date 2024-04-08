@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<AWWW_lab2_gr2.Models.League>
+
 @{
+    ViewData["Title"] = "Lista Lig";
 }
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kraj</th>
+            <th>Poziom</th>
+            <th>Druzyny</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var league in Model)
+        {
+            <tr>
+                <td>@league.Name</td>
+                <td>@league.Country</td>
+                <td>@league.Level</td>
+                <td>
+                        @if (league.Teams != null)
+                        {
+                            @string.Join(", ", league.Teams.Select(t => t.Name))
+                        }
+                        else
+                        {
+                            @:Brak drużyn
+                        }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="league" asp-action="add" class="btn btn-primary">Dodaj nowa lige</a>

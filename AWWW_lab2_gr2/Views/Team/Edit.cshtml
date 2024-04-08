@@ -1,0 +1,27 @@
+﻿@model AWWW_lab2_gr2.Models.Team
+
+@{
+    ViewData["Title"] = "Edytuj druzyne";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="Name" class="control-label">Nazwa:</label>
+    <input asp-for="Name" class="form-control" />
+
+    <label asp-for="Country" class="control-label">Kraj:</label>
+    <input asp-for="Country" class="form-control" />
+
+    <label asp-for="City" class="control-label">Miasto:</label>
+    <input asp-for="City" class="form-control" />
+
+    <label asp-for="FoundingDate" class="control-label">Data zalozenia:</label>
+    <input asp-for="FoundingDate" type="date" class="form-control" />
+
+    <label asp-for="LeagueId" class="control-label">Liga:</label>
+    <select asp-for="LeagueId" asp-items="@ViewBag.leaguesList" class="form-control"></select>
+
+    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+</form>
