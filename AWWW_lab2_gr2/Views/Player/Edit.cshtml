@@ -23,13 +23,13 @@
         <label asp-for="TeamId" class="control-label">Drużyna:</label>
         <select asp-for="TeamId" asp-items="@ViewBag.teamsList" class="form-control"></select>
 
-        <label>Pozycje:</label>
-        @foreach (var position in Model.Positions) // Zakładając, że Player ma kolekcję Positions
+        @foreach (var position in @ViewBag.allPositions)
         {
-            <input type="checkbox" name="SelectedPositions" value="@position.Id" @(Html.IsChecked(position.Id)) /> @position.Name
-
-            <br />
+            <div>
+                <input type="checkbox" name="selectedPositions" value="@position.Id" @(Model.Positions.Any(p => p.Id == position.Id) ? "checked" : "") />
+                <label>@position.Name</label>
+            </div>
         }
-        
+    
     <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
 </form>
