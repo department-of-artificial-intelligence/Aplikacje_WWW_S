@@ -31,7 +31,7 @@
             @foreach (var tag in ViewBag.tagsList as List<SelectListItem>)
             {
                 <div>
-                    <input type="checkbox" name="positions" value="@tag.Value" id="tag_@tag.Value"
+                    <input type="checkbox" name="tags" value="@tag.Value" id="tag_@tag.Value"
                     @(Model != null && Model.Tags.Any(p => p.Id.ToString() == tag.Value) ? "checked" : "") />
                     <label for="tag_@tag.Value">@tag.Text</label>
                 </div>

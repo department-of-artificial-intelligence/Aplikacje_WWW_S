@@ -82,5 +82,78 @@ namespace AWWW_lab2_gr2.Controllers
             _context.SaveChanges();
             return View("Added", article);
         }
+
+		public IActionResult Edit(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
+
+			ViewBag.authorsList = new SelectList(_context.Authors, "Id", "FirstName");
+			ViewBag.categoriesList = new SelectList(_context.Categories, "Id", "Name");
+			ViewBag.allTags = _context.Tags.ToList();
+
+			var article = _context.Articles
+			    .Include(a => a.Tags) // Załaduj pozycje za pomocą Eager Loading
+			    .FirstOrDefault(a => a.Id == id);
+
+			return View(article);
+		}
+
+        [HttpPost]
+        public IActionResult Edit(Article article, List<int> selectedTags)
+        {
+
+            var articleToUpdate = _context.Articles
+                .Include(a => a.Tags)
+                .FirstOrDefault(a => a.Id == article.Id);
+
+            if (articleToUpdate != null)
+            {
+                articleToUpdate.Title = article.Title;
+                articleToUpdate.Lead = article.Lead;
+                articleToUpdate.Content = article.Content;
+                articleToUpdate.CreationDate = article.CreationDate;
+                articleToUpdate.AuthorId = article.AuthorId;
+                articleToUpdate.CategoryId = article.CategoryId;
+
+                articleToUpdate.Tags.Clear();
+                foreach (var tag in selectedTags)
+                {
+                    var tagToAdd = _context.Tags.Find(tag);
+                    if (tagToAdd != null)
+                    {
+                        articleToUpdate.Tags.Add(tagToAdd);
+                    }
+                }
+
+                _context.SaveChanges();
+            }
+
+            var articles = _context.Articles
+                .Include(a => a.Author)
+                .Include(a => a.Category)
+                .Include(p => p.Tags);
+
+            return View("Index", articles);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            var article = _context.Articles.Find(id);
+            if (article != null)
+            {
+                _context.Articles.Remove(article);
+                _context.SaveChanges();
+            }
+
+            var articles = _context.Articles
+                .Include(a => a.Author)
+                .Include(a => a.Category)
+                .Include(p => p.Tags);
+
+            return View("Index", articles);
+        }
     }
 }

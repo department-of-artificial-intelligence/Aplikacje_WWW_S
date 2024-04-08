@@ -17,6 +17,7 @@
             <th>Category</th>
             <th>Tags</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +31,7 @@
                 <td>@(article.Author?.FirstName ?? "Brak autora")</td>
                 <td>@(article.Category?.Name ?? "Brak kategorii")</td>
                 <td>
-                    @if (article.Tags != null)
+                    @if (article.Tags != null && article.Tags.Any())
                     {
                         @string.Join(", ", article.Tags.Select(tag => tag.Name));
                     }
@@ -41,6 +42,9 @@
                 </td>
                 <td>
                     <a asp-controller="article" asp-action="edit" asp-route-id="@article.Id" class="btn btn-primary">Edytuj</a>
+                </td>
+                <td>
+                    <a asp-controller="article" asp-action="delete" asp-route-id="@article.Id" class="btn btn-primary">Usun</a>
                 </td>
             </tr>
         }
