@@ -4,32 +4,32 @@
     ViewData["Title"] = "Edytuj Gracza";
 }
 
-<h2>@ViewData["Title"]]</h2>
+<h2>@ViewData["Title"]</h2>
 
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
-        <label asp-for="FirstName" class="control-label">Imię:</label>
-        <input asp-for="FirstName" class="form-control" />
+    <label asp-for="FirstName" class="control-label">Imię:</label>
+    <input asp-for="FirstName" class="form-control" />
 
-        <label asp-for="LastName" class="control-label">Nazwisko:</label>
-        <input asp-for="LastName" class="form-control" />
+    <label asp-for="LastName" class="control-label">Nazwisko:</label>
+    <input asp-for="LastName" class="form-control" />
 
-        <label asp-for="Country" class="control-label">Kraj:</label>
-        <input asp-for="Country" class="form-control" />
+    <label asp-for="Country" class="control-label">Kraj:</label>
+    <input asp-for="Country" class="form-control" />
 
-        <label asp-for="BirthDate" class="control-label">Data urodzenia:</label>
-        <input asp-for="BirthDate" type="date" class="form-control" />
+    <label asp-for="BirthDate" class="control-label">Data urodzenia:</label>
+    <input asp-for="BirthDate" type="date" class="form-control" />
 
-        <label asp-for="TeamId" class="control-label">Drużyna:</label>
-        <select asp-for="TeamId" asp-items="@ViewBag.teamsList" class="form-control"></select>
+    <label asp-for="TeamId" class="control-label">Drużyna:</label>
+    <select asp-for="TeamId" asp-items="@ViewBag.teamsList" class="form-control"></select>
 
-        <label>Pozycje:</label>
-        @foreach (var position in Model.Positions) // Zakładając, że Player ma kolekcję Positions
-        {
-            <input type="checkbox" name="SelectedPositions" value="@position.Id" @(Html.IsChecked(position.Id)) /> @position.Name
+    @foreach (var position in @ViewBag.allPositions)
+    {
+        <div>
+            <input type="checkbox" name="selectedPositions" value="@position.Id" @(Model.Positions.Any(p => p.Id == position.Id) ? "checked" : "") />
+            <label>@position.Name</label>
+        </div>
+    }
 
-            <br />
-        }
-        
     <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
 </form>

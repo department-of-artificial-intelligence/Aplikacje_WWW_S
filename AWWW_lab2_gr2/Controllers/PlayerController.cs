@@ -70,6 +70,7 @@ namespace AWWW_lab2_gr2.Controllers
             }
 
             ViewBag.teamsList = new SelectList(_context.Teams, "Id", "Name");
+            ViewBag.allPositions = _context.Positions.ToList();
 
             var player = _context.Players
             .Include(p => p.Positions) // Załaduj pozycje za pomocą Eager Loading
@@ -78,5 +79,40 @@ namespace AWWW_lab2_gr2.Controllers
             return View(player);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Player player, List<int> selectedPositions)
+        {
+
+            var playerToUpdate = _context.Players
+            .Include(p => p.Positions)
+            .FirstOrDefault(p => p.Id == player.Id);
+
+            if (playerToUpdate != null)
+            {
+                playerToUpdate.FirstName = player.FirstName;
+                playerToUpdate.LastName = player.LastName;
+                playerToUpdate.Country = player.Country;
+                playerToUpdate.BirthDate = player.BirthDate;
+                playerToUpdate.TeamId = player.TeamId;
+
+                playerToUpdate.Positions.Clear();
+                foreach (var positionId in selectedPositions)
+                {
+                    var positionToAdd = _context.Positions.Find(positionId);
+                    if (positionToAdd != null)
+                    {
+                        playerToUpdate.Positions.Add(positionToAdd);
+                    }
+                }
+
+                _context.SaveChanges();
+            }
+
+            var players = _context.Players
+                .Include(p => p.Team)
+                .Include(p => p.Positions);
+
+            return View("Index", players);
+        }
     }
 }
