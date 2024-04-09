@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AWWW_lab2_gr2.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class EndOfLab3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -204,17 +204,15 @@ namespace AWWW_lab2_gr2.Migrations
                 name: "MatchPlayers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlayerId = table.Column<int>(type: "int", nullable: false),
+                    MatchId = table.Column<int>(type: "int", nullable: false),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlayerId = table.Column<int>(type: "int", nullable: false),
-                    PositionId = table.Column<int>(type: "int", nullable: false),
-                    MatchId = table.Column<int>(type: "int", nullable: false)
+                    PositionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MatchPlayers", x => x.Id);
+                    table.PrimaryKey("PK_MatchPlayers", x => new { x.MatchId, x.PlayerId });
                     table.ForeignKey(
                         name: "FK_MatchPlayers_Matches_MatchId",
                         column: x => x.MatchId,
@@ -313,7 +311,9 @@ namespace AWWW_lab2_gr2.Migrations
                     Minute = table.Column<int>(type: "int", nullable: false),
                     EventTypeId = table.Column<int>(type: "int", nullable: false),
                     MatchId = table.Column<int>(type: "int", nullable: false),
-                    MatchPlayerId = table.Column<int>(type: "int", nullable: true)
+                    MatchPlayerId = table.Column<int>(type: "int", nullable: true),
+                    MatchPlayerMatchId = table.Column<int>(type: "int", nullable: true),
+                    MatchPlayerPlayerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -325,10 +325,10 @@ namespace AWWW_lab2_gr2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchEvents_MatchPlayers_MatchPlayerId",
-                        column: x => x.MatchPlayerId,
+                        name: "FK_MatchEvents_MatchPlayers_MatchPlayerMatchId_MatchPlayerPlayerId",
+                        columns: x => new { x.MatchPlayerMatchId, x.MatchPlayerPlayerId },
                         principalTable: "MatchPlayers",
-                        principalColumn: "Id");
+                        principalColumns: new[] { "MatchId", "PlayerId" });
                     table.ForeignKey(
                         name: "FK_MatchEvents_Matches_MatchId",
                         column: x => x.MatchId,
@@ -383,14 +383,9 @@ namespace AWWW_lab2_gr2.Migrations
                 column: "MatchId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MatchEvents_MatchPlayerId",
+                name: "IX_MatchEvents_MatchPlayerMatchId_MatchPlayerPlayerId",
                 table: "MatchEvents",
-                column: "MatchPlayerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MatchPlayers_MatchId",
-                table: "MatchPlayers",
-                column: "MatchId");
+                columns: new[] { "MatchPlayerMatchId", "MatchPlayerPlayerId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MatchPlayers_PlayerId",
