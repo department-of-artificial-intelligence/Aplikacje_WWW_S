@@ -73,8 +73,8 @@ namespace AWWW_lab2_gr2.Controllers
             ViewBag.allPositions = _context.Positions.ToList();
 
             var player = _context.Players
-            .Include(p => p.Positions) // Załaduj pozycje za pomocą Eager Loading
-            .FirstOrDefault(p => p.Id == id);
+                .Include(p => p.Positions) // Załaduj pozycje za pomocą Eager Loading
+                .FirstOrDefault(p => p.Id == id);
 
             return View(player);
         }

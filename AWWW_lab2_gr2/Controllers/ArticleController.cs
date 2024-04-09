@@ -155,5 +155,17 @@ namespace AWWW_lab2_gr2.Controllers
 
             return View("Index", articles);
         }
+
+        public IActionResult Show(int? id)
+        {
+            var article = _context.Articles
+                .Include(a => a.Author)
+                .Include(a => a.Category)
+                .Include(a => a.Tags)
+                .Include(a => a.Comments)
+                .FirstOrDefault(m => m.Id == id);
+
+            return View(article);
+        }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model AWWW_lab2_gr2.Models.Article;
+
+<div class="text-center">
+	<h1>Szczegoly artykulu</h1>
+	<p>@Model.Title</p>
+	<p>@Model.Lead</p>
+	<p>@Model.Content</p>
+	<p>@Model.CreationDate</p>
+	@if (@Model.Author != null)
+	{
+		<p>@(Model.Author.FirstName)</p>
+	}
+	@if (@Model.Category != null)
+	{
+		<p>@(Model.Category.Name)</p>
+	}
+	<p>
+		@if (@Model.Tags != null)
+		{
+			@foreach (var tag in @Model.Tags)
+				@(tag.Name + " ")
+		}
+	</p>
+	<hr />
+
+	<a class="btn btn-primary" asp-controller="comment" asp-action="add" asp-route-id="@Model.Id">Dodaj komentarz</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Tytul</th>
+				<th>Tresc komentarza</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var comment in Model.Comments)
+			{
+				<tr>
+					<td>@comment.Title</td>
+					<td>@comment.Content</td>
+					<td><a class="btn btn-primary" asp-controller="comment" asp-action="edit" asp-route-id="@comment.Id">Edytuj komentarz</a></td>
+					<td><a class="btn btn-primary" asp-controller="comment" asp-action="delete" asp-route-id="@comment.Id">Usun komentarz</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+		<br /><br />
+	<a class="btn btn-primary" asp-controller="home" asp-action="index">Home</a>
+</div>
