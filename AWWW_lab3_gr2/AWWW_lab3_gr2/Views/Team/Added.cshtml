@@ -1,0 +1,14 @@
+﻿@model AWWW_lab3_gr2.Models.Team;
+
+<div class="text-center">
+	<h1>Dodano nowa druzyne</h1>
+	<p>@Model.Name</p>
+	<p>@Model.Country</p>
+	<p>@Model.City</p>
+	<p>@Model.FoundingDate</p>
+	@if (@Model.League != null)
+	{
+		<p>@(Model.League.Name)</p>
+	}
+	<a class="btn btn-primary" asp-controller="home" asp-action="index">Home</a>
+</div>

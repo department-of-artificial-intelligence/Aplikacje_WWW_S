@@ -1,0 +1,38 @@
+﻿@model AWWW_lab3_gr2.Models.Player;
+
+<div class="text-center">
+    <h1>Dodaj nowego gracza</h1>
+    <form asp-controller="player" asp-action="add" method="post">
+        <p>
+            <label asp-for="FirstName">Imie:</label>
+            <input asp-for="FirstName" />
+        </p>
+        <p>
+            <label asp-for="LastName">Nazwisko:</label>
+            <input asp-for="LastName" />
+        </p>
+        <p>
+            <label asp-for="Country">Kraj:</label>
+            <input asp-for="Country" />
+        </p>
+        <p>
+            <label asp-for="BirthDate">Data urodzenia:</label>
+            <input asp-for="BirthDate" type="date" />
+        </p>
+        <p>
+            <label asp-for="TeamId">Druzyna:</label>
+            <select asp-for="TeamId" asp-items="@ViewBag.teamsList"></select>
+        </p>
+        <p>
+            @foreach (var position in ViewBag.positionsList as List<SelectListItem>)
+            {
+                <div>
+                    <input type="checkbox" name="positions" value="@position.Value" id="position_@position.Value"
+                    @(Model != null && Model.Positions.Any(p => p.Id.ToString() == position.Value) ? "checked" : "") />
+                    <label for="position_@position.Value">@position.Text</label>
+                </div>
+            }
+        </p>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+    </form>
+</div>

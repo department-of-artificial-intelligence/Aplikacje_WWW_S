@@ -3,30 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AWWW_lab3_gr2.Controllers
 {
-	public class AuthorController : Controller
-	{
-		private readonly MyDbContext _context;
+    public class EventTypeController : Controller
+    {
+        private readonly MyDbContext _context;
+        public EventTypeController(MyDbContext context)
+        {
+            _context = context;
+        }
 
-		public AuthorController(MyDbContext context)
-		{
-			_context = context;
-		}
-		public IActionResult Index()
-		{
-			return View();
-		}
-		public IActionResult Add()
-		{
-			return View();
-		}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public IActionResult Add(Author author)
-		{
-			_context.Authors.Add(author);
-			_context.SaveChanges();
-			return View("Added", author);
-		}
-	}
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(EventType eventType)
+        {
+            _context.EventTypes.Add(eventType);
+            _context.SaveChanges();
+            return View("Added", eventType);
+        }
+    }
 }
-

@@ -1,33 +1,33 @@
-﻿using AWWW_lab3_gr2.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using AWWW_lab3_gr2.Models;
+
 
 namespace AWWW_lab3_gr2.Controllers
 {
-	public class EventTypeController : Controller
-	{
-		private readonly MyDbContext _context;
-		public EventTypeController(MyDbContext context)
-		{
-			_context = context;
-		}
+    public class LeagueController : Controller
+    {
+        private readonly MyDbContext _context;
+        public LeagueController(MyDbContext context)
+        {
+            _context = context;
+        }
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-		public IActionResult Add()
-		{
-			return View();
-		}
+        public IActionResult Add()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public IActionResult Add(EventType eventType)
-		{
-			_context.EventTypes.Add(eventType);
-			_context.SaveChanges();
-			return View("Added", eventType);
-		}
-	}
+        [HttpPost]
+        public IActionResult Add(League league)
+        {
+            _context.Leagues.Add(league);
+            _context.SaveChanges();
+            return View("Added", league);
+        }
+    }
 }
-
