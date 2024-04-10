@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 public class TeamController: Controller {
     private readonly DatabaseContext _context; 
-    public TeamController(DatabaseContext context){
+    private readonly ILogger _logger; 
+    public TeamController(DatabaseContext context, ILogger logger){
         _context = context; 
+        _logger = logger; 
     }
 
     public IActionResult Index() {
@@ -18,65 +20,103 @@ public class TeamController: Controller {
 
     public IActionResult Form() {
         ViewBag.Title = "Dodawanie druzyny"; 
-        var leagueList = _context.Leagues; 
-        ViewBag.Leagues = _context.Leagues
-                            .Select(l => new SelectListItem() {
-                                Value = l.LeagueId.ToString(),
-                                Text = l.Name
-                            })
-                            .ToList(); 
 
-        return View(); 
+        try {
+            ViewBag.Leagues = _context.Leagues
+                                .Select(l => new SelectListItem() {
+                                    Value = l.LeagueId.ToString(),
+                                    Text = l.Name
+                                })
+                                .ToList(); 
+            return View(); 
+        } catch (Exception e) {
+            _logger.LogError(e, e.Message); 
+            throw; 
+        }
+
+
     }
 
     [HttpPost, ValidateAntiForgeryToken]
     public IActionResult Add(Team team) {
 
 
-        if (team.LeagueId <= 0){
-                // ViewBag.Success = false;
-                return View("Form", team);
-        }
-
-        if(_context.Leagues != null){
-            var league = _context.Leagues.FirstOrDefault(l => l.LeagueId == team.LeagueId);
-
-            if (league is null)
-            {
-                ViewBag.Success = false;
-                ViewBag.Title = "nie ma ligi o takim id"; 
+        try {
+            ModelState.ClearValidationState(nameof(team)); 
+            if(!TryValidateModel(team, nameof(team))){
                 return View("Form", team); 
             }
-
-            team.League = league; 
-            ViewBag.Title = team.League.Name; 
-            return View("Form", team); 
-        }
-
-        ModelState.ClearValidationState(nameof(team)); 
-        if(TryValidateModel(team, nameof(team))){
-
+            team.League  = _context.Leagues.FirstOrDefault(l => l.LeagueId == team.LeagueId);
             _context.Teams.Add(team);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        } catch (Exception e){
+            _logger.LogError(e, e.Message); 
+            throw; 
         }
 
-
-        ViewBag.Success = false; 
-        ViewBag.Leagues = new SelectList(_context.Leagues.ToList(), "LeagueId", "Name", team.LeagueId);
-
-        return View("Form", team);
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public IActionResult Delete(Team team) {
+    public IActionResult Delete(int id) {
 
+        try {
+            var t = _context.Teams.FirstOrDefault(team => team.TeamId == id); 
+            if(t != null){
+                _context.Teams.Remove(t); 
+                _context.SaveChanges(); 
+            }
+            return RedirectToAction("Index"); 
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+    }
 
+    [HttpGet]
+    public IActionResult Edit(int id){
 
-        _context.Teams.Remove(team); 
-        _context.SaveChanges(); 
-        // return RedirectToAction("Index"); 
-        return View("Index"); 
+        try{
+            var teamToEdit = _context.Teams.FirstOrDefault(t => t.TeamId == id); 
+            if(teamToEdit == null){
+                return NotFound(); 
+            }
+
+            ViewBag.Title = "Edycja druzyny"; 
+            ViewBag.Leagues = _context.Leagues.Select(l => new SelectListItem(l.Name, l.LeagueId.ToString()));
+
+            return View(teamToEdit); 
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    public IActionResult Edit(Team team){
+        try {
+            if(!ModelState.IsValid){
+                ViewBag.Leagues = _context.Leagues.Select(l => new SelectListItem(l.Name, l.LeagueId.ToString())); 
+                return View(team); 
+            }
+
+            var existingTeam = _context.Teams.FirstOrDefault(t => t.TeamId == team.TeamId); 
+            if(existingTeam == null){
+                return NotFound(); 
+            }
+
+            existingTeam.Name = team.Name; 
+            existingTeam.Country = team.Country; 
+            existingTeam.LeagueId = team.LeagueId; 
+
+            _context.SaveChanges(); 
+
+            return RedirectToAction("Index"); 
+
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
     }
 
 }

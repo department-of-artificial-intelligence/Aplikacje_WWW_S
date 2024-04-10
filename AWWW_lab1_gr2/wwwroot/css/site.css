@@ -133,6 +133,46 @@ li a:hover{
 }
 
 
+/* team */
+
+.teamDisplay {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.teamDisplay form {
+    margin-left: 1rem; 
+}
+
+
+/* buttons */
+.btnDelete {
+    border: none; 
+    background-color: #f85e5e; 
+    color: white; 
+    padding: 0.5rem; 
+
+}
+
+.btnDelete:hover {
+    background-color: #d33232; 
+    cursor: pointer; 
+}
+
+.btnEdit {
+    border: none; 
+    background-color: #6175e6; 
+    color: white; 
+    padding: 0.5rem; 
+}
+
+.btnEdit:hover {
+    background-color: #2e5cbe; 
+    cursor: pointer; 
+}
+
 /* Footer */
 footer {
     display: flex; 
