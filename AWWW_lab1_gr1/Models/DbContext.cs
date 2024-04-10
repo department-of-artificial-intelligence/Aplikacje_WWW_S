@@ -13,6 +13,7 @@ using System.Reflection.Emit;
         public virtual DbSet<Match> Matches { get; set; }
         public virtual DbSet<MatchEvent> MatchEvents { get; set; }
         public virtual DbSet<MatchPlayer> MatchPlayers { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Tag> Tags {get;set;}

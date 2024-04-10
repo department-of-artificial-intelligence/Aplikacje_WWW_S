@@ -359,7 +359,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("LeagueId");
 
-                    b.ToTable("Team");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("ArticleTag", b =>

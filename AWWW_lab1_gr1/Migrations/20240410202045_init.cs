@@ -93,7 +93,7 @@ namespace AWWW_lab1_gr1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Team",
+                name: "Teams",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -106,9 +106,9 @@ namespace AWWW_lab1_gr1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Team", x => x.Id);
+                    table.PrimaryKey("PK_Teams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Team_Leagues_LeagueId",
+                        name: "FK_Teams_Leagues_LeagueId",
                         column: x => x.LeagueId,
                         principalTable: "Leagues",
                         principalColumn: "Id",
@@ -130,14 +130,14 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     table.PrimaryKey("PK_Matches", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Matches_Team_AwayTeamId",
+                        name: "FK_Matches_Teams_AwayTeamId",
                         column: x => x.AwayTeamId,
-                        principalTable: "Team",
+                        principalTable: "Teams",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Matches_Team_HomeTeamId",
+                        name: "FK_Matches_Teams_HomeTeamId",
                         column: x => x.HomeTeamId,
-                        principalTable: "Team",
+                        principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
@@ -157,9 +157,9 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     table.PrimaryKey("PK_Players", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Players_Team_TeamId",
+                        name: "FK_Players_Teams_TeamId",
                         column: x => x.TeamId,
-                        principalTable: "Team",
+                        principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
@@ -412,8 +412,8 @@ namespace AWWW_lab1_gr1.Migrations
                 column: "TeamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Team_LeagueId",
-                table: "Team",
+                name: "IX_Teams_LeagueId",
+                table: "Teams",
                 column: "LeagueId");
         }
 
@@ -460,7 +460,7 @@ namespace AWWW_lab1_gr1.Migrations
                 name: "Positions");
 
             migrationBuilder.DropTable(
-                name: "Team");
+                name: "Teams");
 
             migrationBuilder.DropTable(
                 name: "Leagues");

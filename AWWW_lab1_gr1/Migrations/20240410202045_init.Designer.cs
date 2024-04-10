@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr1.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240405113724_init")]
+    [Migration("20240410202045_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -362,7 +362,7 @@ namespace AWWW_lab1_gr1.Migrations
 
                     b.HasIndex("LeagueId");
 
-                    b.ToTable("Team");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("ArticleTag", b =>
