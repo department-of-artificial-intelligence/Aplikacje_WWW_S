@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class CategoryControler: Controller 
+public class CategoryController: Controller 
 {
-     MeBdContext dbContext;
+   private  MeBdContext dbContext;
 
-     public CategoryControler(MeBdContext meBdContext)
+     public CategoryController(MeBdContext meBdContext)
      {
           this.dbContext = meBdContext;
      }
@@ -15,7 +15,17 @@ public class CategoryControler: Controller
 
      public async Task<IActionResult> Index()
      {
-        return View(await dbContext.Categories.ToListAsync());
+         try{
+      
+            var category = await dbContext.Categories.ToListAsync();
+            return View(category);
+         }
+         catch(Exception ex)
+         {
+          throw;
+         }
+
+          
      }
 
      public  IActionResult Add()

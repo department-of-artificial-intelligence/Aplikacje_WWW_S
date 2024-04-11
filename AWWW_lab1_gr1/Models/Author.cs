@@ -16,6 +16,6 @@ public class Author
     public required string LastName{get;set;}
    
     
-   public required ICollection<Article> Articles{get;set;}
+   public required ICollection<Article>? Articles{get;set;}
 }
 

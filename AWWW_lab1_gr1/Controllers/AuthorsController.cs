@@ -16,7 +16,7 @@ public class AuthorsController : Controller
         try
         {
             var authors = await dbContext.Authors.ToListAsync();
-             return View();
+             return View(authors);
         }
         catch (Exception ex)
         {
