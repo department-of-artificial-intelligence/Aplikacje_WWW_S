@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class AuthorsController : Controller
 {
-    MeBdContext dbContext;
+   private MeBdContext dbContext;
 
     public AuthorsController(MeBdContext dbContext)
     {
@@ -16,14 +16,12 @@ public class AuthorsController : Controller
         try
         {
             var authors = await dbContext.Authors.ToListAsync();
+             return View();
         }
         catch (Exception ex)
         {
-
-        }
-
-
-        return View();
+            throw;
+        }       
     }
 
 
