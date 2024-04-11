@@ -9,6 +9,7 @@
             @foreach (var player in Model){
                 <li>
                     <div class="list_item player" asp-route-id="@player.PlayerId">
+                        Id: @player.PlayerId
                         Imie: @player.FirstName 
                         Nazwisko: @player.LastName
                         @if(player.Team != null){
@@ -20,6 +21,12 @@
                                 @($"{pos.Name} |")
                             }
                         }
+                    </div>
+                    <div class="deletePlayer">
+                        @Html.ActionLink("Delete", "Delete", new {id = player.PlayerId})
+                    </div>
+                     <div class="editPlayer">
+                        @Html.ActionLink("Edit", "Edit", new {id = player.PlayerId})
                     </div>
                 </li>
             }

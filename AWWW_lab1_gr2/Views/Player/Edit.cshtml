@@ -1,0 +1,43 @@
+@model AWWW_lab1_gr2.Models.Player 
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <div class="form">
+            <form asp-controller="Player" asp-action="Edit" asp-route-id="@Model.PlayerId">
+                <input type="hidden" asp-for="PlayerId" value="@Model.PlayerId">
+                <label asp-for="FirstName" ></label>
+                <input asp-for="FirstName" value="@Model.FirstName">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" value="@Model.LastName">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" value="@Model.Country">
+                <label asp-for="BirthDate"></label>
+                <input asp-for="BirthDate" value="@Model.BirthDate">
+                <select name="selectedTeamId" asp-items="@ViewBag.Teams">
+                    @* <option value="@Model.Team.TeamId" selected></option> *@
+                </select>
+                <select name="selectedPositionsIds" multiple="multiple" asp-items="@ViewBag.Positions">
+                    @* @foreach(var pos in Model.Positions){
+                        <option value="pos.PositionId"></option>
+                    } *@
+                </select>
+                @* <div>@Model.PlayerId</div>
+                @Html.LabelFor(model => model.FirstName)
+                @Html.EditorFor(model => model.FirstName)
+                @Html.LabelFor(model => model.LastName)
+                @Html.EditorFor(model => model.LastName)
+                @Html.LabelFor(model => model.Country)
+                @Html.EditorFor(model => model.Country)
+                @Html.LabelFor(model => model.BirthDate)
+                @Html.EditorFor(model => model.BirthDate) *@
+
+
+                <input type="submit" value="Edytuj">
+            </form>
+        </div>
+    </div>
+</div>

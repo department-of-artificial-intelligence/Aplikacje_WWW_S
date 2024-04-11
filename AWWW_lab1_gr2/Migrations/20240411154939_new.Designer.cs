@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr2.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240411102310_new")]
+    [Migration("20240411154939_new")]
     partial class @new
     {
         /// <inheritdoc />

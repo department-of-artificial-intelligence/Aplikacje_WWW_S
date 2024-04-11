@@ -14,7 +14,7 @@
         <div class="form">
             <form asp-controller="Team" asp-action="Edit">
                 
-                <input type="hidden" asp-for="TeamId" >
+                <input type="hidden" asp-for="TeamId" value="@Model.TeamId" >
                 <label asp-for="Name"></label>
                 <input asp-for="Name" value="@Model.Name">
                 <label asp-for="Country"></label>

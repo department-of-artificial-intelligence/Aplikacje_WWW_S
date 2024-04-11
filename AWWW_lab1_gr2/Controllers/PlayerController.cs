@@ -57,4 +57,69 @@ public class PlayerController: Controller {
         }
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Delete(int id) {
+        try {
+            var player = _context.Players.FirstOrDefault(p => p.PlayerId == id);
+            if(player == null) return RedirectToAction("Index"); 
+            _context.Players.Remove(player); 
+            _context.SaveChanges(); 
+            return RedirectToAction(nameof(Index)); 
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id) {
+        ViewBag.Title = "Edycja zawodnika"; 
+
+        try {
+            ViewBag.Positions = _context.Positions.Select(p => new SelectListItem(p.Name, p.PositionId.ToString())); 
+            ViewBag.Teams = _context.Teams.Select(t => new SelectListItem(t.Name, t.TeamId.ToString())); 
+            var playerToEdit = _context.Players.Include(p => p.Team).Include(p => p.Positions).FirstOrDefault(p => p.PlayerId == id); 
+            return View(playerToEdit);
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        } 
+    } 
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(Player player, int selectedTeamId, List<int> selectedPositionsIds){ 
+
+        try{
+            if(!ModelState.IsValid){
+                return NotFound(); 
+            }
+            var editedPlayer = _context.Players.Include(p => p.Team).Include(p => p.Positions).FirstOrDefault(p => p.PlayerId == player.PlayerId);  
+            if(editedPlayer == null){
+                return NotFound(); 
+            }
+            editedPlayer.FirstName = player.FirstName; 
+            editedPlayer.LastName = player.LastName;
+            editedPlayer.Country = player.Country;
+            editedPlayer.BirthDate = player.BirthDate;
+            
+            // team 
+            editedPlayer.Team = _context.Teams.FirstOrDefault(t => t.TeamId == selectedTeamId); 
+            // positions
+            editedPlayer.Positions = _context.Positions.Where(p => selectedPositionsIds.Contains(p.PositionId)).ToList();
+
+            _context.SaveChanges(); 
+
+            return RedirectToAction("Index");  
+
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+
+    }
+
+    
+
 }

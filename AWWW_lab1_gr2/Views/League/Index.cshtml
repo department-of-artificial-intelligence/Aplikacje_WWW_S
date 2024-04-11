@@ -9,7 +9,15 @@
         <div class="authors">
             @foreach(var league in Model){
                 <li>
-                    <div asp-route-id="@league.LeagueId">@league.LeagueId @league.Name @league.Country @league.Level</div> 
+                    <div asp-route-id="@league.LeagueId">@league.LeagueId @league.Name @league.Country @league.Level 
+                    </div> 
+                    @if(league.Teams != null){
+                        <select>
+                            @foreach(var team in league.Teams){
+                                <option>@team.Name</option>
+                            }
+                        </select>
+                    }
                 </li>
             }
         </div>
