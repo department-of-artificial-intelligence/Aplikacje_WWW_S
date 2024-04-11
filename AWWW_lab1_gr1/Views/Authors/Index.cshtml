@@ -1,0 +1,32 @@
+@model List<AWWW_lab1_gr1.Models.Author>
+
+<h1>Authors</h1>
+
+<p><a asp-action="Add" class="btn btn-primary">Add Author</a></p>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+                <tr>
+                    <td>@author.Id</td>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No authors found.</p>
+}

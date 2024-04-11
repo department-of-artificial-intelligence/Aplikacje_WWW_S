@@ -20,7 +20,7 @@ public class AuthorsController : Controller {
         catch (Exception ex)
         {
             
-            return View("Views/Author/Index.cshtml");
+            return View("Index");
         }
     }
 
@@ -28,14 +28,21 @@ public class AuthorsController : Controller {
         return View();
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(Author author) {
-        if (ModelState.IsValid) {
-            bdContext.Add(author);
-            await bdContext.SaveChangesAsync();
-     
-            return RedirectToAction("Views/Author/Add.cshtml");
-        }
-        return View(author);
+     public IActionResult Add()
+    {
+        return View("Add"); 
     }
+
+    [HttpPost]
+public async Task<IActionResult> Create(Author author)
+{
+    if (ModelState.IsValid)
+    {
+        bdContext.Add(author);
+        await bdContext.SaveChangesAsync();
+
+        return RedirectToAction("Index", "Authors"); 
+    }
+    return View(author);
+}
 }

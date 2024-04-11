@@ -1,19 +1,18 @@
 using AWWW_lab1_gr1;
-using Microsoft.EntityFrameworkCore;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 
-public class CategoryControler: Controller 
-{
-     MyDbContext bdContext;
+public class CategoryController : Controller {
+    MyDbContext bdContext;
 
-     public CategoryControler(MyDbContext bdContext)
-     {
-          this.bdContext = bdContext;
-     }
-
-
-     public async Task<IActionResult> Index() {
+    public CategoryController(MyDbContext bdContext)
+    {
+        this.bdContext = bdContext;
+    }
+    
+    public async Task<IActionResult> Index() {
         try
         {
             return View(await bdContext.Categories.ToListAsync());
@@ -21,21 +20,27 @@ public class CategoryControler: Controller
         catch (Exception ex)
         {
             
-            return View("Views/Category/Index.cshtml");
+            return View("Index");
         }
     }
 
-     [HttpPost]
+    public IActionResult Create() {
+        return View("Add");
+    }
 
-     public async Task<IActionResult> Add(Category category)
-     {
-           if(ModelState.IsValid)
-           {
-               bdContext.Add(category);
-               await bdContext.SaveChangesAsync();
-               return RedirectToAction("Views/Category/Add.cshtml");
-           }
-           return View(category);
-     }
+      public IActionResult Add()
+    {
+        return View("Add"); 
+    }
 
+    [HttpPost]
+    public async Task<IActionResult> Create(Category category) {
+        if (ModelState.IsValid) {
+            bdContext.Add(category);
+            await bdContext.SaveChangesAsync();
+     
+            return RedirectToAction("Index", "Categories");
+        }
+        return View(category);
+    }
 }

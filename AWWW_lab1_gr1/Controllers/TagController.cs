@@ -2,14 +2,16 @@ using AWWW_lab1_gr1;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
-public class TagsController : Controller {
-   MyDbContext bdContext;
+public class TagController : Controller {
+    MyDbContext bdContext;
 
-    public TagsController(MyDbContext bdContext)
+    public TagController(MyDbContext bdContext)
     {
         this.bdContext = bdContext;
     }
+    
     public async Task<IActionResult> Index() {
         try
         {
@@ -18,11 +20,17 @@ public class TagsController : Controller {
         catch (Exception ex)
         {
             
-            return View("Views/Tag/Index.cshtml");
+            return View("Index");
         }
     }
+
     public IActionResult Create() {
         return View();
+    }
+
+      public IActionResult Add()
+    {
+        return View("Add"); 
     }
 
     [HttpPost]

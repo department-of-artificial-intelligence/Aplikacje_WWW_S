@@ -11,7 +11,7 @@ body{
 .artykul
 {
     width: 750px;
-    background-color: white;
+    background-color: black;
     margin: 0;
     border-radius: 3px;
     
@@ -25,7 +25,7 @@ body{
 }
 .artykul2
 {   margin: 3px;
-    background-color: whitesmoke;
+    background-color: black;
     font-size: 25px;
     border-radius: 3px;
     width: 150px;

@@ -2,17 +2,17 @@ using AWWW_lab1_gr1;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
-public class LeagueController:Controller
-{
+public class LeagueController : Controller {
     MyDbContext bdContext;
 
     public LeagueController(MyDbContext bdContext)
     {
         this.bdContext = bdContext;
     }
-
-     public async Task<IActionResult> Index() {
+    
+    public async Task<IActionResult> Index() {
         try
         {
             return View(await bdContext.Leagues.ToListAsync());
@@ -20,19 +20,26 @@ public class LeagueController:Controller
         catch (Exception ex)
         {
             
-            return View("Views/League/Index.cshtml");
+            return View("Index");
         }
     }
 
+    public IActionResult Create() {
+        return View();
+    }
+
+      public IActionResult Add()
+    {
+        return View("Add"); 
+    }
 
     [HttpPost]
-    public async Task<IActionResult> Add(League league)
-    {
-        if(ModelState.IsValid)
-        {
+    public async Task<IActionResult> Create(League league) {
+        if (ModelState.IsValid) {
             bdContext.Add(league);
             await bdContext.SaveChangesAsync();
-            return RedirectToAction("Views/League/Add.cshtml");
+     
+            return RedirectToAction("Index");
         }
         return View(league);
     }

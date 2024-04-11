@@ -2,16 +2,16 @@ using AWWW_lab1_gr1;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
-public class PositionController:Controller
-{
+public class PositionController : Controller {
     MyDbContext bdContext;
 
     public PositionController(MyDbContext bdContext)
     {
-        this.bdContext= bdContext;
+        this.bdContext = bdContext;
     }
-
+    
     public async Task<IActionResult> Index() {
         try
         {
@@ -20,18 +20,25 @@ public class PositionController:Controller
         catch (Exception ex)
         {
             
-            return View("Views/Position/Index.cshtml");
+            return View("Index");
         }
     }
 
+    public IActionResult Create() {
+        return View();
+    }
+
+      public IActionResult Add()
+    {
+        return View("Add"); 
+    }
 
     [HttpPost]
-    public async Task<IActionResult> Add(Position position)
-    {
-        if(ModelState.IsValid)
-        {
+    public async Task<IActionResult> Create(Position position) {
+        if (ModelState.IsValid) {
             bdContext.Add(position);
             await bdContext.SaveChangesAsync();
+     
             return RedirectToAction("Index");
         }
         return View(position);
