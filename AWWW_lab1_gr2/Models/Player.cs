@@ -12,7 +12,7 @@ namespace AWWW_lab1_gr2.Models
         public string LastName {get; set;} = null!; 
         public string Country {get; set;} = null!; 
         public DateTime BirthDate {get; set;}
-        public Team Team {get; set;} = null!; 
-        public ICollection<Position> Positions {get; set;} = null!; 
+        public Team? Team {get; set;} 
+        public ICollection<Position>? Positions {get; set;}
     }
 }

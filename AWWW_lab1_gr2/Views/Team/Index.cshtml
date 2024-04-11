@@ -12,15 +12,18 @@
                     <div class="teamDisplay" asp-route-id="@team.TeamId">
                         @team.Name 
                         Kraj: @team.Country 
-                        Liga : @team.LeagueId
+                        @if (team.League != null){
+                            @($"Liga: {team.League.Name}")
+                        }
                         <form asp-action="Delete" asp-controller="Team">
                             <input type="hidden" name="id" value=@team.TeamId> 
                             <button type="submit" class="btnDelete btnDelete-team">Usun druzyne</button>
                         </form>
-                        <form asp-controller="Team" asp-action="Edit">
+                        @* <form asp-controller="Team" asp-action="Edit">
                             <input type="hidden" name="id" value=@team.TeamId>
                             <button type="submit" class=btnEdit>Edytuj</button>
-                        </form>
+                        </form> *@
+                        @Html.ActionLink("Edit", "Edit", new {id = team.TeamId}, new {@class = "btnEdit"})
                     </div> 
                 </li>
             }

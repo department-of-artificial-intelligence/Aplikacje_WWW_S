@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr2.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240410143105_new")]
+    [Migration("20240411102310_new")]
     partial class @new
     {
         /// <inheritdoc />
@@ -271,7 +271,7 @@ namespace AWWW_lab1_gr2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("PlayerId");
@@ -497,9 +497,7 @@ namespace AWWW_lab1_gr2.Migrations
                 {
                     b.HasOne("AWWW_lab1_gr2.Models.Team", "Team")
                         .WithMany()
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
                 });

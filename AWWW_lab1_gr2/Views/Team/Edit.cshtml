@@ -13,7 +13,7 @@
 
         <div class="form">
             <form asp-controller="Team" asp-action="Edit">
-
+                
                 <input type="hidden" asp-for="TeamId" >
                 <label asp-for="Name"></label>
                 <input asp-for="Name" value="@Model.Name">
@@ -26,7 +26,7 @@
 
                 <label asp-for="LeagueId"></label>
                 <select asp-for="LeagueId" asp-items="@ViewBag.Leagues">
-                    <option value="@Model.LeagueId" selected>@Model.LeagueId</option>
+                    @* <option value="@Model.LeagueId" selected></option> *@
                 </select>
 
                 <input type="submit">

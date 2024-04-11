@@ -1,0 +1,34 @@
+@model IEnumerable<AWWW_lab1_gr2.Models.Player> 
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="players">
+            @foreach (var player in Model){
+                <li>
+                    <div class="list_item player" asp-route-id="@player.PlayerId">
+                        Imie: @player.FirstName 
+                        Nazwisko: @player.LastName
+                        @if(player.Team != null){
+                            @($"Druzyna: {player.Team.Name} ")
+                        }
+                        @if (player.Positions != null){
+                            @($"Pozycje: ")
+                            foreach (var pos in player.Positions){
+                                @($"{pos.Name} |")
+                            }
+                        }
+                    </div>
+                </li>
+            }
+        </div>
+        <div class="addPlayer">
+            <a asp-controller="Player" asp-action="Add">Dodaj zawodnika</a>
+        </div>
+    </div>
+</div>
+
+
+

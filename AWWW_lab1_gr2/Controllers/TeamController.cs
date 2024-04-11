@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 public class TeamController: Controller {
     private readonly DatabaseContext _context; 
@@ -14,8 +15,14 @@ public class TeamController: Controller {
 
     public IActionResult Index() {
         ViewBag.Title = "Druzyny"; 
-        var teams = _context.Teams;
-        return View(teams); 
+        try {
+            var teams = _context.Teams.Include(t => t.League);
+            return View(teams); 
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+        
     }
 
     public IActionResult Form() {

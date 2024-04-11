@@ -1,0 +1,26 @@
+@model AWWW_lab1_gr2.Models.Player
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="form">
+            <form asp-action="Add" asp-controller="Player">
+                <label asp-for="FirstName"></label>
+                <input type="text" asp-for="FirstName">
+                <label asp-for="LastName"></label>
+                <input type="text" asp-for="LastName">
+                <label asp-for="Country"></label>
+                <input type="text" asp-for="Country">
+                <label asp-for="BirthDate"></label>
+                <input type="date" asp-for="BirthDate">
+                <label asp-for="Team"></label>
+                <select name="selectedTeamId" asp-items="@ViewBag.Teams"></select>
+                <select name="selectedPositionIds" asp-items="@ViewBag.Positions" multiple="multiple"></select>
+                <button class="btnAdd">
+                    <input type="submit">
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
