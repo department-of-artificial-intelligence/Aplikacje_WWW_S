@@ -2,6 +2,8 @@
 
 <h2>Teams</h2>
 
+<a asp-action="Add">Add team</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -20,7 +22,7 @@
             <td>@Html.DisplayFor(modelItem => item.Country)</td>
             <td>@Html.DisplayFor(modelItem => item.City)</td>
             <td>@Html.DisplayFor(modelItem => item.FoundingDate)</td>
-            <td>@Html.DisplayFor(modelItem => item.League.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.LeagueId)</td>
         </tr>
     }
     </tbody>
