@@ -1,0 +1,15 @@
+@model AWWW_lab2_gr1.Models.Tag;
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tag</h4>
+    <hr />
+    <p>ID: : @Model.Id</p>
+    <p>Nazwa tagu: @Model.Name</p>
+    <hr />
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

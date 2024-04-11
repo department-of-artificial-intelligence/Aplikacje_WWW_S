@@ -1,0 +1,28 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.EventType>;
+<h1>Typy Eventów</h1>
+<p><a asp-action="AddOrUpdate">Dodaj typ eventu</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Typ</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var type in @Model)
+        {
+            <tr>
+                <td>@type.Id</td>
+                <td>@type.Name</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@type.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@type.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@type.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>

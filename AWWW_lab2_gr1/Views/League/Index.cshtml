@@ -1,0 +1,30 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.League>;
+<h1>Ligi</h1>
+<p><a asp-action="AddOrUpdate">Dodaj ligę</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kraj</th>
+            <th>Poziom</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var league in @Model)
+        {
+            <tr>
+                <td>@league.Name</td>
+                <td>@league.Country</td>
+                <td>@league.Level</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@league.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@league.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@league.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>

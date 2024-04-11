@@ -1,0 +1,28 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Position>;
+<h1>Pozycje</h1>
+<p><a asp-action="AddOrUpdate">Dodaj pozycję</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategoria</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var position in @Model)
+        {
+            <tr>
+                <td>@position.Id</td>
+                <td>@position.Name</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@position.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@position.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@position.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>

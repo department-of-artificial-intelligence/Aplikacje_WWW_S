@@ -1,0 +1,19 @@
+@model AWWW_lab2_gr1.Models.Tag;
+
+<h1>@ViewBag.Header</h1>
+
+
+<form asp-action="AddOrUpdate" method="post" class="w3-container">
+    <input asp-for="Id" type="hidden" />
+    <p>
+        <label asp-for="Id">ID: :</label>
+        <input asp-for="Id" class="w3-input w3-border" />
+    </p>
+    <p>
+        <label asp-for="Name">Nazwa tagu:</label>
+        <input asp-for="Name" class="w3-input w3-border">
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">@ViewBag.ButtonText</button>
+    </p>
+</form>

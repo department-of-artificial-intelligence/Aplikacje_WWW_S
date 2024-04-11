@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text dark" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        &copy; 2024
+    </footer>
+</body>
+
+</html>

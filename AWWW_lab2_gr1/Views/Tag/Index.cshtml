@@ -1,0 +1,29 @@
+@model List<AWWW_lab2_gr1.Models.Tag>
+
+<h1>Tagi</h1>
+<p><a asp-action="AddOrUpdate">Dodaj tagi</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tag</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tag in @Model)
+        {
+            <tr>
+                <td>@tag.Id</td>
+                <td>@tag.Name</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@tag.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@tag.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@tag.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>

@@ -1,0 +1,28 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Author>;
+<h1>Autorzy</h1>
+<p><a asp-action="AddOrUpdate">Dodaj autora</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in @Model)
+        {
+            <tr>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@author.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@author.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@author.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>

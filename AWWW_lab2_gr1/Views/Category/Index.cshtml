@@ -1,0 +1,28 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Category>;
+<h1>Kategorie</h1>
+<p><a asp-action="AddOrUpdate">Dodaj kategorie</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategoria</th>
+            <th>Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in @Model)
+        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@category.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@category.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@category.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br>
