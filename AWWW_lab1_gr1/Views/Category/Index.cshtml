@@ -1,13 +1,13 @@
 @model ICollection<AWWW_lab1_gr1.Models.Category>
  
-<h2>Category List</h2>
-<p><a asp-action="Add">Add Category</a></p>
-<table class="table">
-     <tr><th>Name</th></tr>
+<h2 class="text-block">Category List</h2>
+<a asp-action="Add"><p class="text-block">Add Category</p></a>
+<table class="text-block">
+     <tr><th><a class="text-dark">Name</a></th></tr>
     @foreach (var element in Model)
     {
         <tr>
-            <td>@element.Name</td>
+            <td><p>@element.Name</p></td>
         </tr>
     }
 </table>

@@ -1,14 +1,14 @@
 @model ICollection<AWWW_lab1_gr1.Models.Author>
  
-<h2>Authors List</h2>
-<p><a asp-action="Add">Add Author</a></p>
-<table class="table">
-     <tr><th>First Name</th><th>Last Name</th></tr>
+<h2  class="text-block">Authors List</h2>
+<a asp-action="Add"><p class="text-block">Add Author</p></a>
+<table class="text-block">
+     <tr><th><p>First Name</p></th><th><p>Last Name</p></th></tr>
     @foreach (var element in Model)
     {
         <tr>
-            <td>@element.FirstName</td>
-            <td>@element.LastName</td>
+            <td><p>@element.FirstName</p></td>
+            <td><p>@element.LastName</p></td>
         </tr>
     }
 </table>

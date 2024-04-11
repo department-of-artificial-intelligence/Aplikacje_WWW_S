@@ -1,13 +1,13 @@
 @model ICollection<AWWW_lab1_gr1.Models.EventType>
  
-<h2>Event Type List</h2>
-<p><a asp-action="Add">Add Event Type</a></p>
-<table class="table">
-     <tr><th>Name</th></tr>
+<h2 class="text-block">Event Type List</h2>
+<a asp-action="Add"><p class="text-block">Add Event Type</p></a>
+<table class="text-block">
+     <tr><th><a class="text-dark">Name</a></th></tr>
     @foreach (var element in Model)
     {
         <tr>
-            <td>@element.Name</td>
+            <td><a class="text-dark">@element.Name</a></td>
         </tr>
     }
 </table>
