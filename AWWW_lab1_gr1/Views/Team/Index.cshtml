@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AWWW_lab1_gr1.Models.Team>
+@{
+    ViewBag.Title = "Lista druzyn";
+}
+
+<h1>@ViewBag.Title</h1>
+<div>
+    <a asp-action="Create">Dodaj nowy</a>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>FoundingDate</th>
+                    <th>LeagueId</th>
+                    <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null)
+            {
+                foreach(var team in Model)
+                {
+                    <tr>
+                        <td>@team.Id</td>
+                        <td>@team.Name</td>
+                        <td>@team.Country</td>
+                        <td>@team.City</td>
+                        <td>@team.FoundingDate</td>
+                        <td>
+                            <a asp-controller="Leagues" asp-action="Details" asp-route-id="@team.LeagueId">
+                           @team.LeagueId                         </a>
+                        </td>
+                        <td>
+                            <form>
+                                <button asp-action="Details" asp-route-id="@team.Id">Szczegóły</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

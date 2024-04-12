@@ -13,5 +13,12 @@
         public ICollection<Player>? Players { get; set; }
         public ICollection<Match>? HomeMatches { get; set; }
         public ICollection<Match>? AwayMatches { get; set; }
+
+        public override string ToString()
+        {
+            return $"ID: {Id}, Name: {Name}, Country: {Country}, " +
+                $"City: {City}, Founding Date: {FoundingDate}, LeagueId: {LeagueId}" +
+                $"\nLeague Details: {League}";
+        }
     }
 }

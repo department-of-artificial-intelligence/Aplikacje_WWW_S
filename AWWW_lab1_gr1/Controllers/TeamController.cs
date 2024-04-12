@@ -15,7 +15,10 @@ namespace AWWW_lab1_gr1.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var teams = await _dbContext.Teams.ToListAsync();
+            var teams = await _dbContext
+                .Teams
+                .Include(d => d.League)
+                .ToListAsync();
             return View(teams);
         }
         public IActionResult Create()
@@ -32,6 +35,7 @@ namespace AWWW_lab1_gr1.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Team team)
         {
+            ModelState.Remove(nameof(team.League));
             if (!ModelState.IsValid)
             {
                 return View(team);
@@ -39,6 +43,23 @@ namespace AWWW_lab1_gr1.Controllers
             _dbContext.Teams.Add(team);
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var team = await _dbContext
+                .Teams
+                .Include(d => d.League)
+                .SingleOrDefaultAsync(d => d.Id == id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            return View(team);
         }
     }
 }

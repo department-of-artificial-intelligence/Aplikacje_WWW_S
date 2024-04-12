@@ -12,12 +12,17 @@
         <label asp-for="Country">Country:</label>
         <input asp-for="Country" />
     </div>
+     <div>
+        <label asp-for="City">City:</label>
+        <input asp-for="City" />
+    </div>
     <div>
-        <label asp-for="FoundingDate">FoundingDate:</label>
-        <input asp-for="FoundingDate" />
+        <label asp-for="FoundingDate"></label>
+        <input asp-for="FoundingDate"/>
     </div>
     <div>
         <label asp-for="LeagueId">League:</label>
-        <select asp-for="LeagueId" asp-items="ViewBag.LeagueId"></select>
+        <select asp-for="LeagueId" asp-items="ViewBag.Leagues"></select>
     </div>
+    <button type="submit">Dodaj nowy</button>
 </form>

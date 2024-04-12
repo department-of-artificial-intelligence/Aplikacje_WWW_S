@@ -1,0 +1,25 @@
+﻿@model AWWW_lab1_gr1.Models.Team
+@{
+    ViewBag.Title = "szczegoly druzyny";
+}
+<h1>@ViewBag.Title</h1>
+<div>
+    <p>Id: <strong>@Model.Id</strong></p>
+    <p>Name: <strong>@Model.Name</strong></p>
+    <p>Country: <strong>@Model.Country</strong></p>
+    <p>City: <strong>@Model.City</strong></p>
+    <p>FoundingDate: <strong>@Model.FoundingDate</strong></p>
+    <p>LeagueId: <strong>@Model.LeagueId</strong></p>
+    <p>League: 
+        <a asp-controller="Leagues" asp-route-id="@Model.LeagueId">
+            <strong>
+                @Model.League
+            </strong>
+        </a>
+    </p>
+</div>
+<div>
+    <form>
+        <button asp-action="Index">Wróć</button>
+    </form>
+</div>

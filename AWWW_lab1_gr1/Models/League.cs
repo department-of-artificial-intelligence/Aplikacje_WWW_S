@@ -8,5 +8,11 @@
         public int Level { get; set; }
 
         public ICollection<Team>? Teams { get; set; }
+
+        public override string ToString()
+        {
+            return $"ID: {Id}, Name: {Name}, Country: {Country}, " +
+                $"Level: {Level}";
+        }
     }
 }
