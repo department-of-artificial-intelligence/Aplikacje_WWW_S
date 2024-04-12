@@ -1,0 +1,11 @@
+@model ICollection<AWWW_lab2_gr2.Models.Team>
+
+<a asp-controller="team" asp-action="add">Dodaj Drużynę</a>
+<br>
+
+Lista Drużyn:
+<ol>
+    @foreach(AWWW_lab2_gr2.Models.Team element in Model){
+        <li>@nameof(element.FoundingDate) @element.Id @element.Name @element.Country @element.City @element.FoundingDate</li>
+    }
+</ol>

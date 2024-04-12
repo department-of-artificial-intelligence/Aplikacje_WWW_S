@@ -1,0 +1,10 @@
+@model AWWW_lab2_gr2.Models.Team;
+
+<form asp-controller="team" asp-action="add" method="POST">
+    Nazwa: <input type="text" asp-for="Name"><br>
+    Kraj: <input type="text" asp-for="Country"><br>
+    Miasto: <input type="text" asp-for="City"><br>
+    Data założenia: <input type="date" asp-for="FoundingDate"><br>
+    Liga:<select asp-for="league" ></select>
+    <input type="submit" value="Wyślij">
+</form>
