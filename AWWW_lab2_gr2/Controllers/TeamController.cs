@@ -27,11 +27,13 @@ namespace AWWW_lab2_gr2.Controllers
         }
 
         public IActionResult Add(int id = -1){
-            ViewBag.LeagueList =  new SelectList(_dbContext.Leagues!, "LeagueId", "LeagueName");
+            ViewBag.Leagues = _dbContext.Leagues!.Select(x=> new SelectListItem(x.Name, x.Id.ToString()));
             if (id != -1){
-                var tag = _dbContext.Teams!.FirstOrDefault(x=>x.Id==id);
-                return View(tag);
+                var team = _dbContext.Teams!.FirstOrDefault(x=>x.Id==id);
+                Console.WriteLine("testung");
+                return View(team);
             }else{
+                Console.WriteLine("niedzialung");
                 return View();
             }
         }
@@ -63,6 +65,8 @@ namespace AWWW_lab2_gr2.Controllers
             if(err == true){
                 return View();
             }
+
+            ViewBag.Leagues = _dbContext.Leagues!.Select(x=> new SelectListItem(x.Name, x.Id.ToString())); 
 
             if(team.Id != 0){
                 var x = _dbContext.Teams!.FirstOrDefault(x=>x.Id == team.Id);

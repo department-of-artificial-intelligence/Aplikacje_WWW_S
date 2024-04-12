@@ -6,16 +6,20 @@
     <p>
         <label asp-for="Name" for="name">Nazwa:</label><br>
         <input asp-for="Name" type="text" name="name"><br>
+        <p class="errorMsg">@ViewBag.ErrorName</p>
         <label asp-for="Country" for="country">Kraj:</label><br>
         <input asp-for="Country" type="text" name="country"><br>
+        <p class="errorMsg">@ViewBag.ErrorCountry</p>
         <label asp-for="City" for="city">Miasto:</label><br>
         <input asp-for="City" type="text" name="city"><br>
+        <p class="errorMsg">@ViewBag.ErrorCity</p>
         <label asp-for="FoundingDate" for="foundingdate">Data za:</label><br>
         <input asp-for="FoundingDate" type="date" name="foundingdate"><br>
         <label asp-for="League" for="league">Liga:</label><br>
-        @Html.DropDownList("LeagueId", (IEnumerable<SelectListItem>)ViewBag.LeagueList, null, new {@class = "form-control"})
+        <select name="selectedLeagueId" class="form-control" asp-items="@ViewBag.Leagues"></select>
+        <p class="errorMsg">@ViewBag.ErrorLeague</p>
     </p>
     <p>
-        <button type="submit">Submit</button>
+        <button asp-action="index" type="submit">Submit</button>
     </p>
 </form>
