@@ -20,9 +20,9 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<Match> Matches { get; set; }
         //public DbSet<MatchEvent> MatchEvents { get; set; }
         //public DbSet<MatchPlayer> MatchPlayers { get; set; }
-        public DbSet<Player> Players { get; set; }
+        //public DbSet<Player> Players { get; set; }
         //public DbSet<Position> Positions { get; set; }
-        //public DbSet<Tag> Tags { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<Team> Teams { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

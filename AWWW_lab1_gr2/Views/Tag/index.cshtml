@@ -1,1 +1,29 @@
-<h1>Lista tagów</h1>
+@using AWWW_lab1_gr2.Models
+
+@model IList<Tag>
+
+<h1 class="h1">@ViewBag.Title</h1>
+<a asp-controller="tag" asp-action="add"><button type="button">Dodaj Tag</button></a>
+
+<div>
+    <div class="row">
+        <div>
+            Nazwa:
+        </div>
+    </div>
+    @foreach (var tag in Model)
+    {
+        <div class="row">
+            <div>
+                @tag.Name
+            </div>
+            <div>
+                <form method="post">
+                    <button type="submit" class="btn btn-danger"
+                        formaction='@Url.Action("UsunDane", "League", new { id = @tag.Id })'
+                    >Usuń</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
