@@ -41,10 +41,38 @@ namespace AWWW_lab1_gr2.Controllers
             {
                 string text = a.Name;
                 string id = a.Id.ToString();
+                Console.WriteLine(text);
                 leagueList.Add(new SelectListItem(text, id));
             }
-            ViewBag.LeagueList = leagueList;
+            ViewBag.leagueList = leagueList;
+            ViewBag.buttonText = "Dodaj";
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Dodaj(Team team)
+        {
+            Console.WriteLine($"Nazwa {team.Name}");
+
+            if (true)
+            {
+                team.League = asd.Leagues.FirstOrDefault(x=>x.Id == team.LeagueId);
+                asd.Teams.Add(team);
+
+                try
+                {
+                    asd.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return View("Error");
+                }
+
+                return View("Index");
+            }
+            Console.WriteLine("nv");
+            return View("Error");
         }
     }
 }

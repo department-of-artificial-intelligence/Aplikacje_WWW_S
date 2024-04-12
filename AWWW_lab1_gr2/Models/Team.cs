@@ -12,7 +12,9 @@ namespace AWWW_lab1_gr2.Models
         public string Country {get;set;} = null!;
         public string City {get;set;} = null!;
         public DateTime FoundingDate {get;set;}
-        public virtual League League {get;set;} = null!;
+        public virtual League? League {get;set;}
+        public int LeagueId {get;set;}
+
         public virtual ICollection<Match>? HomeMatches {get;set;}
         public virtual ICollection<Match>? AwayMatches {get;set;}
         public virtual ICollection<Player>? Players {get;set;}

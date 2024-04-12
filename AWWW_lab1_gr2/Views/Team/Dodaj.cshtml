@@ -1,4 +1,5 @@
 @model AWWW_lab1_gr2.Models.Team
+
 <h1>@ViewBag.Header</h1>
 
 <form asp-action="dodaj" method="post">
@@ -20,10 +21,10 @@
         <input asp-for="FoundingDate"/>
     </p>
     <p>
-        <label asp-for="League">Liga:</label>
-        <select asp-for="League" asp-items="@ViewBag.LeagueList"/></select>
+        <label asp-for="LeagueId">Liga:</label>
+        <select asp-for="LeagueId" asp-items="@ViewBag.leagueList"></select>
     </p>
     <p>
-        <button type="submit">@ViewBag.ButtonText</button>
+        <button type="submit">@ViewBag.buttonText</button>
     </p>    
 </form>
