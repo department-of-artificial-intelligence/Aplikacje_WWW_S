@@ -14,7 +14,15 @@ public class TagController:Controller
 
     public async Task<IActionResult> Index()
     {
-        return View(await dbcontext.Tags.ToListAsync());
+        
+        try{
+            var tags = await dbcontext.Tags.ToListAsync();
+            return View(tags);
+         }
+         catch(Exception ex)
+         {
+          throw;
+         }
     }
 
     public IActionResult Add()

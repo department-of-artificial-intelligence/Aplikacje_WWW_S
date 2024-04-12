@@ -14,7 +14,16 @@ public class EventTypeController: Controller
 
     public async Task<IActionResult> Index()
     {
-        return View (await dbcontext.EventTypes.ToListAsync()); 
+       
+        try{
+      
+            var eventypes = await dbcontext.EventTypes.ToListAsync();
+            return View(eventypes);
+         }
+         catch(Exception ex)
+         {
+          throw;
+         }
     }
 
 

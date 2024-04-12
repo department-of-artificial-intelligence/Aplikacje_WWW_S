@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MeBdContext>(options =>
 {
-    var cs = "Server=(localdb)\\mssqllocaldb;Database=Leonid_FabishevskyiAppDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";//builder.Configuration.GetConnectionString("DefaultConnection");
+var cs = "Server=(localdb)\\mssqllocaldb;Database=Leonid_FabishevskyiAppDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";//builder.Configuration.GetConnectionString("DefaultConnection");
+ //   var cs = builder.Configuration["ConnectionStrings:Conn"];
     options.UseSqlServer(cs);
 });
 

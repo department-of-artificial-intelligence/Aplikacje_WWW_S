@@ -14,7 +14,15 @@ public class PositionController:Controller
 
     public async Task<IActionResult> Index()
     {
-        return View(await dbcontext.Positions.ToListAsync());
+       
+          try{
+            var position = await dbcontext.Positions.ToListAsync();
+            return View(position);
+         }
+         catch(Exception ex)
+         {
+          throw;
+         }
     }
 
     public IActionResult Add()

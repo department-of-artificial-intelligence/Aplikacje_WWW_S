@@ -14,7 +14,14 @@ public class LeagueController:Controller
 
     public async Task<IActionResult> Index()
     {
-        return View(await dbcontext.Tags.ToListAsync());
+        try{
+            var league = await dbcontext.Leagues.ToListAsync();
+            return View(league);
+         }
+         catch(Exception ex)
+         {
+          throw;
+         }
     }
 
     public IActionResult Add()
