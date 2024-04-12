@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using AWWW_lab2_gr2;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,9 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("MyConnection");
-builder.Services.AddDbContext<MyDbContext>(x => x.UseSqlServer(connectionString));
-
+builder.Services.AddDbContext<MyDbContext>(options =>
+{
+       if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+       else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                 options.UseSqlServer(builder.Configuration.GetConnectionString("MacOSConnection"));
+});
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
