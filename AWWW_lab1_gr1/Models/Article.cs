@@ -1,5 +1,4 @@
 namespace AWWW_lab1_gr1.Models;
-using AWWW_lab1_gr1.Models;
     public class Article{
         public  int ID{get; set;}
         public required string Title{get; set;}

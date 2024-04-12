@@ -20,6 +20,7 @@ public class MyDbContext : DbContext
   public DbSet<Position> Positions { get; set; }
   public DbSet<Tag> Tags { get; set; }
   public DbSet<Team> Teams { get; set; }
+  
   public MyDbContext(DbContextOptions<MyDbContext> options) : base(options){}
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {

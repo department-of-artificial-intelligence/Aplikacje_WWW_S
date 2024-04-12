@@ -1,5 +1,4 @@
 namespace AWWW_lab1_gr1.Models;
-using Microsoft.EntityFrameworkCore;
 public class Student
 {
 
