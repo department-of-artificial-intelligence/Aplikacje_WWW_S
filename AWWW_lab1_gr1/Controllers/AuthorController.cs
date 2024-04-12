@@ -24,9 +24,7 @@ public class AuthorsController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View();
-    }
+    
 
      public IActionResult Add()
     {
@@ -34,7 +32,7 @@ public class AuthorsController : Controller {
     }
 
     [HttpPost]
-public async Task<IActionResult> Create(Author author)
+public async Task<IActionResult> Add(Author author)
 {
     if (ModelState.IsValid)
     {

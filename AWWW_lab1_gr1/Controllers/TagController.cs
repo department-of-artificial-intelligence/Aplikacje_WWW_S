@@ -24,9 +24,7 @@ public class TagController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View();
-    }
+    
 
       public IActionResult Add()
     {
@@ -34,7 +32,7 @@ public class TagController : Controller {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Tag tag) {
+    public async Task<IActionResult> Add(Tag tag) {
         if (ModelState.IsValid) {
             bdContext.Add(tag);
             await bdContext.SaveChangesAsync();

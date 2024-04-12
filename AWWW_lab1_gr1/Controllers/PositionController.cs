@@ -24,9 +24,7 @@ public class PositionController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View();
-    }
+    
 
       public IActionResult Add()
     {
@@ -34,7 +32,7 @@ public class PositionController : Controller {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Position position) {
+    public async Task<IActionResult> Add(Position position) {
         if (ModelState.IsValid) {
             bdContext.Add(position);
             await bdContext.SaveChangesAsync();

@@ -24,9 +24,7 @@ public class EventTypeController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View();
-    }
+    
 
       public IActionResult Add()
     {
@@ -34,7 +32,7 @@ public class EventTypeController : Controller {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(EventType eventType) {
+    public async Task<IActionResult> Add(EventType eventType) {
         if (ModelState.IsValid) {
             bdContext.Add(eventType);
             await bdContext.SaveChangesAsync();

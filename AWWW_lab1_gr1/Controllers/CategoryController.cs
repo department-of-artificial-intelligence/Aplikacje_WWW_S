@@ -24,9 +24,7 @@ public class CategoryController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View("Add");
-    }
+    
 
       public IActionResult Add()
     {
@@ -34,12 +32,12 @@ public class CategoryController : Controller {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Category category) {
+    public async Task<IActionResult> Add(Category category) {
         if (ModelState.IsValid) {
             bdContext.Add(category);
             await bdContext.SaveChangesAsync();
      
-            return RedirectToAction("Index", "Categories");
+            return RedirectToAction("Index");
         }
         return View(category);
     }

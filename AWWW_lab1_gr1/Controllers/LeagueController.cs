@@ -24,9 +24,7 @@ public class LeagueController : Controller {
         }
     }
 
-    public IActionResult Create() {
-        return View();
-    }
+    
 
       public IActionResult Add()
     {
@@ -34,7 +32,7 @@ public class LeagueController : Controller {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(League league) {
+    public async Task<IActionResult> Add(League league) {
         if (ModelState.IsValid) {
             bdContext.Add(league);
             await bdContext.SaveChangesAsync();
