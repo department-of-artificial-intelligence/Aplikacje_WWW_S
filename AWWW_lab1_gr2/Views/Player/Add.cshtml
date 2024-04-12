@@ -15,7 +15,7 @@
                 <label asp-for="BirthDate"></label>
                 <input type="date" asp-for="BirthDate">
                 <label asp-for="Team"></label>
-                <select name="selectedTeamId" asp-items="@ViewBag.Teams"></select>
+                <select asp-for="TeamId"asp-items="@ViewBag.Teams"></select>
                 <select name="selectedPositionIds" asp-items="@ViewBag.Positions" multiple="multiple"></select>
                 <button class="btnAdd">
                     <input type="submit">

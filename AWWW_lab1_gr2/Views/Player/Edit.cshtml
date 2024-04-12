@@ -17,14 +17,13 @@
                 <input asp-for="Country" value="@Model.Country">
                 <label asp-for="BirthDate"></label>
                 <input asp-for="BirthDate" value="@Model.BirthDate">
-                <select name="selectedTeamId" asp-items="@ViewBag.Teams">
-                    @* <option value="@Model.Team.TeamId" selected></option> *@
-                </select>
-                <select name="selectedPositionsIds" multiple="multiple" asp-items="@ViewBag.Positions">
-                    @* @foreach(var pos in Model.Positions){
-                        <option value="pos.PositionId"></option>
-                    } *@
-                </select>
+                @* <select asp-for="TeamId" name="selectedTeamId" asp-items="@ViewBag.Teams"></select> *@
+
+                @Html.DropDownListFor(p => p.TeamId, new SelectList(ViewBag.Teams, "TeamId", "Name", Model.Team != null ? Model.Team.TeamId : 1))
+
+
+                <select name="selectedPositionsIds" multiple="multiple" asp-items="@ViewBag.Positions"></select>
+
                 @* <div>@Model.PlayerId</div>
                 @Html.LabelFor(model => model.FirstName)
                 @Html.EditorFor(model => model.FirstName)

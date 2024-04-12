@@ -11,10 +11,19 @@
                 <li>
                     <div class="teamDisplay" asp-route-id="@team.TeamId">
                         @team.Name 
-                        Kraj: @team.Country 
                         @if (team.League != null){
                             @($"Liga: {team.League.Name}")
                         }
+                        <ul>
+                            @if(team.Players != null){
+                                foreach(var player in team.Players){
+                                    <li>@player.FirstName | @player.LastName</li>
+                                    if(player.Positions != null){
+                                        <p>Positions: @string.Join(", ", player.Positions.Select(p => p.Name))</p>
+                                    }
+                                }
+                            }
+                        </ul>
                         <form asp-action="Delete" asp-controller="Team">
                             <input type="hidden" name="id" value=@team.TeamId> 
                             <button type="submit" class="btnDelete btnDelete-team">Usun druzyne</button>

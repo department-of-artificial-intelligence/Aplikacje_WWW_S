@@ -41,12 +41,12 @@ public class PlayerController: Controller {
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Add(Player player, int selectedTeamId, List<int> selectedPositionIds) {
+    public IActionResult Add(Player player, List<int> selectedPositionIds) {
         try {
             if(!ModelState.IsValid){
                 return View(); 
             }
-            player.Team = _context.Teams.FirstOrDefault(t => t.TeamId == selectedTeamId);
+            player.Team = _context.Teams.FirstOrDefault(t => t.TeamId == player.TeamId);
             player.Positions = _context.Positions.Where(p => selectedPositionIds.Contains(p.PositionId)).ToList(); 
             _context.Players.Add(player); 
             _context.SaveChanges(); 
@@ -77,8 +77,8 @@ public class PlayerController: Controller {
         ViewBag.Title = "Edycja zawodnika"; 
 
         try {
-            ViewBag.Positions = _context.Positions.Select(p => new SelectListItem(p.Name, p.PositionId.ToString())); 
-            ViewBag.Teams = _context.Teams.Select(t => new SelectListItem(t.Name, t.TeamId.ToString())); 
+            ViewBag.Positions = _context.Positions.Select(p => new SelectListItem(p.Name, p.PositionId.ToString()));  
+            ViewBag.Teams = _context.Teams; 
             var playerToEdit = _context.Players.Include(p => p.Team).Include(p => p.Positions).FirstOrDefault(p => p.PlayerId == id); 
             return View(playerToEdit);
         } catch (Exception ex){
@@ -103,9 +103,10 @@ public class PlayerController: Controller {
             editedPlayer.LastName = player.LastName;
             editedPlayer.Country = player.Country;
             editedPlayer.BirthDate = player.BirthDate;
+            editedPlayer.TeamId = player.TeamId; 
             
             // team 
-            editedPlayer.Team = _context.Teams.FirstOrDefault(t => t.TeamId == selectedTeamId); 
+            editedPlayer.Team = _context.Teams.FirstOrDefault(t => t.TeamId == editedPlayer.TeamId); 
             // positions
             editedPlayer.Positions = _context.Positions.Where(p => selectedPositionsIds.Contains(p.PositionId)).ToList();
 

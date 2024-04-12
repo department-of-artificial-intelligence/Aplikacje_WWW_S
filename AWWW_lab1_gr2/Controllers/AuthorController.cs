@@ -16,7 +16,8 @@ public class AuthorController: Controller {
         return View(authors); 
     }
 
-    public IActionResult Form() {
+    [HttpGet]
+    public IActionResult Add() {
         ViewBag.Title = "Dodawanie autora"; 
         return View(); 
     }

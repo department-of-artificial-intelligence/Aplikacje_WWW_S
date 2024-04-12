@@ -5,25 +5,27 @@
         <div class="title">
             <h1>@ViewBag.Title</h1>
         </div>
-        <div class="players">
+        <div class="lista lista-players">
             @foreach (var player in Model){
                 <li>
                     <div class="list_item player" asp-route-id="@player.PlayerId">
-                        Id: @player.PlayerId
-                        Imie: @player.FirstName 
-                        Nazwisko: @player.LastName
+                        @player.FirstName 
+                        @player.LastName | 
                         @if(player.Team != null){
-                            @($"Druzyna: {player.Team.Name} ")
+                            @($"Druzyna: {player.Team.Name} | ")
                         }
                         @if (player.Positions != null){
                             @($"Pozycje: ")
                             foreach (var pos in player.Positions){
-                                @($"{pos.Name} |")
+                                @($"{pos.Name} | ")
                             }
                         }
                     </div>
                     <div class="deletePlayer">
-                        @Html.ActionLink("Delete", "Delete", new {id = player.PlayerId})
+                        <form asp-controller="Player" asp-action="Delete">
+                            <input type="hidden" name="id" value="@player.PlayerId">
+                            <button type="submit" class="btnDelete">Usuń</button>
+                        </form>
                     </div>
                      <div class="editPlayer">
                         @Html.ActionLink("Edit", "Edit", new {id = player.PlayerId})

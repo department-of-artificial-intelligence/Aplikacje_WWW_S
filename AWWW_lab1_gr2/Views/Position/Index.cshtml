@@ -11,10 +11,17 @@
                 <li>
                     <div asp-route-id="@position.PositionId">@position.Name</div> 
                 </li>
+                <div class="deletePosition">
+                    <form asp-controller="Position" asp-action="Delete">
+                        <input type="hidden" name="id" value="@position.PositionId">
+                        <button type="submit" class="btnDelete">Usuń</button>
+                    </form>
+                </div>
             }
         </div>
         <div class="addPosition">
             <a asp-action="form" asp-controller="Position">Dodaj pozycje</a>
         </div>
+        
     </div>
 </div>

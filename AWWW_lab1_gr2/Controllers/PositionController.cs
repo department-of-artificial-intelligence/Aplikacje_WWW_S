@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Components.Web;
 
 public class PositionController: Controller {
     private readonly DatabaseContext _context; 
-    public PositionController(DatabaseContext context){
+    private readonly ILogger _logger; 
+    public PositionController(DatabaseContext context, ILogger logger){
         _context = context; 
+        _logger = logger; 
     }
 
     public IActionResult Index() {
@@ -31,4 +33,20 @@ public class PositionController: Controller {
         return RedirectToAction("Index");  
     }
 
+    [HttpPost]
+    public IActionResult Delete(int id){
+        try {
+            var position = _context.Positions.Find(id); 
+            if(position == null){
+                throw new Exception("sus"); 
+            }
+            _context.Positions.Remove(position);
+            _context.SaveChanges(); 
+            return RedirectToAction(nameof(Index));  
+
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw;
+        }
+    }
 }

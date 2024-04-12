@@ -1,19 +1,34 @@
-@model AWWW_lab1_gr2.Models.Article
+@model IEnumerable<AWWW_lab1_gr2.Models.Article>
 <div class="main">
 
     <div class="container container-article">
         <div class="title">
-
-            <h1 >@Model.Title</h1>
-            <h2>WItamy na stronie artykulu</h2>
+            @ViewBag.Title
         </div>
-        <div class="article">
-            <p class="article-date">
-            Data utworzenia: @Model.CreationDate.ToShortDateString()
-            </p>
-            <p class="article-content">
-                @Model.Content
-            </p>
+        <div class="lista lista-article">
+            @foreach(var article in Model){
+                <ul>
+                    <li>
+                        @article.Title | @article.CreationDate 
+                        <div class="deleteArticle">
+                            <form asp-controller="Article" asp-action="Delete">
+                                <input type="hidden" name="id" value="@article.ArticleId">
+                                <button class="btnDelete" type="submit">Usuń</button>
+                            </form>
+                        </div>
+                        <div class="editArticle">
+                            @* <form asp-controller="Article" asp-action="Edit">
+                                <input type="hidden" name="id" value="@article.ArticleId">
+                                <button type="submit" class="btnEdit">Edytuj</button>
+                            </form> *@
+                            @Html.ActionLink("Edit", "Edit", new {id = article.ArticleId})
+                        </div>
+                    </li>
+                </ul>
+            }
+        </div>
+        <div class="addArticle">
+            <button class="btnEdit"><a asp-action="Add" asp-controller="Article">Dodaj</a></button>
         </div>
     </div>
 </div>

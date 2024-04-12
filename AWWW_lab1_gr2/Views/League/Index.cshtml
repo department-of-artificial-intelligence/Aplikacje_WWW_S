@@ -18,6 +18,12 @@
                             }
                         </select>
                     }
+                    <div class="deleteLeague">
+                        <form asp-controller="League" asp-action="Delete">
+                            <input type="hidden" name="id" value="@league.LeagueId">
+                            <button type="submit" class="btnDelete">Usuń</button>
+                        </form>
+                    </div>
                 </li>
             }
         </div>

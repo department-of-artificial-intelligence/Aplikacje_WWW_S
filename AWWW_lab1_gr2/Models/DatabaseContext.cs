@@ -50,6 +50,7 @@ public class DatabaseContext: DbContext {
             .HasForeignKey(t => t.LeagueId); 
 
 
+
         modelBuilder.Entity<Article>(entity => {
             entity.ToTable("Articles"); 
 

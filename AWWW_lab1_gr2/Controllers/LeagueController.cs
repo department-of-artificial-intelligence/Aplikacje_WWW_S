@@ -6,8 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 public class LeagueController: Controller {
     private readonly DatabaseContext _context; 
-    public LeagueController(DatabaseContext context){
+    private readonly ILogger _logger; 
+    public LeagueController(DatabaseContext context, ILogger logger){
         _context = context; 
+        _logger = logger; 
     }
 
     public IActionResult Index() {
@@ -30,6 +32,20 @@ public class LeagueController: Controller {
             return RedirectToAction("Index"); 
         }
         return RedirectToAction("Index");    
+    }
+
+    [HttpPost]
+    public IActionResult Delete(int id){
+        try {
+            var league = _context.Leagues.Find(id); 
+            if(league == null) throw new Exception("Nie znaleziono ligi");
+            _context.Leagues.Remove(league); 
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index)); 
+        } catch (Exception ex) {
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
     }
 
 }

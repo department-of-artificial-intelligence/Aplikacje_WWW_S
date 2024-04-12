@@ -16,7 +16,9 @@ public class TeamController: Controller {
     public IActionResult Index() {
         ViewBag.Title = "Druzyny"; 
         try {
-            var teams = _context.Teams.Include(t => t.League);
+            var teams = _context.Teams
+                            .Include(t => t.League)
+                            .Include(t => t.Players).ThenInclude(p => (p as Player).Positions).ToList(); 
             return View(teams); 
         } catch (Exception ex){
             _logger.LogError(ex, ex.Message); 

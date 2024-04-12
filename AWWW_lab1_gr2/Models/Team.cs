@@ -18,5 +18,6 @@ namespace AWWW_lab1_gr2.Models
         public League? League {get; set;}
         public ICollection<Match>? HomeMatches {get; set;}
         public ICollection<Match>? AwayMatches {get; set;}
+        public ICollection<Player>? Players {get; set;}
     }
 }

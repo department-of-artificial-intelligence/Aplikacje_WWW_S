@@ -120,6 +120,12 @@ li a:hover{
 
 
 
+.lista li {
+    display:flex; 
+    flex-direction: row;
+    align-items: center; 
+}
+
 
 /* Forms */
 
@@ -153,6 +159,7 @@ li a:hover{
     background-color: #f85e5e; 
     color: white; 
     padding: 0.5rem; 
+    margin-left: 1rem; 
 
 }
 
@@ -166,6 +173,7 @@ li a:hover{
     background-color: #6175e6; 
     color: white; 
     padding: 0.5rem; 
+    margin-left: 1rem; 
 }
 
 .btnEdit:hover {
