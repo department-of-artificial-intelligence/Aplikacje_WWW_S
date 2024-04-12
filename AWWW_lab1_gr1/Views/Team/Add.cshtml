@@ -28,12 +28,12 @@
         <select name="AwayMatchesId" multiple=" multiple" asp-for="AwayMatches" asp-items="@ViewBag.AwayMatches"></select>
     </p>
     <p>
-        <label asp-for="League.Id">League: </label>
-        <select name="LeagueId" asp-for=" League.Id" asp-items="@ViewBag.League"></select>
+        <label asp-for="LeagueId">League: </label>
+        <select name="LeagueId" asp-for="LeagueId" asp-items="@ViewBag.League"></select>
     </p>
     <p>
         <label asp-for="Players">Players: </label>
-        <select name="PlayersId"accesskey=" "multiple="multiple" asp-for="Players" asp-items="@ViewBag.Players"></select>
+        <select name="PlayersId" multiple="multiple" asp-for="Players" asp-items="@ViewBag.Players"></select>
     </p>
     <p>
         <button type="submit">Add</button>

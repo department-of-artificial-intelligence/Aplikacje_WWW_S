@@ -1,9 +1,8 @@
 ﻿using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab1_gr1.Controllers
 {
@@ -49,18 +48,19 @@ namespace AWWW_lab1_gr1.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Add(Team team, List<int> HomeMatchesId, List<int> AwayMatchesId, List<int> PlayersId)
         {
+            ModelState.Remove("League");
+
             if (ModelState.IsValid)
             {
                 team.HomeMatches = _dbContext.Matches.Where(m => HomeMatchesId.Contains(m.Id)).ToList();
                 team.AwayMatches = _dbContext.Matches.Where(m => AwayMatchesId.Contains(m.Id)).ToList();
                 team.Players = _dbContext.Players.Where(m => PlayersId.Contains(m.Id)).ToList();
-            
+
 
                 var League = _dbContext.Leagues.Find(team.LeagueId);
-                if(League == null )
+                if (League == null)
                 {
                     return View();
                 }
@@ -71,6 +71,40 @@ namespace AWWW_lab1_gr1.Controllers
                 _dbContext.SaveChanges();
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Team? team = _dbContext.Teams
+                .Include(l => l.League)
+                .FirstOrDefault(t => t.Id == id);
+
+            ViewBag.League = _dbContext.Leagues.Select(l => new SelectListItem(l.Name, l.Id.ToString()));
+
+            return View(team);
+        }
+
+        [HttpPost]
+
+        public IActionResult Edit(Team team)
+        {
+            ModelState.Remove("League");
+
+            if (ModelState.IsValid)
+            {
+                var League = _dbContext.Leagues.Find(team.LeagueId);
+                if (League == null)
+                {
+                    return View();
+                }
+
+                team.League = League;
+
+                _dbContext.Teams.Update(team);
+                _dbContext.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
