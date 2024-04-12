@@ -8,8 +8,8 @@ public class Article
     public DateTime CreationDate{get; set;}
     public Author Author {get; set;}
     public Category Category {get; set;}
-    public List<Tag> Tags {get; set;}
-    public List<Comment> Comments {get; set;}
+    public List<Tag>? Tags {get; set;}
+    public List<Comment>? Comments {get; set;}
     public Match Match {get; set;}
     
 }

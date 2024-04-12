@@ -5,6 +5,6 @@ public class Category {
 
     public string Name { get; set; }
     
-    public List<Article> Articles { get; set; }
+    public List<Article>? Articles { get; set; }
 }
 

@@ -8,5 +8,5 @@ public class League {
     public string Country { get; set; }
 
     public int Level { get; set; }
-    public List<Team> Teams { get; set; }
+    public List<Team>? Teams { get; set; }
 }

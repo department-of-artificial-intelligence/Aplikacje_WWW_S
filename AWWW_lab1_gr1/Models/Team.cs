@@ -7,8 +7,8 @@ public class Team {
     public string Country { get; set; }
     public string City { get; set; }
     public DateTime FoundingDate { get; set; } 
-    public List<Player> Players { get; set; }
+    public List<Player>? Players { get; set; }
     public League League { get; set; }
-    public virtual ICollection<Match> HomeMatches { get; set; }
-    public virtual ICollection<Match> AwayMatches { get; set; }
+    public virtual ICollection<Match>? HomeMatches { get; set; }
+    public virtual ICollection<Match>? AwayMatches { get; set; }
 }                                                   

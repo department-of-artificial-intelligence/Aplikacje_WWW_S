@@ -5,5 +5,5 @@ public class EventType {
 
     public string Name { get; set; }
 
-    public List<MatchEvent> MatchEvents { get; set; }
+    public List<MatchEvent> ?MatchEvents { get; set; }
 }
