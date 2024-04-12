@@ -1,0 +1,13 @@
+@model AWWW_lab3_gr2.Models.Team
+
+<h1>Dodano drużynę:</h1>
+
+<div class="w3-card">
+    <div class="w3-container">
+        <p>Nazwa: @Model.Name</p>
+        <p>Kraj: @Model.Country</p>
+        <p>Miasto: @Model.City</p>
+        <p>Data założenia: @Model.FoundingDate.ToString("yyyy-MM-dd")</p>
+        <p>ID ligi: @Model.LeagueId</p>
+    </div>
+</div>

@@ -1,9 +1,9 @@
-using AWWW_lab2_gr2.Models;
+using AWWW_lab3_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AWWW_lab2_gr2.Controllers
+namespace AWWW_lab3_gr2.Controllers
 {
     public class TeamController : Controller
     {

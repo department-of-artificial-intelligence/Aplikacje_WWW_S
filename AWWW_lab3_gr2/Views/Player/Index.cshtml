@@ -1,0 +1,27 @@
+@model IEnumerable<AWWW_lab3_gr2.Models.Player>
+
+<h1>Zawodnicy</h1>
+
+<div class="w3-card">
+    @foreach (var player in Model)
+    {
+        <div class="w3-container">
+            <p>Imie: @player.FirstName</p>
+            <p>Nazwisko: @player.LastName</p>
+            <p>Kraj: @player.Country</p>
+            <p>Data urodzenia: @player.BirthDate</p>
+            <p>Pozycja:
+                @if (@player.Position != null)
+                {
+                    @foreach (var position in @player.Position)
+                        @(position.Name + " ")
+
+                }
+            </p>
+            @if (@player.Team != null)
+            {
+                <p>@player.Team.Name</p>
+            }
+        </div>
+    }
+</div>

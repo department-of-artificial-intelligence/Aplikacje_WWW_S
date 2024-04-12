@@ -1,0 +1,26 @@
+@model AWWW_lab3_gr2.Models.Player
+
+<h1>Dodano zawodnika</h1>
+
+<div class="w3-card">
+    <div class="w3-container">
+        <p>Imie: @Model.FirstName</p>
+        <p>Nazwisko: @Model.LastName</p>
+        <p>Kraj: @Model.Country</p>
+        <p>Data urodzenia: @Model.BirthDate.ToString("yyyy-MM-dd")</p>
+        <p>Pozycja:
+            @if (@Model.Position != null)
+            {
+                @foreach (var position in @Model.Position)
+                    @(position.Name + " ")
+
+
+
+            }
+        </p>
+        @if (@Model.Team != null)
+        {
+            <p>@Model.Team.Name</p>
+        }
+    </div>
+</div>

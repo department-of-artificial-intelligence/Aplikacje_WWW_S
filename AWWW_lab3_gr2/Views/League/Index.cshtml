@@ -1,0 +1,14 @@
+@model IEnumerable<AWWW_lab3_gr2.Models.League>
+
+<h1>Ligi</h1>
+
+<div class="w3-card">
+    @foreach (var league in Model)
+    {
+        <div class="w3-container">
+            <p>@league.Name</p>
+            <p>@league.Country</p>
+            <p>@league.Level</p>
+        </div>
+    }
+</div>

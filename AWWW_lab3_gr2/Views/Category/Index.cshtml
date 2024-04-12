@@ -1,0 +1,12 @@
+@model IEnumerable<AWWW_lab3_gr2.Models.Category>
+
+<h1>Kategorie</h1>
+
+<div class="w3-card">
+    @foreach (var category in Model)
+    {
+        <div class="w3-container">
+            <p>@category.Name</p>
+        </div>
+    }
+</div>
