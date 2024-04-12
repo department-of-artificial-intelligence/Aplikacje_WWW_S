@@ -1,0 +1,17 @@
+@model ICollection<AWWW_lab1_gr1.Models.Team>
+ 
+<h2 class="list-title">Team List</h2>
+<a asp-action="Add" ><p class="text-block">Add Team</p></a>
+<table class="text-block">
+     <tr><th><p>Name</p></th><th><p>Country</p></th><th><p>City</p></th><th><p>Founding date</p></th><th><p>League id</p></th></tr>
+    @foreach (var element in Model)
+    {
+        <tr>
+            <td><p>@element.Name</p></td>
+            <td><p>@element.Country</p></td>
+            <td><p>@element.City</p></td>
+            <td><p>@element.FoundingDate.ToShortDateString()</p></td>
+            <td><p>@element.LeagueId</p></td>
+        </tr>
+    }
+</table>

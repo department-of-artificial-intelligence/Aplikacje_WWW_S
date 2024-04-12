@@ -1,15 +1,23 @@
 @model ICollection<AWWW_lab1_gr1.Models.League>
  
-<h2 class="list-tiitle">League List</h2>
+<h2 class="list-title">League List</h2>
 <a asp-action="Add"><p class="text-block"> Add League </p></a>
 <table class="text-block">
-     <tr><th><p>Name</p></th><th><p>Country</p></th><th><p>Level</p></th></tr>
+     <tr><th><p>Nr</p></th><th><p>Name</p></th><th><p>Country</p></th><th><p>Level</p></th><th><p>Team Name</p></th></tr>
     @foreach (var element in Model)
     {
         <tr>
+            <td><p>@element.Id</p></td>
             <td><p>@element.Name</p></td>
             <td><p>@element.Country</p></td>
             <td><p>@element.Level</p></td>
+            @if(element.Teams != null)
+            @foreach (var el in element.Teams){
+                    <tr>
+                        <td><p>@el.Name</p></td>   
+                    </tr>
+            }
         </tr>
+        
     }
 </table>

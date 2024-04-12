@@ -1,0 +1,31 @@
+@model AWWW_lab1_gr1.Models.Team
+
+<h1>Dodaj Team</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
+    </p>
+      <p>
+        <label asp-for="Country">Country:</label>
+        <input asp-for="Country" class="w3-input w3-border"/>
+    </p>
+      <p>
+        <label asp-for="City">City:</label>
+        <input asp-for="City" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="FoundingDate">Founding date:</label>
+        <input asp-for="FoundingDate" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="League">League:</label>
+        <input asp-for="League" class="w3-input w3-border"/>
+    </p>
+    
+    
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
