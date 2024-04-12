@@ -1,0 +1,25 @@
+@model AWWW_lab1_gr1.Models.Player
+
+<h2>Edit player</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Positions" class="control-label"></label>
+        <select asp-for="Positions" class="form-control" asp-items="ViewBag.PositionsList"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Team" class="control-label"></label>
+        <select asp-for="Team" class="form-control" asp-items="ViewBag.TeamsList"></select>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="w3-btn w3-border">Save changes</button>
+    </div>
+</form>
