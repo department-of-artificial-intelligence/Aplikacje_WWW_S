@@ -1,13 +1,38 @@
-﻿@model AWWW_lab1_gr1.Models.Tag
+﻿@model AWWW_lab1_gr1.Models.Team
 
 <h2>Id: @Model.Id</h2>
 <h2>Name: @Model.Name</h2>
-<hr />
+<h2>Country: @Model.Country</h2>
+<h2>City: @Model.City</h2>
+<h2>Founding Date: @Model.FoundingDate.ToShortDateString()</h2>
+<h2>League: <a asp-action="Details" asp-controller="League" asp-route-id="@Model.League.Id">@Model.League.Name</a></h2>
 
-@if(Model.Articles != null)
+<hr />
+<h2>Home Matches:</h2>
+@if(Model.HomeMatches != null)
 {
-    @foreach(var article in Model.Articles)
+    @foreach(var HomeMatch in Model.HomeMatches)
     {
-        <p><a asp-action="Details" asp-controller="Article" asp-route-id="@article.Id">@article.Title</a></p>
+        <p><a asp-action="Details" asp-controller="Match" asp-route-id="@HomeMatch.Id">@HomeMatch.Id, @HomeMatch.Date.ToShortDateString()</a></p>
+    }
+}
+
+<hr />
+<h2>Away Matches:</h2>
+@if(Model.AwayMatches != null)
+{
+    @foreach(var AwayMatch in Model.AwayMatches)
+    {
+        <p><a asp-action="Details" asp-controller="Match" asp-route-id="@AwayMatch.Id">@AwayMatch.Id, @AwayMatch.Date.ToShortDateString()</a></p>
+    }
+}
+
+<hr />
+<h2>Players:</h2>
+@if (Model.Players != null)
+{
+    @foreach (var player in Model.Players)
+    {
+        <p><a asp-action="Details" asp-controller="Player" asp-route-id="@player.Id">@player.Id, @player.FirstName @player.LastName</a></p>
     }
 }

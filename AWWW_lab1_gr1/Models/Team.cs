@@ -10,6 +10,7 @@
         public List<Match>? HomeMatches { get; set; }
         public List<Match>? AwayMatches { get; set; }
         public League League { get; set; } = null!;
-        public List<Player>? Player { get; set; }
+        public int LeagueId { get; set; }
+        public List<Player>? Players { get; set; }
     }
 }

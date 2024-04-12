@@ -1,28 +1,41 @@
 ﻿@model AWWW_lab1_gr1.Models.Team
 
+<h1>Add Team</h1>
+
 <form method="post">
     <p>
         <label asp-for="Name">Name: </label>
-        <input asp-for="Name"/>
+        <input asp-for="Name" />
     </p>
     <p>
         <label asp-for="Country">Country: </label>
-        <input asp-for="Country"/>
+        <input asp-for="Country" />
     </p>
     <p>
         <label asp-for="City">City: </label>
-        <input asp-for="City"/>
+        <input asp-for="City" />
     </p>
     <p>
         <label asp-for="FoundingDate">Founding Date: </label>
-        <input type="date"/>
+        <input asp-for="FoundingDate" />
     </p>
     <p>
         <label asp-for="HomeMatches">Home Matches: </label>
-        <select asp-for="HomeMatches" asp-items="ViewBag.HomeMatches"></select>
+        <select name="HomeMatchesId" multiple="multiple" asp-for="HomeMatches" asp-items="@ViewBag.HomeMatches"></select>
     </p>
     <p>
-        <button type="submit">Dodaj</button>
+        <label asp-for="AwayMatches">Away Matches: </label>
+        <select name="AwayMatchesId" multiple=" multiple" asp-for="AwayMatches" asp-items="@ViewBag.AwayMatches"></select>
     </p>
-
+    <p>
+        <label asp-for="League.Id">League: </label>
+        <select name="LeagueId" asp-for=" League.Id" asp-items="@ViewBag.League"></select>
+    </p>
+    <p>
+        <label asp-for="Players">Players: </label>
+        <select name="PlayersId"accesskey=" "multiple="multiple" asp-for="Players" asp-items="@ViewBag.Players"></select>
+    </p>
+    <p>
+        <button type="submit">Add</button>
+    </p>
 </form>

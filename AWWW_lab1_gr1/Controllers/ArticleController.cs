@@ -1,3 +1,8 @@
+
+
+
+
+
 using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +53,7 @@ namespace AWWW_lab1_gr1.Controllers
         public IActionResult Add(Article article)
         {
             article.CreationDate = DateTime.Now;
-            article.Author = _dbContext.Authors.FirstOrDefault(a => a.Id == article.AuthorId);
+            article.Author = _dbContext.Authors.Find(article.AuthorId);
 
 
             //if (ModelState.IsValid)
