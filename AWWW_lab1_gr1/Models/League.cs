@@ -9,5 +9,5 @@ public class League
 
     public int Level{get;set;}
 
-    public ICollection<Team> Teams{get;set;}
+    public ICollection<Team>? Teams{get;set;}
 }

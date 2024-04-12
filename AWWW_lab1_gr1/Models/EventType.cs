@@ -6,6 +6,6 @@ public class EventType
 
     public required string Name{get;set;}
 
-    public  required ICollection<MatchEvent> MatchEvents{get;set;}
+    public  required ICollection<MatchEvent>? MatchEvents{get;set;}
 
 }
