@@ -41,7 +41,7 @@ public async Task<IActionResult> Create(Author author)
         bdContext.Add(author);
         await bdContext.SaveChangesAsync();
 
-        return RedirectToAction("Index", "Authors"); 
+        return RedirectToAction("Index"); 
     }
     return View(author);
 }

@@ -1,0 +1,29 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Team>
+
+<h2>Teams</h2>
+
+<p><a asp-action="Add" asp-controller="Position">Dodaj</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Founding Date</th>
+            <th>League</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Country)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.FoundingDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.LeagueId)</td>
+        </tr>
+    }
+    </tbody>
+</table>
