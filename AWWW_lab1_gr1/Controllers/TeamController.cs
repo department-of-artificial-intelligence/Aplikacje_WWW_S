@@ -63,4 +63,38 @@ public class TeamController : Controller
         return View(team);
     }
 
+    public IActionResult Edit(int id)
+        {
+            Team? team = _context.Teams
+                .Include(l => l.League)
+                .FirstOrDefault(t => t.Id == id);
+
+            ViewBag.League = _context.Leagues.Select(l => new SelectListItem(l.Name, l.Id.ToString()));
+
+            return View(team);
+        }
+
+        [HttpPost]
+
+        public IActionResult Edit(Team team)
+        {
+            ModelState.Remove("League");
+
+            if (ModelState.IsValid)
+            {
+                var League = _context.Leagues.Find(team.LeagueId);
+                if (League == null)
+                {
+                    return View();
+                }
+
+                team.League = League;
+
+                _context.Teams.Update(team);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
 }

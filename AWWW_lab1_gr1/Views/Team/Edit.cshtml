@@ -1,0 +1,29 @@
+@model AWWW_lab1_gr1.Models.Team
+
+<h1>Edit Team</h1>
+
+<form method="post">
+    <p>
+        <label asp-for="Name">Name: </label>
+        <input asp-for="Name" value="@Model.Name"/>
+    </p>
+    <p>
+        <label asp-for="Country">Country: </label>
+        <input asp-for="Country" value="@Model.Country"/>
+    </p>
+    <p>
+        <label asp-for="City">City: </label>
+        <input asp-for="City" value="@Model.City"/>
+    </p>
+    <p>
+        <label asp-for="FoundingDate">Founding Date: </label>
+        <input asp-for="FoundingDate" value="@Model.FoundingDate"/>
+    </p>
+    <p>
+        <label asp-for="LeagueId">League: </label>
+        <select name="LeagueId" asp-for=" LeagueId" asp-items="@ViewBag.League"></select>
+    </p>
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>

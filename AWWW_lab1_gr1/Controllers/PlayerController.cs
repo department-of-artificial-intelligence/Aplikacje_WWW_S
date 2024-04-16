@@ -1,70 +1,64 @@
 using Microsoft.AspNetCore.Mvc;
-using AWWW_lab1_gr1.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using AWWW_lab1_gr1.Models;
 
-namespace AWWW_lab1_gr1.Controllers;
-public class PlayerController : Controller
+namespace MultiSelectListExample.Controllers
 {
-    private readonly MyDbContext _context;
-
-    public PlayerController(MyDbContext context)
+    public class PlayerController : Controller
     {
-        _context = context;
-    }
-    public IActionResult Index()
-    {
-        var players = _context.Players.
-    Include(player => player.Team).
-    Include(player => player.Positions).
-    ToList();
-        return View(players);
+        private readonly MyDbContext _dbContext;
 
+        public PlayerController(MyDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
-    }
+        public IActionResult Index()
+        {
+            try
+            {
+                var players = _dbContext.Players.Include(p => p.Positions).Include(p => p.Team);
+                return View(players);
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+        }
 
-    public IActionResult Add()
-    {
-        ViewBag.PositionsList = _context.Positions.Select(p => new SelectListItem($"{p.Name}", p.Id.ToString()));
-        ViewBag.TeamsList = _context.Teams.Select(tea => new SelectListItem($"{tea.Name}", tea.Id.ToString()));
-        
-        /*  var teams = _context.Teams.ToList();
-         var teamsList = new List<SelectListItem>();
-         foreach (var t in teams)
-         {
-             string text = t.Name + "," + t.Country + "," + t.City + "," + t.FoundingDate + "," + t.League;
-             string id = t.Id.ToString();
-             teamsList.Add(new SelectListItem(id,text));
-         }
-         ViewBag.teamsList = teamsList;
-          */
-        return View();
-    }
-}
+        public IActionResult Add()
+        {
+            try
+            {
+                ViewBag.PositionsList = _dbContext.Positions.Select(p => new SelectListItem(p.Name, p.Id.ToString()));
+                ViewBag.TeamsList = _dbContext.Teams.Select(t => new SelectListItem(t.Name, t.Id.ToString()));
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+        }
 
-    [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add(Article article, List<int> selectedTagsIds)
+        public IActionResult Add(Player player, List<int> selectedPositionsIds, int selectedTeamId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return View();
-                article.Tags = _dbContext.Tags.Where(t => selectedTagsIds.Contains(t.Id)).ToList();
-                _dbContext.Articles.Add(article);
+                player.Positions = _dbContext.Positions.Where(p => selectedPositionsIds.Contains(p.Id)).ToList();
+                player.Team = _dbContext.Teams.Find(selectedTeamId);
+                _dbContext.Players.Add(player);
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
-                throw;
+                return View("Error");
             }
         }
-
-
-    
-
-
-
+    }
 }
