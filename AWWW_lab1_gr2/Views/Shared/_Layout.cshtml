@@ -1,46 +1,28 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav>
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Author" asp-action="Index">Autorzy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Category" asp-action="index">Kategoria</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Tag" asp-action="Index">Tag</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="League" asp-action="Index">Liga</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="MatchEvent" asp-action="Index">Rodzaj wydarzenia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Position" asp-action="Index">Pozycja</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="students" asp-action="Index">Lista studentów</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        @RenderBody()
-    </main>
+<!DOCTYPE HTML>
+<html lang='pl-PL'>
+    <head>
+<meta charset='utf-8'/>
+<link rel='stylesheet' href='~/css/site.css' asp-append-version="true"/>
 
-    <footer>
-        &copy; 2022
-    </footer>
-</body>
+        </head>
+        <body>
+            <header>
+                <nav>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                </nav>
+
+
+
+            </header>
+            <main>
+                @RenderBody()
+            </main>
+            <footer>
+                &copy;2022
+            </footer>
+        </body>
 </html>

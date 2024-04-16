@@ -1,8 +1,14 @@
-<h1>@ViewBag.Title</h1>
-<p>Witamy na podstronie</p>
-<p>
-Artykuly
-<ul>
-<li><a asp-controller="Home" asp-action="index">Strona glowna</a></li>
-</ul>
-</p>
+@model AWWW_lab1_gr2.Models.Article
+
+<h1>@Model.Title</h1>
+<p>Witamy na stronie z artykulami</p>
+
+
+
+<h1>Art #@Model.Id</h1>
+<h3>
+Data utworzenia: @Model.CreationDate.ToShortDateString()
+</h3>
+<h3>
+@Model.Content
+</h3>
