@@ -1,0 +1,34 @@
+﻿@model Kolokwium.Models.User
+
+@{
+    ViewData["Title"] = "Add New User";
+}
+
+<h1>Add New User</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label for="UserName">Nick uzytkownika</label>
+        <input type="text" id="UserName" name="UserName" value="@Model.UserName">
+    </div>
+    <div>
+        <label for="Email">Email: </label>
+        <input type="text" id="Email" name="Email" value="@Model.Email">
+    </div>
+    <div>
+        <label for="FirstName">Imie</label>
+        <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName">
+    </div>
+    <div>
+        <label for="LastName">Nazwisko</label>
+        <input type="text" id="LastName" name="LastName" value="@Model.LastName">
+    </div>
+    <div>
+        <label for="RegistrationDate">Data rejestracji</label>
+        <input type="text" id="RegistrationDate" name="RegistrationDate" value="@Model.RegistrationDate.ToString("yyyy-MM-dd")">
+    </div>
+
+    <a asp-action="Create" asp-controller="User">Add New User</a>
+
+
+</form>
