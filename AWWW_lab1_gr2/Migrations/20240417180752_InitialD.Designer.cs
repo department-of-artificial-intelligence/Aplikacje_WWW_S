@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr2.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240321191313_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240417180752_InitialD")]
+    partial class InitialD
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -310,7 +310,7 @@ namespace AWWW_lab1_gr2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Postitions");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr2.Models.Tag", b =>

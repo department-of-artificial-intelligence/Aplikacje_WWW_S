@@ -24,6 +24,7 @@ namespace AWWW_lab1_gr2.Controllers
         }
 
         public IActionResult Index(){
+            ViewBag.dogCollection = asd.Leagues.ToList()!;
             return View(asd.Teams.ToList()!);
         }
 
@@ -36,15 +37,12 @@ namespace AWWW_lab1_gr2.Controllers
         public IActionResult Dodaj()
         {
             var leagues = asd.Leagues!.ToList();
-            var leagueList = new List<SelectListItem>();
+            var leagueSelect = new List<SelectListItem>();
             foreach (var a in leagues)
             {
-                string text = a.Name;
-                string id = a.Id.ToString();
-                Console.WriteLine(text);
-                leagueList.Add(new SelectListItem(text, id));
+                leagueSelect.Add(new SelectListItem(a.Name.ToString(), a.Id.ToString()));
             }
-            ViewBag.leagueList = leagueList;
+            ViewBag.leagueList = leagueSelect;
             ViewBag.buttonText = "Dodaj";
             return View();
         }
@@ -54,14 +52,16 @@ namespace AWWW_lab1_gr2.Controllers
         {
             Console.WriteLine($"Nazwa {team.Name}");
 
-            if (true)
+            if (ModelState.IsValid)
             {
                 team.League = asd.Leagues.FirstOrDefault(x=>x.Id == team.LeagueId);
+                Console.WriteLine("1");
                 asd.Teams.Add(team);
-
+                Console.WriteLine("2");
                 try
                 {
                     asd.SaveChanges();
+                    Console.WriteLine("3");
                 }
                 catch (Exception e)
                 {
@@ -69,7 +69,7 @@ namespace AWWW_lab1_gr2.Controllers
                     return View("Error");
                 }
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
             Console.WriteLine("nv");
             return View("Error");

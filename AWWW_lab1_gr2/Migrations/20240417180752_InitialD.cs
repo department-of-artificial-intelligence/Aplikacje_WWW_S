@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AWWW_lab1_gr2.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialD : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -67,7 +67,7 @@ namespace AWWW_lab1_gr2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Postitions",
+                name: "Positions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -76,7 +76,7 @@ namespace AWWW_lab1_gr2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Postitions", x => x.Id);
+                    table.PrimaryKey("PK_Positions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,9 +291,9 @@ namespace AWWW_lab1_gr2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MatchPlayers_Postitions_PositionId",
+                        name: "FK_MatchPlayers_Positions_PositionId",
                         column: x => x.PositionId,
-                        principalTable: "Postitions",
+                        principalTable: "Positions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -315,9 +315,9 @@ namespace AWWW_lab1_gr2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayerPosition_Postitions_PositionsId",
+                        name: "FK_PlayerPosition_Positions_PositionsId",
                         column: x => x.PositionsId,
-                        principalTable: "Postitions",
+                        principalTable: "Positions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -479,7 +479,7 @@ namespace AWWW_lab1_gr2.Migrations
                 name: "Players");
 
             migrationBuilder.DropTable(
-                name: "Postitions");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Teams");
