@@ -5,5 +5,5 @@ public class Team
     public string Country {get; set;}
     public string City {get; set;}
     public DateTime FoundingDate {get; set;}
-    public virtual List<Match> Matches {get; set;}
+    public virtual IList<Match> Matches {get; set;}
 }

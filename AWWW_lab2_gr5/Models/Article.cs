@@ -8,6 +8,6 @@ public class Article
     public virtual Author Author {get; set;}
     public virtual Category Category {get; set;}
     public virtual Match? Match {get; set;}
-    public virtual List<Comment> Comments {get; set;}
-    public virtual List<Tag> Tags {get; set;}
+    public virtual IList<Comment> Comments {get; set;}
+    public virtual IList<Tag> Tags {get; set;}
 }
