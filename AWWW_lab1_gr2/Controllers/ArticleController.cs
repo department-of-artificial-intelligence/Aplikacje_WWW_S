@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr2.Models;
 public class ArticleController:Controller{
-    public IActionResult Index(int id=1)
+    public IActionResult Index(int itemid=1)
     {
 
         var articles = new List<Article>
@@ -31,7 +31,7 @@ public class ArticleController:Controller{
                 CreationDate = DateTime.Now
             },
         };
-        return View(articles[id-1]);
+        return View(articles[itemid-1]);
 
 
     }
