@@ -1,0 +1,9 @@
+@model Kolokwium.Models.Position;
+
+<form asp-action="Add" asp-controller="Position" method="POST">
+    <p>
+        <label asp-for="Name">Nazwa</label>
+        <input type="text" asp-for="Name">
+    </p>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

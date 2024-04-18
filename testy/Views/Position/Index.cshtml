@@ -1,0 +1,14 @@
+@model IEnumerable<Kolokwium.Models.Position>;
+
+<h2>Pozycje</h2>
+
+@foreach (var position in Model)
+{
+    <div>
+    <p>@position.Name</p>
+    @if (position.Players != null)
+        {
+            <p>@string.Join(",", position.Players.Select(x => x.FirstName))</p>
+        }
+    </div>
+}

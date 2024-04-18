@@ -1,0 +1,23 @@
+@model Kolokwium.Models.Team;
+
+<h2>Dodawanie teamu</h2>
+
+<form asp-action="Add" asp-controller="Team" method="POST">
+    <p>
+        <label asp-for="Name">Nazwa: </label>
+        <input type="text" asp-for="Name">
+    </p>
+    <p>
+        <label asp-for="Country">Kraj: </label>
+        <input type="text" asp-for="Country">
+    </p>
+    <p>
+        <label asp-for="City">Miasto: </label>
+        <input type="text" asp-for="City">
+    </p>
+    <p>
+        <label asp-for="FoundingDate">Data załozenia: </label>
+        <input type="date" asp-for="FoundingDate">
+    </p>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

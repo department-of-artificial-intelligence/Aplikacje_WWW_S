@@ -1,0 +1,17 @@
+@model IEnumerable<Kolokwium.Models.Player>;
+
+@{
+    ViewData["Title"] = "Zawodnicy";
+}
+
+<h2>Zawodnicy</h2>
+
+@foreach (var player in Model)
+{
+    <p>
+    Imie: @player.FirstName Nazwisko: @player.LastName Kraj: @player.Country Urodziny: @player.BirthDate Druzyna:
+    @player.Team.Name Pozycja: @string.Join(",", player.Positions.Select(x => x.Name))
+    <a asp-action="Edit" asp-controller="Player" asp-route-playerId="@player.Id">Edytuj</a>
+    <a asp-action="Delete" asp-controller="Player" asp-route-playerId="@player.Id">Usun</a>
+</p>
+}

@@ -9,18 +9,11 @@
         <p>Kraj: @Model.Country</p>
         <p>Data urodzenia: @Model.BirthDate.ToString("yyyy-MM-dd")</p>
         <p>Pozycja:
-            @if (@Model.Position != null)
+            @foreach (var position in Model.Position)
             {
-                @foreach (var position in @Model.Position)
-                    @(position.Name + " ")
-
-
-
+                @(position.Name + " ")
             }
         </p>
-        @if (@Model.Team != null)
-        {
-            <p>@Model.Team.Name</p>
-        }
+        <p>Druyna: @Model.Team.Name</p>
     </div>
 </div>

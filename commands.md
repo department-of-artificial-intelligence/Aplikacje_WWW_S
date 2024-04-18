@@ -133,3 +133,86 @@ INSERT [dbo].[Grades] ([DateOfIssue], [GradeValue], [SubjectId], [StudentId]) VA
 GO
 
 ```
+
+# Wyświetlanie danych
+
+W przypadku listowania danych z ICollection uzywamy petli na obieckie zwroconym z kontrolera za pomoca listy. var articles = \_context.Article.Include(a => a.Tags).ToList();
+
+```
+@string.Join(", ", article.Tags.Select(t => t.Name))
+```
+
+W przypadku listowania danych po kluczu obcym uzywamy listowania bezpośredniego po obiekcie.
+
+```
+@article.Author.FirstName
+```
+
+# Łączenie danych w modelach
+
+ICollection uzywamy dla polaczeń do wielu
+
+```
+Article 1 --- * Comment - w Article
+ICollection<Comment>? Comments
+
+Article * --- * Tag - w Article
+ICollection<Tag>? Tags
+```
+
+Klucza obcego uzywamy dla polaczen do jednego lub dwóch
+
+```
+Article * --- 1/2 Author - w Article
+public int? AuthorId
+public virtual Author? Author
+```
+
+# Łączenie z bazą danych
+
+Do połączenia z bazą potrzebujemy otworzyć połączenie w Program.cs
+
+```
+using Kolokwium.Models;
+using Microsoft.EntityFrameworkCore;
+(...)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString));
+```
+
+Dodatkowo musimy stworzyć plik MyDbContext.cs
+
+```
+using Microsoft.EntityFrameworkCore;
+using Kolokwium.Models;
+namespace Kolokwium.Models;
+
+public class MyDbContext : DbContext
+{
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        //Niszczenie zapętlonych połączeń
+        modelBuilder.Entity<Match>().HasOne(m => m.HomeTeam).WithMany(l => l.HomeMatches).HasForeignKey(m => m.HomeTeamId).OnDelete(DeleteBehavior.NoAction);
+        //Match * --- 2 Team
+        //Entity<Match> - Obiekt do którego wchodzi wiele połączeń
+        //HasOne(m => m.HomeTeam) - Obiekt od którego wychodzą dwa połączenia
+        //WithMany(l => l.HomeMatches) - Kolekcja do której wchodzi wiele połączeń
+        //HasForeignKey(m => m.HomeTeamId) - Id obiektu od którego wychodzą dwa połączenia
+
+    }
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
+    public DbSet<...> ... { get; set; }
+}
+```
+
+# Klucz złozony
+
+Aby stworzyc klucz zlozony w MyDbContext.cs dodajemy polaczenie dla wymaganego Id
+
+```
+modelBuilder.Entity<MatchPlayer>().HasKey(m => new {m.MatchId, m.PlayerId});
+```
+
+oraz usuwamy zbedne Id z modelu MatchPlayer.

@@ -11,7 +11,14 @@
             <p>@team.Country</p>
             <p>@team.City</p>
             <p>@team.FoundingDate</p>
-            <p>@team.LeagueId</p>
+            <p>@team.League.Name</p>
+            <p>
+                @string.Join(",", team.Players.Select(a => a.FirstName + " " + a.LastName + " - " + (string.Join(",",
+                         team.Players.SelectMany(a => a.Position.Select(b => b.Name))))))
+            </p>
+            <p>
+                <a asp-controller="Team" asp-route-id="@team.Id" asp-action="Update">Edytuj</a>
+            </p>
         </div>
     }
 </div>

@@ -1,6 +1,6 @@
 using AWWW_lab3_gr2.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab3_gr2.Controllers
 {
@@ -15,7 +15,7 @@ namespace AWWW_lab3_gr2.Controllers
 
         public IActionResult Index()
         {
-            var leagues = _dbContext.League.ToList();
+            var leagues = _dbContext.League.Include(a => a.Teams).ToList();
             return View(leagues);
         }
 

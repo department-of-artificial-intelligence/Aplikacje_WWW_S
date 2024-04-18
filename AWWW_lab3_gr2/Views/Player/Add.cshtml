@@ -19,11 +19,10 @@
         <input asp-for="BirthDate" type="date" />
     </p>
     <p>
-        @foreach (var position in ViewBag.positionsList as List<SelectListItem>)
+        @foreach (var position in ViewBag.positionsList as IEnumerable<SelectListItem>)
         {
         <div>
-            <input type="checkbox" name="position" value="@position.Value" id="position_@position.Value" @(Model != null &&
-            Model.Position.Any(p => p.Id.ToString() == position.Value) ? "checked" : "") />
+            <input type="checkbox" name="positions" value="@position.Value" id="position_@position.Value" />
             <label for="position_@position.Value">@position.Text</label>
         </div>
         }

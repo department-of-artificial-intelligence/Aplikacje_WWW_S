@@ -1,0 +1,13 @@
+@model IEnumerable<Kolokwium.Models.Team>;
+
+<h2>Druzyny</h2>
+
+@foreach (var team in Model)
+{
+    <p>
+    <span>@team.Name</span>
+    <span>@team.Country</span>
+    <span>@team.City</span>
+    <span>@team.FoundingDate</span>
+</p>
+}

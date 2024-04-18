@@ -1,0 +1,37 @@
+@model Kolokwium.Models.Player;
+
+<h2>Zmien zawodnika</h2>
+
+<form asp-action="Edit" asp-controller="Player" method="POST">
+    <input type="hidden" asp-for="Id">
+    <p>
+        <label asp-for="FirstName">Imie</label>
+        <input type="text" asp-for="FirstName">
+    </p>
+    <p>
+        <label asp-for="LastName">Nazwisko</label>
+        <input type="text" asp-for="LastName">
+    </p>
+    <p>
+        <label asp-for="Country">Kraj</label>
+        <input type="text" asp-for="Country">
+    </p>
+    <p>
+        <label asp-for="BirthDate">Data urodzenia</label>
+        <input type="date" asp-for="BirthDate">
+    </p>
+    <p>
+        <label asp-for="TeamId">Druzyna</label>
+        <select asp-for="TeamId" asp-items="@ViewBag.teamsList"></select>
+    </p>
+    <p>
+        @foreach (var position in ViewBag.positionsList as IEnumerable<SelectListItem>)
+        {
+        <div>
+            <input type="checkbox" name="positions" value="@position.Value" id="@position.Value">
+            <label for="@position.Value">@position.Text</label>
+        </div>
+        }
+    </p>
+    <button type="submit" class="btn btn-primary">Edytuj</button>
+</form>

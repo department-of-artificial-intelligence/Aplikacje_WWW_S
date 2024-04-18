@@ -6,22 +6,14 @@
     @foreach (var player in Model)
     {
         <div class="w3-container">
+            <p>Id: @player.Id</p>
             <p>Imie: @player.FirstName</p>
             <p>Nazwisko: @player.LastName</p>
             <p>Kraj: @player.Country</p>
             <p>Data urodzenia: @player.BirthDate</p>
-            <p>Pozycja:
-                @if (@player.Position != null)
-                {
-                    @foreach (var position in @player.Position)
-                        @(position.Name + " ")
-
-                }
-            </p>
-            @if (@player.Team != null)
-            {
-                <p>@player.Team.Name</p>
-            }
+            <p>Pozycja: @string.Join(',', player.Position.Select(n => n.Name))</p>
+            <p>Druzyna: @player.Team.Name</p>
+            <a asp-controller="Player" asp-action="Update" asp-route-id="@player.Id">Edytuj</a>
         </div>
     }
 </div>
