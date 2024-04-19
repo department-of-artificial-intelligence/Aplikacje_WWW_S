@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Kolokwium.Models.Client>
+
+<div class="text-center">
+    <h1>All clients</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Registration date</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Client's orders</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var client in Model)
+            {
+                <tr>
+                    <td>@client.Id</td>
+                    <td>@client.RegistrationDate</td>
+                    <td>@client.FirstName</td>
+                    <td>@client.LastName</td>
+                    <td>@client.Email</td>
+                    <td>@client.Phone</td>
+                    <td>
+                        @if(client.Orders.Any())
+                        {
+                            @string.Join(", ", client.Orders.Select(o => o.Description));
+                        }
+                        else
+                        {
+                            @:No orders
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-controller="client" asp-action="AddClient">Add new client</a>
+</div>
