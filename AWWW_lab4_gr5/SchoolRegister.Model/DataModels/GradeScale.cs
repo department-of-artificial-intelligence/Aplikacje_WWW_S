@@ -4,9 +4,9 @@ namespace SchoolRegister.Model.DataModels;
 
 public class GradeScale
 {
-    public NDST = 2;
-    public DST = 3;
-    public DB = 4;
-    public BDB = 5;
+    public static int NDST = 2;
+    public static int DST = 3;
+    public static int DB = 4;
+    public static int BDB = 5;
 
 }

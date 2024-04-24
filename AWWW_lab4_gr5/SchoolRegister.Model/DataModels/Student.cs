@@ -10,4 +10,7 @@ public class Student
     public Parent Parent {get; set;}
     public int ParentId {get; set;}
     public double AverageGrade {get;}
+
+    public AverageGradePerSubject;
+    public GradesPerSubject;
 }
