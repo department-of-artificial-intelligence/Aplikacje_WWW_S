@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace SchoolRegister.Model.DataModels
 {
     public class Student
@@ -14,7 +9,7 @@ namespace SchoolRegister.Model.DataModels
         public int? ParentId { get; set; }
         public double AverageGrade { get; }
         public IDictionary<string, double> AverageGradePerSubject { get; }
-        public iDictionary<string, List<GradeScale>> GradePerSubject { get; }
-        public Student()
+        public IDictionary<string, List<GradeScale>> GradeScales { get; }
+        public Student() { }
     }
 }
