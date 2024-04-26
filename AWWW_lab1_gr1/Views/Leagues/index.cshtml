@@ -3,7 +3,7 @@
 <h2>Leagues List</h2>
 <p><a asp-action="Create">Add League</a></p>
 <table class="table">
-     <tr><th>Id<th>Name</th><th>Country</th><th>Level</th></tr>
+     <tr><th>Id<th>Name</th><th>Country</th><th>Level</th><th>Teams</th></tr>
     @foreach (var item in Model)
     {
         <tr>
@@ -11,6 +11,14 @@
             <td>@item.Name</td>
             <td>@item.Country</td>
             <td>@item.Level</td>
+            <td>
+                <ul>
+                    @foreach (var team in item?.Teams)
+                    {
+                        <li>@team.Name</li>
+                    }
+                </ul>
+            </td>
         </tr>
     }
 </table>

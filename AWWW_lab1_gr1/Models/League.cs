@@ -1,4 +1,7 @@
-public class League {
+using System.ComponentModel.DataAnnotations.Schema;
+
+public class League
+{
     public int Id { get; set; }
 
     public required string Name { get; set; }

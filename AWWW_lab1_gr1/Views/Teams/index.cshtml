@@ -1,0 +1,38 @@
+@model IEnumerable<Team>
+ 
+<h2>Team List</h2>
+<p><a class="add-btn" asp-action="Create">Add Team</a></p>
+<table class="table">
+     <tr><th>Id</th><th>Name</th><th>Country</th><th>City</th><th>LeagueName</th><th>Founding Date</th><th>Players</th><th>Actions</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Country</td>
+            <td>@item.City</td>
+            <td>@item.League.Name</td>
+            <td>@item.FoundingDate</td>
+            <td>
+                <ol>
+                    @foreach (var player in item?.Players)
+                    {
+                        <li>
+                            @player.FirstName @player.LastName Positions: 
+                                    @foreach (var position in player?.Positions)
+                                    {
+                                        @position.Name
+                                    }
+                            
+                        </li>
+
+                    }
+                </ol>
+            </td>
+            <td>
+                <a class="action-btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+            </td>
+
+        </tr>
+    }
+</table>

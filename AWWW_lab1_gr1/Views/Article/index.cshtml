@@ -1,11 +1,20 @@
-@model Article
-
-<h1>@Model.Title</h1>
-
-<p>
-    Data Utworzenia: @Model.CreationDate.ToShortDateString()
-</p>
-
-<p>
-    @Model.Content
-</p>
+@model IEnumerable<Article>
+ 
+<h2>Articles List</h2>
+<p><a asp-action="Create">Add Author</a></p>
+<table class="table">
+        <tr><th>Id</th><th>Title</th><th>Content</th><th>Author</th><th>Category</th><th>Actions</th></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.Content</td>
+                <td>@item.Author.FirstName @item.Author.LastName</td>
+                <td>@item.Category.Name</td>
+                <td>
+                    <a class="action-btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+</table>

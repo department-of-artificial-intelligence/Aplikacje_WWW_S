@@ -1,0 +1,66 @@
+@model Player
+
+@{
+    ViewData["Title"] = "Create Player";
+}
+
+<h1>Create Player</h1>
+
+<hr />
+
+    <div class="main-form">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+          <div class="form-group">
+                <label class="control-label">Positions</label>
+                @foreach (var position in ViewBag.Positions)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="Positions" value="@position.Id" id="position-@position.GetHashCode()" @(Model?.Positions?.Contains(position) == true ? "checked" : "") />
+                        <label class="form-check-label" for="position-@position.GetHashCode()">
+                            @position.Name
+                        </label>
+                    </div>
+                }
+                <span asp-validation-for="Positions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team" class="control-label"></label>
+                <select asp-for="Team" class="form-control">
+                    @foreach (var team in ViewBag.Teams)
+                    {
+                        <option value="@team.Id">@team.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Team" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

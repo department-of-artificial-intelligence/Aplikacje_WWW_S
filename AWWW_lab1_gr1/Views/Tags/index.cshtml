@@ -1,7 +1,7 @@
 @model IEnumerable<Tag>
  
 <h2>Tags List</h2>
-<p><a asp-action="Create">Add Tag</a></p>
+<p><a class="add-btn" asp-action="Create">Add Tag</a></p>
 <table class="table">
      <tr><th>Id</th><th>Name</th></tr>
     @foreach (var item in Model)

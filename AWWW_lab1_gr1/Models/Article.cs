@@ -1,5 +1,6 @@
 
-public class Article {
+public class Article
+{
     public int Id { get; set; }
 
     public required string Title { get; set; }
@@ -10,9 +11,13 @@ public class Article {
 
     public List<Comment>? Comments { get; set; }
 
-    public required Author Author { get; set; }
+    public Author? Author { get; set; }
 
-    public required Category Category { get; set; }
+    public Category? Category { get; set; }
+
+    public int AuthorId { get; set; }
+
+    public int CategoryId { get; set; }
 
     public List<Tag>? Tags { get; set; }
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab1_gr1.Migrations
 {
     [DbContext(typeof(LabOneContext))]
-    [Migration("20240315113243_leagues")]
-    partial class leagues
+    [Migration("20240412113136_article")]
+    partial class article
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -280,7 +280,7 @@ namespace AWWW_lab1_gr1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -292,17 +292,17 @@ namespace AWWW_lab1_gr1.Migrations
 
             modelBuilder.Entity("PlayerPosition", b =>
                 {
-                    b.Property<int>("PlayersId")
+                    b.Property<int>("PlayerId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PositionsId")
+                    b.Property<int>("PositionId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("PlayersId", "PositionsId");
+                    b.HasKey("PlayerId", "PositionId");
 
-                    b.HasIndex("PositionsId");
+                    b.HasIndex("PositionId");
 
-                    b.ToTable("PlayerPosition");
+                    b.ToTable("PlayerPositions");
                 });
 
             modelBuilder.Entity("Position", b =>
@@ -488,26 +488,28 @@ namespace AWWW_lab1_gr1.Migrations
                 {
                     b.HasOne("Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
                 });
 
             modelBuilder.Entity("PlayerPosition", b =>
                 {
-                    b.HasOne("Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayersId")
+                    b.HasOne("Player", "Player")
+                        .WithMany("PlayerPositions")
+                        .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Position", null)
-                        .WithMany()
-                        .HasForeignKey("PositionsId")
+                    b.HasOne("Position", "Position")
+                        .WithMany("PlayerPositions")
+                        .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Player");
+
+                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("Team", b =>
@@ -553,11 +555,15 @@ namespace AWWW_lab1_gr1.Migrations
             modelBuilder.Entity("Player", b =>
                 {
                     b.Navigation("MatchPlayers");
+
+                    b.Navigation("PlayerPositions");
                 });
 
             modelBuilder.Entity("Position", b =>
                 {
                     b.Navigation("MatchPlayers");
+
+                    b.Navigation("PlayerPositions");
                 });
 
             modelBuilder.Entity("Team", b =>

@@ -1,0 +1,41 @@
+@model CreateTeam
+ 
+
+<h2>Add Team</h2>
+<form asp-action="create" asp-controller="Teams">
+    
+    <div>
+        <select asp-for="NewTeam.LeagueId" asp-items="@( Model.Leagues != null ? new SelectList(Model.Leagues, "Id", "Name") : null)"> >
+        <option value="">Select League</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="NewTeam.Name">Name</label><br />
+        <input asp-for="NewTeam.Name"  />
+    </div>
+
+    <div>
+        <label asp-for="NewTeam.FoundingDate">FoundingDate</label><br />
+        <input asp-for="NewTeam.FoundingDate"  type="date" />
+    </div>
+
+    <div>
+        <label asp-for="NewTeam.Country">Country</label><br />
+        <input asp-for="NewTeam.Country"  />
+    </div>
+
+    <div>
+        <label asp-for="NewTeam.City">City</label><br />
+        <input asp-for="NewTeam.City"  />
+    </div>
+
+
+
+    
+
+
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+</form>
