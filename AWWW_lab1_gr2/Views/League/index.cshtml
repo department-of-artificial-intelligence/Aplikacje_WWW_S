@@ -1,0 +1,43 @@
+@using AWWW_lab1_gr2.Models
+
+@model IList<League>
+
+<h1 class="h1">@ViewBag.Title</h1>
+<a asp-controller="league" asp-action="add"><button type="button">Dodaj ligę</button></a>
+
+<div>
+    <div class="row">
+        <div>
+            Nazwa:
+        </div>
+        <div>
+            Państwo:
+        </div>
+        <div>
+            Poziom:
+        </div>
+    </div>
+    @foreach (var league in Model)
+    {
+        <div class="row">
+            <div>
+                @league.Name
+            </div>
+            <div>
+                @league.Country
+            </div>
+            <div>
+                @league.Level
+            </div>
+            <div>
+                <form method="post">
+                    <button type="submit" class="btn btn-danger"
+                        formaction='@Url.Action("UsunDane", "League", new { id = @league.Id })'
+                    >Usuń</button>
+                </form>
+            </div>
+        </div>
+
+    }
+</div>
+
