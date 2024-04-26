@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class CategoriesControler: Controller 
+public class CategoriesController: Controller
 {
      MyDbContext DbContext;
 
-     public CategoriesControler(MyDbContext DbContext)
+     public CategoriesController(MyDbContext DbContext)
      {
           this.DbContext = DbContext;
      }
