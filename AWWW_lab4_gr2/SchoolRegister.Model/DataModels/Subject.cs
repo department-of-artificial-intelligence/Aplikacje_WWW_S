@@ -8,7 +8,7 @@
         public IList<SubjectGroup> SubjectGroups { get; set; } = new List<SubjectGroup>();
         public Teacher? Teacher { get; set; }
         public int? TeacherId { get; set; }
-        public IList<Grade> Grades { get; set; } = new List<Grade>();
+        public IList<Grade> Gradess { get; set; } = new List<Grade>();
 
     }
 }
