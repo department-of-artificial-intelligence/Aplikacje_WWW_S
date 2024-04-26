@@ -1,0 +1,35 @@
+@model AWWW_lab3_gr1.Models.Article;
+@using AWWW_lab3_gr1.Models;
+
+<article class="article-container">
+  <h1>@Model.Title</h1>
+
+  <div class="action-buttons" style="justify-content: start;">
+    <a class="primary-button" asp-controller="Article" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="primary-button danger" asp-controller="Article" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+
+  </div>
+
+  <strong>@Model.Lead</strong>
+  <pre>@Model.Content</pre>
+
+</article>
+
+<ul>
+  @foreach (Tag tag in Model.Tags)
+  {
+
+    <li>@tag.Name</li>
+
+  }
+</ul>
+
+<h1>Komentarze</h1>
+
+@foreach (Comment comment in Model.Comments)
+{
+  <div>
+  <h3>@comment.Title</h3>
+  <p>@comment.Content</p>
+</div>
+}

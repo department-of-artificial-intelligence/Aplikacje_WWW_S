@@ -1,0 +1,32 @@
+@model List<AWWW_lab3_gr1.Models.Article>
+
+<div class="page-header">
+  <h2 class="page-title">@ViewBag.Title</h2>
+  <div>
+    <a asp-action="Add" class="primary-button">Add new Article</a>
+  </div>
+</div>
+
+
+<section class="article-list-container">
+  @foreach (var item in Model)
+  {
+    <a asp-controller="Article" asp-action="Details" asp-route-id="@item.Id">
+      <header>
+        <h3>@item.Title</h3>
+        <div>
+          <p>@item.Author.FirstName @item.Author.LastName</p>
+          <p>@item.CreationDate</p>
+        </div>
+      </header>
+      <p>
+        @item.Lead
+      </p>
+      <footer>
+        <p>
+
+        </p>
+      </footer>
+    </a>
+  }
+</section>

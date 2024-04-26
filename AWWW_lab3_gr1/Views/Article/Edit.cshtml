@@ -1,0 +1,83 @@
+@using AWWW_lab3_gr1.Models;
+@model AWWW_lab3_gr1.Models.Article;
+
+<h2 class="page-title">
+  @if (Model.Id != 0)
+  {
+    @: Edit Article
+  }
+  else
+  {
+    @: Add new Article
+  }
+</h2>
+
+<form asp-action="Save" method="post">
+  @Html.HiddenFor(model => model.Id)
+
+  <div class="form-element">
+    <label asp-for="Title">Title:</label>
+    <input type="text" asp-for="Title">
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Lead">Lead:</label>
+    <textarea asp-for="Lead"> </textarea>
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Content">Content:</label>
+    <textarea asp-for="Content"></textarea>
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Author">Author</label>
+    <select asp-for="AuthorId">
+      @foreach (Author item in ViewBag.Authors)
+      {
+        <option value="@item.Id">@item.FirstName @item.LastName</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Category">Category</label>
+    <select asp-for="CategoryId">
+      @foreach (var item in ViewBag.Categories)
+      {
+        <option value="@item.Id">@item.Name</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-element">
+    <label for="ArticleTags">Tags</label>
+    <select name="ArticleTags" id="ArticleTags" multiple value>
+      @foreach (Tag item in ViewBag.Tags)
+      {
+        <option value="@item.Id">@item.Name</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Match">Match</label>
+    <select asp-for="MatchId">
+      @foreach (Match item in ViewBag.Matches)
+      {
+        <option value="@item.Id">@item.AwayTeam.Name - @item.HomeTeam.Name</option>
+      }
+    </select>
+  </div>
+
+  <button class="primary-button" type="submit">
+    @if (Model.Id != 0)
+    {
+      @: Save
+    }
+    else
+    {
+      @: Add
+    }
+  </button>
+</form>

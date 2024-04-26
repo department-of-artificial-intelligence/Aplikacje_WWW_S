@@ -1,0 +1,53 @@
+@using AWWW_lab3_gr1.Models
+@model List<AWWW_lab3_gr1.Models.Player>;
+
+<div class="page-header">
+  <h2 class="page-title">@ViewBag.Title</h2>
+  <div>
+    <a class="primary-button" asp-action="Add">Add new Player</a>
+  </div>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Country</th>
+      <th>Birth Date</th>
+      <th>Position</th>
+      <th>Team</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td><a asp-action="Details" asp-route-id="@item.Id">@item.Id</a>
+        </td>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.Country</td>
+        <td>@item.BirthDate</td>
+        <td>
+          @foreach (Position position in item.Positions)
+          {
+            <span>@position.Name</span>
+          }
+
+        </td>
+        <td>@item.Team.Name</td>
+        <td>
+          <div class="action-buttons">
+            <a asp-action="Details" asp-route-id="@item.Id" class="primary-button small">Details</a>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="primary-button small">Edit</a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="primary-button small danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+
+    }
+  </tbody>
+</table>

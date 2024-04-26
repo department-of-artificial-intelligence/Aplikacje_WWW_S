@@ -1,0 +1,50 @@
+@using AWWW_lab3_gr1.Models;
+@model List<AWWW_lab3_gr1.Models.League>
+
+<div class="page-header">
+  <h2 class="page-title">@ViewBag.Title</h2>
+  <div>
+    <a class="primary-button" asp-action="Add" asp-controller="League">Add new League</a>
+  </div>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Level</th>
+      <th>Teams</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td><a asp-action="Details" asp-route-id="@item.Id">@item.Id</a>
+        </td>
+        <td>@item.Name</td>
+        <td>@item.Country</td>
+        <td>@item.Level</td>
+        <td>
+          <ul>
+            @foreach (Team team in item.Teams)
+            {
+              <li>@team.Name</li>
+            }
+          </ul>
+        </td>
+        <td>
+          <div class="action-buttons">
+            <a asp-action="Details" asp-route-id="@item.Id" class="primary-button small">Details</a>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="primary-button small">Edit</a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="primary-button small danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+
+    }
+  </tbody>
+</table>

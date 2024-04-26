@@ -1,0 +1,73 @@
+@model AWWW_lab3_gr1.Models.League
+
+<h2 class="page-title">
+  @if (Model.Id != 0)
+  {
+    @: Edit League
+  }
+  else
+  {
+    @: Add new League
+  }
+</h2>
+
+<form asp-action="Save" method="post">
+  @Html.HiddenFor(model => model.Id)
+
+  <div class="form-element">
+    <label asp-for="Name">Name:</label>
+    <input type="text" asp-for="Name">
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Country">Country:</label>
+    <select id="country" asp-for="Country">
+      <option value="">Select a country</option>
+      <option value="Austria">Austria</option>
+      <option value="Belgium">Belgium</option>
+      <option value="Bulgaria">Bulgaria</option>
+      <option value="Croatia">Croatia</option>
+      <option value="Cyprus">Cyprus</option>
+      <option value="Czech Republic">Czech Republic</option>
+      <option value="Denmark">Denmark</option>
+      <option value="Estonia">Estonia</option>
+      <option value="Finland">Finland</option>
+      <option value="France">France</option>
+      <option value="Germany">Germany</option>
+      <option value="Greece">Greece</option>
+      <option value="Hungary">Hungary</option>
+      <option value="Ireland">Ireland</option>
+      <option value="Italy">Italy</option>
+      <option value="Latvia">Latvia</option>
+      <option value="Lithuania">Lithuania</option>
+      <option value="Luxembourg">Luxembourg</option>
+      <option value="Malta">Malta</option>
+      <option value="Netherlands">Netherlands</option>
+      <option value="Poland">Poland</option>
+      <option value="Portugal">Portugal</option>
+      <option value="Romania">Romania</option>
+      <option value="Slovakia">Slovakia</option>
+      <option value="Slovenia">Slovenia</option>
+      <option value="Spain">Spain</option>
+      <option value="Sweden">Sweden</option>
+      <option value="Ukraine">Ukraine</option>
+    </select>
+  </div>
+
+  <div class="form-element">
+    <label asp-for="Level">Level:</label>
+    <input type="number" asp-for="Level">
+  </div>
+
+
+  <button class="primary-button" type="submit">
+    @if (Model.Id != 0)
+    {
+      @: Save
+    }
+    else
+    {
+      @: Add
+    }
+  </button>
+</form>
