@@ -11,7 +11,7 @@ builder.Services.AddDbContext<MyDbContext>(x => x.UseSqlServer(connectionString)
 var app = builder.Build();
 
 app.UseHttpsRedirection(); 
-app.UseStaticFiles();
+app.UseStaticFiles();   
 app.UseRouting();
 
 app.MapDefaultControllerRoute();
