@@ -211,6 +211,12 @@ namespace AWWW_lab2_gr2.Migrations
                     b.Property<int?>("MatchPlayerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MatchPlayerMatchId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MatchPlayerPlayerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Minute")
                         .HasColumnType("int");
 
@@ -220,27 +226,21 @@ namespace AWWW_lab2_gr2.Migrations
 
                     b.HasIndex("MatchId");
 
-                    b.HasIndex("MatchPlayerId");
+                    b.HasIndex("MatchPlayerMatchId", "MatchPlayerPlayerId");
 
                     b.ToTable("MatchEvents");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr2.Models.MatchPlayer", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PositionId")
                         .HasColumnType("int");
@@ -248,9 +248,7 @@ namespace AWWW_lab2_gr2.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MatchId");
+                    b.HasKey("MatchId", "PlayerId");
 
                     b.HasIndex("PlayerId");
 
@@ -460,7 +458,7 @@ namespace AWWW_lab2_gr2.Migrations
 
                     b.HasOne("AWWW_lab2_gr2.Models.MatchPlayer", "MatchPlayer")
                         .WithMany("MatchEvents")
-                        .HasForeignKey("MatchPlayerId");
+                        .HasForeignKey("MatchPlayerMatchId", "MatchPlayerPlayerId");
 
                     b.Navigation("EventType");
 

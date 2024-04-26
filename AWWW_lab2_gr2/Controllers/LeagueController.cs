@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab2_gr2.Controllers
 {
@@ -13,8 +14,11 @@ namespace AWWW_lab2_gr2.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
-		}
+            var leagues = _context.Leagues
+				.Include(l => l.Teams)
+				.ToList();
+            return View(leagues);
+        }
 
 		public IActionResult Add()
 		{

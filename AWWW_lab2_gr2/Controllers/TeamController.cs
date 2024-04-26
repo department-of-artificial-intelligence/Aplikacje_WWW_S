@@ -15,8 +15,13 @@ namespace AWWW_lab2_gr2.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
-		}
+            var teams = _context.Teams
+				.Include(a => a.League)
+				.Include(a => a.Players)
+                    .ThenInclude(b => b.Positions)
+                .ToList();
+            return View(teams);
+        }
 
 		public IActionResult Add()
 		{
@@ -47,5 +52,43 @@ namespace AWWW_lab2_gr2.Controllers
 
 			return View("Added", team);
 		}
-	}
+
+		public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.leaguesList = new SelectList(_context.Leagues, "Id", "Name");
+
+            var team = _context.Teams
+				.FirstOrDefault(t => t.Id == id);
+
+            return View(team);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Team team)
+        {
+            var teamToUpdate = _context.Teams
+                .FirstOrDefault(t => t.Id == team.Id);
+
+            if (teamToUpdate != null)
+            {
+                teamToUpdate.Name = team.Name;
+                teamToUpdate.Country = team.Country;
+                teamToUpdate.City = team.City;
+                teamToUpdate.FoundingDate = team.FoundingDate;
+                teamToUpdate.LeagueId = team.LeagueId;
+
+                _context.SaveChanges();
+            }
+
+			var teams = _context.Teams
+				.Include(p => p.League);
+
+            return View("Index", teams);
+        }
+    }
 }

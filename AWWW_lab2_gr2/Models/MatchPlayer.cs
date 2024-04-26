@@ -7,7 +7,8 @@ namespace AWWW_lab2_gr2.Models
 {
     public class MatchPlayer
     {
-        public int Id { get; set; }
+        //removed in lab3_10
+        //public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 

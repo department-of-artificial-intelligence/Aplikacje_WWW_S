@@ -40,6 +40,8 @@ namespace AWWW_lab2_gr2
             .HasForeignKey(m => m.AwayTeamId)
             .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<MatchPlayer>()
+            .HasKey(mp => new { mp.MatchId, mp.PlayerId });
         }
     } 
 }

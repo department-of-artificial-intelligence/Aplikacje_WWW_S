@@ -25,7 +25,7 @@
                 <td>@player.LastName</td>
                 <td>@player.Country</td>
                 <td>@player.BirthDate.ToShortDateString()</td>
-                <td>@player.Team.Name</td>
+                <td>@(player.Team?.Name ?? "Brak drużyny")</td>
                 <td>
                     <a asp-controller="player" asp-action="edit" asp-route-id="@player.Id" class="btn btn-primary">Edytuj</a>
                 </td>

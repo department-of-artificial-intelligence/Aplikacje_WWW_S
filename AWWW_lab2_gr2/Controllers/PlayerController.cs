@@ -73,43 +73,11 @@ namespace AWWW_lab2_gr2.Controllers
             ViewBag.allPositions = _context.Positions.ToList();
 
             var player = _context.Players
-            .Include(p => p.Positions)
+            .Include(p => p.Positions) // Załaduj pozycje za pomocą Eager Loading
             .FirstOrDefault(p => p.Id == id);
 
             return View(player);
         }
 
-        [HttpPost]
-        public IActionResult Edit(Player player, List<int> positions)
-        {
-            var playerToUpdate = _context.Players
-            .Include(p => p.Positions)
-            .FirstOrDefault(p => p.Id == player.Id);
-
-            if (playerToUpdate != null)
-            {
-                playerToUpdate.FirstName = player.FirstName;
-                playerToUpdate.LastName = player.LastName;
-                playerToUpdate.Country = player.Country;
-                playerToUpdate.BirthDate = player.BirthDate;
-                playerToUpdate.TeamId = player.TeamId;
-
-                playerToUpdate.Positions.Clear();
-
-                if (positions != null)
-                {
-                    foreach (var positionId in positions)
-                    {
-                        var positionToAdd = new Position { Id = positionId };
-                        _context.Attach(positionToAdd);
-                        playerToUpdate.Positions.Add(positionToAdd);
-                    }
-                }
-
-                _context.SaveChanges();
-            }
-
-            return View("Index");
-        }
     }
 }

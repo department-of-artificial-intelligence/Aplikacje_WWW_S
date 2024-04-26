@@ -1,0 +1,38 @@
+﻿@model AWWW_lab2_gr2.Models.Article
+
+@{
+    ViewData["Title"] = "Edytuj artykul";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="Title" class="control-label">Title:</label>
+    <input asp-for="Title" class="form-control" />
+
+    <label asp-for="Lead" class="control-label">Lead:</label>
+    <input asp-for="Lead" class="form-control" />
+
+    <label asp-for="Content" class="control-label">Content:</label>
+    <input asp-for="Content" class="form-control" />
+
+    <label asp-for="CreationDate" class="control-label">CreationDate:</label>
+    <input asp-for="CreationDate" type="date" class="form-control" />
+
+    <label asp-for="AuthorId" class="control-label">Author:</label>
+    <select asp-for="AuthorId" asp-items="@ViewBag.authorsList" class="form-control"></select>
+
+    <label asp-for="CategoryId" class="control-label">Category:</label>
+    <select asp-for="CategoryId" asp-items="@ViewBag.categoriesList" class="form-control"></select>
+
+    @foreach (var tag in @ViewBag.allTags)
+    {
+        <div>
+            <input type="checkbox" name="selectedTags" value="@tag.Id" @(Model.Tags.Any(t => t.Id == tag.Id) ? "checked" : "") />
+            <label>@tag.Name</label>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>

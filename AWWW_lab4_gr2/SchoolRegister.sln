@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Web", "SchoolRegister.Web\SchoolRegister.Web.csproj", "{F1A7B502-B3B1-4732-90C1-D3188FC311A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Model", "SchoolRegister.Model\SchoolRegister.Model.csproj", "{4328AA6E-9C13-4707-AB10-D034BB4ED85A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.DAL", "SchoolRegister.DAL\SchoolRegister.DAL.csproj", "{73EA623A-9972-4AD1-B44C-4AC7AADFF1BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Services", "SchoolRegister.Services\SchoolRegister.Services.csproj", "{8FDAF583-A04D-407E-A30F-9B189FBBF6C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.ViewModels", "SchoolRegister.ViewModels\SchoolRegister.ViewModels.csproj", "{C7E0DA9F-8F5F-4828-BC4C-C083E77FFC48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A7B502-B3B1-4732-90C1-D3188FC311A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A7B502-B3B1-4732-90C1-D3188FC311A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A7B502-B3B1-4732-90C1-D3188FC311A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A7B502-B3B1-4732-90C1-D3188FC311A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4328AA6E-9C13-4707-AB10-D034BB4ED85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4328AA6E-9C13-4707-AB10-D034BB4ED85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4328AA6E-9C13-4707-AB10-D034BB4ED85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4328AA6E-9C13-4707-AB10-D034BB4ED85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73EA623A-9972-4AD1-B44C-4AC7AADFF1BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73EA623A-9972-4AD1-B44C-4AC7AADFF1BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73EA623A-9972-4AD1-B44C-4AC7AADFF1BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73EA623A-9972-4AD1-B44C-4AC7AADFF1BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDAF583-A04D-407E-A30F-9B189FBBF6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDAF583-A04D-407E-A30F-9B189FBBF6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDAF583-A04D-407E-A30F-9B189FBBF6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDAF583-A04D-407E-A30F-9B189FBBF6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E0DA9F-8F5F-4828-BC4C-C083E77FFC48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E0DA9F-8F5F-4828-BC4C-C083E77FFC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E0DA9F-8F5F-4828-BC4C-C083E77FFC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E0DA9F-8F5F-4828-BC4C-C083E77FFC48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+﻿@model AWWW_lab2_gr2.Models.Comment;
+
+<div class="text-center">
+	<h1>Dodaj nowy komentarz</h1>
+	<form asp-controller="comment" asp-action="add" method="post" >
+		<p>
+			<input type="hidden" asp-for="ArticleId" value="@ViewBag.ArticleId" readonly />
+		</p>
+		<p>
+			<label asp-for="Title">Tytul komentarza:</label>
+			<input asp-for="Title" />
+		</p>
+		<p>
+			<label asp-for="Content">Tresc komentarza:</label>
+			<input asp-for="Content" />
+		</p>
+		<button type="submit" class="btn btn-primary">Dodaj komentarz</button>
+	</form>
+</div>

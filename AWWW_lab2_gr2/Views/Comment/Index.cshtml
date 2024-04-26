@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AWWW_lab2_gr2.Models.Comment>
+
+@{
+    ViewData["Title"] = "Komentarze";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in @Model)
+        {
+            <tr>
+                <td>@comment.Title</td>
+                <td>@comment.Content</td>
+                <td>
+                    <a asp-controller="comment" asp-action="edit" asp-route-id="@comment.Id" class="btn btn-primary">Edytuj</a>
+                </td>
+                <td>
+                    <a asp-controller="comment" asp-action="delete" asp-route-id="@comment.Id" class="btn btn-primary">Usun</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="comment" asp-action="add" class="btn btn-primary">Dodaj nowy komentarz</a>
+
