@@ -1,8 +1,3 @@
-
-
-
-
-
 using AWWW_lab1_gr1.Data;
 using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;

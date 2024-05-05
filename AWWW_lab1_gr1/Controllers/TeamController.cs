@@ -100,7 +100,7 @@ namespace AWWW_lab1_gr1.Controllers
 
                 team.League = League;
 
-                _dbContext.Teams.Update(team);
+                _dbContext.Update(team);
                 _dbContext.SaveChanges();
             }
 
