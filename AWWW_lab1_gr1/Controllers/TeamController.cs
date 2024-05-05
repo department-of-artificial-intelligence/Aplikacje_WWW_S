@@ -104,7 +104,7 @@ namespace AWWW_lab1_gr1.Controllers
                 _dbContext.SaveChanges();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
     }
 }
