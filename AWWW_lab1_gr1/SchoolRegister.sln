@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Web", "SchoolRegister.Web\SchoolRegister.Web.csproj", "{DA047716-139C-457E-8CFB-06EEDFD06B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRegister.Model", "SchoolRegister.Model\SchoolRegister.Model.csproj", "{AE6B98A3-1BFA-4A56-904B-52AE2859879F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA047716-139C-457E-8CFB-06EEDFD06B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA047716-139C-457E-8CFB-06EEDFD06B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA047716-139C-457E-8CFB-06EEDFD06B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA047716-139C-457E-8CFB-06EEDFD06B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6B98A3-1BFA-4A56-904B-52AE2859879F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6B98A3-1BFA-4A56-904B-52AE2859879F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6B98A3-1BFA-4A56-904B-52AE2859879F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6B98A3-1BFA-4A56-904B-52AE2859879F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
