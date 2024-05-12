@@ -1,6 +1,6 @@
 ﻿namespace SchoolRegister.Model.DataModels
 {
-    internal class Subject
+    public class Subject
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

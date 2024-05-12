@@ -5,6 +5,22 @@
 <Nullable>enable</Nullable>
 </PropertyGroup>
 <ItemGroup>
+  <Compile Remove="EF\ApplicationDbContext.cs" />
+</ItemGroup>
+<ItemGroup>
+  <None Include="EF\ApplicationDbContext.cs" />
+</ItemGroup>
+<ItemGroup>
 <ProjectReference Include="..\SchoolRegister.Model\SchoolRegister.Model.csproj" />
+</ItemGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.2" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
 </ItemGroup>
 </Project>

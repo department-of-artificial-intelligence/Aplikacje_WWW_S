@@ -1,6 +1,6 @@
 ﻿namespace SchoolRegister.Model.DataModels
 {
-    internal enum GradeScale
+    public enum GradeScale
     {
         NDST = 2,
         DST = 3,
