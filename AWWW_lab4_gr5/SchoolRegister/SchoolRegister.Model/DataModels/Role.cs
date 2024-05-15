@@ -6,6 +6,10 @@ namespace SchoolRegister.Model.DataModels
     {
         public RoleValue RoleValue { get; set; }
         public Role() { }
-        public Role(string name, RoleValue roleValue) { }
+        public Role(string name, RoleValue roleValue)
+        {
+            Name = name;
+            RoleValue = roleValue;
+        }
     }
 }
