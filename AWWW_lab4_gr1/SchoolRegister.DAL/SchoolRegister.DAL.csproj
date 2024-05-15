@@ -5,12 +5,6 @@
 <Nullable>enable</Nullable>
 </PropertyGroup>
 <ItemGroup>
-  <Compile Remove="EF\ApplicationDbContext.cs" />
-</ItemGroup>
-<ItemGroup>
-  <None Include="EF\ApplicationDbContext.cs" />
-</ItemGroup>
-<ItemGroup>
 <ProjectReference Include="..\SchoolRegister.Model\SchoolRegister.Model.csproj" />
 </ItemGroup>
 <ItemGroup>
