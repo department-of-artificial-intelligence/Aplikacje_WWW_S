@@ -9,10 +9,15 @@ namespace SchoolRegister.Model.DataModels
     {
         public Grade() { }
         public DateTime DateOfIssue { get; set; }
-        public GradeScale GradeValue { get; set; }
-        public Subject Subject { get; set; }
+
+        public virtual GradeScale GradeValue { get; set; }
+
+        public virtual Subject Subject { get; set; } = null!;
+
         public int SubjectId { get; set; }
-        public Student Student { get; set; }
+
+        public virtual Student Student { get; set; } = null!;
+
         public int StudentId { get; set; }
     }
 }

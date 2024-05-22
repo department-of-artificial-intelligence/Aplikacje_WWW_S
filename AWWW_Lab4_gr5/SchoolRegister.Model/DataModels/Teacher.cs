@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 
 namespace SchoolRegister.Model.DataModels
 {
-    public class Teacher
+    public class Teacher : User
     {
+
         public Teacher()
         {
 
         }
-        public virtual IList<Subject> Subjects { get; set; }
-        public string Title { get; set; }
+        public virtual IList<Subject> Subjects { get; set; } = null!;
 
+        public string Title { get; set; } = null!;
     }
 }

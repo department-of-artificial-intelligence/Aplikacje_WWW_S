@@ -7,12 +7,18 @@ namespace SchoolRegister.Model.DataModels
 {
     public class Student : User
     {
-        public virtual Group Group { get; set; }
-        public int GroupId { get; set; }
-        public virtual IList<Grade> Grades { get; set; }
-        public virtual Parent Parent { get; set; }
+        public virtual Group? Group { get; set; }
+
+        public int? GroupId { get; set; }
+
+        public virtual IList<Grade>? Grades { get; set; }
+
+        public virtual Parent Parent { get; set; } = null!;
+
         public int ParentId { get; set; }
+
         public double AverageGrade { get { return Grades!.Count() == 0 ? 0 : Grades!.Sum(x => Convert.ToInt32(x)) / Grades!.Count(); } }
+
         public IDictionary<string, double> AverageGradePerSubject
         {
             get
@@ -49,6 +55,7 @@ namespace SchoolRegister.Model.DataModels
                 return dict;
             }
         }
+
         public Student()
         {
 
