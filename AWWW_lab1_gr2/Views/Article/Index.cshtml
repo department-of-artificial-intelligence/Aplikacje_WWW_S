@@ -9,7 +9,7 @@
             @foreach(var article in Model){
                 <ul>
                     <li>
-                        @article.Title | @article.CreationDate 
+                        <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ArticleId">@article.Title</a>
                         <div class="deleteArticle">
                             <form asp-controller="Article" asp-action="Delete">
                                 <input type="hidden" name="id" value="@article.ArticleId">

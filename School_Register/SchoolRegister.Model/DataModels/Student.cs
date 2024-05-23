@@ -18,35 +18,22 @@ namespace SchoolRegister.Model.DataModels
 
         public IDictionary<string, double> AverageGradePerSubject {
             get { 
-
-                IDictionary<string, double> dict = new Dictionary<string, double>(); 
-
-                var uniqueSubjects = (from grade in Grades 
-                                        where grade.Subject == true 
-                                        select grade.Subject).Distinct().OrderBy(name => name); 
-
-                foreach(var grade in Grades){
-                    dict.Add(grade.Subject.Name, grade.Subject.Grades.Sum(g => (double)g.GradeValue) / (grade.Subject.Grades.Count())); 
-                }
-
-                return null; 
-             }
+                return Grades
+                    .GroupBy(g => g.Subject.Name)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.Average(grade => (double)grade.GradeValue)
+                    );
+            }
         }
         public IDictionary<string, List<GradeScale>> GradesPerSubject {
-
             get {
-                var uniqueSubjects = (from grade in Grades
-                                        where grade.Subject == true 
-                                        select grade.Subject).Distinct(); 
-                IDictionary<string, List<GradeScale>> dict = new Dictionary<string, List<GradeScale>>(); 
-
-                foreach(var grade in Grades){
-                    foreach(var subject in uniqueSubjects){
-                        IList<GradeScale> list = new List<GradeScale>(); 
-                        dict.Add(subject.Name, list.Add(Grades.Where(g => g.Subject.Name == subject.Name).Select(g => g.GradeValue))); 
-                    }
-                }
-                return dict; 
+                return Grades
+                    .GroupBy(g => g.Subject.Name)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.Select(grade => grade.GradeValue).ToList()
+                    );
             }
         }
     }

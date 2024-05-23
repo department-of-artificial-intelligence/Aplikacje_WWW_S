@@ -172,8 +172,7 @@ li a:hover{
     border: none; 
     background-color: #6175e6; 
     color: white; 
-    padding: 0.5rem; 
-    margin-left: 1rem; 
+    padding: 0.5rem;  
 }
 
 .btnEdit:hover {

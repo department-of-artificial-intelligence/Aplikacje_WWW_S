@@ -21,6 +21,18 @@ public class ArticleController:Controller {
         return View(articles); 
     }
 
+    public IActionResult Details(int id) {
+        try {
+            var article = _context.Articles.Include(a => a.Comments).FirstOrDefault(a => a.ArticleId == id); 
+            if(article == null) throw new Exception("nie znaleziono artykulu"); 
+            return View(article); 
+        } catch (Exception ex){
+            _logger.LogError(ex, ex.Message); 
+            throw; 
+        }
+    }
+
+
     public IActionResult Add() {
         ViewBag.Title = "Dodawanie artykułu"; 
         try {
@@ -36,6 +48,8 @@ public class ArticleController:Controller {
 
     [HttpPost]
     public IActionResult Add(Article article, List<int> selectedTagIds) {
+        ModelState.Remove("Author"); 
+
         if(!ModelState.IsValid){
             throw new Exception("cos nie dziala modelstate"); 
         }

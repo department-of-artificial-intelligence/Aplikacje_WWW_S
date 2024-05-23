@@ -12,7 +12,9 @@ namespace AWWW_lab1_gr2.Models
         public string? Content {get; set;}
         public DateTime CreationDate {get; set;}
         public int AuthorId {get; set;}
-        public Author? Author {get; set;}
+        // public Author Author {get; set;} = null!; 
+        public required Author Author {get; set;}
+
         public ICollection<Comment>? Comments {get; set;}
         public int CategoryId {get; set;}
         public Category? Category {get; set;}

@@ -49,6 +49,8 @@ public class DatabaseContext: DbContext {
             .WithMany(l => l.Teams)
             .HasForeignKey(t => t.LeagueId); 
 
+        modelBuilder.Entity<MatchPlayer>()
+            .HasKey(e => new {e.MatchPlayerId, e.MatchId, e.PositionId}); 
 
 
         modelBuilder.Entity<Article>(entity => {
