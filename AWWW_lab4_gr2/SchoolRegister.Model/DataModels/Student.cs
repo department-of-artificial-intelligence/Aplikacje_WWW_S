@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SchoolRegister.Model.DataModels{
     public class Student : User{
-        public Group Group { get; set; } = null!;
+        public  virtual Group Group { get; set; } = null!;
         public int? GroupId {get; set;}
 
         public IList<Grade> Grades { get; set; } = new List<Grade>();
 
-        public Parent Parent { get; set; } = null!; 
+        public virtual Parent Parent { get; set; } = null!; 
         public int? ParentId { get; set; }
 
         public double AverageGrade

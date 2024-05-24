@@ -12,10 +12,10 @@ namespace SchoolRegister.Model.DataModels
 		public GradeScale GradeValue { get; set; }
 
 		public int SubjectId { get; set; }
-		public Subject Subject { get; set; } = null!;
+		public  virtual Subject Subject { get; set; } = null!;
 
 		public int StudentId { get; set; }
-		public Student Student { get; set; } = null!;
+		public  virtual Student Student { get; set; } = null!;
 
 	}
 }
