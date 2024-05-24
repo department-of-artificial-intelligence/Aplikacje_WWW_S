@@ -10,12 +10,12 @@ namespace SchoolRegister.Model.DataModels
 	public class Student : User
 	{
 		public int? GroupId { get; set; }
-		public Group Group { get; set; } = null!;
+		public virtual Group Group { get; set; } = null!;
 
-		public IList<Grade> Grades { get; set; } = new List<Grade>();
+		public virtual IList<Grade> Grades { get; set; } = new List<Grade>();
 		
 		public int? ParentId { get; set; }
-		public Parent Parent { get; set; } = null!;
+		public virtual Parent Parent { get; set; } = null!;
 
 		public double AverageGrade
 		{

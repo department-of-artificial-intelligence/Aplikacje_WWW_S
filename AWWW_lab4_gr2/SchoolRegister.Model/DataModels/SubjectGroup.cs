@@ -13,6 +13,6 @@ namespace SchoolRegister.Model.DataModels
 		public Subject Subject { get; set; } = null!;
 
 		public int GroupId { get; set; }
-		public Group Group { get; set; } = null!;
+		public virtual Group Group { get; set; } = null!;
 	}
 }
