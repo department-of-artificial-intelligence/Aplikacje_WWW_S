@@ -5,6 +5,10 @@
  <Nullable>enable</Nullable>
  </PropertyGroup>
  <ItemGroup>
+   <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+   <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.2" />
+ </ItemGroup>
+ <ItemGroup>
  <ProjectReference Include="..\SchoolRegister.Model\SchoolRegister.Model.csproj" />
  <ProjectReference Include="..\SchoolRegister.DAL\SchoolRegister.DAL.csproj" />
  <ProjectReference Include="..\SchoolRegister.ViewModels\SchoolRegister.ViewModels.csproj" />
