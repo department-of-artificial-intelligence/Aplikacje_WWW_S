@@ -1,3 +1,4 @@
+namespace SchoolRegister.Model.DataModels{
 public class Subject{
     public int Id { get; set; }
     public string Name { get; set; } = null!;
@@ -7,4 +8,5 @@ public class Subject{
     public int? TeacherId { get; set; }
     public IList<Grade> Grades { get; set; } = new List<Grade>();
 
+}
 }
