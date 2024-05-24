@@ -39,6 +39,7 @@ namespace SchoolRegister.DAL.EF
 				.HasValue<Parent>((int)RoleValue.Parent)
 				.HasValue<Teacher>((int)RoleValue.Teacher);
 
+
 			modelBuilder.Entity<SubjectGroup>()
 				.HasKey(sg => new { sg.GroupId, sg.SubjectId });
 
@@ -52,6 +53,22 @@ namespace SchoolRegister.DAL.EF
 				.WithMany(sg => sg.SubjectGroups)
 				.HasForeignKey(s => s.SubjectId)
 				.OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Grade>()
+                .HasKey(g => new { g.DateOfIssue, g.SubjectId, g.StudentId });
+
+            modelBuilder.Entity<Grade>()
+                .HasOne(g => g.Subject)
+                .WithMany(s => s.Grades)
+                .HasForeignKey(g => g.SubjectId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Grade>()
+                .HasOne(g => g.Student)
+                .WithMany(s => s.Grades)
+                .HasForeignKey(g => g.StudentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 
