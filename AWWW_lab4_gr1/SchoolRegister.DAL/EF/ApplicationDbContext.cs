@@ -51,7 +51,16 @@ namespace SchoolRegister.DAL.EF
                 .WithMany(sg => sg.SubjectGroups)
                 .HasForeignKey(s => s.SubjectId)
                 .OnDelete(DeleteBehavior.Restrict);
-            }
 
+            modelBuilder.Entity<Student>()
+                .HasOne(g => g.Parent)
+                .WithMany(sg => sg.Students)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Subject>()
+                .HasMany(g => g.Grades)
+                .WithOne(sg => sg.Subject)
+                .OnDelete(DeleteBehavior.Restrict);
+        }   
     }
 }
