@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Identity
+@using SchoolRegister.Model.DataModels
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="nav navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li>
+            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li>
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+    }
+</ul>
