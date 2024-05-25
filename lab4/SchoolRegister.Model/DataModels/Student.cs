@@ -4,8 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Student : SchoolRegister.Model.DataModels.User
 {
 
-    [Required]
-    public required string Name { get; set; }
+    public Student()
+    {
+
+    }
+
     public virtual Group? Group { get; set; }
     [ForeignKey("Group")]
     public int? GroupId { get; set; }

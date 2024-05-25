@@ -4,4 +4,6 @@ public class Group
     public required string Name { get; set; }
     public virtual IList<Student> Students { get; set; }
     public virtual IList<SubjectGroup> SubjectGroups { get; set; }
+
+    public virtual IList<Subject> Subjects { get; set; }
 }
