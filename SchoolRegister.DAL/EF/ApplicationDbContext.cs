@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolRegister.Model.DataModels;
 
+namespace SchoolRegister.DAL.EF {
 public class ApplicationDbContext : IdentityDbContext<User, Role, int>
 {
 // table properties
@@ -29,24 +30,24 @@ base.OnModelCreating(modelBuilder);
     .HasValue<Parent>((int)RoleValue.Parent)
     .HasValue<Teacher>((int)RoleValue.Teacher);
 
-// Definicja klucza głównego złożonego dla encji SubjectGroup
     modelBuilder.Entity<SubjectGroup>()
-        .HasKey(sg => new { sg.SubjectId, sg.GroupId });
+        .HasKey(sg => new { sg.GroupId, sg.SubjectId });
 
-    // Definicja klucza obcego z SubjectGroup (GroupId) do tabeli Groups (Id)
     modelBuilder.Entity<SubjectGroup>()
-        .HasOne(sg => sg.Group)
-        .WithMany(g => g.SubjectGroups)
-        .HasForeignKey(sg => sg.GroupId)
-        .OnDelete(DeleteBehavior.Restrict); // Definicja reakcji na usunięcie encji OnDelete – Restrict
+        .HasOne(g => g.Group)
+        .WithMany(sg => sg.SubjectGroups)
+        .HasForeignKey(g => g.GroupId);
 
-    // Definicja klucza obcego z SubjectGroup (SubjectId) do tabeli Subjects (Id)
     modelBuilder.Entity<SubjectGroup>()
-        .HasOne(sg => sg.Subject)
-        .WithMany(s => s.SubjectGroups)
-        .HasForeignKey(sg => sg.SubjectId)
-        .OnDelete(DeleteBehavior.Restrict); // Definicja reakcji na usunięcie encji OnDelete – Restrict
+        .HasOne(s => s.Subject)
+        .WithMany(sg => sg.SubjectGroups)
+        .HasForeignKey(s => s.SubjectId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+
 }
 
+
+}
 
 }
