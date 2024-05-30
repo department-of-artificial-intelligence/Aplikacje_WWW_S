@@ -82,6 +82,6 @@
 
     ![Alt text](Img/ArchiverUpload1.png?raw=true)
     
-5)  Proszę wypełnić formularz podając swoje dane, wskazać plik `Rozwiazanie_Kolokwium.zip`, a następnie nacisnąc przycisk `Upload`
+5)  Proszę wypełnić formularz podając swoje dane, wskazać plik `*.zip` (można równeż przeciągnąć), a następnie nacisnąc przycisk `Upload`
 
     ![Alt text](Img/ArchiverUpload2.png?raw=true)
