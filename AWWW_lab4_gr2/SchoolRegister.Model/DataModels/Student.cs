@@ -1,57 +1,56 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SchoolRegister.Model.DataModels
 {
-    public class Student : User
-    {
-        public virtual Group Group { get; set; }
-        public int GroupId { get; set; }
-        public virtual IList<Grade> Grades { get; set; }
-        public virtual Parent Parent { get; set; }
-        public int ParentId { get; set; }
-        public double AverageGrade { get { return Grades!.Count() == 0 ? 0 : Grades!.Sum(x => Convert.ToInt32(x)) / Grades!.Count(); } }
-        public IDictionary<string, double> AverageGradePerSubject
-        {
-            get
-            {
-                var dict = new Dictionary<string, double>();
+	public class Student : User
+	{
+		public int? GroupId { get; set; }
+		public virtual Group Group { get; set; } = null!;
 
-                foreach (var g in Grades!)
-                {
-                    if (!dict.ContainsKey(g.Subject.Name))
-                    {
-                        double avg = Grades.Where(gr => gr.Subject.Name == g.Subject.Name).Sum(gr => (int)gr.GradeValue) / (double)Grades.Count(gr => gr.Subject.Name == g.Subject.Name);
-                        dict.Add(g.Subject.Name, avg);
-                    }
-                }
+		public virtual IList<Grade> Grades { get; set; } = new List<Grade>();
+		
+		public int? ParentId { get; set; }
+		public virtual Parent Parent { get; set; } = null!;
 
-                return dict;
-            }
-        }
-        public IDictionary<string, List<GradeScale>> GradesPerSubject
-        {
-            get
-            {
-                var dict = new Dictionary<string, List<GradeScale>>();
+		public double AverageGrade
+		{
+			get
+			{
+				return Grades.Average(g => (float)g.GradeValue);
+			}
+		}
 
-                foreach (var g in Grades!)
-                {
-                    if (!dict.ContainsKey(g.Subject.Name))
-                    {
-                        var gradeList = Grades.Where(gr => gr.Subject.Name == g.Subject.Name).Select(gr => gr.GradeValue).ToList();
-                        dict.Add(g.Subject.Name, gradeList);
-                    }
-                }
+		public IDictionary<string, double> AverageGradePerSubject
+		{
+			get
+			{
+				var averageGradePerSubject = new Dictionary<string, double>();
+				var groupedGrades = Grades.GroupBy(g => g.Subject.Name);
+				foreach (var group in groupedGrades)
+				{
+					averageGradePerSubject.Add(group.Key, group.Average(g => (float)g.GradeValue));
+				}
+				return averageGradePerSubject;
+			}
+		}
 
-                return dict;
-            }
-        }
-        public Student()
-        {
-
-        }
-    }
+		public IDictionary<string, List<GradeScale>> GradesPerSubject
+		{
+			get
+			{
+				var gradesPerSubject = new Dictionary<string, List<GradeScale>>();
+				var groupedGrades = Grades.GroupBy(g => g.Subject.Name);
+				foreach (var group in groupedGrades)
+				{
+					gradesPerSubject.Add(group.Key, group.Select(g => g.GradeValue).ToList());
+				}
+				return gradesPerSubject;
+			}
+		}
+	}
 }

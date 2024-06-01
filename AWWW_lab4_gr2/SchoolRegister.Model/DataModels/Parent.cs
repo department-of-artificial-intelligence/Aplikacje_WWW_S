@@ -1,8 +1,13 @@
-namespace SchoolRegister.Model.DataModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Parent: User
+namespace SchoolRegister.Model.DataModels
 {
-   public Parent() { }
-    public virtual IList<Student>? Students {get; set;}
-    
+	public class Parent : User
+	{
+		public virtual IList<Student> Students { get; set; } = new List<Student>();
+	}
 }
