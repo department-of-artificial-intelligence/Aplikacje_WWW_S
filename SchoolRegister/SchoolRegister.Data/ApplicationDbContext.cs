@@ -36,6 +36,16 @@ namespace SchoolRegister.Core.Data
 
             builder.Entity<SubjectGroup>()
                 .HasKey(c => new { c.SubjectId, c.GroupId });
+
+            builder.Entity<SubjectGroup>()
+                .HasOne(g => g.Group)
+                .WithMany(sg => sg.SubjectGroups)
+                .HasForeignKey(g => g.GroupId);
+            builder.Entity<SubjectGroup>()
+                .HasOne(s => s.Subject)
+                .WithMany(sg => sg.SubjectGroups)
+                .HasForeignKey(s => s.SubjectId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

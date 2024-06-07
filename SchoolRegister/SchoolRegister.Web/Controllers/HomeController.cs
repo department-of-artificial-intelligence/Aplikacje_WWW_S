@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SchoolRegister.Web.Models;
+using SchoolRegister.ViewModels.VM;
 using System.Diagnostics;
 
 namespace SchoolRegister.Web.Controllers
