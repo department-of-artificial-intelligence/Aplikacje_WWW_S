@@ -1,3 +1,6 @@
-public class Parent{
-    public required IList<Student>  Students { get; set; }
+using SchoolRegister.Model.DataModels;
+
+public class Parent : User
+{
+    public virtual IList<Student> Students { get; set; }
 }

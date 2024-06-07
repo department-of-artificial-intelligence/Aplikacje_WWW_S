@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolRegister.Model\SchoolRegister.Model.csproj" />
-   
   </ItemGroup>
 
   <PropertyGroup>

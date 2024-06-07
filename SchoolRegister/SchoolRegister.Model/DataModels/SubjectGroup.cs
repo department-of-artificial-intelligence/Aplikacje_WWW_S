@@ -1,7 +1,10 @@
-using System.Text.RegularExpressions;
+public class SubjectGroup
+{
+    public virtual Subject Subject { get; set; }
 
-public class SubjectGroup{
-    public required Subject Subject{get; set;}
-    public required Group Group{get; set;}
-   
+    public required int SubjectId { get; set; }
+
+    public virtual Group Group { get; set; }
+
+    public required int GroupId { get; set; }
 }
