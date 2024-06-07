@@ -59,7 +59,7 @@ namespace SchoolRegister.Services.ConcreteServices
             }
         }
 
-        public IEnumerable<GroupVm> GetTeacherGroups(TeachersGroupsVm getTeacherGroup)
+        public IEnumerable<GroupVm> GetTeachersGroups(TeachersGroupsVm getTeacherGroup)
         {
             try
             {
