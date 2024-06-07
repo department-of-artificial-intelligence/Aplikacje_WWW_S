@@ -9,4 +9,8 @@
     <ProjectReference Include="..\SchoolRegister.DAL\SchoolRegister.DAL.csproj" />
     <ProjectReference Include="..\SchoolRegister.ViewModels\SchoolRegister.ViewModels.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
+  </ItemGroup>
 </Project>
