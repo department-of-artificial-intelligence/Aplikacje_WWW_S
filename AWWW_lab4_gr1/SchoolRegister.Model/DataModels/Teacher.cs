@@ -4,6 +4,6 @@ namespace SchoolRegister.Model.DataModels;
 
 public class Teacher : User
 {
-    public ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
     public required string Title { get; set; }
 }

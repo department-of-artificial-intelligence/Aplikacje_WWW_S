@@ -7,7 +7,7 @@ public class Subject{
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
     public int TeacherId { get; set; }
-    public Teacher Teacher { get; set; } = null!;
-    public ICollection<SubjectGroup> SubjectGroups { get; set; } = new List<SubjectGroup>();
-    public ICollection<Grade> Grades { get; set; } = new List<Grade>();
+    public virtual Teacher Teacher { get; set; } = null!;
+    public virtual ICollection<SubjectGroup> SubjectGroups { get; set; } = new List<SubjectGroup>();
+    public virtual ICollection<Grade> Grades { get; set; } = new List<Grade>();
 }
