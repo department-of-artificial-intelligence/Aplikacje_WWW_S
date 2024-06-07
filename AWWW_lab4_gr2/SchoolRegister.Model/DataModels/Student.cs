@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,13 +11,16 @@ using System.Threading.Tasks;
 namespace SchoolRegister.Model.DataModels{
     public class Student : User{
         public  virtual Group Group { get; set; } = null!;
+        [ForeignKey("Group")]
         public int? GroupId {get; set;}
+        public virtual IList<Grade> Grades { get; set; } = new List<Grade>();
 
-        public IList<Grade> Grades { get; set; } = new List<Grade>();
+        public virtual Parent Parent { get; set; } = null!;
 
-        public virtual Parent Parent { get; set; } = null!; 
+        [ForeignKey("Parent")]
         public int? ParentId { get; set; }
-
+        
+        [NotMapped]
         public double AverageGrade
         {
             get
@@ -24,6 +29,7 @@ namespace SchoolRegister.Model.DataModels{
             }
         }
 
+        [NotMapped]
         public IDictionary<string, double> AverageGradePerSubject
         {
             get
@@ -38,6 +44,7 @@ namespace SchoolRegister.Model.DataModels{
 
             }
         }
+        [NotMapped]
         public IDictionary<string, List<GradeScale>> GradesPerSubject
         {
             get
