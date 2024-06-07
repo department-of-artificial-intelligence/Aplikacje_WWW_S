@@ -10,4 +10,8 @@ public class Role : IdentityRole<int>
         this.RoleValue = roleValue;
         this.Name = name;
     }
+
+    public Role()
+    {
+    }
 }
