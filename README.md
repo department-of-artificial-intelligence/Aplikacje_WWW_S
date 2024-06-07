@@ -15,7 +15,7 @@
     ```json
     {
       "ConnectionStrings": {
-        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=Imie_NazwiskoAppDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=Imie_NazwiskoKolokwiumAppDb;Trusted_Connection=True;MultipleActiveResultSets=true"
       },
       "Logging": {
         "LogLevel": {
