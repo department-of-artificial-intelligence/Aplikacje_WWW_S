@@ -14,7 +14,7 @@ namespace SchoolRegister.Model.DataModels
         public virtual Group Group { get; set; } = null!;
         public virtual IList<Grade>? Grades { get; set; }
         [ForeignKey("Parent")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public virtual Parent Parent { get; set; } = null!;
         [NotMapped]
         public double AverageGrade => Grades == null || Grades.Count == 0 ? 0.0d :
