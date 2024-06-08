@@ -1,0 +1,20 @@
+@model AWWW_lab1_gr2.Models.Comment
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>Dodawanie komentarza</h1>
+        </div>
+        <div class="form">
+            <form asp-controller="Comment" asp-action="Add">
+                <label asp-for="Title"></label>
+                <input asp-for="Title">
+                <label asp-for="Content"></label>
+                <input asp-for="Content">
+
+                <input asp-for="ArticleId" type="hidden" value="@ViewBag.ArticleId">
+                <button type="submit" class="btnEdit">Wyslij</button>
+            </form>
+        </div>
+    </div>
+</div>

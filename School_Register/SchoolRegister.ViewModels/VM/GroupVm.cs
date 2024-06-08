@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations; 
+using SchoolRegister.ViewModels.VM; 
 
 namespace SchoolRegister.ViewModels.VM; 
 

@@ -4,28 +4,63 @@ using SchoolRegister.ViewModels.VM;
 
 namespace SchoolRegister.Services.Configuration.AutoMapperProfiles; 
 
-public class MainProfile: MainProfile {
+public class MainProfile: Profile {
 
     public MainProfile() {
 
         // Mapy AutoMappera
-        CreateMap<Subject, SubjectVM>()
-            .ForMember(dest => dest.TeacherName, x => x.MapFrom(src => src.Teacher === null ? null : $'{src.Teacher.FirstName} {src.Teacher.LastName}')); 
+        CreateMap<Subject, SubjectVm>()
+            .ForMember(dest => dest.TeacherName, x => x.MapFrom(src => src.Teacher == null ? null : $"{src.Teacher.FirstName} {src.Teacher.LastName}")); 
 
         
         CreateMap<AddOrUpdateSubjectVm, Subject>(); 
 
         CreateMap<Group, GroupVm>()
             .ForMember(dest => dest.Students, x => x.MapFrom(src => src.Students))
-            .ForMember(dest => dest.Subjects, x=>x.MapFrom(src => src.SubbjectGroups.Select(sg => sg.Subject))); 
+            .ForMember(dest => dest.Subjects, x=>x.MapFrom(src => src.SubjectGroups.Select(sg => sg.Subject))); 
 
         CreateMap<SubjectVm, AddOrUpdateSubjectVm>(); 
 
         CreateMap<Student, StudentVm>()
-            .ForMember(dest => dest.GroupName, x => x.MapFrom(src => src.Group === null ? null : src.Group.Name))
-            .ForMember(dest => dest.Parentname, x => x.MapFrom(src => src.Parent === null ? null : $'{src.Parent.FirstName} {src.Parent.LastName}')); 
+            .ForMember(dest => dest.GroupName, x => x.MapFrom(src => src.Group == null ? null : src.Group.Name))
+            .ForMember(dest => dest.ParentName, x => x.MapFrom(src => src.Parent == null ? null : $"{src.Parent.FirstName} {src.Parent.LastName}")); 
 
-        
+        CreateMap<Teacher, TeacherVm>()
+            .ForMember(dest => dest.Subjects, x => x.MapFrom(src => src.Subjects.Select(s => new SubjectVm {
+                Id = s.Id, 
+                Description = s.Description, 
+                Groups = s.SubjectGroups.Select(sg => new GroupVm {
+                    Id = sg.Group.Id, 
+                    Name = sg.Group.Name
+                }).ToList()
+            })));
+
+        CreateMap<Teacher, TeachersGroupsVm>()
+            .ForMember(dest => dest.TeacherId, x => x.MapFrom(src => src.Id))
+            .ForMember(dest => dest.TeacherName, x => x.MapFrom(src => $"{src.FirstName} {src.LastName}"))
+            .ForMember(dest => dest.Groups, x => x.MapFrom(src => src.Subjects.Select(s => s.SubjectGroups.Select(sg => new GroupVm {
+                Id = sg.Group.Id, 
+                Name = sg.Group.Name
+            })))); 
+            
+
+        // zobaczyc czy dziala
+        CreateMap<Grade, GradeVm>()
+            .ForMember(dest => dest.SubjectName, x => x.MapFrom(src => $"{src.Subject.Name}"))
+            .ForMember(dest => dest.StudentName, x => x.MapFrom(src => $"{src.Student.FirstName} {src.Student.LastName}")); 
+
+        // wersja jawna - pelna: 
+        // .ForMember(dest => dest.Subject, x => x.MapFrom(src => new SubjectVm {
+        //         Id = src.Subject.Id, 
+        //         Description = src.Subject.Description, 
+        //         Groups = src.Subject.SubjectGroups.Select(sg => new GroupVm {
+        //             Id = sg.Group.Id, 
+        //             Name = sg.Group.Name
+        //         }).ToList() 
+        //     })) 
+
+
+
     }
 
 }

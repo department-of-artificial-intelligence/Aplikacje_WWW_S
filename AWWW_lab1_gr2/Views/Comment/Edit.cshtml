@@ -1,0 +1,24 @@
+@model AWWW_lab1_gr2.Models.Comment
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>Edytowanie komentarza</h1>
+        </div>
+        <div class="form">
+            <form asp-controller="Comment" asp-action="Edit">
+                <input type="hidden" asp-for="CommentId" value="@Model.CommentId">
+
+                <label asp-for="Title"></label>
+                <input asp-for="Title" value="@Model.Title">
+                <label asp-for="Content"></label>
+                <input asp-for="Content" value="@Model.Content">
+
+                <input type="hidden" asp-for="ArticleId" value="@Model.ArticleId">
+                <input type="hidden" asp-for="Article" value="@Model.Article">
+                
+                <button class="btnEdit" type="submit">Wyslij</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+@model AWWW_lab1_gr2.Models.Article
+
+
+<div class="main">
+    <div class="container">
+        <div class="title">
+            <h1>@Model.Title</h1>
+        </div>
+        <div class="content container-article">
+            @Model.Content
+        </div>
+        @if(Model.Comments != null){
+            <div class="article-comments">
+                @foreach (var com in Model.Comments){
+                    <li>
+                       @com.Title | 
+                       @com.Content | 
+                       @* <form asp-controller="Comment" asp-action="Delete">
+                            <input type="hidden" value="@com.CommentId" name="id">
+                              <button class="btnDelete" type="submit">
+                                    Usuń
+                                </button>
+                       </form> *@
+
+                       @* @Html.ActionLink("Delete", "Delete", "Comment" , new {id = com.CommentId}) *@
+
+                       <a asp-controller="Comment" asp-action="Delete" asp-route-id="@com.CommentId">Usuń</a>
+                     
+                        <button class="btnEdit">
+                            <a asp-controller="Comment" asp-action="Edit" asp-route-id="@com.CommentId">Edytuj</a>
+                        </button>
+                    </li>
+                }
+            </div>
+        }
+
+        <div class="addComment">
+            <button class="btnEdit">
+                <a asp-controller="Comment" asp-action="Add" asp-route-id="@Model.ArticleId">Dodaj komentarz</a>
+            </button>
+        </div>
+    </div>
+</div>
