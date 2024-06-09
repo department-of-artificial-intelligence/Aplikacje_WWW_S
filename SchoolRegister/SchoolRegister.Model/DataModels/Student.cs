@@ -14,7 +14,7 @@ namespace SchoolRegister.Model.DataModels
         public virtual IList<Grade>? Grades {get;set;} = default!;
         public virtual Parent? Parent {get;set;}
         [ForeignKey("Parent")]
-        public int ParentId {get;set;}
+        public int? ParentId {get;set;}
 
 
         [NotMapped]
