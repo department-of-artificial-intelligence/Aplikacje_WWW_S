@@ -6,12 +6,14 @@
  <UserSecretsId>aspnet-SchoolRegister.Web-82602eed-22c9-4ce5-90a4-9fc2a377a8a2</UserSecretsId>
  </PropertyGroup>
  <ItemGroup>
+ <PackageReference Include="AutoMapper" Version="13.0.1" />
  <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2" />
  <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
+ <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
  </ItemGroup>
  <ItemGroup>
  <ProjectReference Include="..\SchoolRegister.Model\SchoolRegister.Model.csproj" />
