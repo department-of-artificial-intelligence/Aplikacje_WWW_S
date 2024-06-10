@@ -25,6 +25,9 @@ public class MainProfile: Profile {
             .ForMember(dest => dest.GroupName, x => x.MapFrom(src => src.Group == null ? null : src.Group.Name))
             .ForMember(dest => dest.ParentName, x => x.MapFrom(src => src.Parent == null ? null : $"{src.Parent.FirstName} {src.Parent.LastName}")); 
 
+
+
+
         CreateMap<Teacher, TeacherVm>()
             .ForMember(dest => dest.Subjects, x => x.MapFrom(src => src.Subjects.Select(s => new SubjectVm {
                 Id = s.Id, 
@@ -59,7 +62,31 @@ public class MainProfile: Profile {
         //         }).ToList() 
         //     })) 
 
+        CreateMap<Student, GradesReportVm>()
+            .ForMember(dest => dest.StudentName, x => x.MapFrom(src => $"{src.FirstName} {src.LastName}"))
+            .ForMember(dest => dest.Grades, x => x.MapFrom(src => src.Grades.Select(g => new GradeVm {
+                DateOfIssue = g.DateOfIssue, 
+                GradeValue = g.GradeValue, 
+                StudentId = g.StudentId, 
+                StudentName = $"{src.FirstName} {src.LastName}", 
+                SubjectId = g.SubjectId, 
+                SubjectName = $"{g.Subject.Name}"
+            })));  
 
+
+        CreateMap<RegisterNewUserVm, User>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Parent>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Student>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Teacher>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now))
+            .ForMember(dest => dest.Title, y => y.MapFrom(src => src.TeacherTitles));
 
     }
 

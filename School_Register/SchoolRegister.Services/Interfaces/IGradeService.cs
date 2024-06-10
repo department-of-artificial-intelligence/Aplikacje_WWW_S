@@ -4,6 +4,6 @@ using SchoolRegister.ViewModels.VM;
 namespace SchoolRegister.Services.Interfaces; 
 
 public interface IGradeService {
-    public GradeVm AddGradeToStudent(AddGradeToStudentVm addGradeToStudentVm); 
-    public GradesReportVm GetGradesReportForStudent(GetGradesReportVm getGradesVm); 
+    public Task<GradeVm> AddGradeToStudent(AddGradeToStudentVm addGradeToStudentVm); 
+    public Task<GradesReportVm> GetGradesReportForStudent(GetGradesReportVm getGradesVm); 
 }
