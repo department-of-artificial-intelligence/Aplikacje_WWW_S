@@ -4,7 +4,7 @@ namespace SchoolRegister.Servicies.Interfaces
 {
     public interface IGradeService
     {
-        Task<GradeVm> AddGradeToStudentAsync(AddGradeToStudentVm addGradeToStudentVm);
-        Task<GradesReportVm> GetGradesReportForStudentAsync(GetGradesReportVm getGradesVm);
+        Task<GradeVm> AddGradeToStudent(AddGradeToStudentVm addGradeToStudentVm);
+        Task<GradesReportVm> GetGradesReportForStudent(GetGradesReportVm getGradesVm);
     }
 }

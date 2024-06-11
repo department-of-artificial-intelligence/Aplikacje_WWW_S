@@ -248,7 +248,8 @@ namespace SchoolRegister.Tests
             {
                 Id = 5,
                 Name = "Programowanie interaktywnej grafiki dla stron WWW",
-                TeacherId = 12
+                TeacherId = 12,
+                Description = "Costam"
             };
             await dbContext.AddAsync(subject5);
             //SubjectGroups

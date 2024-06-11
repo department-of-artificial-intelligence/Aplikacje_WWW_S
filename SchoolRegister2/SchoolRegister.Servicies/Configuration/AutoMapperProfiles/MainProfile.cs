@@ -33,5 +33,22 @@ public class MainProfile : Profile
             .ForMember(dest => dest.AverageGrade, x => x.MapFrom(src => src.AverageGrade))
             .ForMember(dest => dest.AverageGradePerSubject, x => x.MapFrom(src => src.AverageGradePerSubject))
             .ForMember(dest => dest.GradesPerSubject, x => x.MapFrom(src => src.GradesPerSubject));
+        CreateMap<Teacher, TeacherVm>().ReverseMap();
+
+
+        CreateMap<RegisterNewUserVm, User>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Parent>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Student>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Teacher>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now))
+            .ForMember(dest => dest.Title, y => y.MapFrom(src => src.TeacherTitles));
+
     }
 }

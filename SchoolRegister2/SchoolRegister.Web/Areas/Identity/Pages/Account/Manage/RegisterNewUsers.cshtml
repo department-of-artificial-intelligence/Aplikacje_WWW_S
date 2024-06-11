@@ -1,0 +1,75 @@
+﻿@page
+@model RegisterNewUsersDataModel
+@{
+    ViewData["Title"] = "Register new users";
+    ViewData["ActivePage"] = ManageNavPages.RegisterNewUsers;
+}
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewUserVm.Email"></label>
+                <input asp-for="NewUserVm.Email" class="form-control" />
+                <span asp-validation-for="NewUserVm.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUserVm.Password"></label>
+                <input asp-for="NewUserVm.Password" class="form-control" />
+                <span asp-validation-for="NewUserVm.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUserVm.ConfirmPassword"></label>
+                <input asp-for="NewUserVm.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="NewUserVm.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUserVm.FirstName"></label>
+                <input asp-for="NewUserVm.FirstName" class="form-control" />
+                <span asp-validation-for="NewUserVm.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUserVm.LastName"></label>
+                <input asp-for="NewUserVm.LastName" class="form-control" />
+                <span asp-validation-for="NewUserVm.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select asp-for="NewUserVm.RoleId" class="form-control" asp-items="@ViewData["Roles"] as
+IEnumerable<SelectListItem>"></select>
+                <span asp-validation-for="NewUserVm.RoleId" class="text-danger"></span>
+            </div>
+            <div class="student-selected">
+                <div class="form-group">
+                    <label>Group</label>
+                    <select asp-for="NewUserVm.GroupId" class="form-control" asp-items="@ViewData["Groups"] as
+IEnumerable<SelectListItem>"></select>
+                    <span asp-validation-for="NewUserVm.GroupId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Parent</label>
+                    <select asp-for="NewUserVm.ParentId" class="form-control" asp-items="@ViewData["Parents"] as
+IEnumerable<SelectListItem>"></select>
+                    <span asp-validation-for="NewUserVm.ParentId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="teacher-selected">
+                <div class="form-group">
+                    <label asp-for="NewUserVm.TeacherTitles"></label>
+                    <input asp-for="NewUserVm.TeacherTitles" class="form-control" />
+                    <span asp-validation-for="NewUserVm.TeacherTitles" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

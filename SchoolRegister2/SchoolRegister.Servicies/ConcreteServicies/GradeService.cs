@@ -17,18 +17,18 @@ namespace SchoolRegister.Servicies.ConcreteServicies
             _userManager = userManager;
         }
 
-        public async Task<GradeVm> AddGradeToStudentAsync(AddGradeToStudentVm addGradeToStudentVm)
+        public async Task<GradeVm> AddGradeToStudent(AddGradeToStudentVm addGradeToStudentVm)
         {
             var user = DbContext.Users
                 .FirstOrDefault(u => u.Id == addGradeToStudentVm.TeacherId);
 
             if (user == null
-                || await _userManager.IsInRoleAsync(user, nameof(RoleValue.Teacher)))
+                || !await _userManager.IsInRoleAsync(user, nameof(RoleValue.Teacher)))
             {
                 throw new InvalidOperationException("User is not a teacher!");
             }
 
-            var teacher = DbContext.UserTokens.OfType<Teacher>().FirstOrDefault(t => t.Id == addGradeToStudentVm.TeacherId);
+            var teacher = DbContext.Users.OfType<Teacher>().FirstOrDefault(t => t.Id == addGradeToStudentVm.TeacherId);
             if (teacher == null)
             {
                 throw new InvalidOperationException("Teacher not found");
@@ -49,13 +49,14 @@ namespace SchoolRegister.Servicies.ConcreteServicies
             return gradeVm;
         }
 
-        public async Task<GradesReportVm> GetGradesReportForStudentAsync(GetGradesReportVm getGradesVm)
+        public async Task<GradesReportVm> GetGradesReportForStudent(GetGradesReportVm getGradesVm)
         {
             var user = DbContext.Users.FirstOrDefault(u => u.Id == getGradesVm.GetterUserId);
 
             if (user == null
-               || await _userManager.IsInRoleAsync(user, nameof(RoleValue.Parent))
-               || await _userManager.IsInRoleAsync(user, nameof(RoleValue.Student))
+               || !(await _userManager.IsInRoleAsync(user, nameof(RoleValue.Parent))
+                    || await _userManager.IsInRoleAsync(user, nameof(RoleValue.Student))
+                    )
                )
             {
                 throw new InvalidOperationException("User is not a parent or student!");
