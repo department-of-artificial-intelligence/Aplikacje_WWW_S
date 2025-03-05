@@ -1,0 +1,12 @@
+@model AWWW_lab1_gr3.Models.Article
+
+<div class="article-container">
+    <h1 class="article-title">@Model.Title</h1>
+    <p class="article-date">
+        Data utworzenia: @Model.CreationDate.ToShortDateString()
+    </p>
+    <p class="article-content">
+        @Model.Content
+    </p>
+</div>
+

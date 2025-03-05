@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <h1>Witam!!</h1>
+    </header>
+    <main>
+        @RenderBody()
+        <br>
+        <a asp-controller="home" asp-action="index" asp-route-id=1>Powrót do strony głownej</a>
+    </main>
+    <footer>
+        &copy; 2022
+    </footer>
+</body>
+
+</html>

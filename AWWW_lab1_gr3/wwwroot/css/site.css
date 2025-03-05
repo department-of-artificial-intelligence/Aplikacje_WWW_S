@@ -1,0 +1,160 @@
+/* Home */
+
+p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+strong {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.article-list,
+.student-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.article-list li,
+.student-list li {
+    margin: 5px 0;
+}
+
+.article-list a,
+.student-list a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.article-list a:hover,
+.student-list a:hover {
+    color: #e74c3c;
+}
+
+/* Atykul */
+
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-title {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.article-date {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.article-content {
+    font-size: 16px;
+    color: #34495e;
+    line-height: 1.6;
+    white-space: pre-line;
+    /* Preserves line breaks in content */
+}
+
+/* Student */
+
+.student-list-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-list-title {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.student-table th,
+.student-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.student-table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.student-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.student-table tr:hover {
+    background-color: #e1e1e1;
+}
+
+
+/* Layout */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 18px;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
