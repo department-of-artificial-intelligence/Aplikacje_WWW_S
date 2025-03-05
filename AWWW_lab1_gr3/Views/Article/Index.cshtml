@@ -1,8 +1,9 @@
-<h1>@ViewBag.Title</h1>
+@model AWWW_lab1_gr3.Models.Articles
 
-<p>Witam na stronie głównej</p>
-
+<h1>@Model.Title</h1>
 <p>
-    Artykuły: 3213213212
-
+    <Data> utworzenia: @Model.CreationDate.ToShortDateString()</Data>
+</p>
+<p>
+    @Model.Content
 </p>
