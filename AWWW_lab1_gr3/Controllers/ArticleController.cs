@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr3.Models;
+using Microsoft.AspNetCore.Components.Web;
 
 public class ArticleController : Controller
 {
+    
     public IActionResult Index(int id = 1)
     {
+        
         var articles = new List<Article>
         {
         new Article{
@@ -12,6 +15,7 @@ public class ArticleController : Controller
             Title = "Naruto",
             Content = "O przyszlym HOKAGE",
             CreationDate = DateTime.Now
+            
         },
          new Article{
             Id = 1,
@@ -26,7 +30,7 @@ public class ArticleController : Controller
             CreationDate = DateTime.Now
         }
         };
-
+        
         return View(articles[id - 1]);
     }
 }
