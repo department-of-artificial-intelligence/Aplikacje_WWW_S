@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+namespace AWWW_lab1_gr3.Models
+{
+    public static class StudentRepository
+    {
+        public static List<Student> Students { get; } = new List<Student>
+        {
+            new Student{
+                Id = 1,
+                FirstName = "Jakub",
+                LastName = "Grzybowski",
+                IndexNr = 136541,
+                DateOfBirth = DateTime.Today,
+                FieldOfStudy = "Informatyka"
+            },
+            new Student{
+                Id = 2,
+                FirstName = "Michał",
+                LastName = "Kowalski",
+                IndexNr = 200123,
+                DateOfBirth = new DateTime(2000, 5, 12),
+                FieldOfStudy = "Matematyka"
+            },
+            new Student{
+                Id = 3,
+                FirstName = "Anna",
+                LastName = "Nowak",
+                IndexNr = 210456,
+                DateOfBirth = new DateTime(2001, 8, 22),
+                FieldOfStudy = "Biotechnologia"
+            },
+            new Student{
+                Id = 4,
+                FirstName = "Karolina",
+                LastName = "Wiśniewska",
+                IndexNr = 220789,
+                DateOfBirth = new DateTime(1999, 11, 3),
+                FieldOfStudy = "Psychologia"
+            }
+        };
+    }
+}

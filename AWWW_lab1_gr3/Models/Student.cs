@@ -6,5 +6,5 @@ public class Student{
     public int IndexNr { get; set;}
     public DateTime DateOfBirth { get; set;}
     public string FieldOfStudy { get; set;} = null!;
-
-}
+    public string FullName => $"{FirstName} {LastName}";
+}   
