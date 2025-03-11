@@ -1,4 +1,6 @@
+@model AWWW_lab1_gr3.Models.Article
 <div>
-<h1>
-przykladowa treść</h1>
+<h1>@Model.Title</h1>
+<p>Data Utworzenia: @Model.CreationDate.ToShortDateString()</p>
+<p>@Model.Content</p>
 </div>
