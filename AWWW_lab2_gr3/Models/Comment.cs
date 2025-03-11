@@ -6,5 +6,5 @@ public class Comments{
     public string Content { get; set;}
 
     public int ArticleId { get; set; }
-    public Article Article { get; set; } = new Article();
+    public virtual Article Article { get; set; } = new Article();
 }

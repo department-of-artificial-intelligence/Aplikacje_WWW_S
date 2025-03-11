@@ -6,5 +6,10 @@ public class MatchPlayer{
     public DateTime EndTime { get; set; }
 
     public int PlayerId { get; set; }
-    public Player Player { get; set; }
+    public virtual Player Player { get; set; }
+    public int MatchId { get; set; }
+    public virtual Match Match { get; set; }
+    public int PositionId { get; set; }
+    public virtual Position Position { get; set; }
+    public ICollection<MatchEvent> MatchEvent { get; set; }
 }
