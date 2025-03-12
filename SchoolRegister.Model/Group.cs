@@ -6,7 +6,7 @@ namespace SchoolRegister.Model.DataModels{
         public string Name {get; set;}
 
         public IList<Student> Students;
-       // public IList<SubjectGroup> SubjectGroups {get; set;}
+        public IList<SubjectGroup> SubjectGroups {get; set;}
 
     }
 

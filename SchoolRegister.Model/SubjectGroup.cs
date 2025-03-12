@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 
 namespace SchoolRegister.Model.DataModels{
 
-    public class SubjectGroups{
+    public class SubjectGroup{
 
 
         public Group Group {get; set;}
