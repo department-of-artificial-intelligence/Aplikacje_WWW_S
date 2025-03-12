@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AWWW_lab1_gr3.Models
 {
-    public class Article
+    public class Articles
     {
         public int Id { get; set; }
         public string Title { get; set; }
