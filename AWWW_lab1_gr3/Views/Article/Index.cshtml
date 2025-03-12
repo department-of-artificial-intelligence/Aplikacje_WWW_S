@@ -1,10 +1,10 @@
+@model AWWWW_lab1_gr3.Models.Article
+
 <h1>@Model.Title</h1>
-<p>Witamy na stronie z artykułami</nav></p>
 
 <p>
-    <ul>
-        <li><a asp-controller="article" asp-action="index">Artykuł 1</a></li>
-        <li><a asp-controller="article" asp-action="index">Artykuł 2</a></li>
-        <li><a asp-controller="article" asp-action="index">Artykuł 3</a></li>
-    </ul>
+    Data utworzenia:Data @Model.CreationDate.ToShortDateString()
+</p>
+<p>
+    @Model.Content
 </p>
