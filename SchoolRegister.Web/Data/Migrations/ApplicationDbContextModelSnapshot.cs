@@ -9,10 +9,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SchoolRegister.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+    
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
+            
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
+            
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0")
@@ -271,5 +274,6 @@ namespace SchoolRegister.Web.Data.Migrations
                 });
 #pragma warning restore 612, 618
         }
+        
     }
 }
