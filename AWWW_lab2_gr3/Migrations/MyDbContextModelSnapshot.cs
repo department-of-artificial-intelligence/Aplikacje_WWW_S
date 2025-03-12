@@ -29,9 +29,6 @@ namespace AWWW_lab2_gr3.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
@@ -49,17 +46,20 @@ namespace AWWW_lab2_gr3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MatchId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticleId");
-
                     b.HasIndex("AuthorId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("MatchId");
 
                     b.ToTable("Articles");
                 });
@@ -82,7 +82,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Category", b =>
@@ -99,7 +99,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Comment", b =>
@@ -125,7 +125,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.EventType", b =>
@@ -142,7 +142,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventType");
+                    b.ToTable("EventTypes");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.League", b =>
@@ -166,7 +166,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("League");
+                    b.ToTable("Leagues");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Match", b =>
@@ -223,7 +223,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasIndex("MatchPlayerId");
 
-                    b.ToTable("MatchEvent");
+                    b.ToTable("MatchEvents");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.MatchPlayer", b =>
@@ -257,7 +257,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("MatchPlayer");
+                    b.ToTable("MatchPlayers");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Player", b =>
@@ -289,7 +289,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Player");
+                    b.ToTable("Playeres");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Position", b =>
@@ -306,7 +306,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Position");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Tag", b =>
@@ -391,12 +391,6 @@ namespace AWWW_lab2_gr3.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Article", b =>
                 {
-                    b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
-                        .WithMany("Articles")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("AWWW_lab2_gr3.Models.Author", "Author")
                         .WithMany("Articles")
                         .HasForeignKey("AuthorId")
@@ -406,6 +400,12 @@ namespace AWWW_lab2_gr3.Migrations
                     b.HasOne("AWWW_lab2_gr3.Models.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
+                        .WithMany("Articles")
+                        .HasForeignKey("MatchId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
