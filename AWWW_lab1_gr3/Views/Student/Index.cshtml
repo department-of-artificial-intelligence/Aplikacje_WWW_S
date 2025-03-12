@@ -1,0 +1,24 @@
+@model List<AWWW_lab1_gr3.Models.Student>
+
+<h1>Lista Studentów</h1>
+
+<table>
+    <thead>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Szczegóły</th>
+    </thead>
+    <tbody>
+        @foreach(var Student in Model)
+        {
+            <tr>
+                <td>@Student.FirstName</td>
+                <td>@Student.LastName</td>
+                <td>
+                    <a asp-controller="Details" asp-action="Index" asp-route-id=@Student.Id>Szczegóły</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br>

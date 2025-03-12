@@ -1,0 +1,11 @@
+@model AWWW_lab1_gr3.Models.Student
+
+<h1>Szczegóły Studenta</h1>
+
+<p><strong>Id:</strong> @Model.Id</p>
+<p><strong>Imię:</strong> @Model.FirstName</p>
+<p><strong>Nazwisko:</strong> @Model.LastName</p>
+<p><strong>Numer indeksu:</strong> @Model.IndexNr</p>
+<p><strong>Data urodzenia:</strong> @Model.DateOfBirth.ToShortDateString()</p>
+<p><strong>Kierunek:</strong> @Model.FieldOfStudy</p>
+<a asp-controller="Student" asp-action="Index">Powrót do listy</a>
