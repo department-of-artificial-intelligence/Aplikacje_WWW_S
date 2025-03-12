@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ArticleReg.Model\ArticleReg.Model.csproj" />
+    <ProjectReference Include="..\ArticleReg.DAL\ArticleReg.DAL.csproj" />
+    <ProjectReference Include="..\ArticleReg.ViewModels\ArticleReg.ViewModels.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
