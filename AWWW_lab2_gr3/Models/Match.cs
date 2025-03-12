@@ -4,9 +4,12 @@ public class Match {
     public string Id { get; set;}
     public DateTime date { get; set;}
 
-    public ICollection<Team> Team { get; set; }
-    public ICollection<MatchEvent> MatchEvent { get; set; }
-    public ICollection<MatchPlayer> MatchPlayer { get; set; }
-    public ICollection<Article> Article { get; set; }
+    public int HomeTeamId { get; set;}
+    //public virtual Match Match{ get; set;}
+    public int AwayTeamId { get; set;}
+    public virtual Match Match{ get; set;}
+    public ICollection<MatchEvent> MatchEvents { get; set; }
+    public ICollection<MatchPlayer> MatchPlayers { get; set; }
+    public ICollection<Article> Articles { get; set; }
 
 }

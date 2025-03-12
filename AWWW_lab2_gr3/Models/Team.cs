@@ -10,6 +10,6 @@ public class Team{
     public int LeagueId { get; set; }
     public virtual League League { get; set; }
 
-    public ICollection<Player> Player { get; set; }
-    public ICollection<Match> Match { get; set; }
+    public ICollection<Player> Players { get; set; }
+    public ICollection<Match> Matchs { get; set; }
 }

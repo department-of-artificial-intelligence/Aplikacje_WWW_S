@@ -11,5 +11,5 @@ public class MatchPlayer{
     public virtual Match Match { get; set; }
     public int PositionId { get; set; }
     public virtual Position Position { get; set; }
-    public ICollection<MatchEvent> MatchEvent { get; set; }
+    public ICollection<MatchEvent> MatchEvents { get; set; }
 }

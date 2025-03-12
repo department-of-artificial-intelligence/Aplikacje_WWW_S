@@ -11,6 +11,6 @@ public class Player {
     public int TeamId { get; set; }
     public virtual Team Team { get; set; }
 
-    public ICollection<MatchPlayer> MatchPlayer { get; set; }
-    public ICollection<Position> Position { get; set; }
+    public ICollection<MatchPlayer> MatchPlayers { get; set; }
+    public ICollection<Position> Positions { get; set; }
 }

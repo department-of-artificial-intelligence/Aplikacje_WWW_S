@@ -1,8 +1,12 @@
-
+using Microsoft.EntityFrameworkCore; 
+// using Microsoft.EntityFrameworkCore.Tools; 
+//using Microsoft.EntityFrameworkCore.UseSqlServer; 
+// using Microsoft.EntityFrameworkCore.Proxies; 
+using AWWW_lab2_gr3.Models;
 public class MyDbContext : DbContext{
 
     public DbSet<Match> Matches { get; set; }
-    public DbSet<Team> Teams { get; set; }
+  
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Match>()
