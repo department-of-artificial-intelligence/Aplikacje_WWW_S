@@ -29,6 +29,9 @@ namespace AWWW_lab2_gr3.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
@@ -46,26 +49,19 @@ namespace AWWW_lab2_gr3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MatchId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MatchId1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ArticleId");
+
                     b.HasIndex("AuthorId");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("MatchId1");
-
-                    b.ToTable("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Author", b =>
@@ -175,8 +171,11 @@ namespace AWWW_lab2_gr3.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Match", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AwayTeamId")
                         .HasColumnType("int");
@@ -210,10 +209,6 @@ namespace AWWW_lab2_gr3.Migrations
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MatchId1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("MatchPlayerId")
                         .HasColumnType("int");
 
@@ -224,7 +219,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasIndex("EventTypeId");
 
-                    b.HasIndex("MatchId1");
+                    b.HasIndex("MatchId");
 
                     b.HasIndex("MatchPlayerId");
 
@@ -245,10 +240,6 @@ namespace AWWW_lab2_gr3.Migrations
                     b.Property<int>("MatchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MatchId1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
 
@@ -260,7 +251,7 @@ namespace AWWW_lab2_gr3.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MatchId1");
+                    b.HasIndex("MatchId");
 
                     b.HasIndex("PlayerId");
 
@@ -400,22 +391,22 @@ namespace AWWW_lab2_gr3.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr3.Models.Article", b =>
                 {
+                    b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
+                        .WithMany("Articles")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("AWWW_lab2_gr3.Models.Author", "Author")
                         .WithMany("Articles")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr3.Models.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
-                        .WithMany("Articles")
-                        .HasForeignKey("MatchId1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Author");
@@ -430,7 +421,7 @@ namespace AWWW_lab2_gr3.Migrations
                     b.HasOne("AWWW_lab2_gr3.Models.Article", "Article")
                         .WithMany("Comments")
                         .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Article");
@@ -460,19 +451,19 @@ namespace AWWW_lab2_gr3.Migrations
                     b.HasOne("AWWW_lab2_gr3.Models.EventType", "EventType")
                         .WithMany("MatchEvents")
                         .HasForeignKey("EventTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
                         .WithMany("MatchEvents")
-                        .HasForeignKey("MatchId1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr3.Models.MatchPlayer", "MatchPlayer")
                         .WithMany("MatchEvents")
                         .HasForeignKey("MatchPlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("EventType");
@@ -486,20 +477,20 @@ namespace AWWW_lab2_gr3.Migrations
                 {
                     b.HasOne("AWWW_lab2_gr3.Models.Match", "Match")
                         .WithMany("MatchPlayers")
-                        .HasForeignKey("MatchId1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr3.Models.Player", "Player")
                         .WithMany("MatchPlayers")
                         .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr3.Models.Position", "Position")
                         .WithMany("MatchPlayers")
                         .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Match");
@@ -514,7 +505,7 @@ namespace AWWW_lab2_gr3.Migrations
                     b.HasOne("AWWW_lab2_gr3.Models.Team", "Team")
                         .WithMany("Players")
                         .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Team");
@@ -525,7 +516,7 @@ namespace AWWW_lab2_gr3.Migrations
                     b.HasOne("AWWW_lab2_gr3.Models.League", "League")
                         .WithMany("Teams")
                         .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("League");

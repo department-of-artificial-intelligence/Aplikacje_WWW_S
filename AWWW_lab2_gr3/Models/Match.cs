@@ -1,7 +1,7 @@
 namespace AWWW_lab2_gr3.Models;
 
 public class Match {
-    public string Id { get; set;}
+    public int Id { get; set;}
     public DateTime Date { get; set;}
 
     public int HomeTeamId { get; set;}
