@@ -1,1 +1,11 @@
-<p>Artykul</p>
+@model AWWW_lab1_gr3.Models.Article
+
+<h1>@Model.Title</h1>
+
+<p>Artykuł:</p>
+
+<p> 
+    Data utworzenia: @Model.CreationDate.ToShortDateString();
+</p>
+
+<p>@Model.Content</p>
