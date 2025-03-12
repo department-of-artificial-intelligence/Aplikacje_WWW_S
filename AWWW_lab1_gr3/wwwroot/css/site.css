@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+body
+{
+    box-sizing: border-box;
+    align-content: center;
+    background-color: burlywood;
+    height: auto;
+    width: 100%;
+    margin: 15px;
+}
+
+footer
+{
+    margin-top: 150px;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+}
+
+ul
+{
+    border: 1px solid black;
+    margin-left: 10px;
+}
+p{
+    margin-top: 20px;
+}

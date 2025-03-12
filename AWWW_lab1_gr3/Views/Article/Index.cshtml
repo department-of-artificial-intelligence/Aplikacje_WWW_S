@@ -1,4 +1,11 @@
-<h1>@ViewBag.Title</h1>
+@model AWWW_lab1_gr3.Models.Article
+
+<h1>@Model.Title</h1>
 
 <h1>Witamyw artykule!</h1>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat, animi delectus consequuntur exercitationem labore quasi aperiam, laudantium sunt ut praesentium asperiores commodi qui tempora. Quo quaerat dolor nulla temporibus ducimus!</p>
+<p>
+    Data utworzenia : @Model.CreationDate.ToShortDateString()
+</p>
+<p>
+    @Model.Content
+</p>
