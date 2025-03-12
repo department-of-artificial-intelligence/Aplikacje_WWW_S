@@ -11,5 +11,6 @@ public class Team{
     public virtual League League { get; set; }
 
     public ICollection<Player> Players { get; set; }
-    public ICollection<Match> Matchs { get; set; }
+    public ICollection<Match> HomeMatches { get; set; } 
+    public ICollection<Match> AwayMatches { get; set; } 
 }
