@@ -1,0 +1,159 @@
+/* Home */
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #1c3d5a;
+    line-height: 1.8;
+}
+
+strong {
+    font-weight: bold;
+    color: #1565c0;
+}
+
+.article-list,
+.student-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.article-list li,
+.student-list li {
+    margin: 6px 0;
+}
+
+.article-list a,
+.student-list a {
+    text-decoration: none;
+    color: #1e88e5;
+    font-size: 17px;
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.article-list a:hover,
+.student-list a:hover {
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+/* Artykuł */
+
+.article-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #e3f2fd;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.article-title {
+    font-size: 34px;
+    color: #0d47a1;
+    margin-bottom: 12px;
+}
+
+.article-date {
+    font-size: 15px;
+    color: #1e88e5;
+    margin-bottom: 22px;
+}
+
+.article-content {
+    font-size: 17px;
+    color: #0c3c78;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+/* Student */
+
+.student-list-container {
+    max-width: 950px;
+    margin: 25px auto;
+    padding: 25px;
+    background-color: #e1f5fe;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.student-list-title {
+    font-size: 30px;
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.student-table th,
+.student-table td {
+    padding: 14px 18px;
+    border: 1px solid #bbdefb;
+}
+
+.student-table th {
+    background-color: #1e88e5;
+    color: white;
+    font-weight: bold;
+}
+
+.student-table tr:nth-child(even) {
+    background-color: #bbdefb;
+}
+
+.student-table tr:hover {
+    background-color: #90caf9;
+}
+
+/* Layout */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f2fd;
+    color: #1c3d5a;
+}
+
+header {
+    background-color: #0d47a1;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+main {
+    padding: 25px;
+}
+
+footer {
+    background-color: #0c3c78;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #1e88e5;
+    font-size: 19px;
+}
+
+a:hover {
+    color: #0d47a1;
+    font-weight: bold;
+}

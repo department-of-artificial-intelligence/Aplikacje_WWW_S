@@ -1,0 +1,27 @@
+@model AWWW_lab1_gr3.Models.Student
+
+<div class="student-list-container">
+    <h1 class="student-list-title">Lista Studentów</h1>
+    <table class="student-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer Indeksu</th>
+                <th>Data Urodzenia</th>
+                <th>Kierunek Studiów</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.FirstName</td>
+                <td>@Model.LastName</td>
+                <td>@Model.IndexNr</td>
+                <td>@Model.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                <td>@Model.FieldOfStudy</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,10 +1,8 @@
-    using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
-    public class HomeController : Controller
+public class HomeController : Controller{
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            ViewBag.Title = "Home";
-            return View();
-        }
+        return View();
     }
+}
