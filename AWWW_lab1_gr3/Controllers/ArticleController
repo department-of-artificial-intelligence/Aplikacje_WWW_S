@@ -10,7 +10,7 @@ namespace AWWW_lab1_gr3.Controllers
     {
         public IActionResult Index()
         {
-            return Content("<p>Artykuł na temat Masnura</p>", "text/html");
+            return Content("<p>Artykuł na temat Msnura</p>", "text/html");
         }
     }
 }
