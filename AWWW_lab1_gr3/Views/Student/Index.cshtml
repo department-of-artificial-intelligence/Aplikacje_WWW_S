@@ -2,7 +2,7 @@
 
 <h1>@Model.FirstName @Model.LastName</h1>
 
-<p>Dane studenta:</p>
+<strong>Dane studenta:</strong>
 
 <p> 
     Numer Indexu: @Model.IndexNr;
@@ -10,4 +10,8 @@
 
 <p> 
     Data urodzenia: @Model.DateOfBirth.ToShortDateString();
+</p>
+
+<p> 
+    Kierunek: @Model.FieldOfStudy;
 </p>
