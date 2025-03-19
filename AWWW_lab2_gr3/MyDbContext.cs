@@ -14,10 +14,13 @@ public class MyDbContext : DbContext{
     public DbSet<EventType> EventTypes { get; set; }
     public DbSet<Position> Positions { get; set; }
     public DbSet<League> Leagues { get; set; }
+    public DbSet<Tag> Tags { get; set; }
+
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
         
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Match>()

@@ -1,19 +1,19 @@
 using AWWW_lab2_gr3.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class AutorController : Controller
+public class CategoryController : Controller
 {
     private readonly MyDbContext _dbContext;
 
-    public AutorController(MyDbContext dbContext)
+    public CategoryController(MyDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
     public IActionResult Index()
     {
-        var authors = _dbContext.Authors.ToList();
-        return View(authors);
+        var category = _dbContext.Categories.ToList();
+        return View(category);
     }
 
     // GET: Autor/Create
@@ -24,11 +24,11 @@ public class AutorController : Controller
 
     // POST: Autor/Create
     [HttpPost]
-    public IActionResult Add(Author author)
+    public IActionResult Add(Category category)
     {
-        _dbContext.Authors.Add(author);
+        _dbContext.Categories.Add(category);
         _dbContext.SaveChanges();
-        return View("Added",author);
+        return View("Added", category);
     }
 
 }

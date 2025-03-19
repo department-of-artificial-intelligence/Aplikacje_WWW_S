@@ -1,0 +1,21 @@
+﻿@model AWWW_lab2_gr3.Models.Position
+
+<h1>Dodaj Pozycje</h1>
+
+
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="Name">Nazwa Pozycji: </label>
+        <input asp-for="Name" class="w3-input w3-border" />
+
+    </div>
+    <div>
+        <input type="submit" name="name" value="Dodaj" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+

@@ -1,21 +1,21 @@
-@model List<AWWW_lab2_gr3.Models.Tag>
+@model List<AWWW_lab2_gr3.Models.EventType>
 
 
-<h1>Lista Pozycji</h1>
+<h1>Lista Typow wydarzen</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Nazwa</th>
-      
+            <th>Nazwa kategori</th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach (var tag in Model)
+        @foreach (var eventType in Model)
         {
             <tr>
-                
-                <td>@tag.Name</td>
+                <td>@eventType.Name</td>
+
             </tr>
         }
     </tbody>

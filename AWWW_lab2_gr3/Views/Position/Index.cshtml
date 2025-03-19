@@ -1,5 +1,8 @@
-@model List<AWWW_lab2_gr3.Models.Tag>
+@model List<AWWW_lab2_gr3.Models.Position>
 
+@{
+    ViewData["Title"] = "Lista Autorów";
+}
 
 <h1>Lista Pozycji</h1>
 
@@ -7,15 +10,15 @@
     <thead>
         <tr>
             <th>Nazwa</th>
-      
+     
         </tr>
     </thead>
     <tbody>
-        @foreach (var tag in Model)
+        @foreach (var position in Model)
         {
             <tr>
                 
-                <td>@tag.Name</td>
+                <td>@position.Name</td>
             </tr>
         }
     </tbody>

@@ -1,0 +1,25 @@
+@model List<AWWW_lab2_gr3.Models.Author>
+
+<h1>Lista Autorów</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imiê</th>
+            <th>Nazwisko</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var autor in Model)
+        {
+            <tr>
+                <td>@autor.FirstName</td>
+                <td>@autor.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Add" class="btn btn-primary">Dodaj</a>
+</p>
