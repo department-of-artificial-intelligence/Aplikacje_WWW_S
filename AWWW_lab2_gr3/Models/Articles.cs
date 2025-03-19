@@ -1,5 +1,5 @@
 
-namespace AWWW_lab1_gr3.Models {
+namespace AWWW_lab2_gr3.Models {
     public class Article {
         public int Id {get; set;}
         public string Title {get;set;}
