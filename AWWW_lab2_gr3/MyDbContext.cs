@@ -5,7 +5,7 @@ public class MyDbContext : DbContext{
     public DbSet<Match> Matches { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<Article> Articles { get; set; }
-     public DbSet<Author> Authors { get; set; }
+    public DbSet<Author> Authors { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<MatchEvent> MatchEvents { get; set; }
     public DbSet<MatchPlayer> MatchPlayers { get; set; }

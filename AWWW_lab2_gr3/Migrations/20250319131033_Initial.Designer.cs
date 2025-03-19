@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab2_gr3.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250312224347_wstepna")]
-    partial class wstepna
+    [Migration("20250319131033_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
