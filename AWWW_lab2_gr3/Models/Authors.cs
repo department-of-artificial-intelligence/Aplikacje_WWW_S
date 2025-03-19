@@ -1,10 +1,10 @@
 namespace AWWW_lab1_gr3.Models {
-    public class Student {
+    public class Author {
         public int Id {get; set;}
         public string FirstName {get;set;}
         public string LastName {get;set;}
-        public int IndexNr {get;set;}
-        public DateTime DateOfBirth { get;set;}
-        public string FieldOfStudy {get;set;}
+
+        public ICollection<Article> Articles {get; set;}
+
     }
 }
