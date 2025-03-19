@@ -1,8 +1,11 @@
+@model AWWW_lab1_gr3.Models.Article
 
-<h1>@ViewBag.Title</h1>
-
-<p>To jest przykladowy artykul</p>
+<h1>@Model.Title</h1>
 
 <p>
-    Lorem ipsum.
+    Data utworzenia: @Model.CreationDate.ToShortDateString()
+</p>
+
+<p>
+    @Model.Content
 </p>
