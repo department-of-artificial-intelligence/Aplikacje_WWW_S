@@ -10,19 +10,19 @@ public class ArticleController : Controller
             Id = 1,
             Title = "Artykuł 1",
             Content = "Lorem impsum...",
-            CreationDate = DateTime.Now
+            CreateDate = DateTime.Now
             },
             new Article{
             Id = 2,
             Title = "Artykuł 2",
             Content = "Lorem impsum...",
-            CreationDate = DateTime.Now
+            CreateDate = DateTime.Now
             },
             new Article{
             Id = 3,
             Title = "Artykuł 3",
             Content = "Lorem impsum...",
-            CreationDate= DateTime.Now
+            CreateDate = DateTime.Now
             }
         };
 
