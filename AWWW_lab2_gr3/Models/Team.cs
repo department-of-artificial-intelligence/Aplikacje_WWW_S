@@ -13,9 +13,12 @@ namespace AWWW_lab2_gr3.Models
         public string City { get; set; }
         public DateTime FoundingDate { get; set; }
         
+        public ICollection<Match> HomeMatches { get; set; }
+        public ICollection<Match> AwayMatches { get; set; }
+
+        public int LeagueId { get; set; }
         public League league{ get; set; }
 
         public ICollection<Player> Players { get; set; }
-
     }
 }

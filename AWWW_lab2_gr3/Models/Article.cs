@@ -8,13 +8,15 @@ public class Article
 
     public ICollection<Comment> Comments { get; set; }
 
-    public virtual Author author{ get; set;}
+    public int AuthorId { get; set; }
+    public virtual Author Author{ get; set;}
     
-    public virtual Category Category{ get; set; }
+   public ICollection<Category> Categories { get; set; }
 
     public ICollection<Tag> Tags { get; set; }
 
-    public Match ?Match{ get; set; }
+    public int MatchId { get; set; }
+    public virtual Match ?Match{ get; set; }
 
 
 }

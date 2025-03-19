@@ -4,5 +4,6 @@ public class Comment
     public string Title { get; set;}
     public string Content { get; set;}
 
+    public int ArticleId { get; set;}
     public virtual Article article{ get; set;} 
 }

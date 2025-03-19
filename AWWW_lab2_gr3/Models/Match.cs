@@ -12,12 +12,13 @@ namespace AWWW_lab2_gr3.Models
         public string Stadium { get; set; }
         public ICollection<Article> Articles { get; set; }
 
-       
-         public int TeamId1 { get; set; }
-         public int TeamId2 { get; set; }
-
-        public ICollection<Match> Matches { get; set; }
-         
+        public int HomeTeamId { get; set; }
+  
+         public virtual Team HomeTeam { get; set; }
+        public int AwayTeamId { get; set; }
+         public virtual Team AwayTeam { get; set; }
+         public MatchPlayer matchPlayer{ get; set; }
+         public ICollection<MatchEvent> matchEvents { get; set; }
         
     }
 }
