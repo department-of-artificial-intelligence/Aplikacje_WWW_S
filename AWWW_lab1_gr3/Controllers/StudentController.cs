@@ -16,21 +16,21 @@ namespace AWWW_lab1_gr3.Controllers
                     Id = 1,
                     FirstName = "Vladyslav1",
                     LastName = "Turchynovych",
-                    DateOfBirth = new DateTime(0, 1, 1),
+                    DateOfBirth = new DateTime(2005, 01, 01),
                     FieldOfStudy = "Informatyka"
                 },
                 new Student{
                     Id = 2,
                     FirstName = "Vladyslav2",
                     LastName = "Turchynovych",
-                    DateOfBirth = new DateTime(0, 1, 1),
+                    DateOfBirth = new DateTime(2005, 01, 01),
                     FieldOfStudy = "Informatyka"
                 },
                 new Student{
                     Id = 3,
                     FirstName = "Vladyslav3",
                     LastName = "Turchynovych",
-                    DateOfBirth = new DateTime(0, 1, 1),
+                    DateOfBirth = new DateTime(2005, 01, 01),
                     FieldOfStudy = "Informatyka"
                 },
             };
