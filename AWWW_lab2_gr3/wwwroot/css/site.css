@@ -6,10 +6,13 @@ body {
     padding: 0;
     color: #333;
 }
-
+h1{
+    margin:0;
+}
 /* Nag³ówek */
 header {
     background-color: #4CAF50;
+   
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -22,19 +25,20 @@ nav {
     overflow: hidden;
 }
 
-nav a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
+    nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
 
-nav a:hover {
-    background-color: #ddd;
-    color: black;
-}
+        nav a:hover {
+            background-color: #ddd;
+            text-decoration: none;
+            color: black;
+        }
 
 /* G³ówna zawartoœæ */
 main {
@@ -57,7 +61,7 @@ footer {
 }
 
 /* Przyciski */
-button {
+.btn {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -69,37 +73,42 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
+    width: 60px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
+    .btn:hover {
+        background-color: #45a049;
+    }
 
 /* Formularze */
-input[type=text], input[type=password], input[type=email] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
+input[type=text], input[type=password], input[type=email], input[type=date], select {
+    width: 250px;
+    padding: 6px 10px;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    display: inline-block;
 }
 
 input[type=submit] {
-    width: 100%;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
+    border-radius: 4px;
+    width: 100px;
 }
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
 /* Style dla tabel */
 table {
     width: 100%;
@@ -109,17 +118,56 @@ table {
     text-align: left;
 }
 
-table th, table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
+    table th, table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+.links-container {
+    margin: 20px;
 }
 
-table th {
-    background-color: #4CAF50;
-    color: white;
+    .links-container a {
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+        .links-container a:hover {
+            color: black;
+        }
+
+.back_btn {
+    margin: 10px 0 10px 0;
+ 
 }
 
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+    .back_btn a {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        
+        cursor: pointer;
+        border-radius: 4px;
+      
+    }
 
+    .back_btn:hover a {
+        color: black;
+    }

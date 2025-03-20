@@ -1,0 +1,33 @@
+﻿@model AWWW_lab2_gr3.Models.Team
+
+<h1>Dodaj Druzyne</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="Name">Nazwa Druzyny: </label>
+        <input asp-for="Name" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country">Kraj: </label>
+        <input asp-for="Country" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City">Miasto: </label>
+        <input asp-for="City" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FoundingDate">Data zalozenia: </label>
+        <input asp-for="FoundingDate" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LeagueId">Liga: </label>
+        <select asp-for="LeagueId" asp-items="@ViewBag.LeagueList" class="w3-input w3-border"></select>
+    </div>
+    <div>
+        <input type="submit" name="name" value="Dodaj" />
+    </div>
+</form>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>
