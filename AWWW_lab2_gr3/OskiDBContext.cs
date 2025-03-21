@@ -19,8 +19,11 @@ public class OskiDBContext : DbContext
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Team> Teams { get; set; }
 
-        
+        public OskiDBContext(DbContextOptions<OskiDBContext> options) : base(options)
+    {
+
     }
+    
 
  protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,14 +32,14 @@ public class OskiDBContext : DbContext
             .WithMany(t => t.Articles)
             .HasForeignKey(m => m.AuthorId)
             .OnDelete(DeleteBehavior.NoAction);
-
+/*
              modelBuilder.Entity<Article>()
             .HasOne(m => m.Category)
             .WithMany(t => t.Articles)
             .HasForeignKey(m => m.AuthorId)
             .OnDelete(DeleteBehavior.NoAction);
 
-
+*/
 
 
         modelBuilder.Entity<Match>()
@@ -51,4 +54,7 @@ public class OskiDBContext : DbContext
             .WithMany(t => t.AwayMatches)
             .HasForeignKey(m => m.AwayTeamId)
             .OnDelete(DeleteBehavior.NoAction);
+
     }
+    
+}
