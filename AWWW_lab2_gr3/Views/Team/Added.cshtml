@@ -1,17 +1,14 @@
-﻿@model AWWW_lab2_gr3.Models.Player
+﻿@model AWWW_lab2_gr3.Models.Team
 
 <h1>Dodano Druzyne:</h1>
 
 <div>
-    <p>@Model.FirstName</p>
-    <p>@Model.LastName</p>
+    <p>@Model.Name</p>
     <p>@Model.Country</p>
-    <p>@Model.BirthDate</p>
-    @if (Model.Team != null)
-        {
-            <p>@Model.Team.Name</p>
-        }
-    <p>@Model.Positions</p>
+    <p>@Model.City</p>
+    <p>@Model.FoundingDate</p>
+    <p>@Model.League.Name</p>
+    
 </div>
 
 

@@ -10,6 +10,7 @@
             <th>Miasto</th>
             <th>Data zalozenia</th>
             <th>Liga</th>
+            <th>Akcja</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,11 @@
                 <td>@team.City</td>
                 <td>@team.FoundingDate</td>
                 <td>@(team.League != null ? team.League.Name : "Brak ligi")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@team.Id">Edytuj</a>
+                    <br />
+                    <a asp-action="Delete" asp-route-id="@team.Id">Usun</a>
+                </td>
             </tr>
         }
     </tbody>

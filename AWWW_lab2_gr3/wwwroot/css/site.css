@@ -6,39 +6,19 @@ body {
     padding: 0;
     color: #333;
 }
-h1{
-    margin:0;
+
+h1 {
+    margin: 0;
 }
 /* Nag³ówek */
 header {
     background-color: #4CAF50;
-   
     color: white;
     padding: 10px 0;
     text-align: center;
     font-size: 24px;
 }
 
-/* Nawigacja */
-nav {
-    background-color: #333;
-    overflow: hidden;
-}
-
-    nav a {
-        float: left;
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-    }
-
-        nav a:hover {
-            background-color: #ddd;
-            text-decoration: none;
-            color: black;
-        }
 
 /* G³ówna zawartoœæ */
 main {
@@ -79,6 +59,29 @@ footer {
     .btn:hover {
         background-color: #45a049;
     }
+
+.back_btn {
+    margin: 10px 0 10px 0;
+    width: 220px;
+}
+
+    .back_btn a {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .back_btn:hover a {
+        color: black;
+    }
+
 
 /* Formularze */
 input[type=text], input[type=password], input[type=email], input[type=date], select {
@@ -132,42 +135,56 @@ table {
         background-color: #f2f2f2;
     }
 
-.links-container {
+
+
+
+/* Kontener na linki */
+#ksiazka, #pilka {
     margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Odstêp pomiêdzy divami */
+    justify-content: center; /* Wyrównuje divy do œrodka */
 }
 
-    .links-container a {
-        display: block;
-        margin: 10px 0;
-        font-size: 18px;
-        text-decoration: none;
-        color: #007bff;
-    }
 
-        .links-container a:hover {
-            color: black;
-        }
-
-.back_btn {
-    margin: 10px 0 10px 0;
- 
+#container {
+    display: flex; /* U¿ywamy flexboxa do uk³adu */
+    justify-content: space-between; /* Rozstawia elementy na boki */
+    gap: 20px; /* Odstêp pomiêdzy kolumnami */
 }
 
-    .back_btn a {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        
-        cursor: pointer;
-        border-radius: 4px;
-      
+/* Styl dla ka¿dego div zawieraj¹cego link */
+#ksiazka .link-item, #pilka .link-item {
+    width: 85px; /* Szerokoœæ dla ka¿dego div */
+    height: 30px; /* Wysokoœæ */
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: flex; /* U¿ywamy flexboxa */
+    justify-content: center; /* Wyrównuje zawartoœæ w poziomie */
+    align-items: center; /* Wyrównuje zawartoœæ w pionie */
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Efekt powiêkszenia i cienia przy najechaniu na div */
+    #ksiazka .link-item:hover, #pilka .link-item:hover {
+        transform: scale(1.2); /* Powiêksza element o 10% */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Zwiêksza cieñ */
     }
 
-    .back_btn:hover a {
-        color: black;
+/* Pogrubienie tekstu linków */
+#container .link-item a {
+    color: #333;
+    text-decoration: none;
+    transition: font-size 0.3s ease;
+}
+
+    /* Efekt powiêkszenia tekstu przy najechaniu */
+    #container .link-item a:hover {
+        color: #4CAF50; /* Kolor tekstu na zielony przy najechaniu */
+        font-size: 22px; /* Powiêksza tekst */
     }

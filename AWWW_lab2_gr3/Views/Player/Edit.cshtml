@@ -31,14 +31,15 @@
     </div>
 
     <div class="form-group">
-        <label>Pozycja </label>
-        @foreach (var pos in ViewBag.PositionList)
+        <label asp-for="Positions">Pozycja </label>
+        @foreach (var pos in @ViewBag.PositionList)
         {
+            bool isChecked = pos.Selected;
             <p>
-                <input type="checkbox" name="positions" value="@pos.Id" class="w3-check"
-                @(Model.Positions.Any(p => p.Id == pos.Id) ? "checked" : "") />
-                <label>@pos.Name</label>
+                <input type="checkbox" name="Positions" value="@pos.Value" class="w3-check" @(isChecked ? "checked" : "") />
+                <label>@pos.Text</label>
             </p>
+
         }
     </div>
 

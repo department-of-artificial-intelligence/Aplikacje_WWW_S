@@ -14,10 +14,10 @@ public class PlayerController : Controller
 
     public IActionResult Index()
     {
-        var player = _dbContext.Playeres.Include(p => p.Team)      // Załadowanie drużyny
+        var playeres = _dbContext.Playeres.Include(p => p.Team)      // Załadowanie drużyny
                                         .Include(p => p.Positions) // Załadowanie pozycji
                                         .ToList();
-        return View(player);
+        return View(playeres);
     }
 
     // GET: Autor/Create
@@ -67,15 +67,36 @@ public class PlayerController : Controller
 
     public IActionResult Edit(int id)
     {
-        var player = _dbContext.Playeres.Include(p => p.Positions).FirstOrDefault(p => p.Id == id);
-        if (player != null)
+        // Załaduj gracza i przypisane do niego pozycje
+        var player = _dbContext.Playeres
+            .Include(p => p.Positions) // Załadowanie pozycji gracza
+            .FirstOrDefault(p => p.Id == id);
+
+        if (player == null)
         {
-            ViewBag.TeamList = _dbContext.Teams.Select(t => new SelectListItem(t.Name, t.Id.ToString())).ToList();
-            ViewBag.PositionList = _dbContext.Positions.ToList();
-            return View(player);
+            return NotFound();
         }
-        return NotFound();
+
+        // Załaduj listę wszystkich dostępnych pozycji
+        var positionList = _dbContext.Positions.ToList();
+
+        // Stwórz ViewBag.PositionList z informacją, które pozycje są przypisane do gracza
+        ViewBag.PositionList = positionList.Select(p => new SelectListItem
+        {
+            Value = p.Id.ToString(),
+            Text = p.Name,
+            Selected = player.Positions.Any(pos => pos.Id == p.Id) // Sprawdź, czy pozycja jest przypisana do gracza
+        }).ToList();
+
+        // Załaduj listę drużyn
+        ViewBag.TeamList = _dbContext.Teams
+            .Select(t => new SelectListItem(t.Name, t.Id.ToString()))
+            .ToList();
+
+        return View(player);
     }
+
+
 
     [HttpPost]
     public IActionResult Edit(Player player, List<int> positions)
@@ -90,10 +111,23 @@ public class PlayerController : Controller
             existingPlayer.TeamId = player.TeamId;
             existingPlayer.Positions = _dbContext.Positions.Where(p => positions.Contains(p.Id)).ToList();
 
+            _dbContext.Update(existingPlayer);
             _dbContext.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
 
+        return NotFound();
+    }
+
+    public ActionResult Delete(int id)
+    {
+        var player = _dbContext.Playeres.FirstOrDefault(p => p.Id == id);
+        if (player != null)
+        {
+            _dbContext.Playeres.Remove(player);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
         return NotFound();
     }
 
