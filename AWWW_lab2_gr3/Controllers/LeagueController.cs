@@ -1,5 +1,6 @@
 using AWWW_lab2_gr3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class LeagueController : Controller
 {
@@ -12,7 +13,7 @@ public class LeagueController : Controller
 
     public IActionResult Index()
     {
-        var leagues = _dbContext.Leagues.ToList();
+        var leagues = _dbContext.Leagues.Include(t => t.Teams).ToList();
         return View(leagues);
     }
 

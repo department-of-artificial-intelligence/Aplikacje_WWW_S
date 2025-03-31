@@ -9,6 +9,7 @@
             <th>Nazwa</th>
             <th>Kraj</th>
             <th>Poziom</th>
+            <th>Druzyna</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,14 @@
                 <td>@league.Name</td>
                 <td>@league.Country</td>
                 <td>@league.Level</td>
+                <td>
+                    <ul>
+                        @foreach (var team in league.Teams)
+                        {
+                            <li>@team.Name</li>
+                        }
+                    </ul>
+                </td>
             </tr>
         }
     </tbody>

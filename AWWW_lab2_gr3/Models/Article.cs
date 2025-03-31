@@ -16,5 +16,5 @@ public class Article{
     public virtual Category Category { get; set; }
 
     public int MatchId { get; set; }
-    public virtual Match Match { get; set; }
+    public virtual Match? Match  { get; set; }
 }

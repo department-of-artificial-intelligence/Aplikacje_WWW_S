@@ -1,0 +1,68 @@
+﻿@model AWWW_lab2_gr3.Models.Article
+
+
+
+<h1>Dodaj Artykuł</h1>
+
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="Title">Tytuł </label>
+        <input asp-for="Title" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Lead">Watek </label>
+        <input asp-for="Lead" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Content">Zawartosc </label>
+        <input asp-for="Content" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="CreationDate">Data utworzenia: </label>
+        <input asp-for="CreationDate" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AuthorId">Autor: </label>
+        <select asp-for="AuthorId" asp-items="@ViewBag.AuthorList" class="w3-input w3-border"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Kategoria: </label>
+        <select asp-for="CategoryId" asp-items="@ViewBag.CategoryList" class="w3-input w3-border"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="MatchId">Mecz: </label>
+        <select asp-for="MatchId" asp-items="@ViewBag.MatchList" class="w3-input w3-border"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tags">Tagi </label>
+        @if (ViewBag.TagsList != null)
+        {
+            @foreach (var pos in ViewBag.TagsList)
+            {
+                <p>
+                    <input type="checkbox" name="Tags" value="@pos.Value" class="w3-check" />
+                    <label>@pos.Text</label>
+                </p>
+            }
+        }
+        else
+        {
+            <p>Brak dostępnych pozycji.</p>
+        }
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Dodaj" class="btn btn-primary" />
+    </div>
+</form>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+
