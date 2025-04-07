@@ -10,6 +10,7 @@ namespace AWWW_lab2_gr3.Models
         public virtual Team HomeTeam {get; set;}
         public int HomeTeamId {get;set;}
         public virtual Team AwayTeam {get; set;}
-        public ICollection<Article> Aticles {get; set;}
+        public int AwayTeamId {get; set;}
+        public ICollection<Article> Articles {get; set;}
     }
 }

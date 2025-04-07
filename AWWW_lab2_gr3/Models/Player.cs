@@ -6,7 +6,8 @@ namespace AWWW_lab2_gr3.Models
         public string LastName { get; set;}
         public string Country { get; set;}
         public DateTime BirthDate { get; set;}
-        public Team Team {get; set;}
+        public virtual Team Team {get; set;}
+        public int TeamId {get; set;}
         public ICollection<Position> Positions {get; set;}
         
     }

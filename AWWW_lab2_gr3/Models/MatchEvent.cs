@@ -4,7 +4,8 @@ namespace AWWW_lab2_gr3.Models
     {
         public int Id {get; set;}
         public int Minute {get; set;}
-        public Match Match {get; set;}
+        public virtual Match Match {get; set;}
+        public int MatchId {get; set;}
         public ICollection<Player> MatchPlayers  { get; set;}
     }
 }
