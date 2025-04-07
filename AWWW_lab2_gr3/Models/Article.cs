@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AWWW_lab2_gr3.Models
 {
-    public class Articles
+    public class Article
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -14,10 +15,11 @@ namespace AWWW_lab2_gr3.Models
         public DateTime CreationDate { get; set; }
         public Author author{ get; set; }
         public int AuthorId { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public Category category{ get; set; }
         public int CategoryId { get; set; }
-        public list<Tag> tags{ get; set; }
+        public List<Tag> Tags{ get; set; } = new List<Tag>();
 
         public Match? match{ get; set; }
         public int? MatchId { get; set; }

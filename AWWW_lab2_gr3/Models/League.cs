@@ -11,6 +11,6 @@ namespace AWWW_lab2_gr3.Models
         public string Name { get; set; }
         public string Country   { get; set; }
         public int Level { get; set; }
-        public list<Team> Teams { get; set; }
+        public List<Team> Teams { get; set; }
     }
 }

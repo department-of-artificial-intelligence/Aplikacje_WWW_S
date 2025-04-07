@@ -9,7 +9,7 @@ namespace AWWW_lab2_gr3.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }    
-        public list<MatchEvent> MatchEvents { get; set; }   
+        public List<MatchEvent> MatchEvents { get; set; }   
         
     }
 }

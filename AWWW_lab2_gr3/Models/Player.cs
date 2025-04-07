@@ -11,9 +11,9 @@ namespace AWWW_lab2_gr3.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }
-        public Datetime BirthDate { get; set; }
-        public list<MatchPlayer> MatchPlayers { get; set; }
-        public list<Position> Positions { get; set; }
+        public DateTime BirthDate { get; set; }
+        public List<MatchPlayer> MatchPlayers { get; set; }
+        public List<Position> Positions { get; set; }
         public Position position{ get; set; }
         public int PositionId { get; set; }
         public Team team{ get; set; }

@@ -11,11 +11,11 @@ namespace AWWW_lab2_gr3.Models
         public string Name { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        public Datetime FoundingDate { get; set; }
-        public list<Player> players { get; set; }
+        public DateTime FoundingDate { get; set; }
+        public List<Player> players { get; set; }
         public League league { get; set; }
         public int LeagueId { get; set; }
-        public list<Match> Matches { get; set; }
+        public List<Match> Matches { get; set; }
 
     }
 }
