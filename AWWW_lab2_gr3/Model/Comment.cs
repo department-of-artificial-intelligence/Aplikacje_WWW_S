@@ -11,5 +11,8 @@ namespace AWWW_lab2_gr3.Model
         public string Title { get; set; } = null!;
         public string Content { get; set; } = null!;
         
+
+        public int ArticleId { get; set; }
+        public virtual Article Article { get; set; }
     }
 }

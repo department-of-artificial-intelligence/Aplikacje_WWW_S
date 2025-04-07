@@ -11,6 +11,7 @@ namespace AWWW_lab2_gr3.Model
         public string Name { get; set; } = null!;
         public string Country { get; set; } = null!;
         public int Level { get; set; }
+        
         public ICollection<Team> Teams { get; set; } = null!;
     }
 }

@@ -12,6 +12,10 @@ namespace AWWW_lab2_gr3.Model
         public string LastName { get; set; } = null!;
         public string Country { get; set; } = null!;
         public DateTime BirthDate { get; set; }
+
+        public int TeamId { get; set; }
+        public virtual Team Team { get; set; }
+
         public ICollection<MatchPlayer>? MatchPlayers { get; set; }
         public ICollection<Position> Positions { get; set; } = null!;
     }
