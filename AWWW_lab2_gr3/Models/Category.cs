@@ -9,6 +9,7 @@ namespace AWWW_lab2_gr3.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual Article article{ get; set; }
+        
+    public ICollection<Article> Articles { get; set; }
     }
 }

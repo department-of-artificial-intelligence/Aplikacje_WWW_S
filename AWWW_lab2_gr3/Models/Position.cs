@@ -8,8 +8,9 @@ namespace AWWW_lab2_gr3.Models
     public class Position
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<MatchPlayer> matchPlayers { get; set; }
-        public ICollection<Player> players{ get; set; }
+    public string Name { get; set; }
+
+    public ICollection<Player> Players { get; set; }
+    public ICollection<MatchPlayer> MatchPlayers { get; set; }
     }
 }
