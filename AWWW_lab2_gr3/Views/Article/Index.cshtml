@@ -1,0 +1,31 @@
+@model List<AWWW_lab2_gr3.Models.Article>
+
+<h1>Lista Atykulow</h1>
+
+@foreach(var article in @Model)
+{
+    <div class="article-container">
+    <h2>@article.Title</h2>
+    <h4>@article.Lead</h4>
+    <div class="content">
+        <p>@article.Content</p>
+    </div>
+    <p><strong>Data publikacji:</strong> @article.CreationDate.ToString("yyyy-MM-dd")</p>
+    <p><strong>Autor:</strong> @article.Author.FirstName</p>
+    <p><strong>Kategoria:</strong> @article.Category.Name</p>
+    <p><strong>Mecz:</strong> @ViewBag.MatchList</p>
+    <p><strong>Tagi:</strong></p>
+    <ul>
+        @foreach (var tag in article.Tags)
+        {
+            <li>@tag.Name</li>
+        }
+    </ul>
+</div>
+
+}
+
+
+<p>
+    <a asp-action="Add" class="btn">Dodaj</a>
+</p>

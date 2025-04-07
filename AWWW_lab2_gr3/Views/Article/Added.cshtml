@@ -1,0 +1,24 @@
+@model AWWW_lab2_gr3.Models.Article
+
+<h1>Dodany Artukuł:</h1>
+
+<div>
+    <p>@Model.Title</p>
+    <p>@Model.Lead</p>
+    <p>@Model.Content</p>
+    <p>@Model.CreationDate.ToString("yyyy-MM-dd")</p>
+    <p>@Model.Author.FirstName @Model.Author.LastName </p>
+    <p>@Model.Category.Name</p>
+    <p>@Model.Match.HomeTeam vs @Model.Match.AwayTeam </p>
+    <p>Tagi:</p>
+    <ul>
+        @foreach (var tag in Model.Tags)
+        {
+            <li>@tag.Name</li>
+        }
+    </ul>
+</div>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>

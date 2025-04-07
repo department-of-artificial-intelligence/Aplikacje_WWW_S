@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <h1>Witam!!</h1>
+    </header>
+    <main>
+        @RenderBody()
+        
+        <div class="back_btn">
+            <a asp-controller="home" asp-action="index">Powrót do strony głownej</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025
+    </footer>
+</body>
+
+</html>
