@@ -20,5 +20,6 @@ namespace AWWW_lab02_gr3.Models
         
         public int? MatchId {get; set;}
         public Match? Match {get; set;}
+        
     }
 }
