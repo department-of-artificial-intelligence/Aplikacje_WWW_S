@@ -24,6 +24,7 @@ namespace AWWW_lab2_gr3
             .WithMany(t => t.HomeMatches)
             .HasForeignKey(m => m.HomeTeamId)
             .OnDelete(DeleteBehavior.NoAction);
+            
         modelBuilder.Entity<Match>()
             .HasOne(m => m.AwayTeam)
             .WithMany(t => t.AwayMatches)
