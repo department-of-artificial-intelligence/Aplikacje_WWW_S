@@ -5,5 +5,6 @@ namespace AWWW_lab2_gr3.Models {
         
 
         public ICollection<Player> Players {get;set;}
+        public ICollection<MatchPlayer> MatchPlayers {get;set;}
     }
 }
