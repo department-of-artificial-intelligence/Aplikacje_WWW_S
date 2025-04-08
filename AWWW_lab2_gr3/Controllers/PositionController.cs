@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr3.Models;
 
 namespace AWWW_lab2_gr3.Controllers {
-    public class ArticleController : Controller {
+    public class PositionController : Controller {
 
         private readonly MyDbContext _dbContext;
 
-        public ArticleController(MyDbContext dbContext)
+        public PositionController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -1,0 +1,28 @@
+@model ICollection<AS_l2.Models.Author>
+
+<h1>@ViewBag.Title</h1>
+
+<p>Witamy na stronie głównej</p>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+        </thead>
+        <tbody>
+            foreach (var author in Model)
+                {
+                    <tr>
+                        @if (@author.Author != null)
+                            {
+                                <td>@(author.Author.FirstName)</td>
+                                <td>@(author.Author.LastName)</td>
+                            }
+                    </tr>
+                }
+        </tbody>
+    </table>
+    <button><a asp-controller="author" asp-action="add">Autorzy</a></button>
+}
