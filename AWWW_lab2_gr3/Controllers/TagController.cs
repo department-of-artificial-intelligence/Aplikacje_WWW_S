@@ -11,7 +11,26 @@ namespace AWWW_lab2_gr3.Controllers {
             _dbContext = dbContext;
         }
         public IActionResult Index() {
-            return View();
+            var tags = _dbContext.Tags.ToList();
+            return View(tags);
+        }
+
+        public IActionResult Add() {
+            return View("Add");
+        }
+
+        [HttpPost]
+        public IActionResult Add(Tag tag){
+            if (tag == null){
+                return View("Error");
+            }
+            _dbContext.Tags.Add(tag);
+            try {
+                _dbContext.SaveChanges();
+            } catch (Exception ex) {
+                return View("Error");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

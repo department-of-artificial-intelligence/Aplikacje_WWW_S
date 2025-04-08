@@ -1,13 +1,29 @@
 
 <h1>@ViewBag.Title</h1>
 
-<p>Witamy na stronie głównej!</p>
+<h3>Witamy na stronie głównej!</h3>
+<br>
 
-<div>
-    <h4><a asp-controller="author" asp-action="index">Autorzy</a></h4>
-    <h4><a asp-controller="category" asp-action="index">Kategorie</a></h4>
-    <h4><a asp-controller="league" asp-action="index">Ligi</a></h4>
-    <h4><a asp-controller="matchEvent" asp-action="index">Wydarzenia</a></h4>
-    <h4><a asp-controller="position" asp-action="index">Pozycje</a></h4>
-    <h4><a asp-controller="tag" asp-action="index">Tagi</a></h4>
-</div>
+
+<table>
+    <tbody>
+        <tr>
+            <td><a asp-controller="author" asp-action="index">Autorzy</a></td>
+        <tr>
+        <tr>
+            <td><a asp-controller="category" asp-action="index">Kategorie</a></td>
+        <tr>
+        <tr>
+            <td><a asp-controller="league" asp-action="index">Ligi</a></td>
+        </tr>
+        <tr>
+            <td><a asp-controller="eventType" asp-action="index">Wydarzenia</a></td>
+        </tr>
+        <tr>
+            <td><a asp-controller="position" asp-action="index">Pozycje</a></td>
+        </tr>
+        <tr>
+            <td><a asp-controller="tag" asp-action="index">Tagi</a></td>
+        </tr>
+    </tbody>
+</table>

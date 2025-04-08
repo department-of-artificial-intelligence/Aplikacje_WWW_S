@@ -1,0 +1,34 @@
+@model ICollection<AWWW_lab2_gr3.Models.League>
+
+<h1>Ligi</h1>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Kraj</th>
+                <th>Poziom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var league in Model)
+            {
+                <tr>
+                    <td>@league.Name</td>
+                    <td>@league.Country</td>
+                    <td>@league.Level</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ta strona nie ma jeszcze żadnych danych.</p>
+}
+
+<form asp-controller="League" asp-action="Add" method="get">
+    <button type="submit">Dodaj ligę</button>
+</form>

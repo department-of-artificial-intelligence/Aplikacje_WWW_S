@@ -1,28 +1,32 @@
-@model ICollection<AS_l2.Models.Author>
+@model ICollection<AWWW_lab2_gr3.Models.Author>
 
-<h1>@ViewBag.Title</h1>
-
-<p>Witamy na stronie głównej</p>
+<h1>Autorzy</h1>
 
 @if (Model != null)
 {
     <table>
         <thead>
-            <th>Imię</th>
-            <th>Nazwisko</th>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+            </tr>
         </thead>
         <tbody>
-            foreach (var author in Model)
-                {
-                    <tr>
-                        @if (@author.Author != null)
-                            {
-                                <td>@(author.Author.FirstName)</td>
-                                <td>@(author.Author.LastName)</td>
-                            }
-                    </tr>
-                }
+            @foreach (var author in Model)
+            {
+                <tr>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                </tr>
+            }
         </tbody>
     </table>
-    <button><a asp-controller="author" asp-action="add">Autorzy</a></button>
 }
+else
+{
+    <p>Ta strona nie ma jeszcze żadnych danych.</p>
+}
+
+<form asp-controller="Author" asp-action="Add" method="get">
+    <button type="submit">Dodaj autora</button>
+</form>

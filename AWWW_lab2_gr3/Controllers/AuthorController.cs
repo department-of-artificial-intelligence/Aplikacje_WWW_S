@@ -11,7 +11,8 @@ namespace AWWW_lab2_gr3.Controllers {
             _dbContext = dbContext;
         }
         public IActionResult Index() {
-            return View();
+            var authors = _dbContext.Authors.ToList();
+            return View(authors);
         }
 
         public IActionResult Add()
@@ -29,7 +30,7 @@ namespace AWWW_lab2_gr3.Controllers {
                     return View("Error");
 
                 }
-                _dbContext.Author.Add(author);
+                _dbContext.Authors.Add(author);
 
                 try
                 {
@@ -40,7 +41,7 @@ namespace AWWW_lab2_gr3.Controllers {
                     return View("Error");
                 }
 
-                return View();
+                return RedirectToAction("Index");
             }
             return View("Error");
         }

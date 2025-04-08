@@ -1,0 +1,30 @@
+@model ICollection<AWWW_lab2_gr3.Models.Position>
+
+<h1>Pozycje</h1>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Model)
+            {
+                <tr>
+                    <td>@position.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ta strona nie ma jeszcze żadnych danych.</p>
+}
+
+<form asp-controller="Position" asp-action="Add" method="get">
+    <button type="submit">Dodaj kategorię</button>
+</form>

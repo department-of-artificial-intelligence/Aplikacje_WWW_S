@@ -2,29 +2,31 @@ using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr3.Models;
 
 namespace AWWW_lab2_gr3.Controllers {
-    public class LeagueController : Controller {
+    public class EventTypeController : Controller {
 
         private readonly MyDbContext _dbContext;
 
-        public LeagueController(MyDbContext dbContext)
+        public EventTypeController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public IActionResult Index() {
-            var leagues = _dbContext.Leagues.ToList();
-            return View(leagues);
+            var eventTypes = _dbContext.EventTypes.ToList();
+            return View(eventTypes);
         }
 
-        public IActionResult Add() {
+        public IActionResult Add()
+        {
             return View("Add");
         }
 
         [HttpPost]
-        public IActionResult Add(League league){
-            if (league == null){
+        public IActionResult Add(EventType eventType)
+        {
+            if (eventType == null){
                 return View("Error");
             }
-            _dbContext.Leagues.Add(league);
+            _dbContext.EventTypes.Add(eventType);
             try {
                 _dbContext.SaveChanges();
             } catch (Exception ex) {

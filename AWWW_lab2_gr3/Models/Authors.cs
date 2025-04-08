@@ -6,5 +6,10 @@ namespace AWWW_lab2_gr3.Models {
 
         public ICollection<Article> Articles {get; set;}
 
+        public Author()
+        {
+            Articles = new List<Article>();
+        }
+
     }
 }

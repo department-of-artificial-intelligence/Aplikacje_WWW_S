@@ -1,6 +1,6 @@
-@model ICollection<AWWW_lab2_gr3.Models.Tag>
+@model ICollection<AWWW_lab2_gr3.Models.EventType>
 
-<h1>Tagi</h1>
+<h1>Rodzaj wydarzenia</h1>
 
 @if (Model != null)
 {
@@ -11,10 +11,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var tag in Model)
+            @foreach (var eventType in Model)
             {
                 <tr>
-                    <td>@tag.Name</td>
+                    <td>@eventType.Name</td>
                 </tr>
             }
         </tbody>
@@ -25,6 +25,6 @@ else
     <p>Ta strona nie ma jeszcze żadnych danych.</p>
 }
 
-<form asp-controller="Tag" asp-action="Add" method="get">
-    <button type="submit">Dodaj kategorię</button>
+<form asp-controller="eventType" asp-action="Add" method="get">
+    <button type="submit">Dodaj rodzaj wydarzenia</button>
 </form>

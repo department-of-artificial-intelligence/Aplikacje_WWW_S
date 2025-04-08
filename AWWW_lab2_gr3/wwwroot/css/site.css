@@ -45,6 +45,7 @@ main {
     background-color: #fff;
     margin: 2rem auto;
     max-width: 800px;
+    min-height: 600px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -59,6 +60,99 @@ footer {
 
 h4 {
     margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+button, .btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #da7e28;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #ffdd57;
+}
+
+button:focus, .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(218, 126, 40, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form p {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #da7e28;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(218, 126, 40, 0.5);
+}
+
+button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    background-color: #da7e28;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffdd57;
 }
 
 
@@ -77,3 +171,4 @@ h4 {
         margin: 1rem;
     }
 } 
+

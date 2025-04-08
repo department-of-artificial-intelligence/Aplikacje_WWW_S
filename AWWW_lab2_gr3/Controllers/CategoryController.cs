@@ -11,7 +11,34 @@ namespace AWWW_lab2_gr3.Controllers {
             _dbContext = dbContext;
         }
         public IActionResult Index() {
-            return View();
+            var categories = _dbContext.Categories.ToList();
+            return View(categories);
+        }
+
+        public IActionResult Add() {
+            return View("Add");
+        }
+
+        [HttpPost]
+        public IActionResult Add(Category category) {
+            if (ModelState.IsValid)
+            {
+                if (category == null) {
+                    return View("Error");
+                }
+                _dbContext.Categories.Add(category);
+                try
+                {
+                    _dbContext.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return View("Error");
+                }
+
+                return RedirectToAction("Index");
+            }
+            return View("Error");
         }
     }
 }

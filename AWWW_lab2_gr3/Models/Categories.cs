@@ -4,5 +4,10 @@ namespace AWWW_lab2_gr3.Models {
         public string Name {get;set;}
         
         public ICollection<Article> Articles {get;set;}
+
+        public Category()
+        {
+            Articles = new List<Article>();
+        }
     }
 }
