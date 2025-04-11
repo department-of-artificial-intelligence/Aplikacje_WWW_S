@@ -1,8 +1,19 @@
-@model AWWW_lab2_gr3.Models.Author
+@model ICollection<AWWW_lab2_gr3.Models.Author>
 
 
 
 <h1>Witamy w zakładce Autor!</h1>
 <p>
     Autorzy będą tutaj.
+    <a asp-action="Create" asp-controller="Author" class="w3-btn ">Dodaj</a><br>
+    <table>
+    @if(Model != null){
+    @foreach (var author in Model)
+            {
+                <tr>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                </tr>
+            }}
+    </table>
 </p>

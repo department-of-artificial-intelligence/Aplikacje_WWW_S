@@ -6,11 +6,11 @@ namespace AWWW_lab2_gr3.Controllers{
     public class LeagueController : Controller
     {
 
-        private readonly AppDbContext _dbcontext;
+        private readonly AppDbContext _dbContext;
 
         public LeagueController(AppDbContext db)
         {
-            _dbcontext = db;
+            _dbContext = db;
         }
 
         

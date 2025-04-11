@@ -6,11 +6,11 @@ namespace AWWW_lab2_gr3.Controllers{
     public class PositionController : Controller
     {
 
-        private readonly AppDbContext _dbcontext;
+        private readonly AppDbContext _dbContext;
 
         public PositionController(AppDbContext db)
         {
-            _dbcontext = db;
+            _dbContext = db;
         }
 
 

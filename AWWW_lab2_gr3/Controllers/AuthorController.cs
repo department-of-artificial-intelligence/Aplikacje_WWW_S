@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr3.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AWWW_lab2_gr3.Controllers{
 
@@ -7,76 +8,45 @@ namespace AWWW_lab2_gr3.Controllers{
     {
 
     
-        private readonly AppDbContext _dbcontext;
+        private readonly AppDbContext _dbContext;
 
         public AuthorController(AppDbContext db)
         {
-            _dbcontext = db;
+            _dbContext = db;
         }
 
         public IActionResult Index()
         {
             ViewBag.Title="Autorzy";
-            return View();
+            var authors = _dbContext.Authors.ToList();
+            return View("Index",authors);
+
         }
 
+        [HttpGet]
 
-    
-    }
-}
-
-
-/*
-[HttpGet]
         public IActionResult Create()
         {
-            var newTag = new Tag();
-
-            var articles = _dbContext.Articles.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Title
-            }).ToList();
-
-            ViewBag.Articles = articles;
-
-            return View(newTag);
+           return View(new Author());
+    
         }
 
+
         [HttpPost]
-        public IActionResult Create(Tag tag, List<int> ArticleIds)
+
+        public IActionResult Create(Author aut)
         {
-            if (ModelState.IsValid)
-            {
-                var selectedArticles = _dbContext.Articles
-                    .Where(a => ArticleIds.Contains(a.Id))
-                    .ToList();
-                tag.Articles = selectedArticles;
                 try
                 {
-                    _dbContext.Tags.Add(tag);
+                    _dbContext.Authors.Add(aut);
+                    _dbContext.SaveChanges();
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Nie udało się dodać tagu: " + e.Message);
+                    throw new Exception("Nie udało się dodać Autora: " + e.Message);
                 }
-                _dbContext.SaveChanges();
 
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                var selectedArticlesIds = tag.Articles.Select(a => a.Id).ToList();
-
-                var articles = _dbContext.Articles.Select(a => new SelectListItem
-                {
-                    Value = a.Id.ToString(),
-                    Text = a.Title,
-                    Selected = selectedArticlesIds.Contains(a.Id)
-                });
-
-                ViewBag.Articles = articles;
-                return View(tag);
-            }
+            
         }
-*/
+}}
