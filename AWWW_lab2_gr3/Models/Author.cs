@@ -5,6 +5,6 @@ namespace AWWW_lab2_gr3.Models
         public int Id {get; set;}
         public string FirstName {get; set;}
         public string LastName {get; set;}
-        public Article Article {get; set;}
+        public Article? Article {get; set;}
     }
 }

@@ -6,6 +6,6 @@ namespace AWWW_lab2_gr3.Models
         public string Title {get; set;}
         public string Content {get; set;}
         public virtual Article Articles {get; set;}
-        public int ArticleId {get; set;}
+        public int? ArticleId {get; set;}
     }
 }

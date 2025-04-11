@@ -1,0 +1,16 @@
+@model AS_l2.Models.MatchEvent
+
+<h1>Dodaj Zdarzenie Meczowe</h1>
+
+<form asp-route="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Minute">Minuta meczu :</label>
+        <input asp-for="Minute" class="w3-input w3-border"/>
+    </p>
+    
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
+
+

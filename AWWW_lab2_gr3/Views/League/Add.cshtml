@@ -1,0 +1,23 @@
+@model AS_l2.Models.League
+
+<h1>Dodaj Ligę</h1>
+
+<form asp-route="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Name">Nazwa ligi :</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="Country">Państwo :</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="Name">Poziom :</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
+
+

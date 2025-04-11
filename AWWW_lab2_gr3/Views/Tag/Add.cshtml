@@ -1,0 +1,24 @@
+@model AS_l2.Models.Tag
+
+<h1>Dodaj Tag</h1>
+
+<form asp-route="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Name">Nazwa Tagu :</label>
+        <input asp-for="Name" class="w3-input w3-border"/><br>
+        <label asp-for="Articles">Artykuły :</label>
+        @foreach(var ar in @ViewBag.Articles)
+        {
+            <p>
+                <label>@ar.Text</label>
+                <input type="checkbox" name="ArticleIds" value="@ar.Value" class="w3-check"/>
+            </p>
+        }
+    </p>
+    
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
+
+

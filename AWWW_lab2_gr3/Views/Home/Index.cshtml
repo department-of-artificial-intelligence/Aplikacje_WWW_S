@@ -3,11 +3,14 @@
 <p>Witamy na stronie głównej</p>
 
 <p>
-    <p>Artykuły:</p>
+    <p>Wszystkie możliwosći:</p>
 
     <ul>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=1> Artykuł 1</a></li>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=2> Artykuł 2</a></li>
-        <li><a asp-controller="article" asp-action="index" asp-route-id=3> Artykuł 3</a></li>
+        <li><a href="@Url.Action("Index","Author")"> Autorzy</a></li>
+        <li><a asp-controller="Category" asp-action="Index" > Kategorie</a></li>
+        <li><a asp-controller="league" asp-action="index" > Ligi</a></li>
+        <li><a asp-controller="matchevent" asp-action="index" > Zdarzenia Meczowe</a></li>
+        <li><a asp-controller="position" asp-action="index" > Pozycje</a></li>
+        <li><a asp-controller="tag" asp-action="index" > Tagi</a></li>
     </ul>
 </p>

@@ -5,6 +5,6 @@ namespace AWWW_lab2_gr3.Models
         public int Id {get; set;}
         public string Name {get; set;}
         public virtual MatchEvent MatchEvent {get; set;}
-        public int MatchEventId {get; set;}
+        public int? MatchEventId {get; set;}
     }
 }
