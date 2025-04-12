@@ -1,8 +1,19 @@
-@model AWWW_lab2_gr3.Models.League
+@model ICollection<AWWW_lab2_gr3.Models.League>
 
 <h1>@ViewBag.Title</h1>
 
 <h1>Witamy w zakładce Ligi!</h1>
 <p>
-    Tutaj będą Logo.
+    Tutaj będą Ligi. <a asp-action="Add" asp-controller="League" class="w3-btn">Dodaj</a><br>
+    <table>
+    @if(Model != null){
+    @foreach (var l in Model)
+            {
+                <tr>
+                    <td>@l.Name</td>
+                    <td>@l.Country</td>
+                    <td>@l.Level</td>
+                </tr>
+            }}
+    </table>
 </p>

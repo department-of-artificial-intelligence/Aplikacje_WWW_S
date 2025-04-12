@@ -1,8 +1,17 @@
-@model AWWW_lab2_gr3.Models.Position
-
+@model ICollection<AWWW_lab2_gr3.Models.Position>
 <h1>@ViewBag.Title</h1>
 
 <h1>Witamy w zakładce Pozycje</h1>
 <p>
-    Tu będą pozycje.
+    Tu będą pozycje.<a asp-action="Add" asp-controller="Position" class="w3-btn">Dodaj</a>
+    <table>
+    @if(Model != null){
+        @foreach(var p in Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+            </tr>
+        }
+    }
+    </table>
 </p>

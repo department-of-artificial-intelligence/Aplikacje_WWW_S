@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr3.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AWWW_lab2_gr3.Controllers{
 
@@ -19,9 +20,31 @@ namespace AWWW_lab2_gr3.Controllers{
         {
         
             ViewBag.Title = "Wydarzenia meczowe";
-            return View();
+            var events = _dbContext.MatchEvents.ToList();
+            return View("Index",events);
         }
-    
+
+        [HttpGet]
+
+        public IActionResult Add()
+        {
+            return View(new MatchEvent());
+        }
+
+        [HttpPost]
+
+        public IActionResult Add(MatchEvent me)
+        {
+            try{
+                _dbContext.MatchEvents.Add(me);
+                _dbContext.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Nie udało się dodać zdarzenia : " + e.Message);
+            }
+            return RedirectToAction("Index");
+        }
     }
 
 

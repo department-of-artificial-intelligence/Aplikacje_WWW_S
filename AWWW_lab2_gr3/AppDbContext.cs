@@ -15,6 +15,8 @@ namespace AWWW_lab2_gr3
         public virtual DbSet<Position> Positions {get; set;}
         public virtual DbSet<Player> Players { get; set;}
         public virtual DbSet<Match> Matches {get; set;}
+        public virtual DbSet<League> Leagues {get; set;}
+        public virtual DbSet<Category> Categories {get; set;}
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

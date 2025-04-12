@@ -1,8 +1,18 @@
-@model AWWW_lab2_gr3.Models.Category
+@model ICollection<AWWW_lab2_gr3.Models.Category>
 
 <h1>@ViewBag.Title</h1>
 
 <h1>Witamy w zakładce Kategoria!</h1>
 <p>
     Tutaj będą katrgorie.
+    <a asp-action="Add" asp-controller="Category" class="w3-btn ">Dodaj</a><br>
+     <table>
+    @if(Model != null){
+    @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                </tr>
+            }}
+    </table>
 </p>

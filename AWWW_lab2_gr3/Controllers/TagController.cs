@@ -18,7 +18,8 @@ namespace AWWW_lab2_gr3.Controllers{
         public IActionResult Index()
         {
             ViewBag.Title = "Tagi";
-            return View();
+            var tags = _dbContext.Tags.ToList();
+            return View("Index",tags);
         }
     
         [HttpGet]

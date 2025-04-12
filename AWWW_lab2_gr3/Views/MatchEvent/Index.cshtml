@@ -1,8 +1,19 @@
-@model AWWW_lab2_gr3.Models.MatchEvent
+@model ICollection<AWWW_lab2_gr3.Models.MatchEvent>
 
 <h1>@ViewBag.Title</h1>
 
 <h1>Witamy w zakładce Eventy!</h1>
 <p>
-    Tu będą Eventy.
+    Tu będą Eventy.<a asp-action="Add" asp-controller="MatchEvent" class="w3-btn">Dodaj</a><br>
+    <table>
+    @if(Model != null)
+    {
+        @foreach(var me in Model)
+        {
+            <tr>
+                <td>@me.Minute</td>
+            </tr>
+        }
+    }
+    </table>
 </p>
