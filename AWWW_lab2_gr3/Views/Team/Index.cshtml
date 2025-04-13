@@ -1,0 +1,18 @@
+@model ICollection<AWWW_lab2_gr3.Models.Team>
+
+<h1>Witamy w zakładce Drużyn!</h1>
+<p>
+    Drużyny będą tutaj.
+    <a asp-action="Add" asp-controller="Team" class="w3-btn ">Dodaj</a><br>
+    <table>
+    @if(Model != null){
+    @foreach (var team in Model)
+            {
+                <tr>
+                    <td>@team.Name</td>
+                    <td>@team.Country</td>
+                    <td>@team.City</td>
+                </tr>
+            }}
+    </table>
+</p>

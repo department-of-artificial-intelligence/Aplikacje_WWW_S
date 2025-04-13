@@ -1,0 +1,18 @@
+@model ICollection<AWWW_lab2_gr3.Models.Player>
+
+<h1>Witamy w zakładce Autor!</h1>
+<p>
+    Gracze będą tutaj.
+    <a asp-action="Add" asp-controller="Player" class="w3-btn ">Dodaj</a><br>
+    <table>
+    @if(Model != null){
+    @foreach (var player in Model)
+            {
+                <tr>
+                    <td>@player.FirstName</td>
+                    <td>@player.LastName</td>
+                    <td>@player.Country</td>
+                </tr>
+            }}
+    </table>
+</p>
