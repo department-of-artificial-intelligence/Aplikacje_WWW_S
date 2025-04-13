@@ -1,0 +1,25 @@
+@model AWWW_lab02_gr3.Models.Author
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<h4>Article</h4>
+<hr />
+<div>
+    <form asp-action="Add">
+        <label asp-for="FirstName">Firstname:</label>
+        <input type="text" asp-for="FirstName" /><br />
+
+        <label asp-for="LastName">Lastname:</label>
+        <input type="text" asp-for="LastName" /><br />
+
+        <input type="submit" value="Create" />
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to list</a>
+</div>

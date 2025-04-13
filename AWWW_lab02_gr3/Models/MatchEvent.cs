@@ -8,9 +8,9 @@ public class MatchEvent
     public int EventTypeId {get; set;}
     public EventType? EventType {get; set;}
 
-    public int MatchPlayerId {get; set;}
+    public int? MatchPlayerId {get; set;}
     public MatchPlayer? MatchPlayer {get; set;}
 
     public int MatchId {get; set;}
-    public Match? Match {get; set;}
+    public Match Match {get; set;} = null!;
 }

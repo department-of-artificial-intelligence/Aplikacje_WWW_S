@@ -8,7 +8,8 @@ public class Team
     public string City {get; set;} = null!;
     public DateTime FoundingDate {get; set;}
 
-    public ICollection<Match>? Matches {get; set;}
+    public ICollection<Match>? HomeMatches {get; set;}
+    public ICollection<Match>? AwayMatches {get; set;}
     
     public int LeagueId {get; set;}
     public League? League {get ;set;}
