@@ -16,6 +16,23 @@
         <input asp-for="Country" class="w3-input w3-border"/>
     </p>
     <p>
+        <label asp-for="TeamId">Drużyny :</label>
+        @foreach(var t in @ViewBag.Teams)
+        {
+            <label>@t.Text</label>
+            <input type="radio" name="TeamId" value="@t.Value" class="w3-check">
+        }
+    </p>
+    <p>
+        <label asp-for="Positions">Pozycje :</label>
+        @foreach(var p in @ViewBag.Positions)
+        {
+            <label>@p.Text</label>
+            <input type="checkbox" name="Positions" value="@p.Value" class="w3-check">
+        }
+    </p>
+
+    <p>
         <button type="submit" class="w3-btn w3-border">Dodaj</button>
     </p>
 </form>
