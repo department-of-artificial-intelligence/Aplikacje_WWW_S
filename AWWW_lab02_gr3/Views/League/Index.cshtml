@@ -1,0 +1,26 @@
+@model IEnumerable<AWWW_lab02_gr3.Models.League>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Add">Create new</a>
+</p>
+
+<div>
+    @if(Model != null)
+    {
+        @foreach(var item in Model)
+        {
+            <p>
+                <b>Id: </b> @Html.DisplayFor(modelItem => item.Id)<br />
+                <b>Name: </b> @Html.DisplayFor(modelItem => item.Name)<br />
+                <b>Country: </b> @Html.DisplayFor(modelItem => item.Country)<br />
+                <b>Level: </b> @Html.DisplayFor(modelItem => item.Level)<br />
+            </p>
+        }
+    }
+</div>
