@@ -1,0 +1,47 @@
+@model ICollection<AWWW_lab2_gr3.Models.Team>
+
+<h1>Drużyny</h1>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Kraj</th>
+                <th>Miasto</th>
+                <th>Data założenia</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var team in Model)
+            {
+                <tr>
+                    <td>@team.Name</td>
+                    <td>@team.Country</td>
+                    <td>@team.City</td>
+                    <td>@team.FoundingDate</td>
+                    <td>
+                        <form asp-controller="Team" asp-action="Edit" asp-route-id="@team.Id" method="get">
+                            <button type="submit">Edytuj</button>
+                        </form>
+                        <form asp-controller="Team" asp-action="Delete" asp-route-id="@team.Id" method="get">
+                            <button type="submit">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+
+                
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ta strona nie ma jeszcze żadnych danych.</p>
+}
+
+<form asp-controller="Team" asp-action="Add" method="get">
+    <button type="submit">Dodaj drużynę</button>
+</form>

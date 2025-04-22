@@ -1,0 +1,37 @@
+@model AWWW_lab2_gr3.Models.Team;
+
+<h1>Dodaj drużynę</h1>
+
+<form asp-route="Add" method="post" class="w3-container">    
+    <p>
+        <label asp-for="Name">Nazwa:</label>
+        <input asp-for="Name" class="w3-input w3-border"/>
+    </p>
+        <p>
+        <label asp-for="Country">Kraj:</label>
+        <input asp-for="Country" class="w3-input w3-border"/>
+    </p>
+        <p>
+        <label asp-for="City">Miasto:</label>
+        <input asp-for="City" class="w3-input w3-border"/>
+    </p>
+        <p>
+        <label asp-for="FoundingDate">Data założenia:</label>
+        <input type="date" asp-for="FoundingDate" class="w3-input w3-border"/>
+    </p>
+    <p>
+        <label asp-for="League">Data założenia:</label>
+        <select name="LeagueId" asp-for="League" class="w3-select w3-border">
+            <option value="">-- wybierz ligę --</option>
+            @foreach (SelectListItem league in ViewBag.Leagues)
+            {
+                <option value="@league.Value">@league.Text</option>
+            }
+        </select>
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
+
+
