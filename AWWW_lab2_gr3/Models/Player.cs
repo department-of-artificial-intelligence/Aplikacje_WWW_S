@@ -8,7 +8,8 @@ namespace AWWW_lab2_gr3.Models
         public DateTime BirthDate { get; set;}
         public virtual Team Team {get; set;}
         public int? TeamId {get; set;}
-        public ICollection<Position>? Positions {get; set;}
+        public virtual Position
+        public int? PositionId {get; set;}
         
     }
 }

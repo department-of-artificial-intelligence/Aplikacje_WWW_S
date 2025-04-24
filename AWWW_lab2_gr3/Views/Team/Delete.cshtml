@@ -1,0 +1,9 @@
+@model AWWW_lab2_gr3.Models.Team;
+
+<h1>Usuń drużynę</h1>
+
+<h4>Czy na pewno chcesz usunąć drużynę? </h4>
+<form method="POST" asp-action="DeleteC" asp-route-id="@ViewBag.Id" class="w3-container">
+    <input type="submit" value="Usuń" class="w3-button w3-gray">
+</form>
+<a asp-controller="Team" asp-action="Index" class="w3-button w3-gray">Anuluj</a>

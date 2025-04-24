@@ -1,0 +1,60 @@
+@model AWWW_lab2_gr3.Models.Player
+
+<h1>Edit</h1>
+
+<h4>Gracz</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control">
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Positions">Pozycje:</label>
+                <select name="Positions" id="Positions" class="form-control" asp-items="ViewBag.PositionId" multiple="multiple">
+                    @foreach(var p in @ViewBag.PositionId)
+                    {
+                        <option value = "@p.Value">
+                            @p.Text;
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="Positions" class="text-danger"></span>
+            </div><br>
+                <p>
+        <label asp-for="TeamId">Drużyny :</label>
+        @foreach(var t in @ViewBag.Teams)
+        {
+            <label>@t.Text</label>
+            <input type="radio" name="TeamId" value="@t.Value" class="w3-check">
+        }
+    </p>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć</a>
+</div>

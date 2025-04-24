@@ -1,0 +1,8 @@
+@model AWWW_lab2_gr3.Models.League;
+<h1>Usuń ligę</h1>
+
+<h4>Czy na pewno chcesz usunąć ligę? </h4>
+<form method="POST" asp-action="DeleteC" asp-route-id="@ViewBag.Id" class="w3-container">
+    <input type="submit" value="Usuń" class="w3-button w3-gray">
+</form>
+<a asp-controller="League" asp-action="Index" class="w3-button w3-gray">Anuluj</a>

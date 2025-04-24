@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AWWW_lab2_gr3.Models;
-
+using Microsoft.EntityFrameworkCore;
 namespace AWWW_lab2_gr3.Controllers{
 
     public class TagController : Controller

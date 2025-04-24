@@ -1,8 +1,8 @@
 @model AWWW_lab2_gr3.Models.Team;
 
-<h1>Dodaj Drużynę</h1>
+<h1>Zmień Drużynę</h1>
 
-<form asp-action="Add" method="POST" class="w3-container">
+<form asp-action="Edit" method="POST" asp-route-id="@ViewBag.Id" class="w3-container">
     <p>
         <label asp-for="Name">Nazwa :</label>
         <input asp-for="Name" class="w3-input w3-border"/>
@@ -16,7 +16,7 @@
         <input asp-for="City" class="w3-input w3-border"/>
     </p>
     <p>
-        <label asp-for="FoundingDate">Miasto :</label>
+        <label asp-for="FoundingDate">Data założenia :</label>
         <input asp-for="FoundingDate" type="Date" class="w3-input w3-border"/>
     </p>
     <p>
@@ -27,7 +27,7 @@
                 <input type="radio" name="LeagueId" value="@l.Value" class="w3-check">
         }
     </p>
-     <p>
+    <p>
         <label asp-for="Players">Gracze :</label>
         @foreach(var p in @ViewBag.Players)
         {
@@ -36,7 +36,7 @@
         }
     </p>
     <p>
-        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+        <input type="submit" class="w3-btn w3-border" value="Zmień">
     </p>
 </form>
 

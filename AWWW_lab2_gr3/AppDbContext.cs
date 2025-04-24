@@ -34,55 +34,55 @@ namespace AWWW_lab2_gr3
             .HasOne(m => m.HomeTeam)
             .WithMany(t => t.HomeMatches)
             .HasForeignKey(m => m.HomeTeamId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
             
         modelBuilder.Entity<Match>()
             .HasOne(m => m.AwayTeam)
             .WithMany(t => t.AwayMatches)
             .HasForeignKey(m => m.AwayTeamId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Article>()
             .HasOne(m => m.Match)
             .WithMany(t => t.Articles)
             .HasForeignKey(m => m.MatchId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Article>()
             .HasOne(m => m.Category)
             .WithMany(t => t.Articles)
             .HasForeignKey(m => m.CategoryId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
             
         modelBuilder.Entity<Comment>()
             .HasOne(m => m.Articles )
             .WithMany(t => t.Comments)
             .HasForeignKey(m => m.ArticleId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Team>()
             .HasOne(m => m.League)
             .WithMany(t => t.Teams)
             .HasForeignKey(m => m.LeagueId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
         
         modelBuilder.Entity<Player>()
             .HasOne(m => m.Team)
             .WithMany(t => t.Players)
             .HasForeignKey(m => m.TeamId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Position>()
             .HasOne(m => m.Player)
             .WithMany(t => t.Positions)
             .HasForeignKey(m => m.PlayerId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Position>()
             .HasOne(m => m.MatchPlayer)
             .WithMany(t => t.Positions)
             .HasForeignKey(m => m.MatchPlayerId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
     }

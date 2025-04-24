@@ -16,6 +16,10 @@
         <input asp-for="Country" class="w3-input w3-border"/>
     </p>
     <p>
+        <label asp-for="BirthDate">Data urodzenia :</label>
+        <input asp-for="BirthDate" class="w3-input w3-border"/>
+    </p>
+    <p>
         <label asp-for="TeamId">Drużyny :</label>
         @foreach(var t in @ViewBag.Teams)
         {

@@ -5,15 +5,27 @@
 <h1>Witamy w zakładce Ligi!</h1>
 <p>
     Tutaj będą Ligi. <a asp-action="Add" asp-controller="League" class="w3-btn">Dodaj</a><br>
+</p>
     <table>
     @if(Model != null){
-    @foreach (var l in Model)
+        @foreach (var l in Model)
             {
                 <tr>
                     <td>@l.Name</td>
                     <td>@l.Country</td>
-                    <td>@l.Level</td>
+                    <td>@l.Level</td> 
+                    <td><a asp-action="Edit" asp-controller="League" class="w3-btn" asp-route-id="@l.Id">Edytuj</a><span> | </span><a asp-action="Delete" asp-controller="League" class="w3-btn" asp-route-id="@l.Id">Usuń</a></td>
+                
                 </tr>
-            }}
+                 @foreach(var t in ViewBag.Teams)
+                    {
+                        @if(l.Id.ToString() == t.Value)
+                        {
+                            <tr>
+                                <td>Drużyna :</td><td>@t.Text</td>
+                            </tr>
+                        }
+                    }
+            }
+    }
     </table>
-</p>

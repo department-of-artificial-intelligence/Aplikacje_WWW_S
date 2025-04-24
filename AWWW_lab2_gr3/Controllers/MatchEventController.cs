@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr3.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.EntityFrameworkCore;
 namespace AWWW_lab2_gr3.Controllers{
 
     public class MatchEventController : Controller
