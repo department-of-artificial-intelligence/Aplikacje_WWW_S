@@ -1,0 +1,31 @@
+﻿@model List<Kolokwium.Models.Garage>
+
+<h1>Lista garaży</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Lokalizacja</th>
+            <th>Miejsca</th>
+            <th>Auta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var garage in Model)
+        {
+            <tr>
+                <td>@garage.Nazwa</td>
+                <td>@garage.Lokalizacja</td>
+                <td>@garage.Slots</td>
+                <td>
+                    <ul>
+                        @foreach (var car in garage.Cars)
+                        {
+                            <li>@car.Marka @car.Model</li>
+                        }
+                    </ul>
+            </tr>
+        }
+    </tbody>
+</table>
