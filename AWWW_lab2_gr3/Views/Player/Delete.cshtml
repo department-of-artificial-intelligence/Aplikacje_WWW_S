@@ -1,0 +1,16 @@
+@model AWWW_lab2_gr3.Models.Player;
+
+<h1>Na pewno chcesz usunąć gracza?</h1>
+
+<form asp-controller="Player" asp-action="DeletePost" method="post" asp-route-id="@ViewBag.id" class="w3-container">    
+    <p>@ViewBag.id</p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Usuń</button>
+    </p>
+</form>
+
+<form asp-controller="Player" asp-action="Index" method="get" class="w3-container">    
+    <p>
+        <button type="submit" class="w3-btn w3-border">Anuluj</button>
+    </p>
+</form>

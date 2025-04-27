@@ -1,0 +1,40 @@
+@model ICollection<AWWW_lab2_gr3.Models.Player>
+
+<h1>Gracze</h1>
+
+@if (Model != null) {
+
+    <table>
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Kraj</th>
+                <th>Data urodzenia</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in Model) {
+                <tr>
+                    <td>@player.FirstName</td>
+                    <td>@player.LastName</td>
+                    <td>@player.Country</td>
+                    <td>@player.BirthDate</td>
+                </tr>
+                <td>
+                        <form asp-controller="Player" asp-action="Edit" asp-route-id="@player.Id" method="get">
+                            <button type="submit">Edytuj</button>
+                        </form>
+                        <form asp-controller="Player" asp-action="Delete" asp-route-id="@player.Id" method="get">
+                            <button type="submit">Usuń</button>
+                        </form>
+                    </td>
+            }
+        </tbody>
+    </table>
+
+    <form asp-controller="Player" asp-action="Add" method="get">
+        <button type="submit">Dodaj gracza</button>
+    </form>
+}

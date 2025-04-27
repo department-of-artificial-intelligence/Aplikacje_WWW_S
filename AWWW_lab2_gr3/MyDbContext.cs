@@ -19,7 +19,7 @@ namespace AWWW_lab2_gr3 {
         public virtual DbSet<MatchEvent> MatchEvents {get;set;}
         public virtual DbSet<EventType> EventTypes {get;set;}
 
-         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
 
         }

@@ -1,0 +1,34 @@
+@model AWWW_lab2_gr3.Models.Player
+
+<h1>Edytuj gracza</h1>
+
+<form asp-route="Edit" method="post" class="w3-container">    
+    <p>
+        <label asp-for="FirstName">Imię:</label>
+        <input asp-for="FirstName" class="w3-input w3-border"/>
+        <label asp-for="LastName">Nazwisko:</label>
+        <input asp-for="LastName" class="w3-input w3-border"/>
+        <label asp-for="Country">Kraj:</label>
+        <input asp-for="Country" class="w3-input w3-border"/>
+        <label asp-for="BirthDate">Data urodzenia:</label>
+        <input type="date" asp-for="BirthDate" class="w3-input w3-border"/>
+        <label asp-for="TeamId">Zespół:</label>
+        <select asp-for="TeamId" name="TeamId">
+            <option>--- Wybierz zespół ---</option>
+            @foreach (var team in ViewBag.Teams) {
+                <option value="@team.Value">@team.Text</option>
+            }
+        </select>
+        <label asp-for="Positions">Pozycja:</label>
+        <select asp-for="Positions" multiple>
+            @foreach (var position in ViewBag.Positions) {
+                <option value="@position.Value">@position.Text</option>
+            }
+        </select>
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Edytuj</button>
+    </p>
+</form>
+
+
