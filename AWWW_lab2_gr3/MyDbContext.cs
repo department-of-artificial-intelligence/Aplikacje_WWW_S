@@ -9,7 +9,7 @@ public class MyDbContext : DbContext{
     public DbSet<Comment> Comments { get; set; }
     public DbSet<MatchEvent> MatchEvents { get; set; }
     public DbSet<MatchPlayer> MatchPlayers { get; set; }
-    public DbSet<Player> Playeres { get; set; }
+    public DbSet<Player> Players { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<EventType> EventTypes { get; set; }
     public DbSet<Position> Positions { get; set; }
@@ -95,10 +95,9 @@ public class MyDbContext : DbContext{
             .OnDelete(DeleteBehavior.NoAction);
 
         modelBuilder.Entity<Player>()
-            .HasOne(m => m.Team)
-            .WithMany(t => t.Players)
-            .HasForeignKey(m => m.TeamId)
-            .OnDelete(DeleteBehavior.NoAction);
+        .HasMany(p => p.Positions)
+        .WithMany(p => p.Players)
+        .UsingEntity(j => j.ToTable("PlayerPosition"));
 
         modelBuilder.Entity<Team>()
             .HasOne(m => m.League)

@@ -6,11 +6,11 @@ using AWWW_lab2_gr3.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbContext")));
+builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
-
+Console.WriteLine("Connection string: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

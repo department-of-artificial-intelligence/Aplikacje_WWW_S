@@ -1,0 +1,24 @@
+@model List<AWWW_lab2_gr3.Models.Category>
+@{
+    ViewData["Title"] = "Category Index";
+}
+
+<h1>Kategorie</h1>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Add" class="btn btn-primary">Dodaj nową kategorię</a>

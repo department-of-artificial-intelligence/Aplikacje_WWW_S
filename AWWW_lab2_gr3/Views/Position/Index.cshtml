@@ -1,0 +1,27 @@
+@model List<AWWW_lab2_gr3.Models.Position>
+
+
+
+<h1>Lista Pozycji</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+     
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var position in Model)
+        {
+            <tr>
+                
+                <td>@position.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Add" class="btn">Dodaj</a>
+</p>
