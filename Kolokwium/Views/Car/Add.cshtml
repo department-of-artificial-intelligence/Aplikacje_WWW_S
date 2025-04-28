@@ -1,0 +1,54 @@
+@model Car
+
+<h1>Dodaj Auto</h1>
+
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="Marka">Marka </label>
+        <input asp-for="Marka" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Model </label>
+        <input asp-for="Model" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="RokProdukcji">Rok pradukcji </label>
+        <input asp-for="RokProdukcji" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="GarageId">Garaz </label>
+        <select asp-for="GarageId" asp-items="@ViewBag.garages" class="w3-input w3-border"></select>
+    </div>
+   
+
+    <div class="form-group">
+        <label asp-for="Owners">Wlasciciele </label>
+        @if (ViewBag.owners != null)
+        {
+            @foreach (var pos in ViewBag.owners)
+            {
+                <p>
+                    <input type="checkbox" name="Owners" value="@pos.Value" class="w3-check" />
+                    <label>@pos.Text</label>
+                </p>
+            }
+        }
+        else
+        {
+            <p>Brak dostêpnych pozycji.</p>
+        }
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Dodaj" class="btn btn-primary" />
+    </div>
+</form>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>
