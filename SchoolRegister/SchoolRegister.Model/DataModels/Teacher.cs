@@ -1,5 +1,10 @@
-public class Teacher {
-    public IList<Subject> Subjects { get; set; }
-    public string Title { get; set; }
-    public Teacher(IList<Subject> subjects) {}
+namespace SchoolRegister.Model.DataModels;
+
+public class Teacher : User
+{
+    public string Title {get; set;} = null!;
+
+    public IList<Subject>? Subjects {get; set;}
+
+    public Teacher() {}
 }
