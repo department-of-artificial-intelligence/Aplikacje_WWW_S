@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using AWWW_lab1_gr3.Models;
 public class ArticleController : Controller
 {
-    public IActionResult Index(int id = 1)
-    {
-        
-        var articles = new List<Articles>{
+        public IActionResult Index(int id = 1)
+        {
+
+                var articles = new List<Articles>{
 
         new Articles{
             Id = 1,
@@ -20,7 +20,7 @@ public class ArticleController : Controller
             Content = "Tresc artykulu 2",
             CreationDate = DateTime.Now
         },
-        
+
         new Articles{
             Id = 3,
             Title = "Artykul 3",
@@ -28,6 +28,6 @@ public class ArticleController : Controller
             CreationDate = DateTime.Now
         }
         };
-        return View(articles[id-1]);
-    }
+                return View(articles[id - 1]);
+        }
 }

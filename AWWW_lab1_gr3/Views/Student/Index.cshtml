@@ -1,16 +1,30 @@
-
 @model AWWW_lab1_gr3.Models.Student
-<h1>@Model.FirstName</h1>
-<p>
-    Nazwisko: @Model.LastName
-</p>
-<p>
-    Nr indeksu: @Model.IndexNumber
-</p>
-<p>
-    Data urodzenia: @Model.DateOfBirth
-</p>
-<p>
-    Kierunek: @Model.FieldOfStudy
-</p>
 
+<h2>Student Details</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Index Number</th>
+        <td>@Model.IndexNr</td>
+    </tr>
+    <tr>
+        <th>Date of Birth</th>
+        <td>@Model.DateOfBirth.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr>
+        <th>Field of Study</th>
+        <td>@Model.FieldOfStudy</td>
+    </tr>
+</table>
