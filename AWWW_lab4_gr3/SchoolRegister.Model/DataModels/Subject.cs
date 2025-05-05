@@ -10,13 +10,7 @@ public class Subject
     public int? TeacherId { get; set;}
     public IList<Grade> Grades { get; set;}
 
-    public Subject(int id, string name, string description,IList<SubjectGroup> subjectGroups, Teacher teacher , int teacherId ,  IList<Grade> grades ){
-        Id = id;
-        Name = name;
-        Description = description;
-        SubjectGroups = subjectGroups;
-        Teacher = teacher;
-        TeacherId = teacherId;
-        Grades = grades;
+    public Subject(){
+       
     }
 }
