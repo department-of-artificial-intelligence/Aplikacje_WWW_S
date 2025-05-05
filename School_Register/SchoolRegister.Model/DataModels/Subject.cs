@@ -10,6 +10,12 @@ public class Subject
 
     public IList<SubjectGroup> SubjectGroups { get; set;}
     public Teacher Teacher { get; set;}
-    public TeacherId TeacherId{ get; set;}
+    public int? TeacherId{ get; set;}
     public IList<Grade> Grades { get; set;}
+
+    public Subject()
+    {
+        SubjectGroups = new List<SubjectGroup>();
+        Grades = new List<Grade>();
+    }
 }

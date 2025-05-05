@@ -7,13 +7,8 @@ public class Teacher : User
     public IList <Subject> Subjects { get; set; }
     public string Title { get; set; }
 
-    public Teacher(IList<Subject> subjects Title title)
+  public Teacher()
     {
         Subjects = new List<Subject>();
-        Title = title;
-
-
-
     }
-
 }
