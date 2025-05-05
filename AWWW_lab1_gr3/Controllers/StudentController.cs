@@ -4,7 +4,7 @@ public class StudentController : Controller
 {
     public IActionResult Index(int id = 1)
     {
-
+        
 
         var students = new List<Student>{
         new Student{
@@ -23,10 +23,10 @@ public class StudentController : Controller
             IndexNumber = "s1325",
             DateOfBirth = new DateTime(1986, 01, 12),
             FieldOfStudy = "Informatyka"
-        },
-
+        }, 
+        
         new Student{
-
+            
             Id = 3,
             FirstName = "Janusz",
             LastName = "Bilski",
@@ -36,6 +36,6 @@ public class StudentController : Controller
         }
         };
 
-        return View(students[id - 1]);
+        return View(students[id-1]);
     }
 }

@@ -1,6 +1,7 @@
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using AWWW_lab2_gr3.Model;
-public class MyDbContext : DbContext{
+public class MyDbContext : DbContext
+{
 
     public DbSet<Match> Matches { get; set; }
     public DbSet<Team> Teams { get; set; }
@@ -9,7 +10,7 @@ public class MyDbContext : DbContext{
     public DbSet<Comment> Comments { get; set; }
     public DbSet<MatchEvent> MatchEvents { get; set; }
     public DbSet<MatchPlayer> MatchPlayers { get; set; }
-    public DbSet<Player> Playeres { get; set; }
+    public DbSet<Player> Players { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<EventType> EventTypes { get; set; }
     public DbSet<Position> Positions { get; set; }
@@ -18,7 +19,7 @@ public class MyDbContext : DbContext{
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
-        
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,13 +58,13 @@ public class MyDbContext : DbContext{
             .WithMany(t => t.Comments)
             .HasForeignKey(m => m.ArticleId)
             .OnDelete(DeleteBehavior.NoAction);
-        
+
         modelBuilder.Entity<MatchEvent>()
             .HasOne(m => m.MatchPlayer)
             .WithMany(t => t.MatchEvents)
             .HasForeignKey(m => m.MatchPlayerId)
             .OnDelete(DeleteBehavior.NoAction);
-        
+
         modelBuilder.Entity<MatchEvent>()
             .HasOne(m => m.Match)
             .WithMany(t => t.MatchEvents)
@@ -106,5 +107,5 @@ public class MyDbContext : DbContext{
             .HasForeignKey(m => m.LeagueId)
             .OnDelete(DeleteBehavior.NoAction);
     }
- 
+
 }
