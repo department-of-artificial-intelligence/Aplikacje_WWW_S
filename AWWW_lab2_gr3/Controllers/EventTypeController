@@ -1,0 +1,26 @@
+public class EventTypeController : Controller
+{
+    private readonly ApplicationDbContext _context;
+
+    public EventTypeController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(EventType type)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.EventTypes.Add(type);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+        return View(type);
+    }
+}

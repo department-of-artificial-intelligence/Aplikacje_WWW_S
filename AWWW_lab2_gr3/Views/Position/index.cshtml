@@ -1,0 +1,9 @@
+@model AWWW_lab2_gr3.Models.Position
+<h2>Dodaj pozycję</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nazwa</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <button type="submit">Zapisz</button>
+</form>

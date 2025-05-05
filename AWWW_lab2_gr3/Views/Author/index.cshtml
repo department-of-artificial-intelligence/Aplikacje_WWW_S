@@ -1,0 +1,15 @@
+@model AWWW_lab2_gr3.Models.Author
+
+<h2>Dodaj autora</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Imię</label>
+        <input asp-for="FirstName" />
+    </div>
+    <div>
+        <label>Nazwisko</label>
+        <input asp-for="LastName" />
+    </div>
+    <button type="submit">Zapisz</button>
+</form>

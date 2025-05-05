@@ -1,0 +1,29 @@
+@model AWWW_lab2_gr3.Models.Team
+@{
+    ViewBag.Title = "Dodaj drużynę";
+}
+
+<h2>Dodaj drużynę</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nazwa</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label>Kraj</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+    <div>
+        <label>Miasto</label>
+        <input asp-for="City" class="form-control" />
+    </div>
+    <div>
+        <label>Data założenia</label>
+        <input asp-for="FoundingDate" type="date" class="form-control" />
+    </div>
+    <div>
+        <label>Liga</label>
+        <select asp-for="LeagueId" class="form-control" asp-items="ViewBag.Leagues"></select>
+    </div>
+    <button type="submit">Zapisz</button>
+</form>

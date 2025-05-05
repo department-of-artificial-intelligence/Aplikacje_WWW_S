@@ -1,0 +1,9 @@
+@model AWWW_lab2_gr3.Models.EventType
+<h2>Dodaj typ wydarzenia</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nazwa</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <button type="submit">Zapisz</button>
+</form>

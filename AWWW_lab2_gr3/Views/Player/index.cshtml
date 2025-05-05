@@ -1,0 +1,21 @@
+@model AWWW_lab2_gr3.Models.Player
+<h2>Dodaj zawodnika</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Imię</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div>
+        <label>Nazwisko</label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div>
+        <label>Kraj</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+    <div>
+        <label>Data urodzenia</label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+    </div>
+    <button type="submit">Zapisz</button>
+</form>
