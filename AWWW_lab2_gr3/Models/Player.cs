@@ -12,5 +12,5 @@ public class Player {
     public virtual Team Team { get; set; }
 
     public ICollection<MatchPlayer> MatchPlayers { get; set; }
-    public ICollection<Position> Positions { get; set; }
+    public ICollection<Position> Positions { get; set; } = new List<Position>();
 }

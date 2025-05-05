@@ -1,4 +1,4 @@
-using AWWW_lab2_gr3.Models;
+﻿using AWWW_lab2_gr3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +14,10 @@ public class PlayerController : Controller
 
     public IActionResult Index()
     {
-        var playeres = _dbContext.Playeres.Include(p => p.Team)      // Załadowanie drużyny
+        var Players = _dbContext.Players.Include(p => p.Team)      // Załadowanie drużyny
                                         .Include(p => p.Positions) // Załadowanie pozycji
                                         .ToList();
-        return View(playeres);
+        return View(Players);
     }
 
     // GET: Autor/Create
@@ -59,7 +59,7 @@ public class PlayerController : Controller
         player.Team = team;
 
 
-        _dbContext.Playeres.Add(player);
+        _dbContext.Players.Add(player);
         _dbContext.SaveChanges();
         return View("Added", player);
     }
@@ -68,7 +68,7 @@ public class PlayerController : Controller
     public IActionResult Edit(int id)
     {
         // Załaduj gracza i przypisane do niego pozycje
-        var player = _dbContext.Playeres
+        var player = _dbContext.Players
             .Include(p => p.Positions) // Załadowanie pozycji gracza
             .FirstOrDefault(p => p.Id == id);
 
@@ -101,7 +101,7 @@ public class PlayerController : Controller
     [HttpPost]
     public IActionResult Edit(Player player, List<int> positions)
     {
-        var existingPlayer = _dbContext.Playeres.Include(p => p.Positions).FirstOrDefault(p => p.Id == player.Id);
+        var existingPlayer = _dbContext.Players.Include(p => p.Positions).FirstOrDefault(p => p.Id == player.Id);
         if (existingPlayer != null)
         {
             existingPlayer.FirstName = player.FirstName;
@@ -121,10 +121,10 @@ public class PlayerController : Controller
 
     public ActionResult Delete(int id)
     {
-        var player = _dbContext.Playeres.FirstOrDefault(p => p.Id == id);
+        var player = _dbContext.Players.FirstOrDefault(p => p.Id == id);
         if (player != null)
         {
-            _dbContext.Playeres.Remove(player);
+            _dbContext.Players.Remove(player);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }

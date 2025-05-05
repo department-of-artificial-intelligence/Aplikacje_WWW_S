@@ -1,0 +1,22 @@
+﻿@model AWWW_lab2_gr3.Models.Player
+
+<h1>Dodano Gracza:</h1>
+
+<div>
+    <p>@Model.FirstName</p>
+    <p>@Model.LastName</p>
+    <p>@Model.Country</p>
+    <p>@Model.BirthDate.ToString("yyyy-MM-dd")</p>
+    <p>@Model.Team.Name</p>
+    <p>Pozycje:</p>
+    <ul>
+        @foreach (var position in Model.Positions)
+        {
+            <li>@position.Name</li>
+        }
+    </ul>
+</div>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>

@@ -1,0 +1,60 @@
+﻿@model AWWW_lab2_gr3.Models.Player
+
+
+
+<h1>Dodaj Gracza</h1>
+
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="FirstName">Imie </label>
+        <input asp-for="FirstName" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Nazwisko </label>
+        <input asp-for="LastName" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Country">Kraj </label>
+        <input asp-for="Country" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="BirthDate">Data urodzenia: </label>
+        <input asp-for="BirthDate" class="w3-input w3-border" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TeamId">Druzyna: </label>
+        <select asp-for="TeamId" asp-items="@ViewBag.TeamList" class="w3-input w3-border"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Positions">Pozycja </label>
+        @if (ViewBag.PositionList != null)
+        {
+            @foreach (var pos in ViewBag.PositionList)
+            {
+                <p>
+                    <input type="checkbox" name="Positions" value="@pos.Value" class="w3-check" />
+                    <label>@pos.Text</label>
+                </p>
+            }
+        }
+        else
+        {
+            <p>Brak dostępnych pozycji.</p>
+        }
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Dodaj" class="btn btn-primary" />
+    </div>
+</form>
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+

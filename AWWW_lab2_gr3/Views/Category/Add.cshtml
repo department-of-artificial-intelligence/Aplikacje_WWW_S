@@ -1,0 +1,22 @@
+@model AWWW_lab2_gr3.Models.Category
+@{
+    ViewData["Title"] = "Dodaj Kategorię";
+}
+
+<h1>Dodaj Kategorię</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <div class="form-group">
+        <label asp-for="Name">Nazwa: </label>
+        <input asp-for="Name" class="w3-input w3-border" />
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Dodaj" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div class="back_btn">
+    <a asp-action="Index">Powrót do listy</a>
+</div>

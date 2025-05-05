@@ -1,0 +1,37 @@
+@model List<AWWW_lab2_gr3.Models.League>
+
+
+<h1>Lista Lig</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kraj</th>
+            <th>Poziom</th>
+            <th>Druzyna</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var league in Model)
+        {
+            <tr>
+                <td>@league.Name</td>
+                <td>@league.Country</td>
+                <td>@league.Level</td>
+                <td>
+                    <ul>
+                        @foreach (var team in league.Teams)
+                        {
+                            <li>@team.Name</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Add" class="btn">Dodaj</a>
+</p>
