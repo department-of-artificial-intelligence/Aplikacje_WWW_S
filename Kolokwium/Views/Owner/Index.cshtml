@@ -1,0 +1,30 @@
+﻿@model List<Owner>
+
+<h1>Lista właścicieli</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Auto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model)
+        {
+            <tr>
+                <td>@owner.Name</td>
+                <td>@owner.Surname</td>
+                
+                <td>
+                    <ul>
+                        @foreach (var car in owner.Cars)
+                        {
+                            <li>@car.Marka @car.Model</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>

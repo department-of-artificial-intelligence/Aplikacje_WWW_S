@@ -1,0 +1,38 @@
+@model List<Kolokwium.Models.Car>
+
+<h1>Lista aut</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok Produkcji</th>
+            <th>Wlasciciele</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Marka</td>
+                <td>@car.Model</td>
+                <td>@car.RokProdukcji</td>
+                <td>
+                <ul>
+                    <li>
+                        @foreach (var owner in car.Owners)
+                        {
+                            <p>@owner.Name @owner.Surname</p>
+                        }
+                    </li>
+                </ul>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<a asp-action="Add">Dodaj</a>
