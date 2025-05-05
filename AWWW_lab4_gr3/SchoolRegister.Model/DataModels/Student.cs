@@ -1,122 +1,33 @@
 namespace SchoolRegister.Model.DataModels;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class Student : User
 {
-    public int? GroupId {get; set;}
-    public Group? Group {get; set;}
+    public virtual int? GroupId { get; set; }
+    [ForeignKey("Group")]
+    public Group? Group { get; set; }
+    public virtual IList<Grade>? Grades { get; set; }
+     public Parent? Parent { get; set; }
+    [ForeignKey("Parent")]
+    public virtual int? ParentId { get; set; }
+   
 
-    public IList<Grade>? Grades {get; set;}
+    [NotMapped]
+    public double AverageGrade => Grades == null || Grades.Count == 0 ? 0.0d :
+                            Math.Round(Grades.Average(g => (int)g.GradeValue), 1);
+    [NotMapped]
+    public IDictionary<string, double> AverageGradePerSubject => Grades == null ? new Dictionary<string, double>() :
+        Grades.GroupBy(g => g.Subject.Name)
+        .Select(g => new { SubjectName = g.Key, AvgGrade = Math.Round(g.Average(avg => (int)avg.GradeValue), 1) })
+        .ToDictionary(avg => avg.SubjectName, avg => avg.AvgGrade);
+    [NotMapped]
+    public IDictionary<string, List<GradeScale>> GradesPerSubject => Grades == null ? new Dictionary<string,
+        List<GradeScale>>() : Grades
+        .GroupBy(g => g.Subject.Name)
+        .Select(g => new { SubjectName = g.Key, GradeList = g.Select(x => x.GradeValue).ToList() })
+        .ToDictionary(x => x.SubjectName, x => x.GradeList);
 
-    public int? ParentId {get; set;}
-    public Parent? Parent {get; set;}
 
-    public double AverageGrade
-    {
-        get
-        {
-            if(Grades == null || Grades.Count == 0)
-                return 0.0;
-            //return Grades.Average(g => (int)g.GradeValue);
-
-            int sum = 0;
-            double average = 0.0;
-            foreach(var grade in Grades)
-            {
-                sum += (int)grade.GradeValue;
-                average = sum / Grades.Count;
-            }
-            return average;
-
-        }
-    }
-
-    public IDictionary<string, double> AverageGradePerSubject
-    {
-        get
-        {
-            if(Grades == null || Grades.Count == 0)
-                return new Dictionary<string, double> ();
-
-            // return Grades
-            //     .GroupBy(g => g.Subject.Name)
-            //     .ToDictionary(
-            //         group => group.Key,
-            //         group => group.Average(g => (int)g.GradeValue)
-            //     );
-
-            Dictionary<string, double> averageGradePerSubject = new();
-
-            foreach(var grade in Grades)
-            {
-                string subjectName = grade.Subject.Name;
-
-                if(!averageGradePerSubject.ContainsKey(subjectName))
-                {
-                    averageGradePerSubject[subjectName] = 0;
-                }
-            }
-
-            Dictionary<string, List<int>> gradesBySubject = new();
-
-            foreach(var grade in Grades)
-            {
-                string subjectName = grade.Subject.Name;
-                int numericGrade = (int)grade.GradeValue;
-
-                if(!gradesBySubject.ContainsKey(subjectName))
-                {
-                    gradesBySubject[subjectName] = new List<int>();
-                }
-
-                gradesBySubject[subjectName].Add(numericGrade);
-            }
-
-            foreach(var entry in gradesBySubject)
-            {
-                string subject = entry.Key;
-                List<int> gradesList = entry.Value;
-
-                double average = gradesList.Average();
-
-                averageGradePerSubject[subject] = average;
-            }
-
-            return averageGradePerSubject;
-        }
-    }
-
-    public IDictionary<string, List<GradeScale>> GradesPerSubject
-    {
-        get
-        {
-
-            Dictionary<string, List<GradeScale>> result = new();
-
-            if(Grades == null || Grades.Count == 0)
-                return result;
-                
-            // return Grades
-            //     .GroupBy(g => g.Subject.Name)
-            //     .ToDictionary(
-            //         group => group.Key,
-            //         group => group.Select(g => g.GradeValue).ToList()
-            //     );
-
-            foreach(var grade in Grades)
-            {
-                string subjectName = grade.Subject.Name;
-                GradeScale gradeScale = grade.GradeValue;
-
-                if(!result.ContainsKey(subjectName))
-                {
-                    result[subjectName] = new List<GradeScale> ();
-                }
-
-                result[subjectName].Add(gradeScale);
-            }
-        
-            return result;
-        }
-    }
-
-    public Student() {}
+    public Student() { }
 }
