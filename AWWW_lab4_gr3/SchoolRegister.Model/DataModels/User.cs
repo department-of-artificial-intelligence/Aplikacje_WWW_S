@@ -9,10 +9,8 @@ public class User : IdentityUser<int>
     public string LastName {get; set;} = null!;
     public DateTime RegistrationDate {get; set;} = DateTime.Now;
 
-    public User(string Name, string Surname)
+    public User()
     {
-        FirstName = Name;
-        LastName = Surname;
     }
 
 }

@@ -6,10 +6,9 @@ namespace SchoolRegister.Model.DataModels;
 public class Teacher : User
 {
     public string Title {get; set;}
-    public IList<Subject> Subjects {get; set;} = null;
+    public IList<Subject> Subjects {get; set;} 
 
-    Teacher(string Name, string Surname, string T) : base(Name, Surname)
+    Teacher()
     {
-        Title = T;
     }  
 }
