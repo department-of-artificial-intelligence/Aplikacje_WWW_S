@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SchoolRegister.Model.DataModels;
 
 public class Grade
@@ -6,11 +9,13 @@ public class Grade
 
     public GradeScale GradeValue {get; set;}
     
+    [ForeignKey("Subject")]
     public int SubjectId {get; set;}
-    public Subject Subject {get; set;} = null!;
+    public virtual Subject Subject {get; set;} = null!;
 
-    public int StudentIt {get; set;}
-    public Student Student {get; set;} = null!;
+    [ForeignKey("Student")]
+    public int StudentId {get; set;}
+    public virtual Student Student {get; set;} = null!;
 
     public Grade() {}
 }

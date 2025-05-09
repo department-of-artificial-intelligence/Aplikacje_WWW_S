@@ -1,15 +1,20 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolRegister.Model.DataModels;
 
 public class Student : User
 {
+    [ForeignKey("Group")]
     public int? GroupId {get; set;}
-    public Group? Group {get; set;}
+    public virtual Group? Group {get; set;}
 
-    public IList<Grade>? Grades {get; set;}
+    public virtual IList<Grade>? Grades {get; set;}
 
+    [ForeignKey("Parent")]
     public int? ParentId {get; set;}
-    public Parent? Parent {get; set;}
+    public virtual Parent? Parent {get; set;}
 
+    [NotMapped]
     public double AverageGrade
     {
         get
@@ -30,6 +35,7 @@ public class Student : User
         }
     }
 
+    [NotMapped]
     public IDictionary<string, double> AverageGradePerSubject
     {
         get
@@ -85,6 +91,7 @@ public class Student : User
         }
     }
 
+    [NotMapped]
     public IDictionary<string, List<GradeScale>> GradesPerSubject
     {
         get
