@@ -31,7 +31,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .HasValue<Student>((int)RoleValue.Student)
         .HasValue<Parent>((int)RoleValue.Parent)
         .HasValue<Teacher>((int)RoleValue.Teacher);
-    
 
     modelBuilder.Entity<SubjectGroup>()
         .HasKey(sg => new {sg.GroupId, sg.SubjectId});
@@ -46,5 +45,31 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .WithMany(sg => sg.SubjectGroups)
         .HasForeignKey(s => s.SubjectId)
         .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Grade>()
+        .HasOne(s => s.Subject)
+        .WithMany(t => t.Grades)
+        .HasForeignKey(s => s.SubjectId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Student>()
+        .HasOne(s => s.Group)
+        .WithMany(g => g.Students)
+        .HasForeignKey(s => s.GroupId)
+        .OnDelete(DeleteBehavior.Restrict);
+    
+    modelBuilder.Entity<Student>()
+        .HasOne(s => s.Parent)
+        .WithMany(p => p.Students)
+        .HasForeignKey(s => s.ParentId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Subject>()
+        .HasOne(s => s.Teacher)
+        .WithMany(t => t.Subjects)
+        .HasForeignKey(s => s.TeacherId)
+        .OnDelete(DeleteBehavior.Restrict);
+    
+    
 }
 }
