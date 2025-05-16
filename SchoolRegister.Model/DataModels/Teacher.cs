@@ -8,6 +8,6 @@ namespace SchoolRegister.Model.DataModels
         public virtual IList<Subject>? Subjects { get; set; }
         
         [Required]
-        public string Title { get; set; }
+        public required string Title { get; set; }
     }
 }
