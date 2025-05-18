@@ -12,5 +12,5 @@ public class SubjectGroup
     public int GroupId {get; set;}
     public virtual Group Group {get; set;} = null!;
 
-    SubjectGroup() {}
+    public SubjectGroup() {}
 }
