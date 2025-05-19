@@ -5,13 +5,18 @@ using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
 using SchoolRegister.Services.Interfaces;
 using SchoolRegister.ViewModels.VM;
+using Microsoft.AspNetCore.Identity;
 
 namespace SchoolRegister.Services.ConcreteServices;
 
 public class SubjectService : BaseService, ISubjectService
 {
-    public SubjectService(ApplicationDbContext dbContext, ILogger logger, IMapper mapper) : base(dbContext, logger, mapper)
+
+    private readonly UserManager<User> UserManager;
+
+    public SubjectService(ApplicationDbContext dbContext, ILogger logger, IMapper mapper, UserManager<User> userManager) : base(dbContext, logger, mapper)
     {
+        UserManager = userManager;
     }
 
     public SubjectVm AddOrUpdateSubject(AddOrUpdateSubjectVm addOrUpdateVm)
