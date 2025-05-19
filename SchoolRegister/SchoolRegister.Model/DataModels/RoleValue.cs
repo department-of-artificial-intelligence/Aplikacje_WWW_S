@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore;
+using System;
+
 namespace SchoolRegister.Model.DataModels;
 
-public enum RoleValue
-{
+public enum RoleValue{
     User = 0,
     Student = 1,
     Parent = 2,
