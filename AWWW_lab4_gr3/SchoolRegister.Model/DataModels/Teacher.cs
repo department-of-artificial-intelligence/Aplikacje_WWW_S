@@ -5,10 +5,11 @@ namespace SchoolRegister.Model.DataModels;
 
 public class Teacher : User
 {
-    public string Title {get; set;}
+    public int Id { get; set; }
+    public string Title { get; set; }
     public virtual IList<Subject> Subjects {get; set;} 
 
-    Teacher()
+    public Teacher()
     {
     }  
 }
