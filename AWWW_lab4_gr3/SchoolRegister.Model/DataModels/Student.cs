@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Student : User
 {
     public virtual int? GroupId { get; set; }
-    [ForeignKey("Group")]
-    public Group? Group { get; set; }
+    [ForeignKey("GroupId")]
+    public virtual  Group? Group { get; set; }
     public virtual IList<Grade>? Grades { get; set; }
-     public Parent? Parent { get; set; }
-    [ForeignKey("Parent")]
+     public virtual Parent? Parent { get; set; }
+    [ForeignKey("ParentId")]
     public virtual int? ParentId { get; set; }
    
 
