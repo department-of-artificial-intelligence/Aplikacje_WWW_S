@@ -12,6 +12,6 @@ public class Subject
     public virtual Teacher Teacher { get; set;}
     public int? TeacherId {get; set;}
     public IList<Grade> Grades {get; set;} = null;
-    public Subject(){};
+    public Subject(){}
 
 }

@@ -9,5 +9,5 @@ public class SubjectGroup
     public int SubjectId {get; set;}
     public virtual Group Group {get; set;}
     public int GroupId { get; set;}
-    public SubjectGroup(){};
+    public SubjectGroup(){}
 }
