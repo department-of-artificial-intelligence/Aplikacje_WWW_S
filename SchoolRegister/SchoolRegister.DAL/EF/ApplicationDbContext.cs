@@ -34,6 +34,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .HasKey(sg => new {sg.GroupId, sg.SubjectId});
 
     modelBuilder.Entity<Grade>()
-        .HasKey(g => new{g.SubjectId, g.StudentId});
+        .HasKey(g => new{g.SubjectId, g.StudentId, g.DateOfIssue});
 }
 }

@@ -45,7 +45,7 @@ public class GradeService : BaseService, IGradeService
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, ex.Message);
+            Logger.LogError(ex, "Błąd na etapie save changes {message}", ex.Message);
             throw;
         }
     }

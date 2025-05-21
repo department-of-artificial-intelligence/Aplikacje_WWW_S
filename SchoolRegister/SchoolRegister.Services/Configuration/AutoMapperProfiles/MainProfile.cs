@@ -37,5 +37,9 @@ public class MainProfile : Profile
 
         CreateMap<GradeVm, AddGradeToStudentVm>();
         CreateMap<AddGradeToStudentVm, Grade>();
+
+        CreateMap<AddOrUpdateGroupVm, Group>();
+
+        CreateMap<AttachDetachSubjectGroupVm, SubjectGroup>();
     }
 }
