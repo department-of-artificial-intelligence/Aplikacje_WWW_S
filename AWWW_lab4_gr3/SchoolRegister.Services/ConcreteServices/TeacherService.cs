@@ -9,6 +9,8 @@ using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
 using SchoolRegister.Services.Interfaces;
 using SchoolRegister.ViewModels.VM;
+using Microsoft.AspNetCore.Identity;
+
 namespace SchoolRegister.Services.ConcreteServices
 {
     public class TeacherService : BaseService, ITeacherService
@@ -16,13 +18,13 @@ namespace SchoolRegister.Services.ConcreteServices
         protected UserManager<User> _userManager;
         public TeacherService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger, UserManager<User> userManager) : base(dbContext, mapper, logger) {
             _userManager = userManager;
-        };
+        }
         public TeacherVm GetTeacher(Expression<Func<Teacher, bool>> filterPredicate) {
             try
             {
-                if (filterExpression == null)
+                if (filterPredicate == null)
                     throw new ArgumentNullException($" FilterExpression is null");
-                var teacherEntity = DbContext.Teachers.FirstOrDefault(filterExpression);
+                var teacherEntity = DbContext.Users.OfType<Teacher>().FirstOrDefault(filterPredicate);
                 var teacherVm = Mapper.Map<TeacherVm>(teacherEntity);
                 return teacherVm;
             }
@@ -33,13 +35,13 @@ namespace SchoolRegister.Services.ConcreteServices
             }
         }
 
-        public IEnumerable<TeacherVm> GetTeachers([Expression<Func<Teacher, bool>> filterPredicate = null]) {
+        public IEnumerable<TeacherVm> GetTeachers(Expression<Func<Teacher, bool>> filterPredicate = null) {
             try
             {
-                var teachersEntities = DbContext.Teachers.AsQueryable();
+                var teachersEntities = DbContext.Users.OfType<Teacher>().AsQueryable();
                 if (filterPredicate != null)
                     teachersEntities = teachersEntities.Where(filterPredicate);
-                var teachersVms = Mapper.Map<IEnumerable<teachersVms>>(teachersVms);
+                var teachersVms = Mapper.Map<IEnumerable<TeacherVm>>(teachersEntities);
                 return teachersVms;
             }
             catch (Exception ex)
@@ -50,17 +52,20 @@ namespace SchoolRegister.Services.ConcreteServices
 
         }
 
-        public IEnumerable<GroupVm> GetTeachersGroup(TeachersGroupsVm getTeachersGroups) {
+        public IEnumerable<GroupVm> GetTeachersGroups(TeacherGroupsVm getTeachersGroups) {
             try
             {
                 // Selektujesz teachera -> SelectMany na subject -> Wyciągasz z nich grupy
                 // https://cezarywalenciuk.pl/blog/programing/wszystko-o-selectmany-w-linq-w-c
-                var teacher = DbContext.Users.OfType<Teacher>().FirstOrDefault(x => x.Id = getTeachersGroups.TeacherId);
-                var subs = DbContext.Subjects.SelectMany(s => s.Subjects).Where(x => x.TeacherId = teacher);
-                var groups = subs.SelectMany(l => l.SubjectGroups).Select(g => g.GroupId).Distinct().AsQueryable();
-
+                var teacherEntity = DbContext.Users.OfType<Teacher>().FirstOrDefault(x => x.Id == getTeachersGroups.TeacherId);
+                //var subs = DbContext.Subjects.SelectMany(s => s.Subjects).Where(x => x.TeacherId == teacherEntity.Id).SelectMany(s => s.SubjectId);
                 
-                return groupsVms;
+                var groupEntities = teacherEntity.Subjects
+                                    .SelectMany(s => s.SubjectGroups)
+                                    .Select(g => g.Group);
+
+                var groupVms = Mapper.Map<IEnumerable<GroupVm>>(groupEntities);
+                return groupVms;
             }
             catch (Exception ex)
             {

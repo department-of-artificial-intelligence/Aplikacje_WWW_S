@@ -8,7 +8,7 @@ namespace SchoolRegister.Services.Interfaces
 {
     public interface IStudentServica
     {
-        StudentVm GetStudent(Expression<Func<Student, bool>> filterPredicate);
-        IEnumerable<StudentVm> GetStudents([Expression<Func<Student, bool>> filterPredicate = null]);
+        /*StudentVm GetStudent(Expression<Func<Student, bool>> filterPredicate);
+        IEnumerable<StudentVm> GetStudents(Expression<Func<Student, bool>> filterPredicate = null);*/
     }
 }
