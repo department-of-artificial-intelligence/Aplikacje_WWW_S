@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SchoolRegister.Model.DataModels {
     public class Parent : User
     {
-        public int Id { get; set; }
+        //public int Id {get;set;}
         public virtual IList<Student> Students { get; set; }
 
         public Parent() {

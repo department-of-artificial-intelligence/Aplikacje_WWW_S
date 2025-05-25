@@ -12,7 +12,7 @@ public class Subject {
         public string Name { get; set; }
         public string Description { get; set; }
         [ForeignKey("Teacher")]
-        public int TeacherId { get; set; }
+        public int? TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; }
         public virtual IList<SubjectGroup> SubjectGroups { get; set; } 
         public virtual IList<Grade> Grades { get; set; } 

@@ -12,7 +12,7 @@ namespace SchoolRegister.Model.DataModels {
         public int SubjectId { get; set; }
         public virtual Subject Subject { get; set; } 
         [ForeignKey("Group")]
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
         public virtual Group Group { get; set; }
 
         public SubjectGroup() {

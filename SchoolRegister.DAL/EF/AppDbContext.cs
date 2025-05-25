@@ -8,6 +8,8 @@ namespace SchoolRegister.DAL.EF {
     public class AppDbContext : IdentityDbContext<User,Role,int>
     {
         public DbSet<Grade> Grades {get;set;}
+        public DbSet<Student> Students {get;set;}
+        public DbSet<Teacher> Teachers {get;set;}
         public DbSet<Group> Groups {get;set;}
         public DbSet<Subject> Subjects {get;set;}
         public DbSet<SubjectGroup> SubjectGroups {get;set;}
