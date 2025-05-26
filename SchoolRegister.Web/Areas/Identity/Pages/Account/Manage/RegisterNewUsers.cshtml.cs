@@ -15,14 +15,14 @@ namespace SchoolRegister.Web.Areas.Identity.Pages.Account.Manage
 		private readonly UserManager<User> _userManager;
 		private readonly ILogger _logger;
 		private readonly IMapper _mapper;
-		private readonly ApplicationDbContext _dbContext;
+		private readonly AppDbContext _dbContext;
 		[BindProperty]
 		public RegisterNewUserVm NewUserVm { get; set; } = default!;
 		[TempData]
 		public string StatusMessage { get; set; } = default!;
 		public RegisterNewUsersDataModel(UserManager<User> userManager,
 		ILogger logger,
-		ApplicationDbContext dbContext,
+		AppDbContext dbContext,
 		IMapper mapper)
 		{
 			_userManager = userManager;

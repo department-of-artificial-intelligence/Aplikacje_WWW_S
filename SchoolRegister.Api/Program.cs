@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(MainProfile));
 builder.Services.AddCors();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 builder.Services.AddIdentity<User, Role>(options =>
@@ -26,7 +26,7 @@ builder.Services.AddIdentity<User, Role>(options =>
 })
 .AddRoleManager<RoleManager<Role>>()
 .AddUserManager<UserManager<User>>()
-.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.Configure<JwtOptionsVm>(options => builder.Configuration.GetSection("JwtOptions").Bind(options));
