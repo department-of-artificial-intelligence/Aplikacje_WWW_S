@@ -9,11 +9,14 @@ using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
 using SchoolRegister.Services.Interfaces;
 using SchoolRegister.ViewModels.VM;
+
 namespace SchoolRegister.Services.ConcreteServices
 {
     public class SubjectService : BaseService, ISubjectService
     {
-        public SubjectService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger):base(dbContext, mapper, logger) {}
+        public SubjectService(ApplicationDbContext dbContext, IMapper mapper, ILogger logger)
+            : base(dbContext, mapper, logger) { }
+
         public SubjectVm AddOrUpdateSubject(AddOrUpdateSubjectVm addOrUpdateVm)
         {
             try
@@ -35,6 +38,7 @@ namespace SchoolRegister.Services.ConcreteServices
                 throw;
             }
         }
+
         public SubjectVm GetSubject(Expression<Func<Subject, bool>> filterExpression)
         {
             try
@@ -51,7 +55,10 @@ namespace SchoolRegister.Services.ConcreteServices
                 throw;
             }
         }
-        public IEnumerable<SubjectVm> GetSubjects(Expression<Func<Subject, bool>> filterExpression = null)
+
+        public IEnumerable<SubjectVm> GetSubjects(
+            Expression<Func<Subject, bool>> filterExpression = null
+        )
         {
             try
             {
