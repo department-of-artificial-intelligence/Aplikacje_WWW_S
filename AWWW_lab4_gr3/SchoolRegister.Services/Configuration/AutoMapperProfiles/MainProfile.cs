@@ -10,7 +10,7 @@ public class MainProfile : Profile
     {
         //AutoMapper maps
         CreateMap<Subject, SubjectVm>() // map from Subject(src) to SubjectVm(dst)
-            // custom mapping: FirstName and LastName concat string to TeacherName
+                                        // custom mapping: FirstName and LastName concat string to TeacherName
             .ForMember(
                 dest => dest.TeacherName,
                 x =>
@@ -48,5 +48,7 @@ public class MainProfile : Profile
         //....... other maps.........
 
         CreateMap<Teacher, TeacherVm>();
+        CreateMap<Grade, GradeVm>();
+        CreateMap<GetGradesReportVm, Grade>();
     }
 }

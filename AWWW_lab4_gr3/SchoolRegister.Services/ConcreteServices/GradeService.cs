@@ -5,10 +5,13 @@ using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
 using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
 using SchoolRegister.Services.Interfaces;
 using SchoolRegister.ViewModels.VM;
+using Microsoft.AspNetCore;
+
 
 namespace SchoolRegister.Services.ConcreteServices
 {
@@ -40,14 +43,30 @@ namespace SchoolRegister.Services.ConcreteServices
                 studentEntity.Grades.Add(gradeEntity);
                 var gradeVm = Mapper.Map<GradeVm>(gradeEntity);
                 return gradeVm;
+
             }
             catch (Exception ex)
             {
-                Log.LogError(ex, ex.Message);
+                Logger.LogError(ex, ex.Message);
                 throw;
             }
         }
 
-        public GradesReportVm GetGradesReportForStudent(GetGradesReportVm getGradesVm) { }
+        public GradesReportVm GetGradesReportForStudent(GetGradesReportVm getGradesVm)
+        {
+            try
+            {
+                var studentEntity = DbContext.Users.OfType<Student>().FirstOrDefault(s => s.Id == getGradesVm.StudentId);
+                var gradesEntities = studentEntity.Grades;
+                var gradesVm = Mapper.Map<GradesReportVm>(gradesEntities);
+                return gradesVm;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
     }
 }

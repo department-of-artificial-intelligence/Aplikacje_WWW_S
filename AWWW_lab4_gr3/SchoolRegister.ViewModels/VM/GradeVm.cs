@@ -7,11 +7,9 @@ public class GradeVm
 {
     public int Id { get; set; }
     public DateTime DateOfIssue { get; set; }
-    public GradeScale GradeValue { get; set; }
-    public virtual Subject? Subject { get; set; }
-
-    public int? SubjectId { get; set; }
-
-    public int? StudentId { get; set; }
-    public virtual Student? Student { get; set; }
+    public int GradeValue { get; set; }
+    public string SubjectName { get; set; }
+    public int SubjectId { get; set; }
+    public int StudentId { get; set; }
+    public string StudentName { get; set; }
 }
