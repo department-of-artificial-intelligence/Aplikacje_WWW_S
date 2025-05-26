@@ -16,7 +16,7 @@ public class Grade
     public virtual Student Student { get; set; }
 
 public Grade()
-{
+    {
 
-}
+    }
 }
