@@ -1,0 +1,23 @@
+@model IEnumerable<Kolokwium.ViewModel.VM.BookVm>
+
+<h2>Book List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Published Year</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.PublishedDate.Year</td>
+                <td>@book.AutorNameSurname</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -8,6 +8,9 @@ namespace Kolokwium.DAL
     {
         // table properties
         // public virtual DbSet<Entity> TableName { get; set; } = null!;
+        public virtual DbSet<Book> Books { get; set; } = null!;
+        public virtual DbSet<Author> Authors { get; set; } = null!;
+        public virtual DbSet<Library> Libraries { get; set; } = null!;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -25,7 +28,10 @@ namespace Kolokwium.DAL
         {
             base.OnModelCreating(modelBuilder);
             // Fluent API commands
-           
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(b => b.AuthorId);
         }
     }
 }

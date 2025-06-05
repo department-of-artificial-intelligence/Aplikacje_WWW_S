@@ -5,6 +5,8 @@ using Kolokwium.Web.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Kolokwium.Services.ConcreteServices;
+using Kolokwium.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +23,13 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>));
 builder.Services.AddTransient<IStringLocalizer, StringLocalizer<BaseController>>();
-//builder.Services.AddTransient<IService, Service>();
+
+// Register the BookService as a transient service
+// This allows it to be injected into controllers or other services as needed.
+builder.Services.AddTransient<IBookService, BookService>();
+
+
+
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[] { "", "" };
