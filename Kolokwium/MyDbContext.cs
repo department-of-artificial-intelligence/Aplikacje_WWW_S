@@ -24,3 +24,4 @@ public class MyDbContext : DbContext{
 
     }
 }
+//ciekawe czy dziala
