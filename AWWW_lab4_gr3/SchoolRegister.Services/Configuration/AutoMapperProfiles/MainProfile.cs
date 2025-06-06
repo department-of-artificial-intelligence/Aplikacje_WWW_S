@@ -10,7 +10,7 @@ public class MainProfile : Profile
     {
         //AutoMapper maps
         CreateMap<Subject, SubjectVm>() // map from Subject(src) to SubjectVm(dst)
-                                        // custom mapping: FirstName and LastName concat string to TeacherName
+            // custom mapping: FirstName and LastName concat string to TeacherName
             .ForMember(
                 dest => dest.TeacherName,
                 x =>
@@ -49,6 +49,20 @@ public class MainProfile : Profile
 
         CreateMap<Teacher, TeacherVm>();
         CreateMap<Grade, GradeVm>();
-        CreateMap<GetGradesReportVm, Grade>();
+        CreateMap<IList<Grade>, GradesReportVm>();
+        CreateMap<GradeVm, Grade>();
+        CreateMap<RegisterNewUserVm, User>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Parent>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Student>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+        CreateMap<RegisterNewUserVm, Teacher>()
+            .ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+            .ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now))
+            .ForMember(dest => dest.Title, y => y.MapFrom(src => src.TeacherTitles));
     }
 }

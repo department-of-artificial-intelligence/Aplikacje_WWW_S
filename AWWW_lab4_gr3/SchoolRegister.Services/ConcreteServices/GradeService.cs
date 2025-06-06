@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Identity;
 using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
 using SchoolRegister.Services.Interfaces;
 using SchoolRegister.ViewModels.VM;
-using Microsoft.AspNetCore;
-
 
 namespace SchoolRegister.Services.ConcreteServices
 {
@@ -37,13 +36,16 @@ namespace SchoolRegister.Services.ConcreteServices
                 var studentEntity = DbContext
                     .Users.OfType<Student>()
                     .FirstOrDefault(p => p.Id == addGradeToStudentVm.StudentId);
-                var gradeEntity = DbContext.Grades.FirstOrDefault(g =>
-                    g.Id == addGradeToStudentVm.GradeId
-                );
+                var a = addGradeToStudentVm;
+                var gradeEntity = new Grade()
+                {
+                    StudentId = a.StudentId,
+                    SubjectId = a.SubjectId,
+                    GradeValue = a.GradeValue,
+                };
                 studentEntity.Grades.Add(gradeEntity);
                 var gradeVm = Mapper.Map<GradeVm>(gradeEntity);
                 return gradeVm;
-
             }
             catch (Exception ex)
             {
@@ -56,11 +58,12 @@ namespace SchoolRegister.Services.ConcreteServices
         {
             try
             {
-                var studentEntity = DbContext.Users.OfType<Student>().FirstOrDefault(s => s.Id == getGradesVm.StudentId);
+                var studentEntity = DbContext
+                    .Users.OfType<Student>()
+                    .FirstOrDefault(s => s.Id == getGradesVm.StudentId);
                 var gradesEntities = studentEntity.Grades;
                 var gradesVm = Mapper.Map<GradesReportVm>(gradesEntities);
                 return gradesVm;
-
             }
             catch (Exception ex)
             {
