@@ -146,6 +146,9 @@ namespace SchoolRegister.DAL.Migrations
                     b.Property<int>("GradeValue")
                         .HasColumnType("int");
 
+                    b.Property<int>("IssuedByTeacherId")
+                        .HasColumnType("int");
+
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
@@ -153,6 +156,8 @@ namespace SchoolRegister.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IssuedByTeacherId");
 
                     b.HasIndex("StudentId");
 
@@ -198,6 +203,9 @@ namespace SchoolRegister.DAL.Migrations
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("RoleValue")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -368,7 +376,6 @@ namespace SchoolRegister.DAL.Migrations
                     b.HasBaseType("SchoolRegister.Model.DataModels.User");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue(3);
@@ -427,6 +434,12 @@ namespace SchoolRegister.DAL.Migrations
 
             modelBuilder.Entity("SchoolRegister.Model.DataModels.Grade", b =>
                 {
+                    b.HasOne("SchoolRegister.Model.DataModels.Teacher", "IssuedByTeacher")
+                        .WithMany()
+                        .HasForeignKey("IssuedByTeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SchoolRegister.Model.DataModels.Student", "Student")
                         .WithMany("Grades")
                         .HasForeignKey("StudentId")
@@ -438,6 +451,8 @@ namespace SchoolRegister.DAL.Migrations
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("IssuedByTeacher");
 
                     b.Navigation("Student");
 

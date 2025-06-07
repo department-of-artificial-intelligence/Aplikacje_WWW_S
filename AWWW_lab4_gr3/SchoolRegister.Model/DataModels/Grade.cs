@@ -6,7 +6,7 @@ namespace SchoolRegister.Model.DataModels
 {
     public class Grade
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
 
         [Required]
         public DateTime DateOfIssue { get; set; } = DateTime.Now;
@@ -14,7 +14,7 @@ namespace SchoolRegister.Model.DataModels
         [Required]
         public GradeScale GradeValue { get; set; }
 
-      
+
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; } = null!;
@@ -22,5 +22,9 @@ namespace SchoolRegister.Model.DataModels
         public int SubjectId { get; set; }
         [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; } = null!;
+        public int IssuedByTeacherId { get; set; }  
+        
+        public virtual Teacher? IssuedByTeacher { get; set; }
+        
     }
 }

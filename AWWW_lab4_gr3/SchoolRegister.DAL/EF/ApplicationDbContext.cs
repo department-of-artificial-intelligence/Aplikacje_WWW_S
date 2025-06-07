@@ -30,15 +30,15 @@ namespace SchoolRegister.DAL.EF
         {
             base.OnModelCreating(modelBuilder);
 
-            
+
             modelBuilder.Entity<User>()
-                .ToTable("AspNetUsers") 
+                .ToTable("AspNetUsers")
                 .HasDiscriminator<int>("UserType")
                 .HasValue<User>((int)RoleValue.User)
                 .HasValue<Student>((int)RoleValue.Student)
                 .HasValue<Parent>((int)RoleValue.Parent)
                 .HasValue<Teacher>((int)RoleValue.Teacher);
-
+                
             
             modelBuilder.Entity<SubjectGroup>()
                 .HasKey(sg => new { sg.GroupId, sg.SubjectId }); 

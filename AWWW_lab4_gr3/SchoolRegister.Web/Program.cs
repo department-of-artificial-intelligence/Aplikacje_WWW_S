@@ -2,12 +2,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SchoolRegister.DAL.EF; // Dla ApplicationDbContext
 using SchoolRegister.Model.DataModels; // Dla User, Role
+using SchoolRegister.Services.Configuration.AutoMapperProfiles;
+using SchoolRegister.Services.Interfaces;  // (dla ISubjectService)
+using SchoolRegister.Services.ConcreteServices; // (dla SubjectService)
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Pobranie connection stringa
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+builder.Services.AddAutoMapper(typeof(MainProfile));
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
+builder.Services.AddScoped<IGradeService, GradeService>();
+builder.Services.AddScoped<IGroupService, GroupService>();
+
+
 
 // Rejestracja DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -48,7 +59,7 @@ var app = builder.Build();
 // Konfiguracja potoku HTTP
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint(); // Ułatwia migracje
+    app.UseMigrationsEndPoint();  
 }
 else
 {
@@ -61,7 +72,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// WAŻNE: Kolejność middleware dla Identity
+ 
 app.UseAuthentication(); // Włącza uwierzytelnianie
 app.UseAuthorization();  // Włącza autoryzację
 
@@ -69,6 +80,6 @@ app.UseAuthorization();  // Włącza autoryzację
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages(); // Dla stron Identity i innych Razor Pages
+app.MapRazorPages();  
 
 app.Run();
