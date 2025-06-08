@@ -1,0 +1,25 @@
+@model IEnumerable<Kolokwium.ViewModel.VM.WydawnictwoVm>
+@{
+    ViewData["Title"] = "Wydawnictwa";
+}
+<h2>Lista wydawnictw</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Szczegóły</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var wydawnictwo in Model)
+        {
+            <tr>
+                <td>@wydawnictwo.Nazwa</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@wydawnictwo.Id">Szczegóły</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Powrót</a>

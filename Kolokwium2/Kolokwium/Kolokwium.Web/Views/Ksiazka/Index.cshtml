@@ -1,0 +1,36 @@
+@model IEnumerable<Kolokwium.ViewModel.VM.KsiazkiVm>
+
+<h2>Książki</h2>
+
+<table class="table">
+
+<thead>
+    <tr>
+        <th>Tytuł</th>
+        <th>Wydawnictwo</th>
+        <th>Rok Wydania</th>
+        <th>Imie Nazwisko Autora</th>
+        <th>Usuń</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var ksiazka in Model)
+    {
+        <tr>
+            <td>@ksiazka.Tytul</td>
+            <td>@ksiazka.WydawnictwoNazwa</td>
+            <td>@ksiazka.RokWydania</td>
+            <td>@ksiazka.ImieNazwiskoAutora</td>
+            <td>
+                <form asp-controller="DeleteKsiazka" asp-action="Delete" method="post">
+                    <input type="hidden" name="id" value="@ksiazka.Id" />
+                    <button type="submit" class="btn btn-danger">Usuń</button>
+                </form>
+            </td>
+        </tr>
+    }
+</tbody>
+
+</table>
+
+<a  asp-controller="AddKsiazka" asp-action="Add">Dodaj książkę</a>

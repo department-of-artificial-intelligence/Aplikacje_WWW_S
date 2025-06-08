@@ -1,8 +1,14 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using SchoolRegister.DAL.EF;
 using SchoolRegister.Model.DataModels;
+using SchoolRegister.Services.ConcreteServices;
 using SchoolRegister.Services.Configuration.AutoMapperProfiles;
+using SchoolRegister.Services.Interfaces;
+using SchoolRegister.Web.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +20,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
-.AddRoles<Role>()
-.AddRoleManager<RoleManager<Role>>()
-.AddUserManager<UserManager<User>>()
-.AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddTransient(typeof(ILogger), typeof(Logger<Program>));
-builder.Services.AddControllersWithViews();
+    .AddRoles<Role>()
+    .AddRoleManager<RoleManager<Role>>()
+    .AddUserManager<UserManager<User>>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddTransient (typeof (ILogger), typeof (Logger<Program>));
+builder.Services.AddScoped<IStringLocalizer, StringLocalizer<BaseController>> ();
+builder.Services.AddScoped<ISubjectService, SubjectService> ();
+builder.Services.AddScoped<IGradeService, GradeService> ();
+builder.Services.AddScoped<IGroupService, GroupService> ();
+builder.Services.AddScoped<IStudentService, StudentService> ();
+builder.Services.AddScoped<ITeacherService, TeacherService> ();
 
 var app = builder.Build();
 

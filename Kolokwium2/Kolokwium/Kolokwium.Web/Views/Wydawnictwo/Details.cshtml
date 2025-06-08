@@ -1,0 +1,10 @@
+@model Kolokwium.ViewModel.VM.WydawnictwoVm
+
+@{
+    ViewData["Title"] = "Szczegóły wydawnictwa";
+}
+
+<h2>Szczegóły wydawnictwa</h2>
+<p>ID: @Model.Id</p>
+<p><strong>Nazwa:</strong> @Model.Nazwa</p>
+<a asp-action="Index" class="btn btn-secondary">Powrót</a>
