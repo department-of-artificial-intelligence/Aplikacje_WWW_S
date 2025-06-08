@@ -1,0 +1,25 @@
+@model IList<Kolokwium.ViewModel.VM.BookVm>
+
+<table>
+    <thead>
+        <th>Tytuł</th>
+        <th>Godność</th>
+        <th>Nazwa Bilibioteki</th>
+        <th>Usun</th>
+        <th>Edytuj</th>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.AuthorCredential</td>
+                <td>@book.LibraryName</td>
+                <td><a  asp-action="Delete" asp-route-id="@book.Id">Usuń</a></td>
+                <td><a  asp-action="Update" asp-route-id="@book.Id">Edytuj</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a  asp-action="Add">Dodaj</a>

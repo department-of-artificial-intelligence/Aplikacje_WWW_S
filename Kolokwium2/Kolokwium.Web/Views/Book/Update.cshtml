@@ -1,0 +1,19 @@
+@model Kolokwium.ViewModel.VM.BookVm
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <label>Tytuł</label>
+    <input type="text" asp-for="Title" /><br>
+
+    <label>Opis</label>
+    <input type="text" asp-for="Desctiption" /><br>
+
+    <label for="AuthorId">Imię i Nazwisko</label>
+    <input type="number" asp-for="AuthorId"><br>
+
+    <label for="">Nazwa Biblioteki</label>
+    <input type="text" asp-for="LibraryName"><br>
+
+    <button type="submit">Wyśli</button>
+</form>
