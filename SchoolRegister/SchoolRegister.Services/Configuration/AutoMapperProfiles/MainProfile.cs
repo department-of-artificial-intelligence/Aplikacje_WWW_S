@@ -38,8 +38,33 @@ public class MainProfile : Profile
         CreateMap<GradeVm, AddGradeToStudentVm>();
         CreateMap<AddGradeToStudentVm, Grade>();
 
+        CreateMap<SubjectVm, AttachDetachSubjectGroupVm>()
+            .ForMember(dest => dest.SubjectId, x => x.MapFrom(src => src.Id));
+
+        CreateMap<GroupVm, AttachDetachStudentToGroupVm>()
+            .ForMember(dest => dest.GroupId, x => x.MapFrom(src => src.Id));
+
         CreateMap<AddOrUpdateGroupVm, Group>();
 
         CreateMap<AttachDetachSubjectGroupVm, SubjectGroup>();
+
+        CreateMap<AddOrUpdateGroupVm, GroupVm>();
+        CreateMap<GroupVm, AddOrUpdateGroupVm>();
+
+        //... previous maps in MainProfile constructor
+CreateMap<RegisterNewUserVm, User>()
+.ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+.ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+CreateMap<RegisterNewUserVm, Parent>()
+.ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+.ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+CreateMap<RegisterNewUserVm, Student>()
+.ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+.ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now));
+CreateMap<RegisterNewUserVm, Teacher>()
+.ForMember(dest => dest.UserName, y => y.MapFrom(src => src.Email))
+.ForMember(dest => dest.RegistrationDate, y => y.MapFrom(src => DateTime.Now))
+.ForMember(dest => dest.Title, y => y.MapFrom(src => src.TeacherTitles));
+
     }
 }

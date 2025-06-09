@@ -1,0 +1,38 @@
+@model SchoolRegister.ViewModels.VM.GradesReportVm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.StudentName)</h4>
+    <hr />
+ @if (Model.Grades != null && Model.Grades.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Przedmiot</th>
+                <th>Ocena</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grade in Model.Grades)
+            {
+                <tr>
+                    <td>@grade.SubjectName</td>
+                    <td>@grade.GradeValue.ToString("D")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <span>No grades</span>
+}
+
+</div>
+

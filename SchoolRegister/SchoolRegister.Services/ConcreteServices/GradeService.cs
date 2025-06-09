@@ -70,8 +70,9 @@ public class GradeService : BaseService, IGradeService
         bool isTeacher = roles.Contains("Teacher");
         bool isStudent = roles.Contains("Student");
         bool isParent = roles.Contains("Parent");
+        bool isAdmin = roles.Contains("Admin");
 
-        if (!(isTeacher || (isStudent && getGradesVm.GetterUserId == getGradesVm.StudentId) || (isParent && student.ParentId == getGradesVm.GetterUserId)))
+        if (!(isAdmin || isTeacher || (isStudent && getGradesVm.GetterUserId == getGradesVm.StudentId) || (isParent && student.ParentId == getGradesVm.GetterUserId)))
             throw new UnauthorizedAccessException($"User with Id {getGradesVm.GetterUserId} has no access to grades of student with Id {getGradesVm.StudentId}");
 
         var grades = await DbContext.Grades

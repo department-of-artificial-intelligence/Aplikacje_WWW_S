@@ -1,0 +1,49 @@
+@model IEnumerable<SchoolRegister.ViewModels.VM.GroupVm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if(User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="AddOrUpdateGroup">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                <label>Students Count</label>
+            </th>
+            <th>
+                <label>Subjects Count</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subjects.Count)
+            </td>
+            <td>
+                <a asp-action="AddOrUpdateGroup" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
