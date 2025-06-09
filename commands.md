@@ -42,6 +42,11 @@ dotnet ef database update --project SchoolRegister.DAL --startup-project SchoolR
 dotnet ef database drop --project SchoolRegister.DAL --startup-project SchoolRegister.Web
 ```
 
+### Scaffold view
+```console
+dotnet aspnet-codegenerator view -p SchoolRegister.Web Index List -m SubjectVm -outDir Views/Subject -scripts -udl
+```
+
 ### Database Data SQL Script
 ```sql
 -- DELETE ALL DATA FROM TABLES
