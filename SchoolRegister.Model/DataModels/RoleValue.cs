@@ -1,5 +1,7 @@
-namespace SchoolRegister.Model.DataModels {
-    public enum RoleValue {
+namespace SchoolRegister.Model.DataModels
+{
+    public enum RoleValue
+    {
         User = 0,
         Student = 1,
         Parent = 2,
