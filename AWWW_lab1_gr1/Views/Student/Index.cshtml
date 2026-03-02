@@ -1,0 +1,10 @@
+<h1>Lista Studentów</h1>
+<ul>
+    @foreach (var student in Model)
+    {
+        <li>
+            @student.FirstName @student.LastName
+            | <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id">Info</a>
+        </li>
+    }
+</ul>
