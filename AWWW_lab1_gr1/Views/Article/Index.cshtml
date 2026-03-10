@@ -1,15 +1,8 @@
 
 @model AWWW_lab1_gr1.Models.Article
-<!DOCTYPE html>
-<html>
 
-    <h1>@ViewBag.Title</h1>
-    <p>
-        Data utworzenia: @Model.CreationDate.ToShortDateString()
-    </p>
-    <p>
-        @Model.Content
-    </p>
+<h1>@Model.Title</h1>
 
+<p>Data utworzenia: @Model.CreationDate.ToShortDateString()</p>
 
-</html>
+<p>@Model.Content</p>
