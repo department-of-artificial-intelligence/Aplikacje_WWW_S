@@ -1,0 +1,67 @@
+/* --- Style dla modułu Studentów --- */
+
+.student-container {
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.student-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.student-list li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.student-name {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.student-card {
+    background-color: #e9ecef;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.student-card p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+/* Style przycisków */
+.btn-details,
+.btn-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-details:hover,
+.btn-back:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-back {
+    background-color: #6c757d;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}

@@ -1,0 +1,20 @@
+@model AWWW_lab1_gr1.Models.Student
+
+@{
+    ViewData["Title"] = "Szczegóły Studenta";
+}
+
+<div class="student-container">
+    <h2>Szczegóły Studenta</h2>
+
+    <div class="student-card">
+        <p><strong>Identyfikator:</strong> @Model.Id</p>
+        <p><strong>Imię:</strong> @Model.FirstName</p>
+        <p><strong>Nazwisko:</strong> @Model.LastName</p>
+        <p><strong>Numer Indeksu:</strong> @Model.IndexNr</p>
+        <p><strong>Data Urodzenia:</strong> @Model.DateOfBirth.ToShortDateString()</p>
+        <p><strong>Kierunek:</strong> @Model.FieldOfStudy</p>
+    </div>
+
+    <a asp-controller="Student" asp-action="Index" class="btn-back">Powrót do listy</a>
+</div>

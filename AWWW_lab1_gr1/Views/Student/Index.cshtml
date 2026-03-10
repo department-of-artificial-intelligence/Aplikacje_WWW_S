@@ -1,0 +1,19 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Student>
+
+@{
+    ViewData["Title"] = "Lista Studentów";
+}
+
+<div class="student-container">
+    <h2>@ViewData["Title"]</h2>
+
+    <ul class="student-list">
+        @foreach (var student in Model)
+        {
+            <li>
+                <span class="student-name">@student.FirstName @student.LastName</span>
+                <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id" class="btn-details">Szczegóły</a>
+            </li>
+        }
+    </ul>
+</div>
