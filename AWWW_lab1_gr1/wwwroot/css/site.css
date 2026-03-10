@@ -1,3 +1,83 @@
 ﻿body {
-    background-color: yellow !important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+header {
+    background-color: #1f3c88;
+    padding: 15px 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* GŁÓWNA ZAWARTOŚĆ */
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* TYTUŁ */
+
+h2 {
+    color: #1f3c88;
+}
+
+/* LISTA STUDENTÓW */
+
+.student-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .student-list li {
+        background: white;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+/* PRZYCISK */
+
+.btn {
+    background-color: #1f3c88;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+    .btn:hover {
+        background-color: #162d66;
+    }
+
+/* KARTA SZCZEGÓŁÓW */
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* STOPKA */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #e9ecef;
+    margin-top: 40px;
 }
