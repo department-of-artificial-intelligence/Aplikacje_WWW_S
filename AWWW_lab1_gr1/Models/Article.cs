@@ -1,3 +1,5 @@
+namespace AWWW_lab1_gr1.Models;
+
 public class Article
 {
     public int Id { get; set; }
