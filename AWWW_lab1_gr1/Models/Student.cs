@@ -15,6 +15,6 @@ namespace AWWW_lab1_gr1.Models
         public DateTime DateOfBirth {get;set;}
         public String FieldOfStudy {get;set;}
 
-        public String getFullName(){ return FirstName + " " + LastName;}
+        public String FullName{ get{return FirstName + " " + LastName;}}
     }
 }

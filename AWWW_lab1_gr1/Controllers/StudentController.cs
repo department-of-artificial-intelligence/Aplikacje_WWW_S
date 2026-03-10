@@ -15,35 +15,41 @@ namespace AWWW_lab1_gr1.Controllers
         {
             new Student
             {
-                Id = 0,
+                Id = 1,
                 FirstName = "Andriy",
                 LastName = "Babyuk",
                 IndexNr = "139183",
-                DateOfBirth = DateTime.Parse("18-03-2006"),
+                DateOfBirth = new DateTime(2006, 03, 18),
                 FieldOfStudy = "Informatyka"
             },
             new Student
             {
-                Id = 1,
+                Id = 2,
                 FirstName = "Ala",
                 LastName = "Kot",
                 IndexNr = "110022",
-                DateOfBirth = DateTime.Parse("12-12-1984"),
+                DateOfBirth = new DateTime(1984,12,12),
                 FieldOfStudy = "Zarządzanie"
             },
             new Student
             {
-                Id = 2,
+                Id = 3,
                 FirstName = "Test",
                 LastName = "Value",
                 IndexNr = "123456",
-                DateOfBirth = DateTime.Parse("09-09-2000"),
+                DateOfBirth = new DateTime(2000,09,09),
                 FieldOfStudy = "Matematyka stosowana"
             }
         };
-        public IActionResult List(int id=1)
+
+        public IActionResult Index()
         {
-            return View(students[id-1].getFullName());
+            return View(students);
+        }
+        
+        public IActionResult Details(int idx=1)
+        {
+            return View(students[idx-1]);
         }
     }
 }
