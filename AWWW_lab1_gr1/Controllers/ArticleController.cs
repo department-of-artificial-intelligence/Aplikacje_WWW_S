@@ -1,15 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
-
+using AWWW_lab1_gr1.Models;
 public class ArticleController : Controller {
-public IActionResult Index()
+public IActionResult Index(int id=1)
 {
-    var article = new Article
+  var articles = new List<Article>
+  {
+    new Article
     {
       Id = 1,
-      Title = "Artykuł 1",
-      Content = "Lorem ipsum...",
-      CreationDate = DateTime.Now  
-    };
-    return View(article);
+      Title = "Artykul 1",
+      Content = "Lorem Ipsum...",
+      CreationDate = DateTime.Now
+    },
+    new Article
+    {
+      Id = 2,
+      Title = "Artykul 2",
+      Content = "Lorem Ipsum...",
+      CreationDate = DateTime.Now
+    },
+    new Article
+    {
+      Id = 3,
+      Title = "Artykul 3",
+      Content = "Lorem Ipsum...",
+      CreationDate = DateTime.Now
+    }
+
+  };
+    return View(articles[id-1]);
+  }
 }
-}
+
