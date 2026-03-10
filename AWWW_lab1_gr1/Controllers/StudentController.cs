@@ -5,7 +5,7 @@ namespace AWWW_lab1_gr1.Controllers
 {
 	public class StudentController : Controller
 	{
-		public IActionResult Index(int id=1)
+		public IActionResult Index()
 		{
 
 			var students = new List<Student>
@@ -41,7 +41,7 @@ namespace AWWW_lab1_gr1.Controllers
 				},
 			};
 
-			return View(students[id - 1]);
+			return View(students);
 		}
 	}
 }
