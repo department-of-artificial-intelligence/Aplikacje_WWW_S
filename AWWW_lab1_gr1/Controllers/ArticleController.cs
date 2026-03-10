@@ -1,8 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using AWW_lab1_gr1.Models;
+
 public class ArticleController : Controller {
-public IActionResult Details()
+public IActionResult Index()
 {
-    return View();
+    var article = new Article
+    {
+      Id = 1,
+      Title = "Artykuł 1",
+      Content = "Lorem ipsum...",
+      CreationDate = DateTime.Now  
+    };
+    return View(article);
 }
 }
