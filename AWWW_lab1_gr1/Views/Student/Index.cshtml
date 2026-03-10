@@ -1,0 +1,10 @@
+@model AWWW_lab1_gr1.Models.Student
+
+<h1>@Model.FirstName  @Model.LastName</h1>
+
+<p>
+    Id: @Model.Id <br/>
+    Numer albumu: @Model.IndexNr <br/>
+    Data urodzin: @Model.DateOfBirth.ToShortDateString() <br/>
+    Kierunek: @Model.FieldOfStudy <br/>
+</p>

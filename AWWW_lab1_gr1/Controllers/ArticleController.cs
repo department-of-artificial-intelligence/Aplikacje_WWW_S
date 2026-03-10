@@ -1,39 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AWWW_lab1_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
     public class ArticleController : Controller
     {
-        private readonly ILogger<ArticleController> _logger;
-
-        public ArticleController(ILogger<ArticleController> logger)
+        public IActionResult Index(int id=1)
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            var article = new Article
+            var articles = new List<Article>
             {
+                new Article{
                 Id = 1,
-                Title = "Artykul 1",
-                Content = "cos tam... ",
+                Title = "Artykuł 1",
+                Content = "Cos tam... ",
                 CreationDate = DateTime.Now
-            };
-            return View(article);
-        }
+                },
+                new Article{
+                Id = 2,
+                Title = "Artykuł 2",
+                Content = "Cos tam dalej... ",
+                CreationDate = DateTime.Now
+                },
+                new Article{
+                Id = 3,
+                Title = "Artykuł 3",
+                Content = "Cos tam dalej i dalej... ",
+                CreationDate = DateTime.Now
+                }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
+            };
+            return View(articles[id-1]);
         }
     }
 }
