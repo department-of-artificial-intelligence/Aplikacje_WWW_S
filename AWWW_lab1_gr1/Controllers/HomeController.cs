@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
@@ -7,7 +8,8 @@ namespace AWWW_lab1_gr1.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Home";
-            return View();
+            var students = Student.GetStudents();
+            return View(students);
         }
     }
 }
