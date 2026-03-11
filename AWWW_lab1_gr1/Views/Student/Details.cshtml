@@ -5,10 +5,11 @@
 }
 @model AWWW_lab1_gr1.Models.Student
 
-<h1>@Model.Id @Model.FirstName @Model.LastName</h1>
-<p>
-   Numer indeksu: @Model.IndexNr <br />
-   Data urodzenia: @Model.DateOfBirth <br />
-   Dziedzina nauki: @Model.FieldOfStudy <br />
-</p>
-
+<div class="details-container">
+    <h1>@Model.Id @Model.FirstName @Model.LastName</h1>
+    <p>
+        Numer indeksu: @Model.IndexNr <br />
+        Data urodzenia: @Model.DateOfBirth <br />
+        Dziedzina nauki: @Model.FieldOfStudy <br />
+    </p>
+</div>
