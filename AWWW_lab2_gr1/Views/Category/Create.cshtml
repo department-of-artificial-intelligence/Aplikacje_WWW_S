@@ -1,0 +1,12 @@
+@model AWWW_lab2_gr1.Models.Category
+
+<form method="post" asp-action="CreateConfirmed">
+    <fieldset>
+        <legend>Add Category</legend>
+        <div>
+            <label for="Name">Category Name:</label>
+            <input type="text" name="Name" value="" minlength="1"/>
+        </div>
+        <button type="submit">Create</button>
+    </fieldset>
+</form>

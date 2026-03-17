@@ -1,0 +1,13 @@
+@model AWWW_lab2_gr1.Models.Category
+
+<form method="post" asp-action="UpdateConfirmed">
+    <fieldset>
+        <legend>Add Category</legend>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div>
+            <label for="Name">Category Name:</label>
+            <input type="text" name="Name" value="@Model.Name" minlength="1"/>
+        </div>
+        <button type="submit">Update</button>
+    </fieldset>
+</form>

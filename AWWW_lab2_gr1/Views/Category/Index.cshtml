@@ -1,18 +1,34 @@
 @model List<AWWW_lab2_gr1.Models.Category>
 
+<nav>
+    <ul>
+        <li><a asp-controller="Home" asp-action="Index">Go Back</a></li>
+        <li><a asp-action="Create">Add</a></li>
+    </ul>
+</nav>
 <table>
     <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
+    @foreach (var category in Model)
     {
         <tr>
-            <td>@item.Id</td>
-            <td>@item.Name</td>
+            <td>@category.Id</td>
+            <td>@category.Name</td>
+            <td>
+                <form asp-action="Update" asp-route-id="@category.Id">
+                    <button type="submit">Edit</button>
+                </form>
+                <form asp-action="Delete" asp-route-id="@category.Id" method="post"
+                    onsubmit="return confirm('Are you sure you want to delete category @category.Name?');">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
         </tr>
     }
     </tbody>
