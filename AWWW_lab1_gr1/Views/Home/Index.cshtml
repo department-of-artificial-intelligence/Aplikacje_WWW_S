@@ -1,22 +1,13 @@
-@using Microsoft.VisualBasic
-@model IEnumerable<AWWW_lab1_gr1.Models.Student>
 <h1>@ViewBag.Title</h1>
+
 <p>Witamy na stronie głównej</p>
 
-<p>
-    Artykuły:
-    <ul>
-        <li><a asp-controller="Article" asp-action="index" asp-route-id=1>Artykuł 1</a></li>
-        <li><a asp-controller="Article" asp-action="index" asp-route-id=2>Artykuł 2</a></li>
-        <li><a asp-controller="Article" asp-action="index" asp-route-id=3>Artykuł 3</a></li>
+<h3>Artykuły:</h3>
+<ul>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="1">Artykuł 1</a></li>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="2">Artykuł 2</a></li>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="3">Artykuł 3</a></li>
+</ul>
 
-    </ul>
-
-Studenci:
-    <ul>
-        @foreach (var student in Model)
-        {
-            <li><a asp-controller="Student" asp-action="Index" asp-route-id="@student.Id"> @student.FirstName @student.LastName</a></li>
-        }
-    </ul>
-</p>
+ <br/>
+    <a asp-controller="Student" asp-action="Index"> <h3> Studenci </h3></a>
