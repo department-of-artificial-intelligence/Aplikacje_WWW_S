@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab2_gr1.Models 
 {
-    public class MyDBContext : DbContext
+    public class AppDBContext : DbContext
     {
         public DbSet<Customer> Customers {get; set;}
     }

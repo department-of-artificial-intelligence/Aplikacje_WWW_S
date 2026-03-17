@@ -14,6 +14,8 @@ namespace AWWW_lab2_gr1.Models
         public DateTime CreatedAt {get;set;}
 
         [ForeignKey("Customer")]
-        public int CutomerId {get;set;}
+        public int CustomerId {get;set;}
+
+        public List<OrderItem> OrderItems {get;set;} = new();
     }
 }
