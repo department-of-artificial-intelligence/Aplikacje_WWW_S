@@ -6,8 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab2_gr1.Models 
 {
-    public class AppDBContext : DbContext
+    public class AppDbContext : DbContext
     {
+        public AppDbContext() { }
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {}
+
         public DbSet<Address> Addresses {get;set;}
         public DbSet<Category> Categories {get;set;}
         public DbSet<Customer> Customers {get; set;}

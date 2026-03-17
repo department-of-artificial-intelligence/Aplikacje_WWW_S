@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -15,7 +17,7 @@ namespace AWWW_lab2_gr1.Models
 
         [ForeignKey("Order")]
         public int OrderId {get;set;}
-        public Order Order {get;set;}
+        public virtual Order Order {get;set;}
 
         [ForeignKey("Product")]
         public int ProductId {get;set;}
