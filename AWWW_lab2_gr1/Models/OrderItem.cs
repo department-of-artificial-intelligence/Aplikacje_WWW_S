@@ -20,5 +20,10 @@ namespace AWWW_lab2_gr1.Models
         [ForeignKey("Product")]
         public int ProductId {get;set;}
         public Product Product {get;set;}
+
+        public int Quantity {get;set;}
+
+        [Precision(18,4)]
+        public decimal UnitPrice {get;set;}
     }
 }
