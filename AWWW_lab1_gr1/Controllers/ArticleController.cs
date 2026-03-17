@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using AWWW_lab1_gr2.Models;
+using AWWW_lab1_gr1.Models;
 
 namespace AWWW_lab1_gr1.Controllers
 {
@@ -9,11 +9,12 @@ namespace AWWW_lab1_gr1.Controllers
         {
             var article = new Article
             {
-                Id = 1;
-                Title = "Artykuł 1";
-                Content = "Przykładowy tekst";
+                Id = 1,
+                Title = "Artykuł 1",
+                Content = "Przykładowy tekst",
                 CreationDate = DateTime.Now
             };
+            return View(article);
         }
     }
 }
