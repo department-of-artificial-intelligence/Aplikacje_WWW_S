@@ -1,11 +1,14 @@
-﻿@model AWWW_lab1_gr1.Models.Student
+﻿@model IEnumerable<AWWW_lab1_gr1.Models.Student>
 
 
 <p>
-	Imie:@Model.FirstName<br />
-	Nazwisko:@Model.LastName<br />
-	Indeks:@Model.IndexNr<br />
-	Data urodzenia: @Model.DateOfBirth.ToShortDateString()<br />
-	Kierunek:@Model.FieldOfStudy
+    @foreach (var student in Model){
+        <ul>
+            <li>
+                <strong>Imię:</strong> @student.FirstName <br />
+                <strong>Nazwisko:</strong> @student.LastName <br />
+                <a asp-controller="Details" asp-action="Index" asp-route-id="@student.Id">Szczegóły</a>
+            </li>
+        </ul>
+	}
 </p>
-
