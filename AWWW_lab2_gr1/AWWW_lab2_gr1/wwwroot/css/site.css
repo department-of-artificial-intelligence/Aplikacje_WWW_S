@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #2563eb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --border-color: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    flex: 1;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+footer {
+    padding: 1.5rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.9rem;
+    background: var(--bg-light);
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+    .nav-link:hover {
+        color: var(--primary-color);
+    }
+
+h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    color: #111827;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+p {
+    margin-bottom: 1.2rem;
+}
+
+.data-info {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+    ul li {
+        background: var(--bg-light);
+        margin-bottom: 0.5rem;
+        padding: 10px 15px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        transition: transform 0.1s;
+    }
+
+        ul li:hover {
+            transform: translateX(5px);
+            border-color: var(--primary-color);
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+            ul li a:hover {
+                text-decoration: underline;
+            }
+
+.details-container {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}

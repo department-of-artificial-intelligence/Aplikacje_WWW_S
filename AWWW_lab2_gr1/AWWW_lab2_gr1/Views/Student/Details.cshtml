@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AWWW_lab2_gr1.Models.Student
+
+<div class="details-container">
+    <h1>@Model.Id @Model.FirstName @Model.LastName</h1>
+    <p>
+        Numer indeksu: @Model.IndexNr <br />
+        Data urodzenia: @Model.DateOfBirth <br />
+        Dziedzina nauki: @Model.FieldOfStudy <br />
+    </p>
+</div>
