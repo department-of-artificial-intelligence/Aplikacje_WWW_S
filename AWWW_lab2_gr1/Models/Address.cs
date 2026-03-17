@@ -14,7 +14,7 @@ namespace AWWW_lab2_gr1.Models
         [ForeignKey("Customer")]
         public int CustomerId {get;set;}
 
-        public Customer Customer {get;set;}
+        public virtual Customer Customer {get;set;}
 
         public required string City {get;set;}
         public string? Street {get;set;}

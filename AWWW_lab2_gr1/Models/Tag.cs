@@ -12,6 +12,6 @@ namespace AWWW_lab2_gr1.Models
 
         public required string Name {get;set;}
 
-        public List<Product> Products {get;set;} = new();
+        public virtual ICollection<Product> Products {get;set;} = new();
     }
 }

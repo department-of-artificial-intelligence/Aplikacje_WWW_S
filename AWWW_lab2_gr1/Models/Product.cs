@@ -17,10 +17,10 @@ namespace AWWW_lab2_gr1.Models
 
         [ForeignKey("Category")]
         public int CategoryId {get;set;}
-        public Category Category {get;set;}
+        public virtual Category Category {get;set;}
 
-        public List<Tag> Tags {get;set;} = new();
-        public List<OrderItem> OrderItems {get;set;} = new();
-        public List<Review> Reviews {get;set;} = new();
+        public virtual ICollection<Tag> Tags {get;set;} = new();
+        public virtual ICollection<OrderItem> OrderItems {get;set;} = new();
+        public virtual ICollection<Review> Reviews {get;set;} = new();
     }
 }
