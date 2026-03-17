@@ -1,0 +1,14 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Student>
+
+<h1>Lista studentów</h1>
+
+<ul>
+@foreach (var s in Model)
+{
+    <li>
+        @s.FirstName @s.LastName
+        <a href="/Student/Index/@s.Id">Szczegóły</a>
+    </li>
+}
+</ul>
+
