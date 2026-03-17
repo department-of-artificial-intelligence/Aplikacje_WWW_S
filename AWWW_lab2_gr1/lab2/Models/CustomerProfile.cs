@@ -8,16 +8,20 @@ namespace lab2.Models
 {
     public class CustomerProfile
     {
-        private int Id { get; set; }
-        private int CustomerId {get; set;}
         
+        public int Id { get; set; }
+
         [Required]
-        private string Phone {get; set;}
-        [Required]
-        private DateTime DateOfBirth {get; set;}
+        [MaxLength(50)]
+        public string Phone { get; set; } = null!;
+
+        public DateTime DateOfBirth { get; set; }
+
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; } = null!;
 
 
-    public CustomerProfile()
+        public CustomerProfile()
     {
     }
 

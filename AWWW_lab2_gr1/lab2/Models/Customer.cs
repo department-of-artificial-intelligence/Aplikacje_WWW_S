@@ -7,28 +7,31 @@ using System.Threading.Tasks;
 
 namespace lab2.Models
 {
-  public class Customer
-{
-    [Key]
-    public int Id { get; private set; }
-    [Required]
-    public string Name { get; private set; }
-
-    public CustomerProfile CustomerProfile { get; set; }
-    public List<Address> Addresses { get; set; } = new();
-    public List<Order> Orders { get; set; } = new();
-    public List<Review> Reviews { get; set; } = new();
-
-
-    public Customer()
+    public class Customer
     {
-    }
+        public int Id { get; set; }
 
-    public Customer(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
+        [Required]
+        [MaxLength(200)]
+        public string Name { get; set; } = null!;
+
+        public CustomerProfile? CustomerProfile { get; set; }
+
+        public ICollection<Address> Addresses { get; set; } = new List<Address>();
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+
+
+        public Customer()
+        {
+        }
+
+        public Customer(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
 }
     
 }

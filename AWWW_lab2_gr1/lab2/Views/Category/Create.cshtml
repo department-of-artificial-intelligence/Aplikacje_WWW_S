@@ -1,0 +1,18 @@
+@model lab2.Models.Category
+
+@{
+    ViewData["Title"] = "Dodaj kategorię";
+}
+
+<h1>Dodaj kategorię</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Nazwa</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Zapisz</button>
+    <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+</form>

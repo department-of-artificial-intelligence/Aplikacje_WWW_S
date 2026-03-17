@@ -8,15 +8,25 @@ namespace lab2.Models
 {
     public class Address
     {
-        [Key]
-        private int Id { get; set; }
-        private int CustomerId {get; set; }
+        
+        public int Id { get; set; }
+
         [Required]
-        private string City {get; set; }
+        [MaxLength(100)]
+        public string City { get; set; } = null!;
+
         [Required]
-        private string Street {get; set; }
+        [MaxLength(200)]
+        public string Street { get; set; } = null!;
+
         [Required]
-        private string PostalCode {get; set; }
+        [MaxLength(20)]
+        public string PostalCode { get; set; } = null!;
+
+
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; } = null!;
+
 
         public Address()
         {

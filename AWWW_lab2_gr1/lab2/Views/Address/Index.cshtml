@@ -1,0 +1,35 @@
+@model IEnumerable<lab2.Models.Address>
+
+@{
+    ViewData["Title"] = "Lista adresów";
+}
+
+<h1>Lista adresów</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj adres</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Kod pocztowy</th>
+            <th>CustomerId</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.City</td>
+            <td>@item.Street</td>
+            <td>@item.PostalCode</td>
+            <td>@item.CustomerId</td>
+        </tr>
+    }
+    </tbody>
+</table>
