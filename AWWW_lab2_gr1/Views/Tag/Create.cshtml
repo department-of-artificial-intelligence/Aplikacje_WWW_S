@@ -1,4 +1,5 @@
-@model AWWW_lab2_gr1.Models.Category
+@model AWWW_lab2_gr1.Models.Tag
+
 
 <div class="container my-5">
 
@@ -7,15 +8,14 @@
 
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Update Category</h4>
+                    <h4 class="mb-0">Add Tag</h4>
                 </div>
 
                 <div class="card-body">
-                    <form method="post" asp-action="UpdateConfirmed">
+                    <form method="post" asp-action="CreateConfirmed">
                         <div class="mb-3">
-                            <input type="hidden" name="Id" value="@Model.Id"/>
                             <label asp-for="Name" class="form-label"></label>
-                            <input asp-for="Name" class="form-control" value="@Model.Name" minlength="1"/>
+                            <input asp-for="Name" class="form-control" minlength="1" />
                         </div>
                         <div class="d-flex justify-content-between">
                             <a asp-action="Index" class="btn btn-secondary">
