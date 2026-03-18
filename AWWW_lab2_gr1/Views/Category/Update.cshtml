@@ -15,7 +15,7 @@
                         <div class="mb-3">
                             <input type="hidden" name="Id" value="@Model.Id"/>
                             <label asp-for="Name" class="form-label"></label>
-                            <input asp-for="Name" class="form-control" value="@Model.Name" minlength="1"/>
+                            <input asp-for="Name" class="form-control" value="@Model.Name" required/>
                         </div>
                         <div class="d-flex justify-content-between">
                             <a asp-action="Index" class="btn btn-secondary">

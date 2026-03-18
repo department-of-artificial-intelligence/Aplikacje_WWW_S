@@ -12,13 +12,15 @@ namespace AWWW_lab2_gr1.Models
         [Key]
         public int Id {get;set;}
 
-        [ForeignKey("Customer")]
-        public int CustomerId {get;set;}
-
-        public virtual Customer Customer {get;set;}
+        public virtual ICollection<Customer> Customers {get;set;}
 
         public required string City {get;set;}
         public string? Street {get;set;}
         public string? PostalCode {get;set;}
+
+        public override string ToString()
+        {
+            return Street + ". " + PostalCode + ", " + City;
+        }
     }
 }

@@ -17,7 +17,9 @@ namespace AWWW_lab2_gr1.Models
 
         public virtual CustomerProfile CustomerProfile {get;set;}
 
-        public virtual ICollection<Address> Addresses {get;set;} = new List<Address>();
+        [ForeignKey("Address")]
+        public int AddressId {get;set;}
+        public virtual Address Address {get;set;}
         public virtual ICollection<Review> Reviews {get;set;} = new List<Review>();
         public virtual ICollection<Order> Orders {get;set;} = new List<Order>();
     }
