@@ -7,8 +7,8 @@ public class Product
     public decimal Price { get; set; }
     public int CategoryId { get; set; }
 
-    public Category Category { get; set; } = null!;
-    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-    public ICollection<Review> Reviews { get; set; } = new List<Review>();
-    public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+    public virtual Category Category { get; set; } = null!;
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+    public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }

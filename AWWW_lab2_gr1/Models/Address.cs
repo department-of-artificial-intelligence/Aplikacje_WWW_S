@@ -8,5 +8,5 @@ public class Address
     public string Street { get; set; } = string.Empty;
     public string PostalCode { get; set; } = string.Empty;
 
-    public Customer Customer { get; set; } = null!;
+    public virtual Customer Customer { get; set; } = null!;
 }

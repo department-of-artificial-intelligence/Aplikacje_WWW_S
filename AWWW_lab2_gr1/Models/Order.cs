@@ -6,6 +6,6 @@ public class Order
     public DateTime CreatedAt { get; set; }
     public int CustomerId { get; set; }
 
-    public Customer Customer { get; set; } = null!;
-    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public virtual Customer Customer { get; set; } = null!;
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }

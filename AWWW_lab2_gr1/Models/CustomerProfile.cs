@@ -7,5 +7,5 @@ public class CustomerProfile
     public string Phone { get; set; } = string.Empty;
     public DateTime DateOfBirth { get; set; }
 
-    public Customer Customer { get; set; } = null!;
+    public virtual Customer Customer { get; set; } = null!;
 }
