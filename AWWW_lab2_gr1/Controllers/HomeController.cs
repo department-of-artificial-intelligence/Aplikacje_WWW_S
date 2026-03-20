@@ -1,3 +1,4 @@
+using AWWW_lab2_gr1.Data;
 using AWWW_lab2_gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,27 +7,17 @@ namespace AWWW_lab2_gr1.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly AppDbContext _context;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(AppDbContext context)
 		{
-			_logger = logger;
+			_context = context;
 		}
 
 		public IActionResult Index()
 		{
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
-			return View();
-		}
-
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			var categories = _context.Categories.ToList();
+			return View(categories);
 		}
 	}
 }

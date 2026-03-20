@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using AWWW_lab2_gr1.Data;
+
+
 namespace AWWW_lab2_gr1
 {
 	public class Program
@@ -8,7 +12,13 @@ namespace AWWW_lab2_gr1
 
 			builder.Services.AddControllersWithViews();
 
-			var app = builder.Build();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+				options.UseSqlServer(
+					builder.Configuration.GetConnectionString("DefaultConnection")
+				)
+			);
+
+            var app = builder.Build();
 
 			if (!app.Environment.IsDevelopment())
 			{

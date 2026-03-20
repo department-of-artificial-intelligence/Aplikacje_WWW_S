@@ -1,0 +1,18 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Category>
+
+<h2>Kategorie</h2>
+
+<a asp-action="Create">Dodaj</a>
+
+<table>
+    <tr>
+        <th>Kategoria</th>
+    </tr>
+</table>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Name</td>
+    </tr>
+}
