@@ -1,3 +1,6 @@
+using AWWW_lab2_gr1.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace AWWW_lab2_gr1
 {
     public class Program
@@ -8,6 +11,9 @@ namespace AWWW_lab2_gr1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AppDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); //To trzeba dodac zeby dzialalo polaczenie i jeszcze w appsetting.json ustawic
 
             var app = builder.Build();
 

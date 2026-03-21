@@ -8,6 +8,6 @@
         public string Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer Customer { get; set; } //referencja do 1 Customer
     }
 }

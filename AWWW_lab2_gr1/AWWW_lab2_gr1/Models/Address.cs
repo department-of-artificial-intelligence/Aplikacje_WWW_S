@@ -6,8 +6,8 @@
         public int CustomerId { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
-        public string PostalCode { get; set; }
+        public string PostalCode { get; set; } // 
 
-        public Customer Customer { get; set; }
+        public Customer Customer { get; set; } //referencja do 1 Customer
     }
 }

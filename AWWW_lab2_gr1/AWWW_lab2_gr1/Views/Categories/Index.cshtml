@@ -1,0 +1,20 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Category>
+
+<h2>Lista kategorii</h2>
+
+<a href="/Categories/Create">Dodaj nową</a>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Nazwa</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>

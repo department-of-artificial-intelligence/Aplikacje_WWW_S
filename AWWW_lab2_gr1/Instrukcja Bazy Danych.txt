@@ -1,0 +1,10 @@
+Utworzenie klas
+Utworzenie klasy AppDbContext.cs
+Zrobic public class AppDbContext : DbContext i uzupelnic srodek
+Dodanie DbSetow np. public DbSet<Customer> Customers { get; set; }
+konfiguracja relacji (OnModelCreating) 
+dodanie DbContext do programu Program.cs -> builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("YourConnectionString"));
+dodanie ConnectionStrings w appsetting.json
+Migracja danych:
+dotnet ef migrations add InitialCreate
+dotnet ef database update

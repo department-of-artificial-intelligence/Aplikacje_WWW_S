@@ -1,27 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}     
-@model List<AWWW_lab2_gr1.Models.Student>
-<h1>@ViewBag.Title</h1>
+﻿<h1>System zarządzania danymi</h1>
 
-<p>Witamy na stronie głównej</p>
+<p>Wybierz sekcję:</p>
 
-<h3>Artykuły:</h3>
 <ul>
-    <li><a asp-controller="article" asp-action="index" asp-route-id="1">Artykuł 1</a></li>
-    <li><a asp-controller="article" asp-action="index" asp-route-id="2">Artykuł 2</a></li>
-    <li><a asp-controller="article" asp-action="index" asp-route-id="3">Artykuł 3</a></li>
+    <li>
+        <a href="/Categories">Kategorie produktów</a>
+    </li>
+    <li>
+        <a href="/Tags">Tagi produktów</a>
+    </li>
+    <li>
+        <a href="/Addresses">Adresy klientów</a>
+    </li>
 </ul>
-
-<h3>Studenci:</h3>
-<ul>
-    @foreach (var student in Model)
-    {
-        <li>
-            <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id">@student.FirstName @student.LastName</a>
-        </li>
-    }
-</ul>
-

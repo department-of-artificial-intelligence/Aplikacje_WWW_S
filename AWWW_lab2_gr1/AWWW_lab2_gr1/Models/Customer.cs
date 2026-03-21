@@ -5,9 +5,9 @@
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public CustomerProfile CustomerProfile { get; set; }
-        public List<Address> Addresses { get; set; }
-        public List<Order> Orders { get; set; }
-        public List<Review> Reviews { get; set; }
+        public CustomerProfile CustomerProfile { get; set; } //Referencja do CustomerProfile (1:N)
+        public List<Address> Addresses { get; set; } //Kolekcja 1:N
+        public List<Order> Orders { get; set; } //Kolekcja 1:N
+        public List<Review> Reviews { get; set; } //Kolekcja 1:N
     }
 }

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Address>
+
+<h2>Lista adresów</h2>
+
+<a href="/Addresses/Create">Dodaj nowy</a>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Miasto</th>
+        <th>Ulica</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.City</td>
+            <td>@item.Street</td>
+        </tr>
+    }
+</table>
