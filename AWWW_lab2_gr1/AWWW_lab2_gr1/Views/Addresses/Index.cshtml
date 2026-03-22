@@ -9,6 +9,7 @@
         <th>Id</th>
         <th>Miasto</th>
         <th>Ulica</th>
+        <th>Kod Pocztowy</th>
     </tr>
 
     @foreach (var item in Model)
@@ -17,6 +18,7 @@
             <td>@item.Id</td>
             <td>@item.City</td>
             <td>@item.Street</td>
+            <td>@item.PostalCode</td>
         </tr>
     }
 </table>
