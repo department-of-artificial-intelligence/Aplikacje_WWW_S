@@ -1,0 +1,23 @@
+@model IEnumerable<lab2.Models.Tag>
+
+<h1>Lista tagów</h1>
+
+<a asp-controller="Tag" asp-action="Create">Dodaj nowy tag</a>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var tag in Model)
+    {
+        <tr>
+            <td>@tag.Id</td>
+            <td>@tag.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>

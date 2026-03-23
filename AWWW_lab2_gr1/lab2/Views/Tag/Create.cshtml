@@ -1,0 +1,26 @@
+@model lab2.Models.Tag
+
+<h1>Dodaj tag</h1>
+
+<form asp-action="Create" method="post">
+    
+    <div>
+        <label asp-for="Name"></label><br />
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <button type="submit">Zapisz</button>
+</form>
+
+<br />
+
+<a asp-action="Index">Powrót</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
