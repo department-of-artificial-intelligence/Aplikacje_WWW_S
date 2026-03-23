@@ -1,0 +1,16 @@
+@model AWWW_lab2_gr1.Models.Customer
+
+<h2>Dodaj Klienta</h2>
+<hr />
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Name">Nazwa</label>
+        <input asp-for="Name" type="text" />
+    </div>
+
+    <div style="margin-top: 15px;">
+        <input type="submit" value="Zapisz" class="my-btn" />
+        <a asp-action="Index" class="my-btn">Powrót do listy</a>
+    </div>
+</form>

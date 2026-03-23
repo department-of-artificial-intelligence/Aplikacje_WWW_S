@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr1.Data;
 using AWWW_lab2_gr1.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AWWW_lab2_gr1.Controllers;
 
@@ -10,7 +11,11 @@ public class AddressController : Controller
     public AddressController(AppDbContext context) { _context = context; }
 
     public IActionResult Index() => View(_context.Addresses.ToList());
-    public IActionResult Create() => View();
+    public IActionResult Create()
+    {
+        ViewBag.Customers = new SelectList(_context.Customers, "Id", "Name");
+        return View();
+    }
 
     [HttpPost]
     public IActionResult Create(Address address)
@@ -21,6 +26,7 @@ public class AddressController : Controller
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        ViewBag.Customers = new SelectList(_context.Customers, "Id", "Name");
         return View(address);
     }
 }

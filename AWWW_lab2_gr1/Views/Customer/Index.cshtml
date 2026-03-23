@@ -1,0 +1,26 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Customer>
+
+<h2>Klienci</h2>
+<hr />
+
+<p>
+    <a asp-action="Create" class="my-btn">Dodaj Klienta</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
