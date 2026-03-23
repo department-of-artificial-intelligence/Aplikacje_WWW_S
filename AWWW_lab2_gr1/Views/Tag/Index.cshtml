@@ -1,0 +1,24 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Tag>
+
+<h2>Lista Tagów</h2>
+
+<p>
+    <a asp-action="Create" class="my-btn">Dodaj nowy tag</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+@model AWWW_lab2_gr1.Models.Tag
+
+<h2>Dodaj Tag</h2>
+<hr />
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Name">Nazwa Taga</label>
+        <input asp-for="Name" type="text" />
+    </div>
+    
+    <div>
+        <input type="submit" value="Zapisz" class="my-btn" />
+        <a asp-action="Index" class="my-btn">Powrót do listy</a>
+    </div>
+</form>
