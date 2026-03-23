@@ -1,0 +1,35 @@
+@model AWWW_lab2_gr1.Models.Address
+
+<h2>Dodaj Adres</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="control-label">ID Klienta</label>
+                <input asp-for="CustomerId" class="form-control" type="number" />
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="City" class="control-label">Miasto</label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Street" class="control-label">Ulica</label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PostalCode" class="control-label">Kod pocztowy</label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Zapisz</button>
+                <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+            </div>
+        </form>
+    </div>
+</div>

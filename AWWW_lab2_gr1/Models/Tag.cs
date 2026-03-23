@@ -1,7 +1,10 @@
-public class Tag
+namespace AWWW_lab2_gr1.Models
 {
-    public int Id {get; set;}
-    public required string Name {get; set;}
+    public class Tag
+    {
+        public int Id { get; set; }
+        public required string Name { get; set; }
 
-    public List<Product> Products{get; set;}= new List<Product>();
+        public List<Product> Products { get; set; } = new List<Product>();
+    }
 }

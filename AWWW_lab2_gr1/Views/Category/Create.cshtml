@@ -1,0 +1,20 @@
+@model AWWW_lab2_gr1.Models.Category
+
+<h2>Dodaj Kategorię</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="control-label">Nazwa kategorii</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Zapisz</button>
+                <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+            </div>
+        </form>
+    </div>
+</div>

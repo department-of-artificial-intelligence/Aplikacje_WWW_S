@@ -1,0 +1,30 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Address>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista Adresów</h2>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowy adres</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>ID Klienta</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Kod pocztowy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CustomerId</td>
+                <td>@item.City</td>
+                <td>@item.Street</td>
+                <td>@item.PostalCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
