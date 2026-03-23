@@ -26,15 +26,19 @@ public class AddressController : Controller
         return View();
     }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Create(Address address)
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(Address address)
+{
+    if (!ModelState.IsValid)
     {
-        if (!ModelState.IsValid)
-            return View(address);
-
-        _context.Addresses.Add(address);
-        _context.SaveChanges();
-        return RedirectToAction(nameof(Index));
+        var customers = _context.Customers.OrderBy(c => c.Name).ToList();
+        ViewBag.Customers = customers;
+        return View(address);
     }
+
+    _context.Addresses.Add(address);
+    _context.SaveChanges();
+    return RedirectToAction(nameof(Index));
+}
 }
