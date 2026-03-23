@@ -1,0 +1,31 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Address>
+
+@{
+    ViewData["Title"] = "Adresy";
+}
+
+<h1>Adresy</h1>
+<p><a class="btn btn-primary" asp-action="Create">Dodaj adres</a></p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Klient</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Kod pocztowy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var address in Model)
+        {
+            <tr>
+                <td>@address.Id</td>
+                <td>@address.Customer?.Name</td>
+                <td>@address.City</td>
+                <td>@address.Street</td>
+                <td>@address.PostalCode</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Tag>
+
+@{
+    ViewData["Title"] = "Tagi";
+}
+
+<h1>Tagi</h1>
+<p><a class="btn btn-primary" asp-action="Create">Dodaj tag</a></p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tag in Model)
+        {
+            <tr>
+                <td>@tag.Id</td>
+                <td>@tag.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

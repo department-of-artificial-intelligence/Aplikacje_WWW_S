@@ -1,0 +1,45 @@
+@using AWWW_lab2_gr1.Models
+@model AWWW_lab2_gr1.Models.Address
+
+@{
+    ViewData["Title"] = "Dodaj adres";
+    var customers = ViewBag.Customers as List<Customer> ?? new List<Customer>();
+}
+
+<h1>Dodaj adres</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CustomerId" class="control-label">Klient</label>
+        <select asp-for="CustomerId" class="form-control">
+            <option value="">-- Wybierz klienta --</option>
+            @foreach (var customer in customers)
+            {
+                <option value="@customer.Id">@customer.Name (ID: @customer.Id)</option>
+            }
+        </select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Street" class="control-label"></label>
+        <input asp-for="Street" class="form-control" />
+        <span asp-validation-for="Street" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode" class="control-label"></label>
+        <input asp-for="PostalCode" class="form-control" />
+        <span asp-validation-for="PostalCode" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

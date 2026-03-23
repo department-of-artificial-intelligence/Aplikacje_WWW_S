@@ -1,0 +1,27 @@
+@model List<AWWW_lab2_gr1.Models.Customer>
+
+@{
+    ViewData["Title"] = "Klienci";
+}
+
+<h1>Klienci</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Dodaj nowego klienta</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
