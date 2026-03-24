@@ -16,4 +16,18 @@ public class AppDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
     public DbSet<Review> Reviews { get; set; }
+    public DbSet<OrderStatus> OrderStatuses { get; set; }
+    public DbSet<OrderStatusHistory> OrderStatusHistories { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Dodanie przykładowych kategorii
+        modelBuilder.Entity<Category>().HasData(
+            new Category { Id = 1, Name = "Elektronika" },
+            new Category { Id = 2, Name = "Odzież" },
+            new Category { Id = 3, Name = "Książki" }
+        );
+    }
 }

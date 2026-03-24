@@ -1,0 +1,31 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Product>
+
+<h2>Lista Produktów</h2>
+
+<p>
+    <a asp-action="Create" class="my-btn">Dodaj nowy produkt</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Tagi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Category?.Name</td>
+                <td>@string.Join(", ", item.Tags?.Select(t => t.Name) ?? Enumerable.Empty<string>())</td>
+            </tr>
+        }
+    </tbody>
+</table>
