@@ -23,6 +23,25 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // Relacje dla statusów zamówienia
+        modelBuilder.Entity<Order>()
+            .HasOne(o => o.OrderStatus)
+            .WithMany(s => s.Orders)
+            .HasForeignKey(o => o.OrderStatusId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<OrderStatusHistory>()
+            .HasOne(h => h.Order)
+            .WithMany(o => o.OrderStatusHistories)
+            .HasForeignKey(h => h.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<OrderStatusHistory>()
+            .HasOne(h => h.OrderStatus)
+            .WithMany(s => s.OrderStatusHistories)
+            .HasForeignKey(h => h.OrderStatusId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         // Dodanie przykładowych kategorii
         modelBuilder.Entity<Category>().HasData(
             new Category { Id = 1, Name = "Elektronika" },
