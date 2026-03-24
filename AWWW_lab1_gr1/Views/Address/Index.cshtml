@@ -1,0 +1,54 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Address>
+
+<h1>Adresy klienta</h1>
+
+<form asp-action="Create" method="post" class="mb-4">
+    <div class="mb-2">
+        <label for="CustomerId" class="form-label">Id klienta</label>
+        <input id="CustomerId" name="CustomerId" type="number" min="1" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label for="City" class="form-label">Miasto</label>
+        <input id="City" name="City" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label for="Street" class="form-label">Ulica</label>
+        <input id="Street" name="Street" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label for="PostalCode" class="form-label">Kod pocztowy</label>
+        <input id="PostalCode" name="PostalCode" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+@if (!Model.Any())
+{
+    <p>Brak adresów w bazie.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id klienta</th>
+                <th>Miasto</th>
+                <th>Ulica</th>
+                <th>Kod pocztowy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CustomerId</td>
+                    <td>@item.City</td>
+                    <td>@item.Street</td>
+                    <td>@item.PostalCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

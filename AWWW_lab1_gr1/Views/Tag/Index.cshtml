@@ -1,0 +1,25 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Tag>
+
+<h1>Tagi</h1>
+
+<form asp-action="Create" method="post" class="mb-4">
+    <div class="mb-2">
+        <label for="name" class="form-label">Nazwa tagu</label>
+        <input id="name" name="name" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+@if (!Model.Any())
+{
+    <p>Brak tagów w bazie.</p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var tag in Model)
+        {
+            <li class="list-group-item">@tag.Name</li>
+        }
+    </ul>
+}
