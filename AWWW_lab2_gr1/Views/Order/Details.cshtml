@@ -1,0 +1,95 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+@{
+    ViewData["Title"] = "Szczegóły zamówienia";
+}
+
+<h1>Zamówienie #@Model.Id</h1>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h5>Informacje zamawiającego</h5>
+        <p><strong>Klient:</strong> @Model.Customer.Name</p>
+        <p><strong>Data:</strong> @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</p>
+    </div>
+    <div class="col-md-6">
+        <h5>Status zamówienia</h5>
+        <p>
+            <strong>Bieżący status:</strong> 
+            <span class="badge bg-info">@Model.OrderStatus.Name</span>
+        </p>
+        <a asp-action="ChangeStatus" asp-route-orderId="@Model.Id" class="btn btn-sm btn-warning">Zmień status</a>
+    </div>
+</div>
+
+<hr />
+
+<h5>Produkty w zamówieniu</h5>
+
+@if (Model.OrderItems.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Ilość</th>
+                <th>Cena jednostkowa</th>
+                <th>Razem</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderItems)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("C")</td>
+                    <td>@(item.UnitPrice * item.Quantity).ToString("C")</td>
+                    <td>
+                        <form asp-action="DeleteItem" asp-route-itemId="@item.Id" asp-route-orderId="@Model.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Usunąć ten produkt?')">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <strong>Suma:</strong> 
+        @Model.OrderItems.Sum(x => x.Quantity * x.UnitPrice).ToString("C")
+    </p>
+}
+else
+{
+    <p>Brak produktów w zamówieniu</p>
+}
+
+<a asp-action="AddItem" asp-route-orderId="@Model.Id" class="btn btn-success mb-3">+ Dodaj produkt</a>
+
+<hr />
+
+<h5>Historia zmian statusu</h5>
+
+@if (Model.OrderStatusHistory.Count > 0)
+{
+    <div class="list-group">
+        @foreach (var history in Model.OrderStatusHistory.OrderByDescending(h => h.ChangedAt))
+        {
+            <div class="list-group-item">
+                <p class="mb-1">
+                    <strong>@history.OrderStatus.Name</strong>
+                    <span class="text-muted float-end">@history.ChangedAt.ToString("dd.MM.yyyy HH:mm")</span>
+                </p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Brak historii zmian</p>
+}
+
+<hr />
+
+<a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>

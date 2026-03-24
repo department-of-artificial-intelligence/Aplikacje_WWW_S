@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Dodaj produkt do zamówienia";
+}
+
+<h1>Dodaj produkt do zamówienia #@ViewBag.OrderId</h1>
+
+<form asp-action="AddItem" method="post">
+    <input type="hidden" name="orderId" value="@ViewBag.OrderId" />
+
+    <div class="mb-3">
+        <label for="productId" class="form-label">Produkt</label>
+        <select class="form-control" id="productId" name="productId" required>
+            <option value="">-- Wybierz produkt --</option>
+            @foreach (var product in ViewBag.Products)
+            {
+                <option value="@product.Value">@product.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Ilość</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj do zamówienia</button>
+    <a asp-action="Details" asp-route-id="@ViewBag.OrderId" class="btn btn-secondary">Anuluj</a>
+</form>

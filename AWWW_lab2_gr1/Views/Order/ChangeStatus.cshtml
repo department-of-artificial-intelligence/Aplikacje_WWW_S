@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Zmień status zamówienia";
+    var currentStatusId = ViewBag.CurrentStatusId.ToString();
+}
+
+<h1>Zmień status zamówienia #@ViewBag.OrderId</h1>
+
+<div class="alert alert-info">
+    <strong>Bieżący status:</strong>
+    @{
+        var statuses = ((System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.Statuses).ToList();
+        var currentStatus = statuses.FirstOrDefault(s => s.Value == currentStatusId);
+    }
+    @(currentStatus?.Text ?? "Nieznany")
+</div>
+
+<form asp-action="ChangeStatus" method="post">
+    <input type="hidden" name="orderId" value="@ViewBag.OrderId" />
+
+    <div class="mb-3">
+        <label for="newStatusId" class="form-label">Nowy status</label>
+        <select class="form-control" id="newStatusId" name="newStatusId" required>
+            <option value="">-- Wybierz nowy status --</option>
+            @foreach (var status in ViewBag.Statuses)
+            {
+                if (status.Value == currentStatusId)
+                {
+                    <option value="@status.Value" selected disabled>
+                        @status.Text
+                    </option>
+                }
+                else
+                {
+                    <option value="@status.Value">
+                        @status.Text
+                    </option>
+                }
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zmień status</button>
+    <a asp-action="Details" asp-route-id="@ViewBag.OrderId" class="btn btn-secondary">Anuluj</a>
+</form>

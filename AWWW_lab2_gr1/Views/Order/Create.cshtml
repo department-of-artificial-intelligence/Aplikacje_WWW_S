@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Nowe zamówienie";
+}
+
+<h1>Utwórz nowe zamówienie</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="customerId" class="form-label">Klient</label>
+        <select class="form-control" id="customerId" name="customerId" required>
+            <option value="">-- Wybierz klienta --</option>
+            @foreach (var customer in ViewBag.Customers)
+            {
+                <option value="@customer.Value">@customer.Text</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Utwórz zamówienie</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
