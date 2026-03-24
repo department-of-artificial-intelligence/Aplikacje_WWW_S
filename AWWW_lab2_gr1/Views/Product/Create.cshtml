@@ -1,0 +1,45 @@
+@model AWWW_lab2_gr1.Models.ProductCreateViewModel
+
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+
+<h1>Dodaj produkt</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Nazwa produktu</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Cena</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label">Kategoria</label>
+        <select asp-for="CategoryId" asp-items="Model.Categories" class="form-control">
+            <option value="">-- Wybierz kategorię --</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedTagIds" class="control-label">Tagi</label>
+        <select asp-for="SelectedTagIds" asp-items="Model.Tags" class="form-control" multiple size="6"></select>
+        <small class="form-text text-muted">Przytrzymaj Ctrl, aby zaznaczyć wiele tagów.</small>
+        <span asp-validation-for="SelectedTagIds" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -5,7 +5,10 @@ public class Order
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
     public int CustomerId { get; set; }
+    public int OrderStatusId { get; set; }
 
     public virtual Customer Customer { get; set; } = null!;
+    public virtual OrderStatus OrderStatus { get; set; } = null!;
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public virtual ICollection<OrderStatusHistory> OrderStatusHistory { get; set; } = new List<OrderStatusHistory>();
 }

@@ -1,0 +1,32 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Product>
+
+@{
+    ViewData["Title"] = "Produkty";
+}
+
+<h1>Produkty</h1>
+<p><a class="btn btn-primary" asp-action="Create">Dodaj produkt</a></p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Tagi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Category?.Name</td>
+                <td>@string.Join(", ", product.Tags.Select(t => t.Name))</td>
+            </tr>
+        }
+    </tbody>
+</table>
