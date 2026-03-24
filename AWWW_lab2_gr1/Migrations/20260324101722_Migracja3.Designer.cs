@@ -4,6 +4,7 @@ using AWWW_lab2_gr1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab2_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260324101722_Migracja3")]
+    partial class Migracja3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,7 +237,7 @@ namespace AWWW_lab2_gr1.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Review", b =>
@@ -364,7 +367,7 @@ namespace AWWW_lab2_gr1.Migrations
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
-                        .WithMany("OrderStatusHistories")
+                        .WithMany("Status")
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -445,9 +448,9 @@ namespace AWWW_lab2_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>
                 {
-                    b.Navigation("OrderStatusHistories");
-
                     b.Navigation("Orders");
+
+                    b.Navigation("Status");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>

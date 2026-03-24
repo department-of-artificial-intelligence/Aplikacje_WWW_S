@@ -4,6 +4,7 @@ using AWWW_lab2_gr1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab2_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260324094356_Migracja2")]
+    partial class Migracja2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,14 +129,9 @@ namespace AWWW_lab2_gr1.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderStatusId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("OrderStatusId");
 
                     b.ToTable("Order");
                 });
@@ -168,49 +166,6 @@ namespace AWWW_lab2_gr1.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderStatuses");
-                });
-
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ChangedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderStatusId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderStatusId");
-
-                    b.ToTable("OrderStatusHistories");
-                });
-
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -234,7 +189,7 @@ namespace AWWW_lab2_gr1.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Review", b =>
@@ -326,14 +281,6 @@ namespace AWWW_lab2_gr1.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
-                        .WithMany("Orders")
-                        .HasForeignKey("OrderStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderItem", b =>
@@ -353,25 +300,6 @@ namespace AWWW_lab2_gr1.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
-                {
-                    b.HasOne("AWWW_lab2_gr1.Models.Order", "Order")
-                        .WithMany("OrderStatusHistory")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
-                        .WithMany("OrderStatusHistories")
-                        .HasForeignKey("OrderStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
@@ -439,15 +367,6 @@ namespace AWWW_lab2_gr1.Migrations
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
-
-                    b.Navigation("OrderStatusHistory");
-                });
-
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>
-                {
-                    b.Navigation("OrderStatusHistories");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
