@@ -1,0 +1,88 @@
+
+1. Co to jest TPH:
+Table Per Hiarchy polega na tym, że gdy mamy klasy, które po sobie dzeidziczą to można je wszystkie wyrazić w jednej tabeli gdzie kolumny to zbiór cech wszystkich klas. Te cechy które nie dotyczą danej encji są wynullowane. Dodatkowo pojawia się kolumna Dyskryminator, która nazywa typ encji.
+Istnieją jeszcze:
+TPT (Table Per Type) → osobne tabele + JOIN
+TPC (Table Per Concrete) → każda klasa ma swoją tabelę
+
+2. OfType<T>():
+filtrowanie po typie
+C#: var dogs = context.Animals.OfType<Dog>().ToList();
+czyli
+SQL: WHERE Discriminator = 'Dog'
+
+3. Relacje tabel:
+1:1 - klasa podrzędna ma klucz obcy
+1:n - klasa "n" ma klucz obcy (np. Książka ma klucz Autora)
+n:m - obie klasy zawierają Listę relacji, powstaje dodatkowa tabela z kluczami obcymi obu klas
+
+4. Klucz złożony:
+klucz składający się z kilku kolumn, np. swojego Id i kluczy obcych
+
+5. Where():
+sam Where() tworzy tylko iterator, nie od razu nową liste
+var books = context.Books
+	.OfType<Magazine>()
+    .Where(b => b.Price > 50)
+    .ToList();
+
+6. FirstOrDefault():
+zwraca tylko pierwszą encje spełniającą warunek, lub NULL
+var book = context.Books
+    .FirstOrDefault(b => b.Id == 1);
+
+7. typeof() i getType():
+można przypisać klasy pochodne do referencji jednego typu (np. Kot i Pies do Animal) aby trzymać je we wspólnej liście List<Animal>, można z takich obiektów odczytać dwa typy
+Animal a = new Dog();
+
+typeof(Animal)    // Animal
+a.GetType()       // Dog (to Refleksja, czyli sprawdzenie prawdziwego typu w czasie działania programu)
+
+Console.WriteLine(a is Animal); // true
+Console.WriteLine(a is Dog);    // true
+
+8. Decimal:
+typ dziesiętny konieczny przy cenach, pieniądzach
+
+9. Typy Loading:
+Lazy Loading:
+var user = context.Users.Find(1); // pobiera tylko usera
+var roles = user.Roles; // dopiero tutaj EF pobiera role z bazy
+
+Eager Loading:
+var user = context.Users
+    .Include(u => u.Roles)
+    .FirstOrDefault(u => u.Id == 1); // pobiera usera i jego role jednym zapytaniem
+
+Explicit Loading:
+var user = context.Users.Find(1);
+context.Entry(user).Collection(u => u.Roles).Load(); // jawnie pobiera role
+
+10. LinQ:
+Where(b => b.Price > 50) - gdy chcesz warunek
+Select(u => u.Name) - gdy chcesz tylko część danych
+SelectMany(u => u.Roles) - lista list do jedna lista
+First(u => u.Id == 1) - gdy musi istnieć
+FirstOrDefault(...) - gdy może nie istnieć
+Single(u => u.Id == 1) - gdy MUSI być jeden
+SingleOrDefault(...) - gdy max 1
+
+Any(u => u.Name=="Adam") - sprawdzanie istnienia
+Count() - liczba rekordów
+Sum(b => b.Price) - sumowanie
+Average(b => b.Price) - średnia
+Min(b => b.Price) - najmniejszy element
+Max(b => b.Price) - największy element
+
+OrderBy(b => b.Price) - sortowanie
+OrderByDescending(...) - sortowanie
+ThenBy(b => b.Name) - sortowanie wielopoziomowe
+
+GroupBy(b => b.AuthorId) - agregacje
+Join(...) - odpowiednik SQL JOIN
+Take(5) - limit
+Skip(10) - paginacja
+OfType<Dog>() - dziedziczenie
+ToList() - materializacja
+ToArray() - materializacja
+

@@ -1,0 +1,3 @@
+dotnet new web -n AWWW_lab1_gr2 -f net8.0
+
+dotnet run --project AWWW_lab1_gr2

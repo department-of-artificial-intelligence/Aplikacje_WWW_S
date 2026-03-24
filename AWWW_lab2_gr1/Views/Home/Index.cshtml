@@ -1,0 +1,47 @@
+<div class="section">
+
+<h1>@ViewBag.Title</h1>
+
+<p>Witamy na stronie głównej!</p>
+
+<p>Artykuły:
+
+    <ul>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="1">Artykuł 1</a></li>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="2">Artykuł 2</a></li>
+    <li><a asp-controller="Article" asp-action="Index" asp-route-id="3">Artykuł 3</a></li>
+    </ul>
+</p>
+
+<p>Studenci:
+
+<ul>
+    <li><a asp-controller="Student" asp-action="Index" asp-route-id="1">Ronald Pralski</a></li>
+    <li><a asp-controller="Student" asp-action="Index" asp-route-id="2">Anna Tomalska</a></li>
+    <li><a asp-controller="Student" asp-action="Index" asp-route-id="3">Piotr Nerkowski</a></li>
+</ul>
+
+</p>
+
+@if (Model != null)
+{
+    <h1>Kategorie:</h1>
+    foreach (var category in Model)
+    {
+        <p>
+            <div class="w3-card">
+                <header class="w3-container w3-blue">
+                    <h2>@category.Id - @category.Name</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p><a asp-controller="category" asp-action="index" asp-route-id="@category.Id">Czytaj dalej</a></p>
+                </div>
+
+                <footer class="w3-container w3-blue">
+                    <h5></h5>
+                </footer>
+            </div>
+        </p>
+    }
+}
