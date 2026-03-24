@@ -9,4 +9,8 @@ public class Order
     public Customer Customer { get; set; } = null!;
 
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+    public int OrderStatusId { get; set; }
+    public OrderStatus OrderStatus { get; set; } = null!;
+    public ICollection<OrderStatusHistory> StatusHistory { get; set; } = new List<OrderStatusHistory>();
 }
