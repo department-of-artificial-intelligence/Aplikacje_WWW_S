@@ -18,6 +18,9 @@ namespace AWWW_lab2_gr1.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<OrderStatusHistory> OrderStatusHistory { get; set; }
+
 
         //To nie jest must have ale przydaje sie przy relacjach 1:1 i N:M bo EntityFramework moze sie ciulnac i zrobic zle, reszte ogarnie EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
