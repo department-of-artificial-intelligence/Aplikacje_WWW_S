@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using AWWW_lab2_gr1.Models;
+﻿using AWWW_lab2_gr1.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab2_gr1.Controllers
 {
@@ -13,14 +14,14 @@ namespace AWWW_lab2_gr1.Controllers
         }
         public IActionResult Index()
         {
-            var products = _context.Products.ToList();
+            var products = _context.Products.Include(p => p.Category).ToList();
             return View(products);
         }
 
         public IActionResult Create()
         {
             ViewBag.Categories = _context.Categories.ToList(); //W create.cshtml jest foreach i dlatego musi byc tak, lista bo kategorii 
-            ViewBag.Tags = _context.Categories.ToList();
+            ViewBag.Tags = _context.Tags.ToList();
             return View();
         }
 
