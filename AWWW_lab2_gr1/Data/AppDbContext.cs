@@ -11,6 +11,24 @@ namespace AWWW_lab2_gr1.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OrderStatusHistory>()
+                .HasOne(h => h.Order)
+                .WithMany(o => o.OrderStatusHistories)
+                .HasForeignKey(h => h.OrderId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+
+            modelBuilder.Entity<OrderStatusHistory>()
+                .HasOne(h => h.OrderStatus)
+                .WithMany(s => s.OrderStatusHistories)
+                .HasForeignKey(h => h.OrderStatusId)
+                .OnDelete(DeleteBehavior.Restrict); 
+        }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Address> Addresses { get; set; }

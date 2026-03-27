@@ -1,0 +1,35 @@
+﻿@model AWWW_lab2_gr1.Models.Product
+
+<form asp-action="Create" method="post">
+    <div>
+    <label>Nazwa</label>
+    <input asp-for="Name"/>
+    </div>
+    <br/>
+
+    <div>
+    <label>Cena</label>
+    <input asp-for="Price"/>
+    </div>
+    <br/>
+
+    <div>
+    <label>Kategorie</label>
+    <select asp-for="CategoryId" asp-items="ViewBag.Categories"></select>
+    </div>
+    <br/>
+
+    <div>
+    <label>Tagi</label>
+        @foreach (var tag in ViewBag.Tags)
+        {
+            <div>
+                <input type="checkbox" name="selectedTags" value="@tag.Id" />
+                <label>@tag.Name</label>
+            </div>
+        }
+    </div>
+    <br/>
+
+    <button type="submit">Zapisz</button>
+</form>

@@ -8,11 +8,12 @@
     <tr>
         <th>Kategoria</th>
     </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
 </table>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>@item.Name</td>
-    </tr>
-}

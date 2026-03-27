@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab2_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260320203040_Migracja1")]
+    [Migration("20260327210507_Migracja1")]
     partial class Migracja1
     {
         /// <inheritdoc />
@@ -37,14 +37,14 @@ namespace AWWW_lab2_gr1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Streest")
+                    b.Property<string>("Street")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -129,9 +129,14 @@ namespace AWWW_lab2_gr1.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("OrderStatusId");
 
                     b.ToTable("Order");
                 });
@@ -166,6 +171,49 @@ namespace AWWW_lab2_gr1.Migrations
                     b.ToTable("OrderItem");
                 });
 
+            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatuses");
+                });
+
+            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("OrderStatusId");
+
+                    b.ToTable("OrderStatusHistories");
+                });
+
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -189,7 +237,7 @@ namespace AWWW_lab2_gr1.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Review", b =>
@@ -258,9 +306,7 @@ namespace AWWW_lab2_gr1.Migrations
                 {
                     b.HasOne("AWWW_lab2_gr1.Models.Customer", "Customer")
                         .WithMany("Addresses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -283,6 +329,14 @@ namespace AWWW_lab2_gr1.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderItem", b =>
@@ -302,6 +356,25 @@ namespace AWWW_lab2_gr1.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
+                {
+                    b.HasOne("AWWW_lab2_gr1.Models.Order", "Order")
+                        .WithMany("OrderStatusHistories")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
+                        .WithMany("OrderStatusHistories")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
@@ -369,6 +442,15 @@ namespace AWWW_lab2_gr1.Migrations
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+
+                    b.Navigation("OrderStatusHistories");
+                });
+
+            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>
+                {
+                    b.Navigation("OrderStatusHistories");
+
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>

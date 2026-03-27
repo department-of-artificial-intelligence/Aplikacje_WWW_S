@@ -358,15 +358,15 @@ namespace AWWW_lab2_gr1.Migrations
             modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
                 {
                     b.HasOne("AWWW_lab2_gr1.Models.Order", "Order")
-                        .WithMany("OrderStatusHistory")
+                        .WithMany("OrderStatusHistories")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "OrderStatus")
                         .WithMany("OrderStatusHistories")
                         .HasForeignKey("OrderStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -440,7 +440,7 @@ namespace AWWW_lab2_gr1.Migrations
                 {
                     b.Navigation("OrderItems");
 
-                    b.Navigation("OrderStatusHistory");
+                    b.Navigation("OrderStatusHistories");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatus", b =>

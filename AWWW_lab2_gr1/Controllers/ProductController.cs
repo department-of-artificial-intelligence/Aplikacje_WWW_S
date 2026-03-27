@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AWWW_lab2_gr1.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace AWWW_lab2_gr1.Controllers
 {
@@ -15,19 +16,27 @@ namespace AWWW_lab2_gr1.Controllers
 		}
 
 		public IActionResult Index()
-		{
-			return View(_context.Categories.ToList());
+		{	
+			var products = _context.Products.Include(p => p.Category).Include(p => p.Tags).ToList();
+
+
+			return View(products);
 		}
+
 
 		public IActionResult Create()
 		{
 			ViewBag.Categories = new SelectList(_context.Categories,"Id","Name");
-			return View();
+            ViewBag.Tags = _context.Tags.ToList();
+
+            return View();
 		}
 
 		[HttpPost]
-		public IActionResult Create(Product product)
+		public IActionResult Create(Product product,int[] selectedTags)
 		{
+			product.Tags = _context.Tags.Where( t => selectedTags.Contains(t.Id)).ToList();
+
 			_context.Products.Add(product);
 			_context.SaveChanges();
 			return RedirectToAction("Index");

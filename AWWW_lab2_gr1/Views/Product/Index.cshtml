@@ -1,0 +1,25 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Product>
+
+<h2>Produkty</h2>
+
+<a asp-action="Create">Dodaj</a>
+
+<table>
+    <tr>
+        <th>Nazwa</th>
+        <th class="text-center">Cena</th>
+        <th>Kategoria</th>
+        <th>Tagi</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price.ToString("F2")</td>
+            <td>@item.Category?.Name</td>
+            <td>@string.Join(", ", item.Tags.Select(t => t.Name))</td>
+        </tr>
+    }
+</table>
+
