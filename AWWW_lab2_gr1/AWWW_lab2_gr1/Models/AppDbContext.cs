@@ -36,6 +36,17 @@ namespace AWWW_lab2_gr1.Models
                 .HasMany(p => p.Tags)
                 .WithMany(t => t.Products);
 
+            /*
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.CustomerProfile)
+                .WithOne(cp => cp.Customer)
+                .HasForeignKey<CustomerProfile>(cp => cp.CustomerId);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Tags)
+                .WithMany(t => t.Products);
+            */
+
             base.OnModelCreating(modelBuilder);
         }
     }

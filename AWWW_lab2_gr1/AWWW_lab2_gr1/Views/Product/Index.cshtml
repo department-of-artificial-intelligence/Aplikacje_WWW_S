@@ -10,6 +10,7 @@
             <th>Nazwa</th>
             <th>Cena</th>
             <th>Kategoria</th>
+            <th>Tagi</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,16 @@
                 <td>@p.Name</td>
                 <td>@p.Price</td>
                 <td>@p.Category?.Name</td>
+                <td>
+                    @if (p.Tags != null && p.Tags.Any())
+                    {
+                        @string.Join(", ", p.Tags.Select(t => t.Name))
+                    }
+                    else
+                    {
+                        <span>Brak</span>
+                    }
+                </td>
             </tr>
         }
     </tbody>

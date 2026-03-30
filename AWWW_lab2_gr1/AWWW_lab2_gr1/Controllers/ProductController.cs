@@ -14,7 +14,7 @@ namespace AWWW_lab2_gr1.Controllers
         }
         public IActionResult Index()
         {
-            var products = _context.Products.Include(p => p.Category).ToList();
+            var products = _context.Products.Include(p => p.Category).Include(p => p.Tags).ToList();
             return View(products);
         }
 
