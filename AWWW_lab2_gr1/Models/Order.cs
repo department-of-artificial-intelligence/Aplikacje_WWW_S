@@ -8,5 +8,10 @@ namespace AWWW_lab2_gr1.Models
 
         public Customer? Customer { get; set; }
         public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+        public int? OrderStatusId { get; set; }
+        public OrderStatus? OrderStatus { get; set; } = null!;
+
+        public ICollection<OrderStatusHistory> StatusHistories { get; set; } = new List<OrderStatusHistory>();
     }
 }

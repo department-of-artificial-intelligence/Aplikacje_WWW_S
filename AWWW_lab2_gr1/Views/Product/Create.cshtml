@@ -1,0 +1,38 @@
+@model AWWW_lab2_gr1.Models.Product
+
+<h2>Dodaj Produkt</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="control-label">Nazwa produktu</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="control-label">Cena</label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="control-label">Kategoria</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                    <option value="">-- Wybierz kategoriê --</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="control-label">Tagi</label>
+                <select name="selectedTagIds" class="form-control" asp-items="ViewBag.Tags" multiple style="height: 100px;">
+                </select>
+                <small class="text-muted">Przytrzymaj CTRL, aby zaznaczyæ wiele tagów.</small>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Zapisz produkt</button>
+                <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>

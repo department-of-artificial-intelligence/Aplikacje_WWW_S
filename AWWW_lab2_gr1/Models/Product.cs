@@ -12,9 +12,10 @@ namespace AWWW_lab2_gr1.Models
         
         public int CategoryId { get; set; }
 
-        public Category? Category { get; set; }
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public Category? Category { get; set; } = null!;
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
         public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
         public List<Review> Reviews { get; set; } = new List<Review>();
+
     }
 }

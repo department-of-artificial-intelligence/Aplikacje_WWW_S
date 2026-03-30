@@ -1,0 +1,33 @@
+@model IEnumerable<AWWW_lab2_gr1.Models.Product>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista Produktów</h2>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowy produkt</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Tagi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price z³</td>
+                <td>@(item.Category?.Name ?? "Brak")</td>
+                <td>
+                    @foreach (var tag in item.Tags)
+                    {
+                        <span class="badge bg-info text-dark">@tag.Name</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
