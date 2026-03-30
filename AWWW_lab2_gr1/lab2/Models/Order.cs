@@ -15,5 +15,11 @@ namespace lab2.Models
         public Customer Customer { get; set; } = null!;
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+        public OrderStatus OrderStatus { get; set; }
+
+        public ICollection<OrderStatusHistory> StatusHistory { get; set; } = new List<OrderStatusHistory>();
+
+
     }
 }
