@@ -1,0 +1,13 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+<h2>Zmień status</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Status:</label>
+    <select name="newStatusId" asp-items=@ViewBag.Statuses></select>
+
+    <br /><br />
+    <button type="submit">Zapisz</button>
+</form>

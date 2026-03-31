@@ -35,5 +35,6 @@ namespace AWWW_lab2_gr1.Data
 		public DbSet<Product> Products { get; set; }
 		public DbSet<OrderStatus> OrderStatuses { get; set; }
         public DbSet<OrderStatusHistory> OrderStatusHistories { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

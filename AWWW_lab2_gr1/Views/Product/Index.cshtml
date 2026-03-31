@@ -4,6 +4,7 @@
 
 <a asp-action="Create">Dodaj</a>
 
+
 <table>
     <tr>
         <th>Nazwa</th>
@@ -19,6 +20,10 @@
             <td>@item.Price.ToString("F2")</td>
             <td>@item.Category?.Name</td>
             <td>@string.Join(", ", item.Tags.Select(t => t.Name))</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edytuj</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Usuń</a>
+            </td>
         </tr>
     }
 </table>

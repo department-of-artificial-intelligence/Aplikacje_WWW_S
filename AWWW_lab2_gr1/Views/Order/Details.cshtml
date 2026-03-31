@@ -1,0 +1,17 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+<h2>Szczegóły zamówienia</h2>
+
+<p><b>ID:</b> @Model.Id</p>
+<p><b>Status:</b> @Model.OrderStatus?.Name</p>
+<a asp-controller="Order" asp-action="Index">Powrót</a>
+<h3>Historia statusów</h3>
+
+<ul>
+    @foreach (var h in Model.OrderStatusHistories)
+    {
+        <li>
+            @h.OrderStatus?.Name - @h.ChangedAt
+        </li>
+    }
+</ul>

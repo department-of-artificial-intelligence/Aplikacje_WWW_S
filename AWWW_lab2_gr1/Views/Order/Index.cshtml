@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Order>
+
+<h2>Lista zamówień</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            ID: @item.Id  Status: @item.OrderStatus?.Name
+            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Szczegóły</a>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edytuj Status</a>
+        </li>
+    }
+</ul>
