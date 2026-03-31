@@ -1,0 +1,21 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+<h2>Szczegóły zamówienia</h2>
+
+<p>Status: @Model.OrderStatus.Name</p>
+
+<h3>Produkty</h3>
+<ul>
+    @foreach (var item in Model.OrderItems)
+    {
+        <li>@item.Product.Name (x @item.Quantity)</li>
+    }
+</ul>
+
+<h3>Historia statusów</h3>
+<ul>
+    @foreach (var h in Model.OrderStatusHistories.OrderBy(h => h.ChangedAt))
+    {
+        <li>@h.OrderStatus.Name - @h.ChangedAt</li>
+    }
+</ul>

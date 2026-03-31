@@ -1,0 +1,18 @@
+﻿@model AWWW_lab2_gr1.Models.Product
+
+<h2>Usuń produkt</h2>
+
+<p>Czy na pewno chcesz usunąć ten produkt?</p>
+
+<div>
+    <strong>Nazwa:</strong> @Model.Name <br />
+    <strong>Cena:</strong> @Model.Price <br />
+    <strong>Kategoria:</strong> @Model.Category?.Name
+</div>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <button type="submit">Usuń</button>
+    <a href="/Product/Index">Anuluj</a>
+</form>

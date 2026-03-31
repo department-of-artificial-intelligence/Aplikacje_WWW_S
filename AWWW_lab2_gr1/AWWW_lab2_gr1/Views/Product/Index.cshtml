@@ -11,6 +11,7 @@
             <th>Cena</th>
             <th>Kategoria</th>
             <th>Tagi</th>
+            <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,10 @@
                     {
                         <span>Brak</span>
                     }
+                </td>
+                <td>
+                    <a href="/Product/Edit/@p.Id">Edytuj</a> |
+                    <a href="/Product/Delete/@p.Id">Usuń</a>
                 </td>
             </tr>
         }

@@ -1,0 +1,29 @@
+﻿@model AWWW_lab2_gr1.Models.Product
+
+<h2>Edytuj produkt</h2>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <input name="Name" value="@Model.Name" />
+
+    <input name="Price" value="@Model.Price" />
+
+    <select name="CategoryID">
+        @foreach (var c in ViewBag.Categories)
+        {
+            <option value="@c.Id" selected="@(c.Id == Model.CategoryID)">
+                @c.Name
+            </option>
+        }
+    </select>
+
+    @foreach (var tag in ViewBag.Tags)
+    {
+        <input type="checkbox" name="selectedTags" value="@tag.Id"
+               checked="@(Model.Tags.Any(t => t.Id == tag.Id))" />
+        @tag.Name
+    }
+
+    <button type="submit">Zapisz</button>
+</form>

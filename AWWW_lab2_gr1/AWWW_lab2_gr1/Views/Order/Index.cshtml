@@ -1,0 +1,30 @@
+﻿@model List<AWWW_lab2_gr1.Models.Order>
+
+<h2>Lista zamówień</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Klient</th>
+            <th>Status</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.CreatedAt</td>
+                <td>@o.Customer?.Name</td>
+                <td>@o.OrderStatus?.Name</td>
+                <td>
+                    <a href="/Order/Details/@o.Id">Szczegóły</a> |
+                    <a href="/Order/EditStatus/@o.Id">Zmień status</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
