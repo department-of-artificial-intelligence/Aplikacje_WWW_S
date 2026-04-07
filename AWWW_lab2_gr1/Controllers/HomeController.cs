@@ -8,8 +8,15 @@ namespace AWWW_lab2_gr1.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Home";
-            var categories = Repository.Categories;
-            return View(categories);
+            
+            var vm = new ViewModel
+            {
+                Categories = Repository.Categories.ToList(),
+                Tags = Repository.Tags.ToList(),
+                Addresses = Repository.Addresses.ToList()
+            };
+
+            return View(vm);
         }
     }
 }
