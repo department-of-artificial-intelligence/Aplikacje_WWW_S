@@ -1,0 +1,48 @@
+@model List<AWWW_lab4_gr1.Models.Product>
+
+<h1>Produkty</h1>
+
+@if (Model != null)
+{
+    <h3>Lista produktów:</h3>
+    <div class="table-container">
+    <table class="w3-table w3-bordered w3-striped">
+    <thead>
+        <tr class="w3-blue">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Tags</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price zł</td>
+                <td>@(product.Category?.Name ?? "N/A")</td>
+                <td>
+                    @foreach (var tag in product?.Tags ?? new List<AWWW_lab4_gr1.Models.Tag>())
+                    {
+                        @tag.Name 
+                        <br />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product?.Id" class="w3-btn w3-blue w3-margin-right">Edytuj</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@product?.Id" class="w3-btn w3-red">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+}

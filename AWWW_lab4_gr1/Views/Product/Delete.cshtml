@@ -1,0 +1,15 @@
+@model AWWW_lab4_gr1.Models.Product
+
+<h1>Usuń produkt</h1>
+
+<form asp-action="Delete" method="post" class="w3-container">
+    <input type="hidden" asp-for="Id" />
+
+    <p>
+        Czy na pewno chcesz usunąć produkt: <b>@Model.Name</b>?
+    </p>
+
+    <p>
+        <button type="submit" class="w3-btn w3-red">Usuń produkt</button>
+    </p>
+</form>

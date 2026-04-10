@@ -1,0 +1,19 @@
+@model AWWW_lab4_gr1.Models.Address
+
+<h1>Dodaj adres</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="City">Miasto:</label>
+        <input asp-for="City" class="w3-input w3-border" />
+
+        <label asp-for="Street">Ulica:</label>
+        <input asp-for="Street" class="w3-input w3-border" />
+
+        <label asp-for="PostalCode">Kod pocztowy:</label>
+        <input asp-for="PostalCode" class="w3-input w3-border" />
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>

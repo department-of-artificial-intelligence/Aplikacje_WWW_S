@@ -1,0 +1,122 @@
+/* Reset drobnych marginesów i paddingu */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Cała strona */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+}
+
+/* Nagłówki */
+h1 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+/* Akapity */
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Listy artykułów i studentów */
+ul {
+    list-style-type: none; /* usuwa punkty */
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Linki */
+a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #e74c3c;
+}
+
+/* Dla sekcji artykułów i studentów */
+ul li a {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+ul li a:hover {
+    background-color: #ecf0f1;
+}
+
+/* Sekcje ogólne */
+.section {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/*TABLE*/
+.w3-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* nagłówki */
+.w3-table thead tr {
+    background-color: #2196F3; /* niebieski */
+    color: white;
+    text-align: left;
+}
+
+/* komórki */
+.w3-table th,
+.w3-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* zebra stripes (jeśli W3 nie działa idealnie) */
+.w3-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* hover efekt */
+.w3-table tbody tr:hover {
+    background-color: #e3f2fd;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+/* lepsza czytelność liczb */
+.w3-table td:nth-child(3),
+.w3-table td:nth-child(4) {
+    text-align: center;
+    font-weight: 500;
+}
+
+/* responsywność */
+.table-container {
+    overflow-x: auto;
+}

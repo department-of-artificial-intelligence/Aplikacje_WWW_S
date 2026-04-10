@@ -1,4 +1,4 @@
-namespace AWWW_lab3_gr1.Models
+namespace AWWW_lab4_gr1.Models
 {
     public class OrderStatusHistory
     {
@@ -8,5 +8,3 @@ namespace AWWW_lab3_gr1.Models
         public DateTime ChangedAt {get; set;}
     }
 }
-
-

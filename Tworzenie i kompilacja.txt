@@ -23,11 +23,13 @@ VS Studio:
 Add-Migration m1
 Update-Database
 
+Remove-Migration
+
 VS Code:
 dotnet ef migrations add m1
 dotnet ef database update
 
-
+...
 
 
 

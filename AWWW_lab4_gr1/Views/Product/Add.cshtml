@@ -1,0 +1,24 @@
+@model AWWW_lab4_gr1.Models.ProductCreateViewModel
+
+<h1>Dodaj produkt</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="Name">Nazwa:</label>
+        <input asp-for="Name" class="w3-input w3-border" />
+
+
+        <label asp-for="Price">Cena:</label>
+        <input asp-for="Price" class="w3-input w3-border" />
+
+         <label asp-for="CategoryId">Kategoria:</label>
+        <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Name"))"></select>
+
+        <label asp-for="SelectedTagIds">Tagi:</label>
+        <select asp-for="SelectedTagIds" asp-items="@(new SelectList(Model.Tags, "Id", "Name"))" multiple="multiple" class="w3-select"></select>
+
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>
