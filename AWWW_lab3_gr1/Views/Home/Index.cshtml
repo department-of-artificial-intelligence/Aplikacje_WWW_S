@@ -1,0 +1,103 @@
+@model AWWW_lab3_gr1.Models.ViewModel
+
+<div class="section">
+
+    <h1>@ViewBag.Title</h1>
+
+    <p>Witamy na stronie głównej!</p>
+
+    <table style="width:100%">
+        <tr>
+            <td style="width:50%; vertical-align: top;">
+
+
+                <p>Artykuły:
+
+                    <ul>
+                        <li><a asp-controller="Article" asp-action="Index" asp-route-id="1">Artykuł 1</a></li>
+                        <li><a asp-controller="Article" asp-action="Index" asp-route-id="2">Artykuł 2</a></li>
+                        <li><a asp-controller="Article" asp-action="Index" asp-route-id="3">Artykuł 3</a></li>
+                    </ul>
+                </p>
+
+            </td>
+            <td style="width:50%; vertical-align: top;">
+
+                <p>Studenci:
+
+                    <ul>
+                        <li><a asp-controller="Student" asp-action="Index" asp-route-id="1">Ronald Pralski</a></li>
+                        <li><a asp-controller="Student" asp-action="Index" asp-route-id="2">Anna Tomalska</a></li>
+                        <li><a asp-controller="Student" asp-action="Index" asp-route-id="3">Piotr Nerkowski</a></li>
+                    </ul>
+
+                </p>
+
+            </td>
+        </tr>
+    </table>
+
+    <table style="width:100%">
+        <tr>
+            <td style="width:33%; vertical-align: top;">
+
+                @if (Model.Categories != null)
+                {
+                    <h1>Kategorie:</h1>
+                    foreach (var category in Model.Categories)
+                    {
+                        <p>
+                            <div class="w3-card">
+                                <header class="w3-container w3-blue">
+                                    @category.Id - @category.Name
+                                </header>
+
+                            </div>
+                        </p>
+                    }
+                }
+
+            </td>
+            <td style="width:33%; vertical-align: top;">
+
+                @if (Model.Tags != null)
+                {
+                    <h1>Tagi:</h1>
+                    foreach (var tag in Model.Tags)
+                    {
+                        <p>
+                            <div class="w3-card">
+                                <header class="w3-container w3-blue">
+                                    @tag.Id - @tag.Name
+                                </header>
+
+            
+                            </div>
+                        </p>
+                    }
+                }
+
+            </td>
+            <td style="width:33%; vertical-align: top;">
+
+                @if (Model.Addresses != null)
+                {
+                    <h1>Adresy:</h1>
+                    foreach (var address in Model.Addresses)
+                    {
+                        <p>
+                            <div class="w3-card">
+                                <header class="w3-container w3-blue">
+                                    <h2>@address.Id - @address.City</h2>
+                                    @address.Street
+                                    @address.PostalCode
+                                </header>
+
+                            </div>
+                        </p>
+                    }
+                }
+
+            </td>
+        </tr>
+    </table>

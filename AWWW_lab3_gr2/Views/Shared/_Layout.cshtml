@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    </head>
+    <body>
+        <header>
+        <nav>
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="w3-bar-item w3-button" asp-controller="Category" asp-action="Add">Dodaj kategorię</a>
+                    <a class="w3-bar-item w3-button" asp-controller="Tag" asp-action="Add">Dodaj tag</a>
+                    <a class="w3-bar-item w3-button" asp-controller="Address" asp-action="Add">Dodaj adres</a>
+                    <a class="w3-bar-item w3-button" asp-controller="Product" asp-action="Add">Dodaj Produkt</a>
+                </li>
+            </ul>
+        </nav>
+       </header>
+       <main>
+            @RenderBody()
+       </main>
+        <footer>
+            &copy; 2022
+        </footer>
+    </body>
+</html>

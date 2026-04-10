@@ -1,3 +1,37 @@
-dotnet new web -n AWWW_lab1_gr2 -f net8.0
 
-dotnet run --project AWWW_lab1_gr2
+UTWORZENIE NOWEGO PROJEKTU:
+
+dotnet new web -n AWWW_lab1_gr1 -f net8.0
+dotnet run --project AWWW_lab1_gr1
+
+
+Instalacja ENTITY FRAMEWORK:
+
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.0
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.0
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.0
+
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+
+TEST:
+dotnet list package
+
+VS Studio:
+Add-Migration m1
+Update-Database
+
+VS Code:
+dotnet ef migrations add m1
+dotnet ef database update
+
+
+
+
+
+
+dotnet restore
+dotnet build
+
