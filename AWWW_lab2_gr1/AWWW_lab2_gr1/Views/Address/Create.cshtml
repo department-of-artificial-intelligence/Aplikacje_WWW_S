@@ -1,0 +1,38 @@
+﻿@model AWWW_lab2_gr1.Models.Address
+
+<h2>Dodaj adres</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="CustomerId" class="form-label"></label>
+        <input asp-for="CustomerId" class="form-control" />
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="City" class="form-label"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Street" class="form-label"></label>
+        <input asp-for="Street" class="form-control" />
+        <span asp-validation-for="Street" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PostalCode" class="form-label"></label>
+        <input asp-for="PostalCode" class="form-control" />
+        <span asp-validation-for="PostalCode" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,20 @@
+﻿@model AWWW_lab2_gr1.Models.Tag
+
+<h2>Dodaj tag</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
