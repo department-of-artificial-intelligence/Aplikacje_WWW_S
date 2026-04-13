@@ -1,0 +1,28 @@
+@model List<Kolokwium.Models.Autor>
+
+<h2>Autorzy</h2>
+
+<a asp-action="Create">Dodaj autora</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Imie</th>
+        <th>Ksiazki</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Nazwisko</td>
+
+        <td>
+            @foreach (var k in item.Ksiazki)
+            {
+                <span>@k.Tytul </span>
+            }
+        </td>
+    </tr>
+}
+</table>

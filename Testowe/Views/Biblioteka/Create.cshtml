@@ -1,0 +1,11 @@
+@model Kolokwium.Models.Biblioteka
+
+<h2>Create Biblioteka</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Nazwa"></label>
+        <input asp-for="Nazwa" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

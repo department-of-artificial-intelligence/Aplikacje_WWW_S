@@ -1,0 +1,12 @@
+@model Kolokwium.Models.Autor
+
+<h2>Dodaj autora</h2>
+
+<form asp-action="Create" method="post">
+
+    <input asp-for="Nazwisko" placeholder="Nazwisko autora" />
+
+    <br />
+
+    <button type="submit">Zapisz</button>
+</form>

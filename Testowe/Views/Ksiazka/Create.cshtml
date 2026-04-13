@@ -1,0 +1,33 @@
+@model Kolokwium.Models.Ksiazka
+
+<h2>Dodaj ksiazke</h2>
+
+<form asp-action="Create" method="post">
+
+    <input asp-for="Tytul" placeholder="Tytul" />
+
+    <br />
+
+    <label>Biblioteka</label>
+    <select asp-for="BibliotekaId"
+            asp-items="@(new SelectList(ViewBag.Biblioteki, "Id", "Nazwa"))">
+    </select>
+
+    <br />
+
+    <!-- 🔥 TUTAJ WKLEJASZ -->
+    <h4>Autorzy</h4>
+
+    @foreach (var a in ViewBag.Autorzy)
+    {
+        <div>
+            <input type="checkbox" name="autorzyIds" value="@a.Id" />
+            @a.Nazwisko
+        </div>
+    }
+
+    <br />
+
+    <button type="submit">Zapisz</button>
+
+</form>
