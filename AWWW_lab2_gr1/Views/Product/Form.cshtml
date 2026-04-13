@@ -1,36 +1,43 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model AWWW_lab2_gr1.Models.Product
 
 <div class="card shadow-sm">
     <div class="card-header bg-primary text-white p-2">
-        <h4>Add Product</h4>
+        <h4>@(Model.Id == 0 ? "Add Product" : "Edit Product")</h4>
     </div>
     <div class="card-body">
-        <form asp-action="CreateConfirm" method="post">
+        <form asp-action="Save" method="post">
 
             <div class="d-flex flex-column">
-                <input asp-for="Id" type="hidden" value="@Model.Id"/>
+                <input asp-for="Id" type="hidden"/>
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-input" value="@Model.Name"/>
+                <input asp-for="Name" class="form-control"/>
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" type="numeric" class="form-input" value=@Model.Price/>
-                <label asp-for="CategoryId" class="form-label"></label>
-                <select asp-for="CategoryId" class="form-select">
-                    @foreach(AWWW_lab2_gr1.Models.Category cat in ViewBag.cats) {
-                        if (Model.Category != null && cat.Id == Model.Category.Id)
-                        {
-                            <option value="@cat.Id" selected>@cat.Id @cat.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@cat.Id">@cat.Id @cat.Name</option>
-                        }
+                <input asp-for="Price" class="form-control"/>
+                <label class="form-label">Tags</label>
+                <div class="card shadow-sm p-4 d-flex flex-wrap">
+                    @foreach(AWWW_lab2_gr1.Models.Tag tag in ViewBag.tags) {
+                        <div class="form-check">
+                            @if (Model.Tags.Contains(@tag))
+                            {
+                                <input type="checkbox" name="selectedTags" value="@tag.Id" checked/>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="selectedTags" value="@tag.Id" />
+                            }
+                            <label class="form-label">@tag.Name</label>
+                        </div>
                     }
+                </div>
+                <label asp-for="CategoryId" class="form-label"></label>
+                <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.cats, "Id", "Name"))" class="form-select"></select>
                 </select>
             </div>
 
             <div class="d-flex justify-content-around">
                 <button class="btn btn-danger px-5" asp-controller="Product" asp-action="Index">Cancel</button>
-                <button class="btn btn-primary px-5" type="submit">Create</button>
+                <button class="btn btn-primary px-5" type="submit">Save Changes</button>
             </div>
         </form>
     </div>
