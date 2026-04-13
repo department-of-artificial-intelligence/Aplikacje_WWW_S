@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AWWW_lab3_gr1.Models.Category>
+
+@{
+    ViewData["Title"] = "Kategorie";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Kategorie</h1>
+    <a asp-action="Create" class="btn btn-success">Dodaj kategorię</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Powrót</a>

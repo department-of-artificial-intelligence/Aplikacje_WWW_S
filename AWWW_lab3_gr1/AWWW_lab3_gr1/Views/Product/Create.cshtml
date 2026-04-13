@@ -1,0 +1,42 @@
+﻿@model AWWW_lab3_gr1.ViewModels.ProductCreateViewModel
+
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+
+<h1 class="mb-4">Dodaj produkt</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Nazwa produktu</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Cena</label>
+                <input asp-for="Price" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">Kategoria</label>
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tagi</label>
+                @foreach (var tag in Model.Tags)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="SelectedTagIds" value="@tag.Value" id="tag_@tag.Value" />
+                        <label class="form-check-label" for="tag_@tag.Value">@tag.Text</label>
+                    </div>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-success">Zapisz</button>
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+        </form>
+    </div>
+</div>

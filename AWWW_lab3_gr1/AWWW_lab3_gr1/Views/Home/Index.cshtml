@@ -1,8 +1,50 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona startowa";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-5">Panel aplikacji</h1>
+    <p class="lead">Wybierz sekcję, do której chcesz przejść.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">Kategorie</h5>
+                <p class="card-text">Lista kategorii produktów i dodawanie nowych.</p>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-primary">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">Tagi</h5>
+                <p class="card-text">Lista tagów produktów i dodawanie nowych.</p>
+                <a asp-controller="Tag" asp-action="Index" class="btn btn-primary">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">Adresy</h5>
+                <p class="card-text">Przegląd adresów klientów i dodawanie nowych.</p>
+                <a asp-controller="Address" asp-action="Index" class="btn btn-primary">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">Produkty</h5>
+                <p class="card-text">Lista produktów i dodawanie produktów z kategorią i tagami.</p>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Przejdź</a>
+            </div>
+        </div>
+    </div>
 </div>

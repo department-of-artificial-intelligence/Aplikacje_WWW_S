@@ -1,0 +1,19 @@
+﻿namespace AWWW_lab3_gr1.Models
+{
+    public class Order
+    {
+        public int Id { get; set; }
+
+        public int CustomerId { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public Customer Customer { get; set; } = null!;
+
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+        public int OrderStatusId { get; set; }
+        public OrderStatus OrderStatus { get; set; } = null!;
+
+        public ICollection<OrderStatusHistory> StatusHistory { get; set; } = new List<OrderStatusHistory>();
+    }
+}
