@@ -4,6 +4,7 @@ using AWWW_lab2_gr1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab2_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260413172655_StatusHistory1")]
+    partial class StatusHistory1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,33 +185,7 @@ namespace AWWW_lab2_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatuses");
-                });
-
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ChangedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderStatusId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderStatusId");
-
-                    b.ToTable("OrderStatusHistories");
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
@@ -331,7 +308,7 @@ namespace AWWW_lab2_gr1.Migrations
                     b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "Status")
                         .WithMany()
                         .HasForeignKey("OrderStatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Status");
@@ -354,25 +331,6 @@ namespace AWWW_lab2_gr1.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("AWWW_lab2_gr1.Models.OrderStatusHistory", b =>
-                {
-                    b.HasOne("AWWW_lab2_gr1.Models.Order", "Order")
-                        .WithMany("History")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AWWW_lab2_gr1.Models.OrderStatus", "Status")
-                        .WithMany()
-                        .HasForeignKey("OrderStatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Status");
                 });
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Product", b =>
@@ -442,8 +400,6 @@ namespace AWWW_lab2_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab2_gr1.Models.Order", b =>
                 {
-                    b.Navigation("History");
-
                     b.Navigation("OrderItems");
                 });
 

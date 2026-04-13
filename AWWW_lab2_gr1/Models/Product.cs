@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace AWWW_lab2_gr1.Models
 {
@@ -12,11 +13,15 @@ namespace AWWW_lab2_gr1.Models
     {
         [Key]
         public int Id {get;set;}
-        public required string Name {get;set;}
-        
-        [Precision(18,4)]
-        public required decimal Price {get;set;}
 
+        [DisplayName("Name")]
+        public string Name {get;set;} = "";
+        
+        [DisplayName("Price")]
+        [Precision(18,4)]
+        public decimal Price {get;set;} = 0;
+
+        [DisplayName("Category")]
         [ForeignKey("Category")]
         public int CategoryId {get;set;}
         public virtual Category Category {get;set;}

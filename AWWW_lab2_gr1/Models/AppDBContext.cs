@@ -13,12 +13,36 @@ namespace AWWW_lab2_gr1.Models
             : base(options)
         {}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Status)
+                .WithMany()
+                .HasForeignKey(o => o.OrderStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<OrderStatusHistory>()
+                .HasOne(h => h.Status)
+                .WithMany()
+                .HasForeignKey(h => h.OrderStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderStatusHistory>()
+                .HasOne(h => h.Order)
+                .WithMany(o => o.History)
+                .HasForeignKey(h => h.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+
         public DbSet<Address> Addresses {get;set;}
         public DbSet<Category> Categories {get;set;}
         public DbSet<Customer> Customers {get; set;}
         public DbSet<CustomerProfile> CustomerProfiles {get;set;}
         public DbSet<Order> Orders {get;set;}
         public DbSet<OrderItem> OrderItems {get;set;}
+        public DbSet<OrderStatus> OrderStatuses {get;set;}
+        public DbSet<OrderStatusHistory> OrderStatusHistories {get;set;}
         public DbSet<Product> Products {get;set;}
         public DbSet<Review> Reviews {get;set;}
         public DbSet<Tag> Tags {get;set;} 
