@@ -21,11 +21,23 @@ namespace AWWW_lab2_gr1.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.Entity<Customer>()
                 .HasOne(c => c.CustomerProfile)
                 .WithOne(cp => cp.Customer)
                 .HasForeignKey<CustomerProfile>(cp => cp.CustomerId);
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.OrderStatus)
+                .WithMany(os => os.Orders)
+                .HasForeignKey(o => o.OrderStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderStatusHistory>()
+                .HasOne(osh => osh.OrderStatus)
+                .WithMany(os => os.StatusHistories)
+                .HasForeignKey(osh => osh.OrderStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

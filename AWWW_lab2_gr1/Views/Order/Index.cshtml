@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AWWW_lab2_gr1.Models.Order>
+
+<h2>Lista Zamówień</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID Zamówienia</th>
+            <th>Data</th>
+            <th>Aktualny Status</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>#@item.Id</td>
+                <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td><span class="badge bg-primary">@item.OrderStatus?.Name</span></td>
+                <td>
+                    <a asp-action="EditStatus" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Zmień Status</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Szczegóły / Historia</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

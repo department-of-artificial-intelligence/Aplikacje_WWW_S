@@ -1,0 +1,36 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+<h2>Szczegóły Zamówienia #@Model.Id</h2>
+<hr />
+<p><strong>Data złożenia:</strong> @Model.CreatedAt</p>
+<p><strong>Aktualny status:</strong> <span class="badge bg-success" style="font-size: 1.2em;">@Model.OrderStatus?.Name</span></p>
+
+<h4 class="mt-4">Historia zmian statusu</h4>
+<table class="table table-bordered mt-2">
+    <thead class="table-dark">
+        <tr>
+            <th>Data zmiany</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.StatusHistories.Any())
+        {
+            foreach (var history in Model.StatusHistories)
+            {
+                <tr>
+                    <td>@history.ChangedAt.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                    <td>@history.OrderStatus?.Name</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">Brak historii zmian dla tego zamówienia.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Powrót do listy</a>
