@@ -1,0 +1,17 @@
+﻿@model Kolokwium.Models.Library
+
+<h2>Details</h2>
+<p>Id: @Model.Id</p>
+<br />
+<p>Name: @Model.Name</p>
+<br />
+<p>City: @Model.City</p>
+<br />
+<h3>Ksiazki:</h3>
+<ul>
+    @foreach (var item in Model.Books)
+    {
+        <li>Tytul: @item.Title - Author: @item.Author</li>
+    }
+
+</ul>

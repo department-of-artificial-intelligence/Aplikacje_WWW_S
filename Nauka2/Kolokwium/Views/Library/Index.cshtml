@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Kolokwium.Models.Library>
+
+<a class="btn" asp-action="Create">Dodaj</a>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            ID: @item.Id Name: @item.Name City:@item.City
+            <a asp-action="Details" asp-route-id="@item.Id" class="btn">Details</a>
+        </li>
+    }
+<ul>

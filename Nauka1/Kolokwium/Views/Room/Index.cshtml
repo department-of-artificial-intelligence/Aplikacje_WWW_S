@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Kolokwium.Models.Room>
+
+<a class="btn" asp-action="Create">Dodaj</a>
+
+<table>
+    <tr>
+        <td>Number</td>
+        <td>Capacity</td>
+        <td>Price</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Number</td>
+            <td>@item.Capacity</td>
+            <td>@item.Price</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,16 @@
+﻿@model Kolokwium.Models.Reservation
+
+<form asp-action="Edit" method="post">
+    <label>CustomerName</label>
+    <input asp-for="CustomerName" /><br />
+    <label>DateFrom</label>
+    <input asp-for="DateFrom" /><br />
+    <label>DateTo</label>
+    <input asp-for="DateTo" /><br />
+    <label>Hotel</label>
+    <select asp-for="HotelId" asp-items="ViewBag.Hotels"></select><br />
+    <label>Room</label>
+    <select asp-for="RoomId" asp-items="ViewBag.Rooms"></select>
+
+    <button type="submit">Zapisz</button>
+</form>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Kolokwium.Models.Book>
+
+<a class="btn" asp-action="Create">Dodaj</a>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            ID: @item.Id Title: @item.Title
+            <a asp-action="Delete" asp-route-id="@item.Id" class="btn">Delete</a>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn">Edit</a>
+        </li>
+    }
+<ul>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Kolokwium.Models.Reservation>
+
+<table>
+    <tr>
+        <td>CustomerName</td>
+        <td>DateFrom</td>
+        <td>DateTo</td>
+        <td>Hotel</td>
+        <td>Room</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CustomerName</td>
+            <td>@item.DateFrom</td>
+            <td>@item.DateTo</td>
+            <td>@item.Hotel.Name</td>
+            <td>@item.Room.Number</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn">Edit</a>
+            </td>
+        </tr>
+    }
+</table>

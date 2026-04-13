@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Kolokwium.Models.Hotel>
+
+<h2>Hotele</h2>
+
+<ul>
+@foreach(var item in Model)
+{
+    <li>
+        ID: @item.Id Nazwa: @item.Name
+        <a asp-action="Details" asp-route-id="@item.Id" class="btn">Details</a>
+        <a asp-action="Delete" asp-route-id="@item.Id" class="btn">Delete</a>
+    </li>
+}
+<ul>
+

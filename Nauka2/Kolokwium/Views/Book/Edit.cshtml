@@ -1,0 +1,14 @@
+﻿@model Kolokwium.Models.Book
+
+<form asp-action="Edit" method="post">
+    <label>Title</label>
+    <input asp-for="Title" /><br />
+    <label>Price</label>
+    <input asp-for="Price" /><br />
+    <label>Library</label>
+    <select asp-for="LibraryId" asp-items="ViewBag.Libraries"></select><br />
+    <label>Author</label>
+    <select asp-for="AuthorId" asp-items="ViewBag.Authors"></select>
+
+    <button type="submit">Zapisz</button>
+</form>

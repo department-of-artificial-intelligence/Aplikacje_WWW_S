@@ -1,0 +1,15 @@
+﻿@model Kolokwium.Models.Hotel
+
+<h2>Details</h2>
+<p>Id: @Model.Id</p><br />
+<p>Name: @Model.Name</p><br />
+<p>Address: @Model.Address</p><br />
+<p>Rating: @Model.Rating</p>
+<h3>Pokoje w tym hotelu:</h3>
+<ul>
+    @foreach(var item in Model.Rooms)
+    {
+        <li>Pokój nr: @item.Number - Cena: @item.Price</li>
+    }
+
+</ul>
