@@ -1,0 +1,16 @@
+@model AWWW_lab4_gr1.Models.Order
+
+<h1>Dodaj zamówienie</h1>
+
+<form asp-action="Add" method="post" class="w3-container">
+    <p>
+        <label asp-for="CustomerId">Klient:</label>
+        <input asp-for="CustomerId" class="w3-input w3-border" />
+
+        <label asp-for="OrderStatusId">Statusu zamówienia:</label>
+        <input asp-for="OrderStatusId" class="w3-input w3-border" />
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Dodaj</button>
+    </p>
+</form>

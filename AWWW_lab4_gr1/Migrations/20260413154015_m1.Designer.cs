@@ -4,6 +4,7 @@ using AWWW_lab4_gr1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab4_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260413154015_m1")]
+    partial class m1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,13 +189,11 @@ namespace AWWW_lab4_gr1.Migrations
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.Order", b =>
                 {
-                    b.HasOne("AWWW_lab4_gr1.Models.OrderStatus", "OrderStatus")
+                    b.HasOne("AWWW_lab4_gr1.Models.OrderStatus", null)
                         .WithMany()
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.OrderStatusHistory", b =>

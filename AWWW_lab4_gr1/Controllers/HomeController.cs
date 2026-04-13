@@ -20,7 +20,8 @@ namespace AWWW_lab4_gr1.Controllers
             {
                 Categories = _dbContext.Categories.ToList(),
                 Tags = _dbContext.Tags.ToList(),
-                Addresses = _dbContext.Addresses.ToList()
+                Addresses = _dbContext.Addresses.ToList(),
+                OrderStatuses = _dbContext.OrderStatuses.ToList()
             };
 
             return View(vm);

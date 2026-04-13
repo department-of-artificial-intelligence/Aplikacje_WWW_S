@@ -100,4 +100,25 @@
 
             </td>
         </tr>
+        
+        <tr>
+            <td style="width:33%; vertical-align: top;">
+
+                @if (Model.OrderStatuses != null)
+                {
+                    <h1>Statusy zamówień:</h1>
+                    foreach (var status in Model.OrderStatuses)
+                    {
+                        <p>
+                            <div class="w3-card">
+                                <header class="w3-container w3-blue">
+                                    @status.Id - @status.Status
+                                </header>
+
+                            </div>
+                        </p>
+                    }
+                }
+            </td>
+        </tr>
     </table>

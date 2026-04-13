@@ -41,7 +41,7 @@ namespace AWWW_lab4_gr1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderStatus",
+                name: "OrderStatuses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -50,7 +50,7 @@ namespace AWWW_lab4_gr1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderStatus", x => x.Id);
+                    table.PrimaryKey("PK_OrderStatuses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,7 +88,7 @@ namespace AWWW_lab4_gr1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -99,11 +99,11 @@ namespace AWWW_lab4_gr1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Order_OrderStatus_OrderStatusId",
+                        name: "FK_Orders_OrderStatuses_OrderStatusId",
                         column: x => x.OrderStatusId,
-                        principalTable: "OrderStatus",
+                        principalTable: "OrderStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -133,7 +133,7 @@ namespace AWWW_lab4_gr1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderStatusHistory",
+                name: "OrderHistories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -144,34 +144,34 @@ namespace AWWW_lab4_gr1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderStatusHistory", x => x.Id);
+                    table.PrimaryKey("PK_OrderHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderStatusHistory_OrderStatus_OrderStatusId",
+                        name: "FK_OrderHistories_OrderStatuses_OrderStatusId",
                         column: x => x.OrderStatusId,
-                        principalTable: "OrderStatus",
+                        principalTable: "OrderStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OrderStatusHistory_Order_OrderId",
+                        name: "FK_OrderHistories_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Order",
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_OrderStatusId",
-                table: "Order",
-                column: "OrderStatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderStatusHistory_OrderId",
-                table: "OrderStatusHistory",
+                name: "IX_OrderHistories_OrderId",
+                table: "OrderHistories",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderStatusHistory_OrderStatusId",
-                table: "OrderStatusHistory",
+                name: "IX_OrderHistories_OrderStatusId",
+                table: "OrderHistories",
+                column: "OrderStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_OrderStatusId",
+                table: "Orders",
                 column: "OrderStatusId");
 
             migrationBuilder.CreateIndex(
@@ -192,13 +192,13 @@ namespace AWWW_lab4_gr1.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "OrderStatusHistory");
+                name: "OrderHistories");
 
             migrationBuilder.DropTable(
                 name: "ProductTag");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -207,7 +207,7 @@ namespace AWWW_lab4_gr1.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "OrderStatus");
+                name: "OrderStatuses");
 
             migrationBuilder.DropTable(
                 name: "Categories");

@@ -1,0 +1,11 @@
+@model AWWW_lab4_gr1.Models.Order
+
+<h1>Dodano status zamówienia:</h1>
+
+<div class="w3-card">
+    <header class="w3-container w3-blue">
+        <b>Klient:</b> @Model.CustomerId <br />
+        <b>Status:</b> @Model.OrderStatusId <br />
+        <b>Utworzono:</b> @Model.CreatedAt
+    </header>
+</div>

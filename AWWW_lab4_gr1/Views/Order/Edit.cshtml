@@ -1,0 +1,16 @@
+@model AWWW_lab4_gr1.Models.Order
+
+<h1>Edytuj status zamówienia</h1>
+
+<form asp-action="Edit" method="post" class="w3-container">
+    <p>
+        <input type="hidden" asp-for="Id" />
+
+        <label asp-for="OrderStatusId">Status zamówienia:</label>
+        <input asp-for="OrderStatusId" class="w3-input w3-border" />
+
+    </p>
+    <p>
+        <button type="submit" class="w3-btn w3-border">Zapisz zmiany</button>
+    </p>
+</form>

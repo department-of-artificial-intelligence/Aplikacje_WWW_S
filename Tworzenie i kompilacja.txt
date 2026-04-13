@@ -31,9 +31,14 @@ dotnet ef database update
 
 ...
 
+dotnet ef database drop
 
-
+dotnet ef database update 0
+dotnet ef migrations remove
 
 dotnet restore
 dotnet build
 
+
+
+dotnet ef database drop

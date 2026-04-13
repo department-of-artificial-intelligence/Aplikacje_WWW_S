@@ -1,0 +1,38 @@
+@model List<AWWW_lab4_gr1.Models.Order>
+
+<h1>Zamówienia</h1>
+
+@if (Model != null)
+{
+    <h3>Lista zamówień:</h3>
+    <div class="table-container">
+    <table class="w3-table w3-bordered w3-striped">
+    <thead>
+        <tr class="w3-blue">
+            <th>Id</th>
+            <th>CustomerId</th>
+            <th>StatusId</th>
+            <th>Status</th>
+            <th>Created at</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.CustomerId</td>
+                <td>@order.OrderStatusId</td>
+                <td>@(order.OrderStatus?.Status ?? "N/A")</td>
+                <td>@order.CreatedAt</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@order?.Id" class="w3-btn w3-blue w3-margin-right">Edytuj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+}

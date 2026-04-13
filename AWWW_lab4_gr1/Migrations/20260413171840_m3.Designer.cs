@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWWW_lab4_gr1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260410194919_m1")]
-    partial class m1
+    [Migration("20260413171840_m3")]
+    partial class m3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,11 +83,16 @@ namespace AWWW_lab4_gr1.Migrations
                     b.Property<int>("OrderStatusId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderStatusId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderStatusId");
 
-                    b.ToTable("Order");
+                    b.HasIndex("OrderStatusId1");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.OrderStatus", b =>
@@ -103,7 +108,7 @@ namespace AWWW_lab4_gr1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatus");
+                    b.ToTable("OrderStatuses");
                 });
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.OrderStatusHistory", b =>
@@ -129,7 +134,7 @@ namespace AWWW_lab4_gr1.Migrations
 
                     b.HasIndex("OrderStatusId");
 
-                    b.ToTable("OrderStatusHistory");
+                    b.ToTable("OrderHistories");
                 });
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.Product", b =>
@@ -194,6 +199,12 @@ namespace AWWW_lab4_gr1.Migrations
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("AWWW_lab4_gr1.Models.OrderStatus", "OrderStatus")
+                        .WithMany()
+                        .HasForeignKey("OrderStatusId1");
+
+                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab4_gr1.Models.OrderStatusHistory", b =>
