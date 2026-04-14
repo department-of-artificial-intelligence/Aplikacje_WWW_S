@@ -1,0 +1,28 @@
+@model AWWW_lab2_gr1.Models.Order
+
+<div class="container">
+
+    <div>
+        <a asp-action="Index" asp-controller="Order" class="btn btn-primary">Back</a>
+        <h2>Order @Model.Id</h2>
+        <h3>Status History</h3>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Changed At</th>
+            </thead>
+            <tbody>
+                @foreach (AWWW_lab2_gr1.Models.OrderStatusHistory hist in @Model.History) {
+                <tr>
+                    <td>@hist.Id</td>
+                    <td>@hist.Status.Status</td>
+                    <td>@hist.ChangedAt</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+@model AWWW_lab2_gr1.Models.Order
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white p-2">
+        <h3>Order @Model.Id</h3>
+        <h4>Update Status</h4>
+    </div>
+    <div class=card-body>
+        <form method="post" asp-action="Save">
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <label class="form-label">Status</label>
+            <select class="form-select" asp-items=@(new SelectList(ViewBag.stats, "Id", "Status")) asp-for="OrderStatusId"></select>
+            <div class="d-flex justify-content-around p-4">
+                <a asp-action="Index" class="btn btn-secondary px-4">Cancel</a>
+                <button type="submit" class="btn btn-primary px-4">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
