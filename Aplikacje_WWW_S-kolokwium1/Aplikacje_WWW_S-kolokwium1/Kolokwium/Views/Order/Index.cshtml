@@ -1,0 +1,26 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Kolokwium.Models;
+
+Lista zamówień:
+
+<table>
+
+    <hr>
+    <td>Id</td>
+    <td>OrderDate</td>
+    <td>DeliveryDate</td>
+    <td>TotalPrice</td>
+    <td>DeliveryAddress</td>
+</hr>
+
+@foreach (Order order in Model.Order)
+{
+    <tr>
+        <td>@order.Id</td>
+        <td>@order.OrderDate</td>
+        <td>@order.DeliveryDate</td>
+        <td>@order.TotalPrice</td>
+        <td>@order.DeliveryAddress</td>
+    </tr>
+}
+</table>

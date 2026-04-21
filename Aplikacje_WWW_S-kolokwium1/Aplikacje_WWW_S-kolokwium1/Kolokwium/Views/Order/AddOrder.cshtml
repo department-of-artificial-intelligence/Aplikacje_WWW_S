@@ -1,0 +1,17 @@
+<form asp-action="AddOrder" method="post" class="w3-container">
+
+    <label for="OrderDate">Data zamowienia: </label>
+    <input asp-action="OrderDate" class="w3-input w3-border" />
+
+    <label for="DeliveryDate">Data dosatwy: </label>
+    <input asp-action="DeliveryDate" class="w3-input w3-border" />
+        
+    <label for="TotalPrice">Cena: </label>
+    <input asp-action="TotalPrice" class="w3-input w3-border" />
+        
+    <label for="DeliveryAddress">Adres: </label>
+    <input asp-action="DeliveryAddress" class="w3-input w3-border" />
+        
+    <button type="submit" clas="w3-btn w3-border">Zatwierdź</button>
+
+</form>
