@@ -1,0 +1,23 @@
+﻿@model Kolokwium.Models.Client
+
+<form asp-action="AddClient" method="post">
+    <label>FirstName</label>
+    <input asp-for="FirstName" /><br />
+    <label>LastName</label>
+    <input asp-for="LastName" /><br />
+    <label>RegistrationDate</label>
+    <input asp-for="RegistrationDate" /><br />
+    <label>Email</label>
+    <input asp-for="Email" /><br />
+    <label>Phone</label>
+    <input asp-for="Phone" /><br />
+    <label>Orders:</label>
+    @foreach (var order in ViewBag.Orders)
+    {
+        <div>
+            <input type="checkbox" name="selectedOrders" value="@order.Id" />
+            <label>@order.Id</label>
+        </div>
+    }<br />
+    <button type="submit">Zapisz</button>
+</form>
