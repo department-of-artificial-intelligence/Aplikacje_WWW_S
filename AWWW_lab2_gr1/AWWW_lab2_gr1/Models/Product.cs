@@ -8,7 +8,7 @@ namespace AWWW_lab2_gr1.Models
         public int Id { get; set; } 
         public string Name { get; set; }
 
-        //[Precision(18, 4)]
+        [Precision(18, 4)]
         public decimal Price { get; set; }
 
         public int CategoryID { get; set; }

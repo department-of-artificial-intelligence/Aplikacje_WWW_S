@@ -1,0 +1,41 @@
+﻿@model List<AWWW_lab2_gr1.Models.Product>
+
+<h2>Lista produktów</h2>
+
+<a href="/Product/Create">Dodaj nowy produkt</a>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Tagi</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Category?.Name</td>
+                <td>
+                    @if (p.Tags != null && p.Tags.Any())
+                    {
+                        @string.Join(", ", p.Tags.Select(t => t.Name))
+                    }
+                    else
+                    {
+                        <span>Brak</span>
+                    }
+                </td>
+                <td>
+                    <a href="/Product/Edit/@p.Id">Edytuj</a> |
+                    <a href="/Product/Delete/@p.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

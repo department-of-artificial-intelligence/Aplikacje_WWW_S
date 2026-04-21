@@ -1,0 +1,16 @@
+﻿@model AWWW_lab2_gr1.Models.Order
+
+<h2>Zmień status zamówienia</h2>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <select name="newStatusId">
+        @foreach (var s in ViewBag.Statuses)
+        {
+            <option value="@s.Id">@s.Name</option>
+        }
+    </select>
+
+    <button type="submit">Zmień status</button>
+</form>
