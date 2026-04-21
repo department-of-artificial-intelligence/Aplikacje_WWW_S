@@ -1,0 +1,26 @@
+﻿@model Kolokwium.Models.Order
+
+<h1>Dodaj zamowienie</h1>
+
+<form method="post">
+    <label>Data zamowienia</label>
+    <input type="datetime" name="OrderDate" />
+
+    <label>Data dostarczenia</label>
+    <input type="datetime" name="DelieveryDate" />
+
+    <label>Cena</label>
+    <input type="text" name="TotalPrice" />
+
+    
+    @foreach (var a in ViewBag.Addresses)
+    {
+        <div>
+            <select name="selectedAddresses" value="@a.Id">
+                @a.Country
+            </select>
+        </div>
+    }
+
+    <button type="submit">Zapisz</button>
+</form>
