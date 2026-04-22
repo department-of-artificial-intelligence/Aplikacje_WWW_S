@@ -1,3 +1,4 @@
+using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -11,11 +12,12 @@ namespace Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            var app = builder.Build();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies());
+
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
