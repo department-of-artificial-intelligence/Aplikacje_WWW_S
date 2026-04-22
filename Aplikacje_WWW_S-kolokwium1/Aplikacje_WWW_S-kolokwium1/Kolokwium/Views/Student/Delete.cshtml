@@ -1,0 +1,10 @@
+﻿@model Kolokwium.Models.Student
+
+<h2>Usuń studenta</h2>
+
+<p>Czy na pewno chcesz usunąć: <b>@Model.Name</b>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Usuń</button>
+</form>

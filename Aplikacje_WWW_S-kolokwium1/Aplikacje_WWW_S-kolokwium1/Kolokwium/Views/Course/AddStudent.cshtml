@@ -1,0 +1,14 @@
+﻿<h2>Dodaj studenta do kursu</h2>
+
+<form asp-action="AddStudent" method="post">
+    <input type="hidden" name="courseId" value="@ViewBag.CourseId" />
+
+    <select name="studentId">
+        @foreach (var s in ViewBag.Students)
+        {
+            <option value="@s.Id">@s.Name</option>
+        }
+    </select>
+
+    <button type="submit">Dodaj</button>
+</form>
