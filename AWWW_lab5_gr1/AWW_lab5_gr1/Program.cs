@@ -1,6 +1,7 @@
 using DAL;
 using Microsoft.EntityFrameworkCore;
-using Services;
+using Services.Interfaces;
+using Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

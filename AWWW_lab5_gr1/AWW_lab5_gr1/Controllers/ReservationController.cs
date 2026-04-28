@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Model;
-using Services;
+using Services.Interfaces;
 
 namespace Web.Controllers
 {
