@@ -15,9 +15,9 @@ namespace Model
         public DateTime EndTime { get; set; }
         public string Status { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
-        public string Notes { get; set; }
+        public string Notes { get; set; } = string.Empty;
 
-        public virtual Room Room { get; set; }
-        public virtual Event Event { get; set; }
+        public virtual Room Room { get; set; } = null!;
+        public virtual Event Event { get; set; } = null!;
     }
 }

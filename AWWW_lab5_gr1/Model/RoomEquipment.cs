@@ -13,7 +13,7 @@ namespace Model
         public int EquipmentId { get; set; }
         public int Quantity { get; set; }
 
-        public virtual Room Room { get; set; }
-        public virtual Equipment Equipment { get; set; }
+        public virtual Room Room { get; set; } = null!;
+        public virtual Equipment Equipment { get; set; } = null!;
     }
 }
