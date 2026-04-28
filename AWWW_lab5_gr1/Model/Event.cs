@@ -12,11 +12,9 @@ namespace Model.Entities
         public bool IsPublic { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // Klucz obcy i relacja do EventType
         public int EventTypeId { get; set; }
         public virtual EventType EventType { get; set; } = null!;
 
-        // Relacja 1:N z Reservation
         public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

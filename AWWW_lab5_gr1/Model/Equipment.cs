@@ -9,7 +9,6 @@ namespace Model.Entities
         public string Description { get; set; } = string.Empty;
         public bool IsMobile { get; set; }
 
-        // Relacja 1:N z RoomEquipment
         public virtual ICollection<RoomEquipment> RoomEquipments { get; set; } = new List<RoomEquipment>();
     }
 }

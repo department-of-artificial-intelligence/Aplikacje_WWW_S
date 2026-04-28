@@ -13,7 +13,6 @@ namespace Model.Entities
         public DateTime CreatedAt { get; set; }
         public string Notes { get; set; } = string.Empty;
 
-        // Właściwości nawigacyjne
         public virtual Room Room { get; set; } = null!;
         public virtual Event Event { get; set; } = null!;
     }
