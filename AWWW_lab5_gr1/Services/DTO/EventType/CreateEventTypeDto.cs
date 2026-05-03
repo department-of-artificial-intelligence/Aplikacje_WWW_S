@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.DTO.Building
+namespace Services.DTO.EventType
 {
-    public class BuildingDto
+    public class CreateEventTypeDto
     {
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public string Address { get; set; } = null!;
         public string? Description { get; set; }
     }
 }

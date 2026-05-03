@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.DTO.Building
 {
-    internal class CreateBuildingDto
+    public class CreateBuildingDto
     {
         public string Name { get; set; } = null!;
         public string Address { get; set; } = null!;
