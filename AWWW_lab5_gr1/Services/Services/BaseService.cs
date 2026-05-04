@@ -1,12 +1,12 @@
-using DAL.EF;
+using DAL;
 
 namespace Services.Services
 {
     public abstract class BaseService
     {
-        protected readonly MyDbContext _dbContext;
+        protected readonly AppDbContext _dbContext;
 
-        public BaseService(MyDbContext dbcontext)
+        public BaseService(AppDbContext dbcontext)
         {
             _dbContext = dbcontext;
         }
