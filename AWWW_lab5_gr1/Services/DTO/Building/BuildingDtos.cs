@@ -1,0 +1,25 @@
+﻿namespace Services.DTO.Building
+{
+    public class BuildingDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public string? Description { get; set; }
+    }
+
+    public class CreateBuildingDto
+    {
+        public string Name { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public string? Description { get; set; }
+    }
+
+    public class UpdateBuildingDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Address { get; set; } = null!;
+        public string? Description { get; set; }
+    }
+}
