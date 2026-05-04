@@ -1,14 +1,15 @@
+using Services.DTO.Building;
 using System.Collections.Generic;
-using Services.DTOs;
+using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
     public interface IBuildingService
     {
-        IEnumerable<BuildingDto> GetAll();
-        BuildingDto? GetById(int id);
-        void Add(BuildingDto dto);
-        void Update(BuildingDto dto);
-        void Delete(int id);
+        Task<List<BuildingDto>> GetAllAsync();
+        Task<BuildingDto?> GetByIdAsync(int id);
+        Task<int> CreateAsync(CreateBuildingDto dto);
+        Task<bool> UpdateAsync(UpdateBuildingDto dto);
+        Task<bool> DeleteAsync(int id);
     }
 }
