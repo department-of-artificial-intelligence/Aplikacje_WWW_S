@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model {
     public class Room {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
         public int Floor { get; set; }
@@ -16,6 +16,6 @@ namespace Model {
         [ForeignKey("Building")]
         public int BuildingId { get; set; }
 
-        public Building Building { get; set; }
+        public virtual Building Building { get; set; }
     }
 }
