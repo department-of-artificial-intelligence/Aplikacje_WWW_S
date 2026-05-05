@@ -1,0 +1,39 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Order>
+
+<h1>Zamowienia</h1>
+
+@if (!Model.Any())
+{
+    <p>Brak zamowien w bazie. Dodaj przykladowe zamowienie i pozycje zamowienia, aby przetestowac zmiane statusu.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Klient</th>
+                <th>Data utworzenia</th>
+                <th>Status</th>
+                <th>Liczba pozycji</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Customer.Name</td>
+                    <td>@order.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@order.OrderStatus.Name</td>
+                    <td>@order.OrderItems.Count</td>
+                    <td class="d-flex gap-2">
+                        <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-secondary">Szczegoly</a>
+                        <a asp-action="EditStatus" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary">Zmien status</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

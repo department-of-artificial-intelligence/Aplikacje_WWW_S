@@ -16,6 +16,8 @@ public class CompanyDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderStatus> OrderStatuses => Set<OrderStatus>();
+    public DbSet<OrderStatusHistory> OrderStatusHistories => Set<OrderStatusHistory>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
     public DbSet<Review> Reviews => Set<Review>();
 
@@ -32,5 +34,38 @@ public class CompanyDbContext : DbContext
             .HasMany(p => p.Tags)
             .WithMany(t => t.Products)
             .UsingEntity(j => j.ToTable("ProductTags"));
+
+        modelBuilder.Entity<OrderStatus>()
+            .HasIndex(s => s.Name)
+            .IsUnique();
+
+        modelBuilder.Entity<Order>()
+            .Property(o => o.OrderStatusId)
+            .HasDefaultValue(1);
+
+        modelBuilder.Entity<Order>()
+            .HasOne(o => o.OrderStatus)
+            .WithMany(s => s.Orders)
+            .HasForeignKey(o => o.OrderStatusId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<OrderStatusHistory>()
+            .HasOne(h => h.Order)
+            .WithMany(o => o.StatusHistory)
+            .HasForeignKey(h => h.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<OrderStatusHistory>()
+            .HasOne(h => h.OrderStatus)
+            .WithMany(s => s.StatusHistoryEntries)
+            .HasForeignKey(h => h.OrderStatusId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<OrderStatus>().HasData(
+            new OrderStatus { Id = 1, Name = "New" },
+            new OrderStatus { Id = 2, Name = "Paid" },
+            new OrderStatus { Id = 3, Name = "Shipped" },
+            new OrderStatus { Id = 4, Name = "Completed" }
+        );
     }
 }

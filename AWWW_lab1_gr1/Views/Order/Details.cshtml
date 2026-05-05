@@ -1,0 +1,73 @@
+@model AWWW_lab1_gr1.ViewModels.OrderDetailsViewModel
+
+<h1>Szczegoly zamowienia #@Model.Order.Id</h1>
+
+<div class="mb-4">
+    <p><strong>Klient:</strong> @Model.Order.Customer.Name</p>
+    <p><strong>Data utworzenia:</strong> @Model.Order.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+    <p><strong>Aktualny status:</strong> @Model.Order.OrderStatus.Name</p>
+    <p><strong>Wartosc zamowienia:</strong> @Model.TotalAmount</p>
+</div>
+
+<div class="mb-4">
+    <h2>Pozycje zamowienia</h2>
+    @if (!Model.Order.OrderItems.Any())
+    {
+        <p>Brak pozycji zamowienia.</p>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th>Ilosc</th>
+                    <th>Cena jednostkowa</th>
+                    <th>Wartosc</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Order.OrderItems)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@(item.UnitPrice * item.Quantity)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<div class="mb-4">
+    <h2>Historia zmian statusu</h2>
+    @if (!Model.Order.StatusHistory.Any())
+    {
+        <p>Brak wpisow w historii.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Zmiana o</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var history in Model.Order.StatusHistory)
+                {
+                    <tr>
+                        <td>@history.OrderStatus.Name</td>
+                        <td>@history.ChangedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<a asp-action="EditStatus" asp-route-id="@Model.Order.Id" class="btn btn-primary">Zmien status</a>
+<a asp-action="Index" class="btn btn-secondary">Powrot do listy</a>

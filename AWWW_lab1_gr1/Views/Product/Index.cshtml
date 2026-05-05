@@ -1,0 +1,58 @@
+@model IEnumerable<AWWW_lab1_gr1.Models.Product>
+
+<h1>Produkty</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj produkt</a>
+</p>
+
+@if (TempData["ErrorMessage"] is string error)
+{
+    <div class="alert alert-danger">@error</div>
+}
+
+@if (TempData["SuccessMessage"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+
+@if (!Model.Any())
+{
+    <p>Brak produktow w bazie.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Kategoria</th>
+                <th>Tagi</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Category.Name</td>
+                    <td>@(product.Tags.Any() ? string.Join(", ", product.Tags.Select(t => t.Name)) : "-")</td>
+                    <td class="d-flex gap-2">
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                        <form asp-action="Delete" asp-route-id="@product.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Czy na pewno usunac produkt?');">
+                                Usun
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

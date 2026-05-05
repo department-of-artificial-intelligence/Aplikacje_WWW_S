@@ -1,0 +1,21 @@
+@model AWWW_lab1_gr1.ViewModels.OrderEditStatusViewModel
+
+<h1>Edycja statusu zamowienia</h1>
+
+<form asp-action="EditStatus" method="post">
+    <input asp-for="OrderId" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="CurrentStatusName" class="form-label"></label>
+        <input asp-for="CurrentStatusName" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SelectedStatusId" class="form-label"></label>
+        <select asp-for="SelectedStatusId" asp-items="Model.AvailableStatuses" class="form-select"></select>
+        <span asp-validation-for="SelectedStatusId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-action="Details" asp-route-id="@Model.OrderId" class="btn btn-secondary">Anuluj</a>
+</form>

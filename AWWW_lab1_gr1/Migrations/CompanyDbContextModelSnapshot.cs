@@ -111,9 +111,16 @@ namespace AWWW_lab1_gr1.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("OrderStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(1);
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("OrderStatusId");
 
                     b.ToTable("Orders");
                 });
@@ -144,6 +151,70 @@ namespace AWWW_lab1_gr1.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("AWWW_lab1_gr1.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("OrderStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "New"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Paid"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Shipped"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Completed"
+                        });
+                });
+
+            modelBuilder.Entity("AWWW_lab1_gr1.Models.OrderStatusHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("OrderStatusId");
+
+                    b.ToTable("OrderStatusHistories");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Product", b =>
@@ -258,7 +329,15 @@ namespace AWWW_lab1_gr1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AWWW_lab1_gr1.Models.OrderStatus", "OrderStatus")
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Customer");
+
+                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.OrderItem", b =>
@@ -278,6 +357,25 @@ namespace AWWW_lab1_gr1.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("AWWW_lab1_gr1.Models.OrderStatusHistory", b =>
+                {
+                    b.HasOne("AWWW_lab1_gr1.Models.Order", "Order")
+                        .WithMany("StatusHistory")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWWW_lab1_gr1.Models.OrderStatus", "OrderStatus")
+                        .WithMany("StatusHistoryEntries")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("OrderStatus");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Product", b =>
@@ -344,6 +442,15 @@ namespace AWWW_lab1_gr1.Migrations
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+
+                    b.Navigation("StatusHistory");
+                });
+
+            modelBuilder.Entity("AWWW_lab1_gr1.Models.OrderStatus", b =>
+                {
+                    b.Navigation("Orders");
+
+                    b.Navigation("StatusHistoryEntries");
                 });
 
             modelBuilder.Entity("AWWW_lab1_gr1.Models.Product", b =>

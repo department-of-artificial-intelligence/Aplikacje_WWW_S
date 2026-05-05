@@ -1,0 +1,126 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace AWWW_lab1_gr1.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddOrderStatusAndHistory : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<int>(
+                name: "OrderStatusId",
+                table: "Orders",
+                type: "INTEGER",
+                nullable: false,
+                defaultValue: 1);
+
+            migrationBuilder.CreateTable(
+                name: "OrderStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderStatusHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ChangedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    OrderId = table.Column<int>(type: "INTEGER", nullable: false),
+                    OrderStatusId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderStatusHistories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderStatusHistories_OrderStatuses_OrderStatusId",
+                        column: x => x.OrderStatusId,
+                        principalTable: "OrderStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OrderStatusHistories_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "OrderStatuses",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "New" },
+                    { 2, "Paid" },
+                    { 3, "Shipped" },
+                    { 4, "Completed" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_OrderStatusId",
+                table: "Orders",
+                column: "OrderStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderStatuses_Name",
+                table: "OrderStatuses",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderStatusHistories_OrderId",
+                table: "OrderStatusHistories",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderStatusHistories_OrderStatusId",
+                table: "OrderStatusHistories",
+                column: "OrderStatusId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Orders_OrderStatuses_OrderStatusId",
+                table: "Orders",
+                column: "OrderStatusId",
+                principalTable: "OrderStatuses",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Orders_OrderStatuses_OrderStatusId",
+                table: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "OrderStatusHistories");
+
+            migrationBuilder.DropTable(
+                name: "OrderStatuses");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Orders_OrderStatusId",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "OrderStatusId",
+                table: "Orders");
+        }
+    }
+}
