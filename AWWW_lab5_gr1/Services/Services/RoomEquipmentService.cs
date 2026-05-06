@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services.Services
 {
-    public class RoomEquipmentService : BaseService, IRoomEquipmentService
+    public class RoomEquipmentService : BaseService, IRoomEquipmentInterface
     {
         public RoomEquipmentService(AppDbContext dbContext) : base(dbContext) { }
 

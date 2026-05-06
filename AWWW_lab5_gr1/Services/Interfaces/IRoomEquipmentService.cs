@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    public interface IRoomEquipmentService
+    public interface IRoomEquipmentInterface
     {
         Task<IList<RoomEquipmentItemDto>> GetAllAsync();
         Task<IList<RoomEquipmentItemDto>> GetByRoomIdAsync(int roomId);

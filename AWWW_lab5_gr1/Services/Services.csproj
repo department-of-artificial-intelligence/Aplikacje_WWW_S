@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Reservation\" />
     <Folder Include="Common\" />
   </ItemGroup>
 
