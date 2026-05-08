@@ -92,7 +92,7 @@ namespace Services.Services
                     Equipment = r.RoomEquipments.Select(re => new RoomEquipmentItemDto
                     {
                         Id = re.EquipmentId,
-                        Name = re.Equipment.Name,
+                        EquipmentName = re.Equipment.Name,
                         Quantity = re.Quantity
                     }).ToList()
                 })
