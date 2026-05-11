@@ -4,9 +4,9 @@ namespace Services.Interfaces
 {
     public interface IRoomEquipmentService
     {
-        Task<List<RoomEquipmentItemDto>> GetAllSync();
+        Task<List<RoomEquipmentItemDto>> GetAllAsync();
 
-        Task<List<RoomEquipmentItemDto>> GetByRoomId(int roomId);
+        Task<List<RoomEquipmentItemDto>> GetByRoomIdAsync(int roomId);
 
         Task<RoomEquipmentItemDto?> GetByIdAsync(int id);
 

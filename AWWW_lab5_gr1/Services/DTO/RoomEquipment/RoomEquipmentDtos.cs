@@ -19,7 +19,7 @@
         public int RoomId { get; set; }
         public string RoomName { get; set; } = null!;
         public int EquipmentId { get; set; }
-        public string EquipmentName { get; set; }
+        public string EquipmentName { get; set; } = null!;
         public int Quantity { get; set; }
     }
 }
