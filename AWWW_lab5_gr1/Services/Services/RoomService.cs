@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 using Services.DTO.Room;
 using Services.Interfaces;
-
+using Services.DTO.RoomEquipment;
 
 namespace Services.Services
 {
@@ -92,7 +92,7 @@ namespace Services.Services
                     Equipment = r.RoomEquipments.Select(re => new RoomEquipmentItemDto
                     {
                         Id = re.EquipmentId,
-                        Name = re.Equipment.Name,
+                        EquipmentName = re.Equipment.Name,
                         Quantity = re.Quantity
                     }).ToList()
                 })

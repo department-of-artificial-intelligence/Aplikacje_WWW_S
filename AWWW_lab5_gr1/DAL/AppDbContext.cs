@@ -11,12 +11,6 @@ namespace DAL
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-        }
-
 
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
@@ -25,5 +19,19 @@ namespace DAL
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomEquipment> RoomsEquipment { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Reservation>()
+                .Property(x => x.Status)
+                .HasConversion<string>();
+
+            modelBuilder.Entity<RoomEquipment>()
+                .HasIndex(x => new { x.RoomId, x.EquipmentId })
+                .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

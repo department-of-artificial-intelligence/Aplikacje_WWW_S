@@ -12,7 +12,7 @@ namespace Services.Interfaces
         Task<List<RoomDto>> GetAllAsync();
         Task<List<RoomDto>> GetByBuildingIdAsync(int buildingId);
         Task<List<RoomDto>> GetActiveRoomsAsync();
-        Task<RoomDetailsDto> GetByIdAsync(int id);
+        Task<RoomDetailsDto?> GetByIdAsync(int id);
         Task<int>CreateAsync(CreateRoomDto dto);
         Task<bool>UpdateAsync(UpdateRoomDto dto);
         Task<bool> DeleteAsync(int id);
