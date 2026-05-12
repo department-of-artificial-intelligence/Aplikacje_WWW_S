@@ -15,6 +15,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
+builder.Services.AddAutoMapper( _ => 
+    { },
+    typeof(Program).Assembly,
+    typeof(BaseService).Assembly );
+
+
+
 builder.Services.AddScoped<IReservationService, ReservationService>();
 
 var app = builder.Build();

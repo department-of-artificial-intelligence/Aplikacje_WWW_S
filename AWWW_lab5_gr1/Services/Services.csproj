@@ -16,4 +16,8 @@
     <Folder Include="Common\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+  </ItemGroup>
+
 </Project>
