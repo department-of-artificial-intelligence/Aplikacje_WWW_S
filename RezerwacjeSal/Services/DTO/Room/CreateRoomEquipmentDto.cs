@@ -1,6 +1,9 @@
-public class CreateRoomEquipmentDto
+namespace Services.DTO.Room
 {
-    public int RoomId { get; set; }
-    public int EquipmentId { get; set; }
-    public int Quantity { get; set; }
+    public class CreateRoomEquipmentDto
+    {
+        public int RoomId { get; set; }
+        public int EquipmentId { get; set; }
+        public int Quantity { get; set; }
+    }
 }

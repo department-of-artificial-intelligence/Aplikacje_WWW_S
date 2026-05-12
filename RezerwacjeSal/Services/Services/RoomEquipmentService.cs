@@ -1,17 +1,133 @@
+using DAL;
 using Microsoft.EntityFrameworkCore;
+using Model.DataModels;
+using Services.DTO.Room;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-public class RoomEquipmentService : IRoomEquipmentService
+namespace Services.Services
 {
-    private readonly AppDbContext _context; 
-
-    public RoomEquipmentService(AppDbContext context)
+    public class RoomEquipmentService : BaseService, IRoomEquipmentService
     {
-        _context = context;
+        public RoomEquipmentService(AppDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public async Task<List<RoomEquipmentItemDto>> GetAllAsync()
+        {
+            return await _dbContext.RoomEquipments
+                .AsNoTracking()
+                .Include(re => re.Room)
+                .Include(re => re.Equipment)
+                .Select(re => new RoomEquipmentItemDto
+                {
+                    Id = re.Id,
+                    RoomId = re.RoomId,
+                    RoomName = re.Room!.Name,
+                    EquipmentId = re.EquipmentId,
+                    EquipmentName = re.Equipment!.Name,
+                    Quantity = re.Quantity
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<RoomEquipmentItemDto>> GetByRoomIdAsync(int roomId)
+        {
+            return await _dbContext.RoomEquipments
+                .AsNoTracking()
+                .Include(re => re.Room)
+                .Include(re => re.Equipment)
+                .Where(re => re.RoomId == roomId)
+                .Select(re => new RoomEquipmentItemDto
+                {
+                    Id = re.Id,
+                    RoomId = re.RoomId,
+                    RoomName = re.Room!.Name,
+                    EquipmentId = re.EquipmentId,
+                    EquipmentName = re.Equipment!.Name,
+                    Quantity = re.Quantity
+                })
+                .ToListAsync();
+        }
+
+        public async Task<RoomEquipmentItemDto?> GetByIdAsync(int id)
+        {
+            return await _dbContext.RoomEquipments
+                .AsNoTracking()
+                .Include(re => re.Room)
+                .Include(re => re.Equipment)
+                .Where(re => re.Id == id)
+                .Select(re => new RoomEquipmentItemDto
+                {
+                    Id = re.Id,
+                    RoomId = re.RoomId,
+                    RoomName = re.Room!.Name,
+                    EquipmentId = re.EquipmentId,
+                    EquipmentName = re.Equipment!.Name,
+                    Quantity = re.Quantity
+                })
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<int> CreateAsync(CreateRoomEquipmentDto dto)
+        {
+            var roomExists = await _dbContext.Rooms.AnyAsync(r => r.Id == dto.RoomId);
+            if (!roomExists)
+                throw new InvalidOperationException("Wskazana sala nie istnieje.");
+
+            var equipmentExists = await _dbContext.Equipments.AnyAsync(e => e.Id == dto.EquipmentId);
+            if (!equipmentExists)
+                throw new InvalidOperationException("Wskazane wyposażenie nie istnieje.");
+
+            if (dto.Quantity <= 0)
+                throw new InvalidOperationException("Ilość musi być większa od zera.");
+
+            var isDuplicate = await _dbContext.RoomEquipments
+                .AnyAsync(re => re.RoomId == dto.RoomId && re.EquipmentId == dto.EquipmentId);
+            if (isDuplicate)
+                throw new InvalidOperationException("Ta sala posiada już przypisane to wyposażenie.");
+
+            var entity = new RoomEquipment
+            {
+                RoomId = dto.RoomId,
+                EquipmentId = dto.EquipmentId,
+                Quantity = dto.Quantity
+            };
+
+            _dbContext.RoomEquipments.Add(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity.Id;
+        }
+
+        public async Task<bool> UpdateAsync(UpdateRoomEquipmentDto dto)
+        {
+            if (dto.Quantity <= 0)
+                throw new InvalidOperationException("Ilość musi być większa od zera.");
+
+            var entity = await _dbContext.RoomEquipments.FirstOrDefaultAsync(re => re.Id == dto.Id);
+            if (entity == null)
+                return false;
+
+            entity.Quantity = dto.Quantity;
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var entity = await _dbContext.RoomEquipments.FirstOrDefaultAsync(re => re.Id == id);
+            if (entity == null)
+                return false;
+
+            _dbContext.RoomEquipments.Remove(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
     }
-
-
 }

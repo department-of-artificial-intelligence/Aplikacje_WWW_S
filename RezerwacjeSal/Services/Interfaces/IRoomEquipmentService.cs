@@ -1,4 +1,4 @@
-using Services.DTO.RoomDto; 
+using Services.DTO.Room;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

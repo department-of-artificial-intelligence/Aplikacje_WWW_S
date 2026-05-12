@@ -1,5 +1,8 @@
-public class UpdateRoomEquipmentDto
+namespace Services.DTO.Room
 {
-    public int Id { get; set; }
-    public int Quantity { get; set; }
+    public class UpdateRoomEquipmentDto
+    {
+        public int Id { get; set; }
+        public int Quantity { get; set; }
+    }
 }
