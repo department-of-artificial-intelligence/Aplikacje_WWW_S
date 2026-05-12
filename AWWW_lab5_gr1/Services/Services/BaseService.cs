@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using AutoMapper;
+using DAL;
 
 namespace Services.Services
 {
@@ -6,9 +7,12 @@ namespace Services.Services
     {
         protected readonly AppDbContext _dbContext;
 
-        public BaseService(AppDbContext dbContext)
+        protected readonly IMapper _mapper;
+
+        public BaseService(AppDbContext dbContext, IMappper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
     }
 }
