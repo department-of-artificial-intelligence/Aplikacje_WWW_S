@@ -1,5 +1,7 @@
+using AutoMapper;
 using DAL.EF;
 using Microsoft.EntityFrameworkCore;
+using Services.Services;
 using System;
 
 namespace Web
@@ -17,7 +19,18 @@ namespace Web
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies());
 
+            builder.Services.AddAutoMapper(
+                _ => { },
+                typeof(Program).Assembly,
+                typeof(BaseService).Assembly);
+
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+                mapper.ConfigurationProvider.AssertConfigurationIsValid();
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

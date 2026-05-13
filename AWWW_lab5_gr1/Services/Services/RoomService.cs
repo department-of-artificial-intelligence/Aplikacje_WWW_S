@@ -1,4 +1,6 @@
-﻿using DAL.EF;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.Room;
@@ -13,7 +15,7 @@ namespace Services.Services
 {
     public class RoomService : BaseService, IRoomService
     {
-        public RoomService(AppDbContext dbContext) : base(dbContext)
+        public RoomService(IMapper mapper, AppDbContext dbContext) : base(mapper, dbContext)
         {
         }
 
@@ -21,16 +23,8 @@ namespace Services.Services
         {
             return await _dbContext.Rooms
                 .AsNoTracking()
-                .Select(x => new RoomDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Capacity = x.Capacity,
-                    Floor = x.Floor,
-                    IsActive = x.IsActive,
-                    BuildingId = x.BuildingId,
-                    BuildingName = x.Building.Name // Zakładając nawigację do Building
-                })
+                .OrderBy(x => x.Name)
+                .ProjectTo<RoomDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -39,16 +33,7 @@ namespace Services.Services
             return await _dbContext.Rooms
                 .AsNoTracking()
                 .Where(x => x.BuildingId == buildingId)
-                .Select(x => new RoomDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Capacity = x.Capacity,
-                    Floor = x.Floor,
-                    IsActive = x.IsActive,
-                    BuildingId = x.BuildingId,
-                    BuildingName = x.Building.Name
-                })
+                .ProjectTo<RoomDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -57,16 +42,7 @@ namespace Services.Services
             return await _dbContext.Rooms
                 .AsNoTracking()
                 .Where(x => x.IsActive)
-                .Select(x => new RoomDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Capacity = x.Capacity,
-                    Floor = x.Floor,
-                    IsActive = x.IsActive,
-                    BuildingId = x.BuildingId,
-                    BuildingName = x.Building.Name
-                })
+                .ProjectTo<RoomDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -75,34 +51,13 @@ namespace Services.Services
             return await _dbContext.Rooms
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new RoomDetailsDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Capacity = x.Capacity,
-                    Floor = x.Floor,
-                    IsActive = x.IsActive,
-                    BuildingId = x.BuildingId,
-                    BuildingName = x.Building.Name,
-                    Equipment = x.RoomEquipments.Select(e => new RoomEquipmentItemDto
-                    {
-                        Id = e.EquipmentId,
-                        Name = e.Equipment.Name
-                    }).ToList()
-                })
+                .ProjectTo<RoomDetailsDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateRoomDto dto)
         {
-            var entity = new Room
-            {
-                Name = dto.Name,
-                Capacity = dto.Capacity,
-                Floor = dto.Floor,
-                IsActive = dto.IsActive,
-                BuildingId = dto.BuildingId
-            };
+            var entity = _mapper.Map<Room>(dto);
 
             _dbContext.Rooms.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -116,11 +71,7 @@ namespace Services.Services
 
             if (entity == null) return false;
 
-            entity.Name = dto.Name;
-            entity.Capacity = dto.Capacity;
-            entity.Floor = dto.Floor;
-            entity.IsActive = dto.IsActive;
-            entity.BuildingId = dto.BuildingId;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;

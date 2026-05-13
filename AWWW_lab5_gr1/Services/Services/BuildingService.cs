@@ -1,19 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.EF;
+using Microsoft.EntityFrameworkCore;
+using Model.DataModels;
 using Services.DTO.Building;
 using Services.Interfaces;
-using Model.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.EF;
 
 namespace Services.Services
 {
     public class BuildingService : BaseService, IBuildingService
     {
-        public BuildingService(AppDbContext dbContext) : base(dbContext)
+        public BuildingService(IMapper mapper, AppDbContext dbContext) : base(mapper, dbContext)
         {
         }
 
@@ -22,14 +24,16 @@ namespace Services.Services
             return await _dbContext.Buildings
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
-                .Select(x => new BuildingDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Address = x.Address,
-                    Description = x.Description
-                })
+                .ProjectTo<BuildingDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
+            /*.Select(x => new BuildingDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Address = x.Address,
+                Description = x.Description
+            })
+            .ToListAsync();*/
         }
 
         public async Task<BuildingDto?> GetByIdAsync(int id)
@@ -37,24 +41,27 @@ namespace Services.Services
             return await _dbContext.Buildings
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new BuildingDto
+                .ProjectTo<BuildingDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync();
+                /*.Select(x => new BuildingDto
                 {
                     Id = x.Id,
                     Name = x.Name,
                     Address = x.Address,
                     Description = x.Description
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync();*/
         }
 
         public async Task<int> CreateAsync(CreateBuildingDto dto)
         {
-            var entity = new Building
+            var entity = _mapper.Map<Building>(dto);
+            /*var entity = new Building
             {
                 Name = dto.Name,
                 Address = dto.Address,
                 Description = dto.Description
-            };
+            };*/
 
             _dbContext.Buildings.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -69,9 +76,11 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Name = dto.Name;
+            _mapper.Map(dto, entity);
+
+            /*entity.Name = dto.Name;
             entity.Address = dto.Address;
-            entity.Description = dto.Description;
+            entity.Description = dto.Description;*/
 
             await _dbContext.SaveChangesAsync();
             return true;

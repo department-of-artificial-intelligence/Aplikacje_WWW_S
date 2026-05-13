@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AutoMapper;
+using DAL.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.EF;
 
 namespace Services.Services
 {
@@ -11,8 +12,10 @@ namespace Services.Services
     {
         protected readonly AppDbContext _dbContext;
 
-        public BaseService(AppDbContext dbContext)
+        protected readonly IMapper _mapper;
+        public BaseService(IMapper mapper, AppDbContext dbContext)
         {
+            _mapper = mapper;
             _dbContext = dbContext;
         }
     }

@@ -1,4 +1,6 @@
-﻿using DAL.EF;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.EventType;
@@ -13,7 +15,7 @@ namespace Services.Services
 {
     public class EventTypeService : BaseService, IEventTypeService
     {
-        public EventTypeService(AppDbContext dbContext) : base(dbContext)
+        public EventTypeService(IMapper mapper, AppDbContext dbContext) : base(mapper, dbContext)
         {
         }
 
@@ -22,12 +24,7 @@ namespace Services.Services
             return await _dbContext.EventTypes
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -36,22 +33,13 @@ namespace Services.Services
             return await _dbContext.EventTypes
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateEventTypeDto dto)
         {
-            var entity = new EventType
-            {
-                Name = dto.Name,
-                Description = dto.Description
-            };
+            var entity = _mapper.Map<EventType>(dto);
 
             _dbContext.EventTypes.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -67,8 +55,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Name = dto.Name;
-            entity.Description = dto.Description;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;
@@ -77,13 +64,15 @@ namespace Services.Services
         public async Task<bool> DeleteAsync(int id)
         {
             var entity = await _dbContext.EventTypes
+                .Include(et => et.Events)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity == null)
                 return false;
 
-            // Uwaga: Jeśli istnieją powiązane wydarzenia (Events), 
-            // usunięcie może rzucić wyjątek bazy danych (Constraint Violation).
+            if (entity.Events.Any())
+                throw new InvalidOperationException("Nie można usunąć typu wydarzenia, do którego przypisane są wydarzenia.");
+
             _dbContext.EventTypes.Remove(entity);
             await _dbContext.SaveChangesAsync();
             return true;

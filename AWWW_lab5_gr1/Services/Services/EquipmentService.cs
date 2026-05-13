@@ -1,4 +1,6 @@
-﻿using DAL.EF;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.Equipment;
@@ -13,7 +15,7 @@ namespace Services.Services
 {
     public class EquipmentService : BaseService, IEquipmentService
     {
-        public EquipmentService(AppDbContext dbContext) : base(dbContext)
+        public EquipmentService(IMapper mapper, AppDbContext dbContext) : base(mapper, dbContext)
         {
         }
 
@@ -22,12 +24,7 @@ namespace Services.Services
             return await _dbContext.Equipments
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
-                .Select(x => new EquipmentDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EquipmentDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -36,22 +33,13 @@ namespace Services.Services
             return await _dbContext.Equipments
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EquipmentDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EquipmentDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateEquipmentDto dto)
         {
-            var entity = new Equipment
-            {
-                Name = dto.Name,
-                Description = dto.Description
-            };
+            var entity = _mapper.Map<Equipment>(dto);
 
             _dbContext.Equipments.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -67,8 +55,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Name = dto.Name;
-            entity.Description = dto.Description;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;

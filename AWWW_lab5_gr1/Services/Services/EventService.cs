@@ -1,4 +1,6 @@
-﻿using DAL.EF;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.Event;
@@ -14,51 +16,32 @@ namespace Services.Services
 {
     public class EventService : BaseService, IEventService
     {
-        public EventService(AppDbContext dbContext) : base(dbContext) { }
+        public EventService(IMapper mapper, AppDbContext dbContext) : base(mapper, dbContext) { }
 
         public async Task<IList<EventDto>> GetAllAsync()
         {
             return await _dbContext.Events
                 .AsNoTracking()
-                .Select(e => new EventDto
-                {
-                    Id = e.Id,
-                    Name = e.Title,
-                    TypeName = e.EventType.Name,
-                    IsPublic = e.IsPublic,
-                    CreatedAt = e.CreatedAt
-                })
                 .OrderByDescending(e => e.CreatedAt)
+                .ProjectTo<EventDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
         public async Task<IList<EventDto>> GetPublicEventsAsync()
         {
             return await _dbContext.Events
+                .AsNoTracking()
                 .Where(e => e.IsPublic)
-                .Select(e => new EventDto
-                {
-                    Id = e.Id,
-                    Name = e.Title,
-                    TypeName = e.EventType.Name,
-                    IsPublic = e.IsPublic,
-                    CreatedAt = e.CreatedAt
-                })
+                .ProjectTo<EventDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
         public async Task<IList<EventDto>> GetByEventTypeIdAsync(int eventTypeId)
         {
             return await _dbContext.Events
+                .AsNoTracking()
                 .Where(e => e.EventTypeId == eventTypeId)
-                .Select(e => new EventDto
-                {
-                    Id = e.Id,
-                    Name = e.Title,
-                    TypeName = e.EventType.Name,
-                    IsPublic = e.IsPublic,
-                    CreatedAt = e.CreatedAt
-                })
+                .ProjectTo<EventDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -67,21 +50,7 @@ namespace Services.Services
             return await _dbContext.Events
                 .AsNoTracking()
                 .Where(e => e.Id == id)
-                .Select(e => new EventDetailsDto
-                {
-                    Id = e.Id,
-                    Name = e.Title,
-                    Description = e.Description,
-                    TypeName = e.EventType.Name,
-                    CreatedAt = e.CreatedAt,
-                    Reservations = e.Reservations.Select(r => new ReservationDto
-                    {
-                        Id = r.Id,
-                        RoomName = r.Room.Name,
-                        StartTime = r.StartTime,
-                        EndTime = r.EndTime
-                    }).ToList()
-                })
+                .ProjectTo<EventDetailsDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
@@ -90,15 +59,7 @@ namespace Services.Services
             if (dto.ParticipantsLimit <= 0)
                 throw new InvalidOperationException("Limit musi być > 0");
 
-            var entity = new Event
-            {
-                Title = dto.Name,
-                Description = dto.Description,
-                EventTypeId = dto.EventTypeId,
-                ParticipantsLimit = dto.ParticipantsLimit,
-                IsPublic = dto.IsPublic,
-                CreatedAt = DateTime.Now
-            };
+            var entity = _mapper.Map<Event>(dto);
 
             _dbContext.Events.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -111,11 +72,7 @@ namespace Services.Services
             var entity = await _dbContext.Events.FirstOrDefaultAsync(e => e.Id == dto.Id);
             if (entity == null) return false;
 
-            entity.Title = dto.Name;
-            entity.Description = dto.Description;
-            entity.EventTypeId = dto.EventTypeId;
-            entity.ParticipantsLimit = dto.ParticipantsLimit;
-            entity.IsPublic = dto.IsPublic;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;
