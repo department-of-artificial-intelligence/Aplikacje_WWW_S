@@ -19,8 +19,16 @@ namespace Services.Mapping
             CreateMap<Event, EventDetailsDto>()
                 .ForMember(d => d.EventTypeName, o => o.MapFrom(s => s.EventType.Name));
 
-            CreateMap<CreateEventDto, Event>();
-            CreateMap<UpdateEventDto, Event>();
+            CreateMap<CreateEventDto, Event>()
+                .ForMember(d => d.Id, o => o.Ignore())
+                .ForMember(d => d.CreatedAt, o => o.Ignore()) 
+                .ForMember(d => d.EventType, o => o.Ignore())
+                .ForMember(d => d.Reservations, o => o.Ignore());
+
+            CreateMap<UpdateEventDto, Event>()
+                .ForMember(d => d.CreatedAt, o => o.Ignore())
+                .ForMember(d => d.EventType, o => o.Ignore())
+                .ForMember(d => d.Reservations, o => o.Ignore());
         }
     }
 }

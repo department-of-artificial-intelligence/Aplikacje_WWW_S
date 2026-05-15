@@ -2,6 +2,7 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Services.Interfaces;
 using Services.Services;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,12 @@ builder.Services.AddAutoMapper( _ =>
 builder.Services.AddScoped<IReservationService, ReservationService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+    mapper.ConfigurationProvider.AssertConfigurationIsValid();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

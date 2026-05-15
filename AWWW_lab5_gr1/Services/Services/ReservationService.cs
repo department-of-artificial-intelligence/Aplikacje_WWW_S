@@ -3,60 +3,34 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 using Services.DTO.Reservation;
 using Services.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Services.Services
 {
     public class ReservationService : BaseService, IReservationService
     {
-        public ReservationService(AppDbContext dbContext) : base(dbContext) { }
+        public ReservationService(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
         public async Task<List<ReservationDto>> GetAllAsync()
         {
             return await _dbContext.Reservations
                 .AsNoTracking()
-                .Include(r => r.Room)
-                .Include(r => r.Event)
-                .Select(r => new ReservationDto
-                {
-                    Id = r.Id,
-                    RoomId = r.RoomId,
-                    RoomName = r.Room.Name,
-                    EventId = r.EventId,
-                    EventTitle = r.Event.Title,
-                    StartTime = r.StartTime,
-                    EndTime = r.EndTime,
-                    Status = r.Status.ToString(),
-                    Notes = r.Notes
-                }).ToListAsync();
+                .ProjectTo<ReservationDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         public async Task<ReservationDto?> GetByIdAsync(int id)
         {
-            var r = await _dbContext.Reservations
+            return await _dbContext.Reservations
                 .AsNoTracking()
-                .Include(r => r.Room)
-                .Include(r => r.Event)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (r == null) return null;
-
-            return new ReservationDto
-            {
-                Id = r.Id,
-                RoomId = r.RoomId,
-                RoomName = r.Room.Name,
-                EventId = r.EventId,
-                EventTitle = r.Event.Title,
-                StartTime = r.StartTime,
-                EndTime = r.EndTime,
-                Status = r.Status.ToString(),
-                Notes = r.Notes
-            };
+                .Where(x => x.Id == id)
+                .ProjectTo<ReservationDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateReservationDto dto)
@@ -74,16 +48,10 @@ namespace Services.Services
             if (room == null || !room.IsActive)
                 throw new InvalidOperationException("Wybrana sala nie istnieje lub jest nieaktywna.");
 
-            var entity = new Reservation
-            {
-                RoomId = dto.RoomId,
-                EventId = dto.EventId,
-                StartTime = dto.StartTime,
-                EndTime = dto.EndTime,
-                Notes = dto.Notes,
-                Status = ReservationStatus.Pending, 
-                CreatedAt = DateTime.Now
-            };
+            var entity = _mapper.Map<Reservation>(dto);
+
+            entity.Status = ReservationStatus.Pending;
+            entity.CreatedAt = DateTime.Now;
 
             _dbContext.Reservations.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -101,11 +69,7 @@ namespace Services.Services
             if (await HasTimeConflictAsync(dto.RoomId, dto.StartTime, dto.EndTime, dto.Id))
                 throw new InvalidOperationException("Nowy termin koliduje z inną rezerwacją.");
 
-            entity.RoomId = dto.RoomId;
-            entity.EventId = dto.EventId;
-            entity.StartTime = dto.StartTime;
-            entity.EndTime = dto.EndTime;
-            entity.Notes = dto.Notes;
+            _mapper.Map(dto, entity);
 
             if (Enum.TryParse<ReservationStatus>(dto.Status, out var newStatus))
                 entity.Status = newStatus;

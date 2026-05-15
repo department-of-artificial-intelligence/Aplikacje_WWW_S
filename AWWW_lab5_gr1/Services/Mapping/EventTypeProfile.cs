@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using Model;
+using Services.DTO.EventType;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,18 @@ using System.Threading.Tasks;
 
 namespace Services.Mapping
 {
-    internal class EventTypeProfile
+    public class EventTypeProfile : Profile
     {
+        public EventTypeProfile()
+        {
+            CreateMap<EventType, EventTypeDto>();
+
+            CreateMap<CreateEventTypeDto, EventType>()
+                .ForMember(d => d.Id, o => o.Ignore())
+                .ForMember(d => d.Events, o => o.Ignore());
+
+            CreateMap<UpdateEventTypeDto, EventType>()
+                .ForMember(d => d.Events, o => o.Ignore()); 
+        }
     }
 }

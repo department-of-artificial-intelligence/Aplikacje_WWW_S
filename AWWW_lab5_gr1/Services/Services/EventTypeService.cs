@@ -5,26 +5,22 @@ using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 
 namespace Services.Services
 {
     public class EventTypeService : BaseService, IEventTypeService
     {
-        public EventTypeService(AppDbContext dbContext) : base(dbContext) { }
+        public EventTypeService(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
         public async Task<List<EventTypeDto>> GetAllAsync()
         {
             return await _dbContext.EventsType
                 .AsNoTracking()
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description 
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -33,22 +29,13 @@ namespace Services.Services
             return await _dbContext.EventsType
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description 
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateEventTypeDto dto)
         {
-            var entity = new EventType
-            {
-                Name = dto.Name,
-                Description = dto.Description 
-            };
+            var entity = _mapper.Map<EventType>(dto);
 
             _dbContext.EventsType.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -60,8 +47,7 @@ namespace Services.Services
             var entity = await _dbContext.EventsType.FindAsync(dto.Id);
             if (entity == null) return false;
 
-            entity.Name = dto.Name;
-            entity.Description = dto.Description; 
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;

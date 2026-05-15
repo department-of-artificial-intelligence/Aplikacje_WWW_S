@@ -3,29 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 using Services.DTO.Equipment;
 using Services.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Services.Services
 {
     public class EquipmentService : BaseService, IEquipmentService
     {
-        public EquipmentService(AppDbContext dbContext) : base(dbContext) { }
+        public EquipmentService(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
         public async Task<List<EquipmentDto>> GetAllAsync()
         {
             return await _dbContext.Equipment
                 .AsNoTracking()
-                .Select(x => new EquipmentDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description,
-                    IsMobile = x.IsMobile
-                })
+                .ProjectTo<EquipmentDto>(_mapper.ConfigurationProvider) 
                 .ToListAsync();
         }
 
@@ -34,24 +29,13 @@ namespace Services.Services
             return await _dbContext.Equipment
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EquipmentDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description,
-                    IsMobile = x.IsMobile
-                })
+                .ProjectTo<EquipmentDto>(_mapper.ConfigurationProvider) 
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateEquipmentDto dto)
         {
-            var entity = new Equipment
-            {
-                Name = dto.Name,
-                Description = dto.Description,
-                IsMobile = dto.IsMobile
-            };
+            var entity = _mapper.Map<Equipment>(dto);
 
             _dbContext.Equipment.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -63,9 +47,7 @@ namespace Services.Services
             var entity = await _dbContext.Equipment.FindAsync(dto.Id);
             if (entity == null) return false;
 
-            entity.Name = dto.Name;
-            entity.Description = dto.Description;
-            entity.IsMobile = dto.IsMobile;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;

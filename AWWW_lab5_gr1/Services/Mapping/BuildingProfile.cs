@@ -14,8 +14,13 @@ namespace Services.Mapping
         public BuildingProfile()
         {
             CreateMap<Building, BuildingDto>().ReverseMap();
-            CreateMap<CreateBuildingDto, Building>();
-            CreateMap<UpdateBuildingDto, Building>();
+
+            CreateMap<CreateBuildingDto, Building>()
+                .ForMember(d => d.Id, o => o.Ignore())    
+                .ForMember(d => d.Rooms, o => o.Ignore()); 
+
+            CreateMap<UpdateBuildingDto, Building>()
+                .ForMember(d => d.Rooms, o => o.Ignore()); 
         }
     }
 }
