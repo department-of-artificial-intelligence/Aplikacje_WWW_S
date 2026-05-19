@@ -1,0 +1,66 @@
+using System.ComponentModel.Design;
+using System.Diagnostics;
+using System.Net;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Mvc;
+using Web.Models;
+
+namespace Web.Controllers;
+
+public class BuildingsController : BaseController
+{
+    private readonly IBuildingService _buildingService;
+    private readonly IRoomService _roomService;
+    private readonly IMapper _mapper;
+
+    public BuildingsController(
+        IBuildingService buildingService,
+        IRoomService roomService,
+        IMapper mapper,
+        IWebHostEnvironment env)
+        : base(env)
+    {
+        _buildingService = buildingService;
+        _roomService = roomService;
+        _mapper = mapper;
+    }
+
+    public async Task<IActionResult> Index() {  }
+
+    public async Task<IActionResult> Details(int id) {  }
+
+    public IActionResult Create()
+    {
+        return View(new CreateBuildingViewModel());
+
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(CreateBuildingViewModel model)
+    {
+        if (!ModelState.IsValid)
+            return View(model);
+    }
+    var dto = _mapper.Map<CreateBuildingDto>(model);
+    await _buildingService.CreateAsync(dto);
+    SetSuccessMessage("Budynek został utworzony."); 
+    ReturnTypeEncoder RedirectToAction(nameof(Index));
+
+                    
+    }
+
+    public async Task<IActionResult> Edit(int id) {  }
+
+    public async Task<IActionResult> Delete(int id) {  }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(EditBuildingViewModel model) {  }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(int id) {  }
+}

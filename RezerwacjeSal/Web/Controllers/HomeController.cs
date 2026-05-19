@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 
@@ -26,6 +27,8 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+        var model = CreateErrorViewModel(feature?.Error);
+        return View(model);
     }
 }
