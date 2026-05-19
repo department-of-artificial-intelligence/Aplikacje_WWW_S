@@ -10,7 +10,7 @@ namespace Services.DTO.Event
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public string TypeName { get; set; } = null!;
+        public string EventTypeName { get; set; } = null!;
         public bool IsPublic { get; set; }
         public DateTime CreatedAt { get; set; }
     }

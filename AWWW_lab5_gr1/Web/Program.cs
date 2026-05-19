@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using DAL; 
+using DAL;
+using Services.Interfaces;
+using Services.Services;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +11,24 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+builder.Services.AddScoped<IRoomEquipmentService, RoomEquipmentService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IBuildingService, BuildingService>();
+
+builder.Services.AddAutoMapper(
+    cfg => { },
+    typeof(Program).Assembly,
+    typeof(BaseService).Assembly);
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+    // Ta linijka wyrzuci wyjątek przy starcie, jeśli zapomniałeś zmapować (lub zignorować) jakieś pole w Profilach!
+    mapper.ConfigurationProvider.AssertConfigurationIsValid();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

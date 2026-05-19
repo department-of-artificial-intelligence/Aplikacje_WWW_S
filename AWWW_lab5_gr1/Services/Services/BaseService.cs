@@ -1,3 +1,4 @@
+using AutoMapper;
 using DAL;
 
 namespace Services.Services
@@ -5,10 +6,12 @@ namespace Services.Services
     public abstract class BaseService
     {
         protected readonly AppDbContext _dbContext;
+        protected readonly IMapper _mapper; // Dodajemy AutoMappera
 
-        public BaseService(AppDbContext dbcontext)
+        public BaseService(AppDbContext dbContext, IMapper mapper)
         {
-            _dbContext = dbcontext;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
     }
 }

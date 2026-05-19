@@ -1,0 +1,23 @@
+@model Services.DTO.Building.BuildingDto
+
+<h1>Szczegóły budynku</h1>
+
+<div class="mb-3">
+    <strong>Nazwa:</strong> @Model.Name
+</div>
+
+<div class="mb-3">
+    <strong>Adres:</strong> @Model.Address
+</div>
+
+<div class="mb-3">
+    <strong>Opis:</strong> @Model.Description
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+    Edytuj
+</a>
+
+<a asp-action="Index" class="btn btn-secondary">
+    Powrót
+</a>

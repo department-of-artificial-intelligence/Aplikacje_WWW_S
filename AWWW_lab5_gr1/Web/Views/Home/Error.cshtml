@@ -1,0 +1,20 @@
+@model Web.ViewModels.ErrorViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="w3-panel w3-card-4 w3-padding w3-red">
+    <h2>Wystapil blad</h2>
+    <p>Wystapil nieoczekiwany blad.Skontaktuj sie z administratorem lub sprobuj ponownie pozniej</p>
+
+    @if(Model?.ShowDetails == true && Model.Exception != null)
+    {
+        <hr />
+        <h4>Szczegoly (tylko srodowisko deweloperskie)</h4>
+        <pre style="white-space:pre-wrap">@Model.Exception </pre>
+    }
+
+    @if (Model?.ShowRequestId == true)
+    {
+        <p><strong>Request ID:</strong> @Model.RequestId</p>
+    }
+</div>

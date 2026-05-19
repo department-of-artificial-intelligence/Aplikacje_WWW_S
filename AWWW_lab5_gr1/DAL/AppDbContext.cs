@@ -13,12 +13,12 @@ namespace DAL
 
 
         public DbSet<Building> Buildings { get; set; }
-        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<EventType> EventsType { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<RoomEquipment> RoomsEquipment { get; set; }
+        public DbSet<RoomEquipment> RoomEquipments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
