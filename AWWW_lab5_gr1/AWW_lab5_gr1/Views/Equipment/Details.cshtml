@@ -1,0 +1,27 @@
+﻿@model Web.ViewModels.Equipment.DetailsEquipmentViewModel
+
+<div class="w3-card-4 w3-padding w3-white" style="max-width:600px; margin-top:20px;">
+    <h3>Szczegóły techniczne wyposażenia</h3>
+
+    <ul class="w3-ul w3-border w3-margin-bottom">
+        <li><strong>Nazwa sprzętu:</strong> @Model.Name</li>
+        <li><strong>Specyfikacja / Opis:</strong> @(string.IsNullOrWhiteSpace(Model.Description) ? "Brak dodatkowego opisu" : Model.Description)</li>
+
+        <li>
+            <strong>Mobilność:</strong>
+            @if (Model.IsMobile)
+            {
+                <span class="w3-tag w3-green w3-round">Sprzęt mobilny (przenośny)</span>
+            }
+            else
+            {
+                <span class="w3-tag w3-blue-grey w3-round">Sprzęt stacjonarny</span>
+            }
+        </li>
+    </ul>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy</a>
+    </p>
+</div>

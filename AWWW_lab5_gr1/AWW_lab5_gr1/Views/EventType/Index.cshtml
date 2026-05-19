@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Web.ViewModels.EventType.IndexEventTypeViewModel>
+
+<h2>Lista typów wydarzeń</h2>
+
+<p>
+    <a asp-action="Create" class="w3-button w3-blue w3-round">Dodaj nowy typ</a>
+</p>
+
+<table class="w3-table-all w3-card-4">
+    <thead>
+        <tr class="w3-light-grey">
+            <th>Nazwa typu wydarzenia</th>
+            <th>Opis</th>
+            <th style="width:250px;">Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="w3-button w3-indigo w3-small">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-green w3-small">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="w3-button w3-red w3-small">Usuń</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="w3-text-grey w3-center">Brak zdefiniowanych typów wydarzeń w systemie.</td>
+            </tr>
+        }
+    </tbody>
+</table>

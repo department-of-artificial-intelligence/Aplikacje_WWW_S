@@ -1,8 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center w3-padding-32">
+    <h1 class="display-4 w3-margin-bottom">System Zarządzania Salami</h1>
+    <p class="w3-large">Witaj w aplikacji do rezerwacji zasobów i sal konferencyjnych.</p>
+
+    <hr class="w3-opacity" style="max-width: 400px; margin: 20px auto;" />
+
+    <div class="w3-margin-top">
+        <a asp-controller="Building" asp-action="Index" class="w3-button w3-blue w3-xlarge w3-round w3-card-4">
+            Przejdź do listy budynków &raquo;
+        </a><br />
+        <a asp-controller="EventType" asp-action="Index" class="w3-button w3-teal w3-xlarge w3-round w3-card-4 w3-margin-left">
+            Typy wydarzeń &raquo;
+        </a><br />
+        <a asp-controller="Equipment" asp-action="Index" class="w3-button w3-purple w3-xlarge w3-round w3-card-4 w3-margin-left">
+            Słownik wyposażenia &raquo;
+        </a><br />
+        <a asp-controller="Room" asp-action="Index" class="w3-button w3-orange w3-xlarge w3-round w3-card-4 w3-margin-left w3-text-white">
+            Zarządzanie salami &raquo;
+        </a>
+    </div>
 </div>

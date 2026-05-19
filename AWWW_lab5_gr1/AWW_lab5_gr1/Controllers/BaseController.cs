@@ -4,28 +4,33 @@ using Web.ViewModels;
 
 namespace Web.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
-        protected readonly IWebHostEnvironment _env;
+        protected readonly IWebHostEnvironment Env;
 
-        public BaseController(IWebHostEnvironment env)
+        protected BaseController(IWebHostEnvironment env)
         {
-            _env = env;
-        }
-
-        protected void SetNotification(string type, string message)
-        {
-            TempData[type] = message;
+            Env = env;
         }
 
         protected ErrorViewModel CreateErrorViewModel(Exception? exception = null)
         {
             return new ErrorViewModel
             {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                ShowDetails = _env.IsDevelopment(),
+                RequestId = HttpContext.TraceIdentifier,
+                ShowDetails = Env.IsDevelopment(),
                 Exception = exception
             };
+        }
+
+        protected void SetSuccessMessage(string message)
+        {
+            TempData["Success"] = message;
+        }
+
+        protected void SetErrorMessage(string message)
+        {
+            TempData["Error"] = message;
         }
     }
 }

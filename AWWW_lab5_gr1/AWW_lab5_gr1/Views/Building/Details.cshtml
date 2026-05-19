@@ -1,0 +1,52 @@
+﻿@model Web.ViewModels.Building.DetailsBuildingViewModel
+
+<div class="w3-card-4 w3-padding w3-white" style="margin-top:20px;">
+    <h3>Szczegóły budynku</h3>
+
+    <ul class="w3-ul w3-margin-bottom">
+        <li><strong>Nazwa:</strong> @Model.Name</li>
+        <li><strong>Adres:</strong> @Model.Address</li>
+        <li><strong>Opis:</strong> @Model.Description</li>
+    </ul>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj budynek</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy budynków</a>
+    </p>
+
+    <h4>Sale w budynku</h4>
+    <table class="w3-table-all w3-centered">
+        <thead>
+            <tr class="w3-light-grey">
+                <th>Nazwa</th>
+                <th>Pojemność</th>
+                <th>Piętro</th>
+                <th>Aktywna</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Rooms != null && Model.Rooms.Any())
+            {
+                @foreach (var room in Model.Rooms)
+                {
+                    <tr>
+                        <td>@room.Name</td>
+                        <td>@room.Capacity</td>
+                        <td>@room.Floor</td>
+                        <td>@(room.IsActive ? "Tak" : "Nie")</td>
+                        <td>
+                            <a asp-controller="Rooms" asp-action="Details" asp-route-id="@room.Id" class="w3-button w3-indigo w3-small">Szczegóły sali</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="w3-text-grey">Brak przypisanych sal do tego budynku.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

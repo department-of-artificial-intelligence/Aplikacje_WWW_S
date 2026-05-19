@@ -1,0 +1,12 @@
+﻿@model Web.ViewModels.Room.DeleteRoomViewModel
+
+<div class="w3-card-4 w3-padding" style="max-width:600px;">
+    <h3 class="w3-text-red">Usuwanie sali</h3>
+    <p>Czy na pewno chcesz usunąć salę <strong>@Model.Name</strong> z budynku <strong>@Model.BuildingName</strong>?</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="w3-button w3-red">Tak, usuń salę</button>
+        <a asp-action="Index" class="w3-button w3-light-grey">Anuluj</a>
+    </form>
+</div>

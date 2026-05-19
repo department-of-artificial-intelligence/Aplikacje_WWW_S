@@ -1,0 +1,51 @@
+﻿@model Web.ViewModels.Room.CreateRoomViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="w3-card-4 w3-margin-top w3-padding">
+    <h3>Dodaj salę</h3>
+
+    <form asp-action="Create" method="post" class="w3-container">
+        <div class="w3-section">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="w3-input w3-border" />
+            <span asp-validation-for="Name" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="BuildingId"></label>
+            <select asp-for="BuildingId" asp-items="Model.Buildings" class="w3-select w3-border">
+                <option value="">-- Wybierz budynek --</option>
+            </select>
+            <span asp-validation-for="BuildingId" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Capacity"></label>
+            <input asp-for="Capacity" class="w3-input w3-border" type="number" min="1" />
+            <span asp-validation-for="Capacity" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Floor"></label>
+            <input asp-for="Floor" class="w3-input w3-border" type="number" />
+            <span asp-validation-for="Floor" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <input asp-for="IsActive" class="w3-check" type="checkbox" />
+            <label asp-for="IsActive">Czy sala jest aktywna?</label>
+        </div>
+
+        <div class="w3-padding-16">
+            <button type="submit" class="w3-button w3-blue w3-round">Zapisz</button>
+            <a asp-action="Index" class="w3-button w3-light-grey w3-round">Anuluj</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

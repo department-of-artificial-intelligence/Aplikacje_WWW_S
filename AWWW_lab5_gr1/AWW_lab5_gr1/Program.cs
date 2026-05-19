@@ -22,8 +22,11 @@ builder.Services.AddAutoMapper( _ =>
     typeof(BaseService).Assembly );
 
 
-
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IBuildingService, BuildingService>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<IEventTypeService, EventTypeService>();
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 
 var app = builder.Build();
 

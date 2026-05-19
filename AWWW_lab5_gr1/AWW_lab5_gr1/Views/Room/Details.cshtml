@@ -1,0 +1,17 @@
+﻿@model Web.ViewModels.Room.DetailsRoomViewModel
+
+<div class="w3-card-4 w3-padding w3-white" style="max-width:600px;">
+    <h3>Karta sali: @Model.Name</h3>
+    <ul class="w3-ul w3-border">
+        <li><strong>Lokalizacja:</strong> Budynek @Model.BuildingName (Piętro @Model.Floor)</li>
+        <li><strong>Pojemność:</strong> @Model.Capacity miejsc siedzących</li>
+        <li>
+            <strong>Status:</strong>
+            @(Model.IsActive ? "Sala dostępna do rezerwacji" : "Sala wyłączona z użytku")
+        </li>
+    </ul>
+    <p class="w3-margin-top">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót</a>
+    </p>
+</div>

@@ -1,0 +1,26 @@
+﻿@model Web.ViewModels.Building.CreateBuildingViewModel
+
+<div class="w3-card-4 w3-padding" style="max-width:600px; margin-top:20px;">
+    <h3>Dodaj budynek</h3>
+    <form asp-action="Create" method="post">
+        <p>
+            <label asp-for="Name" class="w3-text-grey"></label>
+            <input asp-for="Name" class="w3-input w3-border" type="text" />
+            <span asp-validation-for="Name" class="w3-text-red w3-small"></span>
+        </p>
+        <p>
+            <label asp-for="Address" class="w3-text-grey"></label>
+            <input asp-for="Address" class="w3-input w3-border" type="text" />
+            <span asp-validation-for="Address" class="w3-text-red w3-small"></span>
+        </p>
+        <p>
+            <label asp-for="Description" class="w3-text-grey"></label>
+            <textarea asp-for="Description" class="w3-input w3-border" rows="3"></textarea>
+            <span asp-validation-for="Description" class="w3-text-red w3-small"></span>
+        </p>
+        <p>
+            <button type="submit" class="w3-button w3-blue">Zapisz</button>
+            <a asp-action="Index" class="w3-button w3-light-grey">Anuluj</a>
+        </p>
+    </form>
+</div>
