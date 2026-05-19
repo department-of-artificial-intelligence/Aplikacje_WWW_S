@@ -1,3 +1,4 @@
+using AutoMapper.QueryableExtensions;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
@@ -12,7 +13,7 @@ namespace Services.Services
 {
     public class RoomEquipmentService : BaseService, IRoomEquipmentService
     {
-        public RoomEquipmentService(AppDbContext dbContext) : base(dbContext)
+        public RoomEquipmentService(AppDbContext dbContext, AutoMapper.IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -20,17 +21,7 @@ namespace Services.Services
         {
             return await _dbContext.RoomEquipments
                 .AsNoTracking()
-                .Include(re => re.Room)
-                .Include(re => re.Equipment)
-                .Select(re => new RoomEquipmentItemDto
-                {
-                    Id = re.Id,
-                    RoomId = re.RoomId,
-                    RoomName = re.Room!.Name,
-                    EquipmentId = re.EquipmentId,
-                    EquipmentName = re.Equipment!.Name,
-                    Quantity = re.Quantity
-                })
+                .ProjectTo<RoomEquipmentItemDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -38,18 +29,8 @@ namespace Services.Services
         {
             return await _dbContext.RoomEquipments
                 .AsNoTracking()
-                .Include(re => re.Room)
-                .Include(re => re.Equipment)
                 .Where(re => re.RoomId == roomId)
-                .Select(re => new RoomEquipmentItemDto
-                {
-                    Id = re.Id,
-                    RoomId = re.RoomId,
-                    RoomName = re.Room!.Name,
-                    EquipmentId = re.EquipmentId,
-                    EquipmentName = re.Equipment!.Name,
-                    Quantity = re.Quantity
-                })
+                .ProjectTo<RoomEquipmentItemDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -57,18 +38,8 @@ namespace Services.Services
         {
             return await _dbContext.RoomEquipments
                 .AsNoTracking()
-                .Include(re => re.Room)
-                .Include(re => re.Equipment)
                 .Where(re => re.Id == id)
-                .Select(re => new RoomEquipmentItemDto
-                {
-                    Id = re.Id,
-                    RoomId = re.RoomId,
-                    RoomName = re.Room!.Name,
-                    EquipmentId = re.EquipmentId,
-                    EquipmentName = re.Equipment!.Name,
-                    Quantity = re.Quantity
-                })
+                .ProjectTo<RoomEquipmentItemDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
@@ -90,12 +61,7 @@ namespace Services.Services
             if (isDuplicate)
                 throw new InvalidOperationException("Ta sala posiada już przypisane to wyposażenie.");
 
-            var entity = new RoomEquipment
-            {
-                RoomId = dto.RoomId,
-                EquipmentId = dto.EquipmentId,
-                Quantity = dto.Quantity
-            };
+            var entity = _mapper.Map<RoomEquipment>(dto);
 
             _dbContext.RoomEquipments.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -112,7 +78,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Quantity = dto.Quantity;
+            _mapper.Map(dto, entity);
             await _dbContext.SaveChangesAsync();
 
             return true;
