@@ -44,7 +44,7 @@ namespace Services.Services
             await _dbContext.SaveChangesAsync();
             return true;
         }
-
+        
         public async Task<bool> DeleteAsync(int id)
         {
             var entity = await _dbContext.Equipments.FirstOrDefaultAsync(x => x.Id == id);

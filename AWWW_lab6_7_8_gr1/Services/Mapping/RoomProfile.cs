@@ -13,7 +13,7 @@ namespace Services.Mapping
 
             CreateMap<Room, RoomDetailsDto>()
                 .ForMember(d => d.BuildingName, o => o.MapFrom(s => s.Building.Name))
-                .ForMember(d => d.Equipment, o => o.MapFrom(s => s.RoomEquipments));
+                .ForMember(d => d.Equipment, o => o.Ignore()); // <-- TO ROZWIĄZUJE BŁĄD
 
             CreateMap<CreateRoomDto, Room>()
                 .ForMember(d => d.Id, o => o.Ignore())

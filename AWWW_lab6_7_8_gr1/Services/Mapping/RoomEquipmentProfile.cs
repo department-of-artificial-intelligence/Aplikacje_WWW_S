@@ -8,15 +8,18 @@ namespace Services.Mapping
     {
         public RoomEquipmentProfile()
         {
+            // Mapowanie Encja -> DTO
             CreateMap<RoomEquipment, RoomEquipmentItemDto>()
                 .ForMember(d => d.RoomName, o => o.MapFrom(s => s.Room.Name))
                 .ForMember(d => d.EquipmentName, o => o.MapFrom(s => s.Equipment.Name));
 
+            // Mapowanie CreateDTO -> Encja
             CreateMap<CreateRoomEquipmentDto, RoomEquipment>()
                 .ForMember(d => d.Id, o => o.Ignore())
                 .ForMember(d => d.Room, o => o.Ignore())
                 .ForMember(d => d.Equipment, o => o.Ignore());
 
+            // Mapowanie UpdateDTO -> Encja
             CreateMap<UpdateRoomEquipmentDto, RoomEquipment>()
                 .ForMember(d => d.RoomId, o => o.Ignore())
                 .ForMember(d => d.Room, o => o.Ignore())

@@ -1,14 +1,10 @@
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Model.Entities;
 using Services.DTO.RoomEquipment;
 using Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Services.Services
 {

@@ -21,7 +21,7 @@ namespace Services.Mapping
                 .ForMember(d => d.Reservations, o => o.Ignore());
 
             CreateMap<UpdateEventDto, Event>()
-                .ForMember(d => d.CreatedAt, o => o.Ignore()) // Data utworzenia z reguły się nie zmienia
+                .ForMember(d => d.CreatedAt, o => o.Ignore()) 
                 .ForMember(d => d.EventType, o => o.Ignore())
                 .ForMember(d => d.Reservations, o => o.Ignore());
         }

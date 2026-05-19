@@ -5,10 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Model.Entities;
 using Services.DTO.Reservation;
 using Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Services.Services
 {
@@ -63,7 +60,6 @@ namespace Services.Services
             return true;
         }
 
-        // --- Walidacje z poprzedniego zadania pozostają bez zmian ---
         private async Task ValidateReservationAsync(int roomId, int eventId, DateTime startTime, DateTime endTime, int? reservationId = null)
         {
             if (endTime <= startTime) throw new InvalidOperationException("Czas zakończenia musi być późniejszy niż czas rozpoczęcia.");
