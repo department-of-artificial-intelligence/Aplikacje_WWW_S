@@ -61,15 +61,20 @@ namespace Services.ActualServices {
             try {
                 RoomEquipment re = new RoomEquipment();
                 re.RoomId = dto.RoomId;
-                
-                if (re.Room == null) { throw new InvalidOperationException("Room does not exist"); }
+
+                bool r = await base._dbContext.Rooms.FindAsync(dto.RoomId) == null;
+
+                if (r) { throw new InvalidOperationException("Room does not exist"); }
 
                 re.EquipmentId = dto.EquipmentId;
 
-                //TODO
+                bool e = await base._dbContext.Equipment.FindAsync(dto.EquipmentId) == null;
+
+                if (e) { throw new InvalidOperationException("Equipment does not exist"); }
 
                 re.Quantity = dto.Quantity;
 
+                if (dto.Quantity <= 0) { throw new InvalidOperationException("Quantity must be positive"); }
 
                 base._dbContext.RoomsEquipment.Add(re);
                 base._dbContext.SaveChanges();
@@ -79,13 +84,15 @@ namespace Services.ActualServices {
         }
 
         public async Task<bool> UpdateRoomEquipmentAsync(UpdateRoomEquipmentDTO dto) {
-            var re = base._dbContext.RoomsEquipment.Find(dto.Id);
+            try {
+                var re = base._dbContext.RoomsEquipment.Find(dto.Id);
 
-            if (re == null) { return false; }
+                if (re == null) { return false; }
 
-            re.Quantity = dto.Quantity;
+                re.Quantity = dto.Quantity;
 
-            return await base._dbContext.SaveChangesAsync() > 0;
+                return await base._dbContext.SaveChangesAsync() > 0;
+            } catch (InvalidOperationException ex) { throw new InvalidOperationException(ex.Message); }
         }
 
         public async Task<bool> DeleteRoomEquipmentAsync(int id) {
