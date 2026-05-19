@@ -33,6 +33,16 @@ using (var scope = app.Services.CreateScope())
     mapper.ConfigurationProvider.AssertConfigurationIsValid();
 }
 
+app.UseExceptionHandler("/Home/Error");
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.MapDefaultControllerRoute();
+
+app.Run();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

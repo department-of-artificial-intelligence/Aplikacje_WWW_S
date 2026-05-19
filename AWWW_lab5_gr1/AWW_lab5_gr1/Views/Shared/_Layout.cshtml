@@ -31,9 +31,15 @@
         </nav>
     </header>
     <div class="container">
+        @await Html.PartialAsync("_Messages")
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
+        <footer class="w3-panel w3-center">
+            &copy; 2026
+        </footer>
     </div>
 
     <footer class="border-top footer text-muted">

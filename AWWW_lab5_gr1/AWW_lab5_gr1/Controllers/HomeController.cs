@@ -1,24 +1,15 @@
-using System.Diagnostics;
-using AWW_lab5_gr1.Models;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers;
 
 namespace AWW_lab5_gr1.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        public HomeController(IWebHostEnvironment env) : base(env) { }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
@@ -26,7 +17,11 @@ namespace AWW_lab5_gr1.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            var errorViewModel = CreateErrorViewModel(exceptionHandlerPathFeature?.Error);
+
+            return View(errorViewModel);
         }
     }
 }
