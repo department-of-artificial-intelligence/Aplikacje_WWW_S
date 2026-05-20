@@ -1,0 +1,51 @@
+﻿@model Web.ViewModels.EventType.DetailsEventTypeViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły typu wydarzenia";
+}
+
+<div class="card shadow-sm my-4">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Szczegóły typu wydarzenia</h3>
+
+        <div class="mb-4">
+            <p><strong>Nazwa:</strong> @Model.Name</p>
+            <p><strong>Opis:</strong> @Model.Description</p>
+        </div>
+
+        <div class="mb-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success me-2">Edytuj</a>
+            <a asp-action="Index" class="btn btn-light border">Powrót do listy</a>
+        </div>
+
+        <h4 class="mt-5 mb-3">Aktualne wydarzenia tego typu</h4>
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Nazwa wydarzenia</th>
+                    <th>Data rozpoczęcia</th>
+                    <th>Sala</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Events != null && Model.Events.Any())
+                {
+                    @foreach (var ev in Model.Events)
+                    {
+                        <tr>
+                            <td>@ev.Name</td>
+                            <td>@ev.StartTime.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@ev.RoomName</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">Brak wydarzeń powiązanych z tym typem.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Web.ViewModels.Room.DetailsRoomViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Szczegóły sali</h2>
+    <div class="w3-container">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Budynek:</strong> @Model.BuildingName</p>
+        <p><strong>Pojemność:</strong> @Model.Capacity</p>
+        <p><strong>Piętro:</strong> @Model.Floor</p>
+        <p><strong>Aktywna:</strong> @(Model.IsActive ? "Tak" : "Nie")</p>
+    </div>
+
+    <h3 class="w3-container w3-text-teal">Wyposażenie sali</h3>
+    <div class="w3-container">
+        @if (Model.Equipment != null && Model.Equipment.Any())
+        {
+            <ul class="w3-ul w3-border" style="max-width:400px;">
+                @foreach (var eq in Model.Equipment)
+                {
+                    <li>@eq.Name <span class="w3-right w3-tag w3-small w3-grey">ID: @eq.Id</span></li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="w3-text-grey">Brak przypisanego wyposażenia.</p>
+        }
+    </div>
+
+    <div class="w3-section w3-padding">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy</a>
+    </div>
+</div>

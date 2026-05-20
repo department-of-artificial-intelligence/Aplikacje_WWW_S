@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Web.ViewModels.Building.BuildingViewModel>
+
+@{
+    ViewData["Title"] = "Lista budynków";
+}
+
+<div class="container my-4">
+    <h2 class="mb-3">Lista budynków</h2>
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">Dodaj budynek</a>
+    </div>
+
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Nazwa</th>
+                <th>Adres</th>
+                <th>Opis</th>
+                <th style="width: 240px;" class="text-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.Description</td>
+                        <td class="text-center">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm text-white me-1" style="background-color: #3b5998;">Szczegóły</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success me-1">Edytuj</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Usuń</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">Brak zarejestrowanych budynków w systemie.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

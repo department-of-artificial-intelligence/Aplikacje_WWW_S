@@ -1,0 +1,21 @@
+﻿@model Web.ViewModels.Equipment.DetailsEquipmentViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły wyposażenia";
+}
+
+<div class="card shadow-sm my-4">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Szczegóły wyposażenia</h3>
+
+        <div class="mb-4">
+            <p><strong>Nazwa:</strong> @Model.Name</p>
+            <p><strong>Opis:</strong> @Model.Description</p>
+        </div>
+
+        <div class="mb-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success me-2">Edytuj</a>
+            <a asp-action="Index" class="btn btn-light border">Powrót do listy</a>
+        </div>
+    </div>
+</div>

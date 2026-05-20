@@ -1,0 +1,23 @@
+﻿@model Web.ViewModels.Building.BuildingViewModel
+
+@{
+    ViewData["Title"] = "Usuń budynek";
+}
+
+<div class="card shadow-sm my-4">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Usuń budynek</h3>
+
+        <div class="mb-4">
+            <p><strong>Nazwa:</strong> @Model.Name</p>
+            <p><strong>Adres:</strong> @Model.Address</p>
+            <p><strong>Opis:</strong> @Model.Description</p>
+        </div>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger me-2">Usuń</button>
+            <a asp-action="Index" class="btn btn-light border">Anuluj</a>
+        </form>
+    </div>
+</div>

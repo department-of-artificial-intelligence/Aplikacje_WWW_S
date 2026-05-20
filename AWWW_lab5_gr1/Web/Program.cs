@@ -2,6 +2,7 @@ using AutoMapper;
 using DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Services.Services;
+using Services.Interfaces;
 using System;
 
 namespace Web
@@ -24,12 +25,16 @@ namespace Web
                 typeof(Program).Assembly,
                 typeof(BaseService).Assembly);
 
+            builder.Services.AddScoped<IBuildingService, BuildingService>();
+            builder.Services.AddScoped<IRoomService, RoomService>();
+            builder.Services.AddScoped<IEventTypeService, EventTypeService>();
+            builder.Services.AddScoped<IEquipmentService, EquipmentService>();
+
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
             {
                 var serviceProvider = scope.ServiceProvider;
-
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 mapper.ConfigurationProvider.AssertConfigurationIsValid();
             }

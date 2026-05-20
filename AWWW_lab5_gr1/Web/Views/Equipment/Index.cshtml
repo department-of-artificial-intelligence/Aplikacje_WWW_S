@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Web.ViewModels.Equipment.EquipmentViewModel>
+
+@{
+    ViewData["Title"] = "Słownik wyposażenia";
+}
+
+<h2>Słownik wyposażenia</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj wyposażenie</a>
+</p>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th style="width: 260px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <div class="d-flex gap-1 justify-content-center">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm" style="background-color: #3b5998; color: white;">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Usuń</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

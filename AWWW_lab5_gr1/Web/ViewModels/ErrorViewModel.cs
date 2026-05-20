@@ -8,4 +8,4 @@ namespace Web.ViewModels
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
-}
+}   

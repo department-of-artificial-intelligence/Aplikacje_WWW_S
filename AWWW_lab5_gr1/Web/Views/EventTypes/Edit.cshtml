@@ -1,0 +1,39 @@
+﻿@model Web.ViewModels.EventType.EditEventTypeViewModel
+
+@{
+    ViewData["Title"] = "Edytuj typ wydarzenia";
+}
+
+<div class="card shadow-sm my-4">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Edytuj typ wydarzenia</h3>
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Nazwa</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Opis</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary me-2">Zapisz</button>
+                <a asp-action="Index" class="btn btn-light border">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
