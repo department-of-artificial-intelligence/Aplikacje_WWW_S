@@ -1,0 +1,32 @@
+﻿@model Kolokwium.ViewModel.VM.CreateScreeningVm
+
+@{
+    ViewData["Title"] = "Dodaj Seans";
+}
+
+<h2>Dodaj Nowy Seans</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="MovieTitle" class="control-label"></label>
+                <input asp-for="MovieTitle" class="form-control" />
+                <span asp-validation-for="MovieTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" type="datetime-local" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
