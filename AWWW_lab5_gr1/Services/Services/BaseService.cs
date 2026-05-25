@@ -9,7 +9,7 @@ namespace Services.Services
 
         protected readonly IMapper _mapper;
 
-        public BaseService(AppDbContext dbContext, IMappper mapper)
+        public BaseService(AppDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;

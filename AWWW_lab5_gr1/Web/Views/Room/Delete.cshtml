@@ -1,0 +1,24 @@
+﻿@model Web.ViewModels.Room.DeleteRoomViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Usuń salę";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2 class="w3-text-red">Usuń salę</h2>
+    <h3>Czy na pewno chcesz usunąć tę salę?</h3>
+
+    <div class="w3-container w3-margin-bottom">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Budynek:</strong> @Model.BuildingName</p>
+        <p><strong>Pojemność:</strong> @Model.Capacity</p>
+        <p><strong>Piętro:</strong> @Model.Floor</p>
+        <p><strong>Aktywna:</strong> @(Model.IsActive ? "Tak" : "Nie")</p>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="w3-button w3-red">Usuń</button>
+        <a asp-action="Index" class="w3-button w3-light-grey">Anuluj</a>
+    </form>
+</div>

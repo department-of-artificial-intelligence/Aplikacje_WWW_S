@@ -1,7 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using DAL;
-using Services.Services;
 using AutoMapper;
+using DAL;
+using Microsoft.EntityFrameworkCore;
+using Services.Interfaces;
+using Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,15 @@ builder.Services.AddAutoMapper(
     _ => { },
     typeof(Program).Assembly,
     typeof(BaseService).Assembly);
+
+
+builder.Services.AddScoped<IBuildingService, BuildingService>();
+builder.Services.AddScoped<IEventTypeService, EventTypeService>();
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<IRoomEquipmentService, RoomEquipmentService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 
 
 var app = builder.Build();

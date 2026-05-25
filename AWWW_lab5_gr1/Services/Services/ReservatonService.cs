@@ -1,4 +1,6 @@
 ﻿using DAL;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.Reservation;
@@ -8,48 +10,32 @@ namespace Services.Services
 {
     public class ReservationService : BaseService, IReservationService
     {
-        public ReservationService(AppDbContext dbContext) : base(dbContext) { }
+        public ReservationService(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
         public async Task<List<ReservationListDto>> GetAllAsync()
         {
-            return await _dbContext.Reservations.AsNoTracking().Select(x => new ReservationListDto
-            {
-                Id = x.Id,
-                RoomName = x.Room.Name,
-                EventTitle = x.Event.Title,
-                StartTime = x.StartTime,
-                EndTime = x.EndTime,
-                Status = x.Status
-            }).ToListAsync();
+            return await _dbContext.Reservations
+                .AsNoTracking()
+                .ProjectTo<ReservationListDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         public async Task<ReservationListDto?> GetByIdAsync(int id)
         {
-            return await _dbContext.Reservations.AsNoTracking().Where(x => x.Id == id).Select(x => new ReservationListDto
-            {
-                Id = x.Id,
-                RoomName = x.Room.Name,
-                EventTitle = x.Event.Title,
-                StartTime = x.StartTime,
-                EndTime = x.EndTime,
-                Status = x.Status
-            }).FirstOrDefaultAsync();
+            return await _dbContext.Reservations
+                .AsNoTracking()
+                .Where(x => x.Id == id)
+                .ProjectTo<ReservationListDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateReservationDto dto)
         {
             await ValidateReservationRules(dto.RoomId, dto.EventId, dto.StartTime, dto.EndTime, null);
 
-            var entity = new Model.DataModels.Reservation
-            {
-                RoomId = dto.RoomId,
-                EventId = dto.EventId,
-                StartTime = dto.StartTime,
-                EndTime = dto.EndTime,
-                Notes = dto.Notes,
-                Status = ReservationStatus.Pending,
-                CreatedAt = DateTime.Now
-            };
+            var entity = _mapper.Map<Reservation>(dto);
+            entity.Status = ReservationStatus.Pending;
+            entity.CreatedAt = DateTime.Now;
 
             _dbContext.Reservations.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -63,8 +49,7 @@ namespace Services.Services
             var entity = await _dbContext.Reservations.FirstOrDefaultAsync(x => x.Id == dto.Id);
             if (entity == null) return false;
 
-            entity.RoomId = dto.RoomId; entity.EventId = dto.EventId; entity.StartTime = dto.StartTime;
-            entity.EndTime = dto.EndTime; entity.Status = dto.Status; entity.Notes = dto.Notes;
+            _mapper.Map(dto, entity);
             await _dbContext.SaveChangesAsync();
             return true;
         }

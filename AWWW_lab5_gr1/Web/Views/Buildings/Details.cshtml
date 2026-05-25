@@ -1,0 +1,55 @@
+﻿@model Web.ViewModels.Building.BuildingDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Szczegóły budynku";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Szczegóły budynku</h2>
+    <div class="w3-container w3-margin-bottom">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Adres:</strong> @Model.Address</p>
+        <p><strong>Opis:</strong> @Model.Description</p>
+    </div>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj budynek</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy budynków</a>
+    </p>
+
+    <hr />
+    <h3>Sale w budynku</h3>
+
+    @if (Model.Rooms != null && Model.Rooms.Any())
+    {
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>Nazwa</th>
+                    <th>Pojemność</th>
+                    <th>Piętro</th>
+                    <th>Aktywna</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var room in Model.Rooms)
+                {
+                    <tr>
+                        <td>@room.Name</td>
+                        <td>@room.Capacity</td>
+                        <td>@room.Floor</td>
+                        <td>@(room.IsActive ? "Tak" : "Nie")</td>
+                        <td>
+                            <a asp-controller="Room" asp-action="Details" asp-route-id="@room.Id" class="w3-button w3-small w3-indigo">Szczegóły sali</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="w3-text-grey">Brak sal przypisanych do tego budynku.</p>
+    }
+</div>

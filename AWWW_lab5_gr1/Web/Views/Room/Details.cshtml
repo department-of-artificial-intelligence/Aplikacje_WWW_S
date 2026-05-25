@@ -1,0 +1,49 @@
+﻿@model Web.ViewModels.Room.RoomDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Szczegóły sali";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Szczegóły sali</h2>
+    <div class="w3-container w3-margin-bottom">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Budynek:</strong> @Model.BuildingName</p>
+        <p><strong>Pojemność:</strong> @Model.Capacity</p>
+        <p><strong>Piętro:</strong> @Model.Floor</p>
+        <p><strong>Aktywna:</strong> @(Model.IsActive ? "Tak" : "Nie")</p>
+    </div>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj salę</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy sal</a>
+    </p>
+
+    <hr />
+    <h3>Wyposażenie sali</h3>
+
+    @if (Model.Equipment != null && Model.Equipment.Any())
+    {
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>Nazwa wyposażenia</th>
+                    <th>Ilość</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Equipment)
+                {
+                    <tr>
+                        <td>@item.EquipmentName</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="w3-text-grey">Brak wyposażenia przypisanego do tej sali.</p>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@model Web.ViewModels.EventType.EditEventTypeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edytuj typ wydarzenia";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Edytuj typ wydarzenia</h2>
+
+    <form asp-action="Edit" method="post" class="w3-container">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="w3-section">
+            <label asp-for="Name"></label>
+            <input class="w3-input" asp-for="Name" />
+            <span asp-validation-for="Name" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Description"></label>
+            <textarea class="w3-input" asp-for="Description" rows="3"></textarea>
+            <span asp-validation-for="Description" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <button class="w3-button w3-blue" type="submit">Zapisz</button>
+            <a class="w3-button w3-light-grey" asp-action="Index">Anuluj</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Web.ViewModels.Room.RoomListItemViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Lista sal";
+}
+
+<div class="w3-container w3-padding">
+    <h2>Lista sal</h2>
+    <p>
+        <a asp-action="Create" class="w3-button w3-blue w3-round">Dodaj salę</a>
+    </p>
+
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr class="w3-light-grey">
+                <th>Nazwa</th>
+                <th>Budynek</th>
+                <th>Pojemność</th>
+                <th>Piętro</th>
+                <th>Aktywna</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.BuildingName</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.Floor</td>
+                    <td>@(item.IsActive ? "Tak" : "Nie")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="w3-button w3-small w3-green w3-round">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-small w3-teal w3-round">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="w3-button w3-small w3-red w3-round">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

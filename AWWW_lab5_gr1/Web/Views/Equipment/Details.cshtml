@@ -1,0 +1,19 @@
+﻿@model Web.ViewModels.Equipment.EquipmentDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Szczegóły wyposażenia";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Szczegóły wyposażenia</h2>
+    <div class="w3-container w3-margin-bottom">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Opis:</strong> @Model.Description</p>
+        <p><strong>Mobilne:</strong> @(Model.IsMobile ? "Tak" : "Nie")</p>
+    </div>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy</a>
+    </p>
+</div>

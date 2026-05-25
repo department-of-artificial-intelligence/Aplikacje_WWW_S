@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Web.ViewModels.Building.BuildingListItemViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Lista budynków";
+}
+
+<div class="w3-container w3-padding">
+    <h2>Lista budynków</h2>
+    <p>
+        <a asp-action="Create" class="w3-button w3-blue w3-round">Dodaj budynek</a>
+    </p>
+
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr class="w3-light-grey">
+                <th>Nazwa</th>
+                <th>Adres</th>
+                <th>Opis</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Address</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="w3-button w3-small w3-green w3-round">Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-small w3-teal w3-round">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="w3-button w3-small w3-red w3-round">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

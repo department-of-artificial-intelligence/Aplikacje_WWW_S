@@ -1,4 +1,6 @@
 ﻿using DAL;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
 using Services.DTO.EventType;
@@ -8,14 +10,28 @@ namespace Services.Services
 {
     public class EventTypeService : BaseService, IEventTypeService
     {
-        public EventTypeService(AppDbContext dbContext) : base(dbContext) { }
+        public EventTypeService(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
-        public async Task<List<EventTypeDto>> GetAllAsync() => await _dbContext.EventTypes.AsNoTracking().Select(x => new EventTypeDto { Id = x.Id, Name = x.Name, Description = x.Description }).ToListAsync();
-        public async Task<EventTypeDto?> GetByIdAsync(int id) => await _dbContext.EventTypes.AsNoTracking().Where(x => x.Id == id).Select(x => new EventTypeDto { Id = x.Id, Name = x.Name, Description = x.Description }).FirstOrDefaultAsync();
+        public async Task<List<EventTypeDto>> GetAllAsync()
+        {
+            return await _dbContext.EventTypes
+                .AsNoTracking()
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        public async Task<EventTypeDto?> GetByIdAsync(int id)
+        {
+            return await _dbContext.EventTypes
+                .AsNoTracking()
+                .Where(x => x.Id == id)
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync();
+        }
 
         public async Task<int> CreateAsync(CreateEventTypeDto dto)
         {
-            var entity = new EventType { Name = dto.Name, Description = dto.Description };
+            var entity = _mapper.Map<EventType>(dto);
             _dbContext.EventTypes.Add(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
@@ -25,7 +41,8 @@ namespace Services.Services
         {
             var entity = await _dbContext.EventTypes.FirstOrDefaultAsync(x => x.Id == dto.Id);
             if (entity == null) return false;
-            entity.Name = dto.Name; entity.Description = dto.Description;
+
+            _mapper.Map(dto, entity);
             await _dbContext.SaveChangesAsync();
             return true;
         }
@@ -34,6 +51,7 @@ namespace Services.Services
         {
             var entity = await _dbContext.EventTypes.FirstOrDefaultAsync(x => x.Id == id);
             if (entity == null) return false;
+
             _dbContext.EventTypes.Remove(entity);
             await _dbContext.SaveChangesAsync();
             return true;

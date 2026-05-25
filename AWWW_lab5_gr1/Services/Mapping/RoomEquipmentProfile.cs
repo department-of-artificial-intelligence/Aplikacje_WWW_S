@@ -2,7 +2,7 @@
 using Model.DataModels;
 using Services.DTO.RoomEquipment;
 
-namespace Service.Mapping
+namespace Services.Mapping
 {
     public class RoomEquipmentProfile : Profile
     {
