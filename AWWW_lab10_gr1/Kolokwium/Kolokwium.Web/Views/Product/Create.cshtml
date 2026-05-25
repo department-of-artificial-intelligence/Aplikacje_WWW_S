@@ -1,0 +1,38 @@
+@model Kolokwium.ViewModel.VM.Product.CreateProductVm
+
+@{
+    ViewData["Title"] = "Dodaj produkt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Dodaj nowy produkt</h2>
+
+    <form asp-action="Create" method="post" class="w3-container">
+        
+        <div class="w3-section">
+            <label asp-for="Name">Nazwa produktu</label>
+            <input class="w3-input" asp-for="Name" />
+            <span asp-validation-for="Name" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Price">Cena</label>
+            <input class="w3-input" asp-for="Price" type="number" step="0.01" />
+            <span asp-validation-for="Price" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="CategoryId">ID Kategorii (Wpisz np. 1)</label>
+            <input class="w3-input" asp-for="CategoryId" type="number" />
+            <span asp-validation-for="CategoryId" class="w3-text-red"></span>
+            <small class="w3-text-grey">W pełnej wersji pojawiłaby się tu lista rozwijana z Kategoriami.</small>
+        </div>
+
+        <div class="w3-section">
+            <button class="w3-button w3-blue" type="submit">Zapisz</button>
+            <a class="w3-button w3-light-grey" asp-action="Index">Anuluj</a>
+        </div>
+
+    </form>
+</div>

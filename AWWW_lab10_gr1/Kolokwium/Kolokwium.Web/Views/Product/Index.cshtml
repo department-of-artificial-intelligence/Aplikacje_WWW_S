@@ -1,0 +1,35 @@
+@model IEnumerable<Kolokwium.ViewModel.VM.Product.ProductVm>
+
+<div class="w3-container w3-padding">
+    <h2>Lista Produktów</h2>
+    
+    <a asp-action="Create" class="w3-button w3-blue w3-margin-bottom">Dodaj</a>
+
+    <table class="w3-table-all">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Kategoria</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.CategoryName</td>
+                    <td>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="w3-button w3-red w3-small">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
