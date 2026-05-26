@@ -1,0 +1,17 @@
+﻿@using Services.DTO.Building
+@model Web.ViewModels.Building.BuildingsViewModel
+
+<div>
+	<table>
+		<thead>
+
+		</thead>
+		<tbody>
+			@foreach(BuildingDTO building in Model.Buildings) {
+				<tr>
+					<td>building.Id</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

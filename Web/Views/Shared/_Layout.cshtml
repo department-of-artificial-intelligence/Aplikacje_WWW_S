@@ -30,6 +30,9 @@
             </div>
         </nav>
     </header>
+
+    @await Html.PartialAsync("_Messages")
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
