@@ -1,0 +1,11 @@
+
+    
+<div class="contentblock">
+    <h1>Studenci</h1>
+
+    <ul>
+        @foreach (var student in Model) {
+            <li class="listitem"><span>@student.FullName</span><a asp-controller="student" asp-action="details" asp-route-idx=@student.Id>Więcej</a></li>
+        }
+    </ul>   
+</div>

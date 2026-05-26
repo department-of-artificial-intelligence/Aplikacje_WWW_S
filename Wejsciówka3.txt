@@ -1,0 +1,22 @@
+base controller, abstrakcyjny
+
+nie dopuscic do zapytan ktore wyciagnelyby info o wersji dotnet itp
+ogólna obsługa błędów
+
+w intra net wolno pokazywać błędy
+ekstranet to miedzy oddzialami, intra wewnatrz
+
+partial view - widok cześciowy, nie bazuje na layoucie, mozna przekaza różny model
+view component - podejście z jakąć logiką, dla małych komponentów
+razor page - rozbudowany element
+
+teraz odchodzi się od zapisu razorowego i idze do tagów
+
+view modele nalezy Sobie grupować
+
+IMapper mapper można wyrzucić do base, bo często używane
+w ciele konstruktora inicjalizuje się tylko serwisy
+
+xsrf - Cross-site request forgery
+[ValidateAntiForgetyToken] działa przeciwko podrobioeniu tokena
+

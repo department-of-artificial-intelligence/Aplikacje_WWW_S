@@ -42,3 +42,14 @@ dotnet build
 
 
 dotnet ef database drop
+
+
+
+Install-Package Microsoft.EntityFrameworkCore -Version 8.0.0
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 8.0.0
+Install-Package Microsoft.EntityFrameworkCore.Proxies -Version 8.0.0
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.0
+Add-Migration InitialCreate
+Update-Database
+
+Add-Migration InitialCreate -Project DAL -StartupProject Web
