@@ -2,12 +2,13 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Services.DTO.Building;
 using Services.Interfaces;
+using AutoMapper.QueryableExtensions;
 
 namespace Services.Services
 {
     public class BuildingService : BaseService, IBuildingService
     {
-        public BuildingService(AppDbContext dbContext) : base(dbContext)
+        public BuildingService(AppDbContext dbContext, AutoMapper.IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -16,13 +17,7 @@ namespace Services.Services
             return await _dbContext.Buildings
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
-                .Select(x => new BuildingDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Address = x.Address,
-                    Description = x.Description
-                })
+                .ProjectTo<BuildingDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -31,24 +26,13 @@ namespace Services.Services
             return await _dbContext.Buildings
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new BuildingDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Address = x.Address,
-                    Description = x.Description
-                })
+                .ProjectTo<BuildingDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateBuildingDto dto)
         {
-            var entity = new Model.DataModels.Building
-            {
-                Name = dto.Name,
-                Address = dto.Address,
-                Description = dto.Description
-            };
+            var entity = _mapper.Map<Model.DataModels.Building>(dto);
 
             _dbContext.Buildings.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -61,9 +45,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Name = dto.Name;
-            entity.Address = dto.Address;
-            entity.Description = dto.Description;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;
@@ -81,3 +63,4 @@ namespace Services.Services
         }
     }
 }
+

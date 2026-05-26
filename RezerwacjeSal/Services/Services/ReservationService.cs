@@ -1,3 +1,4 @@
+using AutoMapper.QueryableExtensions;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Model.DataModels;
@@ -12,7 +13,7 @@ namespace Services.Services
 {
     public class ReservationService : BaseService, IReservationService
     {
-        public ReservationService(AppDbContext dbContext) : base(dbContext)
+        public ReservationService(AppDbContext dbContext, AutoMapper.IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -20,22 +21,8 @@ namespace Services.Services
         {
             return await _dbContext.Reservations
                 .AsNoTracking()
-                .Include(r => r.Room)
-                .Include(r => r.Event)
                 .OrderByDescending(r => r.CreatedAt)
-                .Select(r => new ReservationDto
-                {
-                    Id = r.Id,
-                    RoomId = r.RoomId,
-                    RoomName = r.Room!.Name,
-                    EventId = r.EventId,
-                    EventTitle = r.Event!.Title,
-                    StartTime = r.StartTime,
-                    EndTime = r.EndTime,
-                    Status = r.Status,
-                    CreatedAt = r.CreatedAt,
-                    Notes = r.Notes
-                })
+                .ProjectTo<ReservationDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -43,22 +30,8 @@ namespace Services.Services
         {
             return await _dbContext.Reservations
                 .AsNoTracking()
-                .Include(r => r.Room)
-                .Include(r => r.Event)
                 .Where(r => r.Id == id)
-                .Select(r => new ReservationDto
-                {
-                    Id = r.Id,
-                    RoomId = r.RoomId,
-                    RoomName = r.Room!.Name,
-                    EventId = r.EventId,
-                    EventTitle = r.Event!.Title,
-                    StartTime = r.StartTime,
-                    EndTime = r.EndTime,
-                    Status = r.Status,
-                    CreatedAt = r.CreatedAt,
-                    Notes = r.Notes
-                })
+                .ProjectTo<ReservationDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
@@ -80,16 +53,9 @@ namespace Services.Services
             if (await HasTimeConflictAsync(dto.RoomId, dto.StartTime, dto.EndTime))
                 throw new InvalidOperationException("Istnieje konflikt czasowy z inną rezerwacją.");
 
-            var entity = new Reservation
-            {
-                RoomId = dto.RoomId,
-                EventId = dto.EventId,
-                StartTime = dto.StartTime,
-                EndTime = dto.EndTime,
-                Notes = dto.Notes,
-                Status = ReservationStatus.Pending,
-                CreatedAt = DateTime.Now
-            };
+            var entity = _mapper.Map<Reservation>(dto);
+            entity.Status = ReservationStatus.Pending;
+            entity.CreatedAt = DateTime.Now;
 
             _dbContext.Reservations.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -119,12 +85,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.RoomId = dto.RoomId;
-            entity.EventId = dto.EventId;
-            entity.StartTime = dto.StartTime;
-            entity.EndTime = dto.EndTime;
-            entity.Status = dto.Status;
-            entity.Notes = dto.Notes;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
 
@@ -175,3 +136,4 @@ namespace Services.Services
         }
     }
 }
+

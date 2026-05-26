@@ -2,12 +2,13 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Services.DTO.EventType;
 using Services.Interfaces;
+using AutoMapper.QueryableExtensions;
 
 namespace Services.Services
 {
     public class EventTypeService : BaseService, IEventTypeService
     {
-        public EventTypeService(AppDbContext dbContext) : base(dbContext)
+        public EventTypeService(AppDbContext dbContext, AutoMapper.IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -16,12 +17,7 @@ namespace Services.Services
             return await _dbContext.EventTypes
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -30,22 +26,13 @@ namespace Services.Services
             return await _dbContext.EventTypes
                 .AsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EventTypeDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
+                .ProjectTo<EventTypeDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateAsync(CreateEventTypeDto dto)
         {
-            var entity = new Model.DataModels.EventType
-            {
-                Name = dto.Name,
-                Description = dto.Description
-            };
+            var entity = _mapper.Map<Model.DataModels.EventType>(dto);
 
             _dbContext.EventTypes.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -58,8 +45,7 @@ namespace Services.Services
             if (entity == null)
                 return false;
 
-            entity.Name = dto.Name;
-            entity.Description = dto.Description;
+            _mapper.Map(dto, entity);
 
             await _dbContext.SaveChangesAsync();
             return true;
@@ -77,3 +63,4 @@ namespace Services.Services
         }
     }
 }
+
