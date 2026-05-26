@@ -88,5 +88,70 @@ namespace Services.ActualServices {
                 }).ToListAsync();
             return dto;
         }
+
+        public async Task<int> CreateAsync(CreateEventDTO dto)
+        {
+            Event e = new Event();
+
+            if (dto.ParticipantsLimit <= 0)
+            {
+                throw new InvalidOperationException("Participant limit can not be non-positive");
+            }
+
+            e.ParticipantsLimit = dto.ParticipantsLimit;
+
+            if (await base._dbContext.EventTypes.FindAsync(dto.EventTypeId) == null)
+            {
+                throw new InvalidOperationException("Invalid event type.");
+            }
+
+            e.EventTypeId = dto.EventTypeId;
+
+            e.Title = dto.Title;
+            e.Description = dto.Description;
+
+            e.isPublic = dto.isPublic;
+
+            base._dbContext.Events.AddAsync(e);
+            await base._dbContext.SaveChangesAsync();
+
+            return e.Id;
+        }
+
+        public async Task<bool> UpdateAsync(UpdateEventDTO dto) {
+            Event e = await base._dbContext.Events.FindAsync(dto.Id);
+
+            if (e == null) return false;
+
+            e.Description = dto.Description;
+            e.Title = dto.Title;
+            e.isPublic = dto.isPublic;
+
+            if (dto.ParticipantsLimit <= 0)
+            {
+                throw new InvalidOperationException("Participant limit can not be non-positive");
+            }
+
+            e.ParticipantsLimit = dto.ParticipantsLimit;
+
+            if (await base._dbContext.EventTypes.FindAsync(dto.EventTypeId) == null)
+            {
+                throw new InvalidOperationException("Invalid event type.");
+            }
+
+            e.EventTypeId = dto.EventTypeId;
+
+            return await base._dbContext.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            Event e = await base._dbContext.Events.FindAsync(id);
+
+            if (e == null) return false;
+
+            base._dbContext.Events.Remove(e);
+            return await base._dbContext.SaveChangesAsync() > 0;
+        }
     }
 }
