@@ -14,9 +14,7 @@ namespace Web.Mapping
     {
         public WebMappingProfile()
         {
-            // ==========================================
             // 1. Mapowania dla budynku (Building)
-            // ==========================================
             CreateMap<BuildingDto, BuildingViewModel>();
             CreateMap<BuildingDto, EditBuildingViewModel>();
 
@@ -26,9 +24,7 @@ namespace Web.Mapping
             CreateMap<CreateBuildingViewModel, CreateBuildingDto>();
             CreateMap<EditBuildingViewModel, UpdateBuildingDto>();
 
-            // ==========================================
-            // 2. Mapowania dla typu wydarzenia (EventType) - TUTAJ BYŁ BŁĄD
-            // ==========================================
+            // 2. Mapowania dla typu wydarzenia (EventType) 
             CreateMap<EventTypeDto, EventTypeViewModel>();
             CreateMap<EventTypeDto, EditEventTypeViewModel>();
 
@@ -40,9 +36,7 @@ namespace Web.Mapping
             CreateMap<CreateEventTypeViewModel, CreateEventTypeDto>();
             CreateMap<EditEventTypeViewModel, UpdateEventTypeDto>();
 
-            // ==========================================
             // 3. Mapowania dla wyposażenia (Equipment)
-            // ==========================================
             CreateMap<EquipmentDto, EquipmentViewModel>();
             CreateMap<EquipmentDto, EditEquipmentViewModel>();
             CreateMap<EquipmentDto, DetailsEquipmentViewModel>();
@@ -50,9 +44,7 @@ namespace Web.Mapping
             CreateMap<CreateEquipmentViewModel, CreateEquipmentDto>();
             CreateMap<EditEquipmentViewModel, UpdateEquipmentDto>();
 
-            // ==========================================
             // 4. Mapowania dla sali (Room)
-            // ==========================================
             CreateMap<RoomDto, RoomViewModel>();
 
             CreateMap<RoomDetailsDto, EditRoomViewModel>()

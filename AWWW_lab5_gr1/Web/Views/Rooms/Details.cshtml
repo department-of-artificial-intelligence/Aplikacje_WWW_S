@@ -33,6 +33,9 @@
 
     <div class="w3-section w3-padding">
         <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
-        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy</a>
+
+        <a asp-controller="Room" asp-action="AddEquipment" asp-route-roomId="@Model.Id" class="w3-button w3-blue">Dodaj wyposażenie</a>
+
+        <a asp-controller="Building" asp-action="Details" asp-route-id="@Model.BuildingId" class="w3-button w3-light-grey">Powrót do budynku</a>
     </div>
 </div>
