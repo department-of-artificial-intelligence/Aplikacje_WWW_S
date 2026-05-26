@@ -1,0 +1,19 @@
+@model Web.ViewModels.RoomEquipment.AddRoomEquipemntsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class = "w3-panel w3-card-4 w3-padding">
+    <h2> Dodaj wyposaenie do sali</h2>
+    <p><strong>Sala:</strong> @Model.RoomName</p>
+    <p><strong>Budynek:</strong> @Model.BuildingName</p>
+
+    @if (!ModelExpressionProvider.Items.Any())
+    {
+        <p>Brak dostepnego wyposazenia do przypisania</p>
+    }
+    <a class = "w3-button w3-light-grey" asp-controller = "Rooms" asp-action = "Details"
+    asp-route-id="@Model.RoomId">Powrotdo sali </a>
+
+
+</div>
