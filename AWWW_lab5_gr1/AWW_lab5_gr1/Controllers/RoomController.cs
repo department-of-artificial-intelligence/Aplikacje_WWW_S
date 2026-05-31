@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Hosting;
 using Services.DTO.Room;
 using Services.Interfaces;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.ViewModels.Room;
+using Web.ViewModels.RoomEquipment;
 
 namespace Web.Controllers
 {
@@ -16,16 +18,19 @@ namespace Web.Controllers
     {
         private readonly IRoomService _roomService;
         private readonly IBuildingService _buildingService;
+        private readonly IRoomEquipmentService _roomEquipmentService; 
         private readonly IMapper _mapper;
 
         public RoomController(
             IRoomService roomService,
             IBuildingService buildingService,
+            IRoomEquipmentService roomEquipmentService,
             IMapper mapper,
             IWebHostEnvironment env) : base(env)
         {
             _roomService = roomService;
             _buildingService = buildingService;
+            _roomEquipmentService = roomEquipmentService;
             _mapper = mapper;
         }
 
@@ -38,15 +43,19 @@ namespace Web.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var dto = await _roomService.GetByIdAsync(id);
-            if (dto == null)
+            var roomDto = await _roomService.GetByIdAsync(id);
+            if (roomDto == null)
             {
-                SetErrorMessage("Nie odnaleziono wskazanej sali.");
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
 
-            var viewModel = _mapper.Map<DetailsRoomViewModel>(dto);
-            return View(viewModel);
+            var model = _mapper.Map<DetailsRoomViewModel>(roomDto);
+
+            var equipmentDtos = await _roomEquipmentService.GetByRoomIdAsync(id);
+
+            model.Equipment = _mapper.Map<List<RoomEquipmentItemViewModel>>(equipmentDtos);
+
+            return View(model);
         }
 
         public async Task<IActionResult> Create()

@@ -14,5 +14,7 @@ namespace Services.Interfaces
         Task<int> CreateAsync(CreateReservationDto dto);
         Task<bool> UpdateAsync(UpdateReservationDto dto);
         Task<bool> DeleteAsync(int id);
+        Task<List<ReservationDto>> GetByEventIdAsync(int eventId);
+        Task UpdateStatusAsync(int id, Model.ReservationStatus status);
     }
 }

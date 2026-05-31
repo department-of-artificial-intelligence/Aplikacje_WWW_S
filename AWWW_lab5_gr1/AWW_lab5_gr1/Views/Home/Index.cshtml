@@ -2,24 +2,37 @@
     ViewData["Title"] = "Strona główna";
 }
 
-<div class="text-center w3-padding-32">
-    <h1 class="display-4 w3-margin-bottom">System Zarządzania Salami</h1>
+<div class="text-center w3-padding-32" style="text-align: center; margin-top: 30px;">
+    <h1 class="display-4 w3-margin-bottom" style="font-size: 2.5rem; font-weight: 300;">System Zarządzania Salami</h1>
     <p class="w3-large">Witaj w aplikacji do rezerwacji zasobów i sal konferencyjnych.</p>
 
-    <hr class="w3-opacity" style="max-width: 400px; margin: 20px auto;" />
+    <hr class="w3-opacity" style="max-width: 400px; margin: 20px auto; border-top: 1px solid #ccc; opacity: 0.6;" />
 
-    <div class="w3-margin-top">
-        <a asp-controller="Building" asp-action="Index" class="w3-button w3-blue w3-xlarge w3-round w3-card-4">
-            Przejdź do listy budynków &raquo;
-        </a><br />
-        <a asp-controller="EventType" asp-action="Index" class="w3-button w3-teal w3-xlarge w3-round w3-card-4 w3-margin-left">
-            Typy wydarzeń &raquo;
-        </a><br />
-        <a asp-controller="Equipment" asp-action="Index" class="w3-button w3-purple w3-xlarge w3-round w3-card-4 w3-margin-left">
-            Słownik wyposażenia &raquo;
-        </a><br />
-        <a asp-controller="Room" asp-action="Index" class="w3-button w3-orange w3-xlarge w3-round w3-card-4 w3-margin-left w3-text-white">
-            Zarządzanie salami &raquo;
-        </a>
+    <div style="margin-top: 20px; line-height: 2.5;">
+        <div>
+            <a asp-controller="Event" asp-action="Index" style="font-size: 1.3rem; color: #4CAF50; font-weight: bold; text-decoration: none;">
+                Wydarzenia i Rezerwacje;
+            </a>
+        </div>
+        <div>
+            <a asp-controller="Building" asp-action="Index" style="font-size: 1.2rem; color: #007bff; text-decoration: none;">
+                Przejdź do listy budynków;
+            </a>
+        </div>
+        <div>
+            <a asp-controller="EventType" asp-action="Index" style="font-size: 1.2rem; color: #008080; text-decoration: none;">
+                Typy wydarzeń;
+            </a>
+        </div>
+        <div>
+            <a asp-controller="Equipment" asp-action="Index" style="font-size: 1.2rem; color: #6f42c1; text-decoration: none;">
+                Słownik wyposażenia;
+            </a>
+        </div>
+        <div>
+            <a asp-controller="Room" asp-action="Index" style="font-size: 1.2rem; color: #fd7e14; text-decoration: none;">
+                Zarządzanie salami;
+            </a>
+        </div>
     </div>
 </div>

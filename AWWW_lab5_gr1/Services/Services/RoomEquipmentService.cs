@@ -98,5 +98,72 @@ namespace Services.Services
             await _dbContext.SaveChangesAsync();
             return true;
         }
+
+        public async Task UpdateQuantityAsync(int roomId, int equipmentId, int quantity)
+        {
+            if (quantity <= 0)
+            {
+                throw new InvalidOperationException("Ilość musi być większa od zera.");
+            }
+
+            var roomEquipment = await _dbContext.RoomsEquipment
+                .FirstOrDefaultAsync(x => x.RoomId == roomId && x.EquipmentId == equipmentId);
+
+            if (roomEquipment == null)
+            {
+                throw new InvalidOperationException("Nie odnaleziono powiązania wyposażenia z tą salą.");
+            }
+
+            roomEquipment.Quantity = quantity;
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int roomId, int equipmentId)
+        {
+            var roomEquipment = await _dbContext.RoomsEquipment
+                .FirstOrDefaultAsync(x => x.RoomId == roomId && x.EquipmentId == equipmentId);
+
+            if (roomEquipment == null)
+            {
+                throw new InvalidOperationException("Nie odnaleziono przypisania tego wyposażenia do sali.");
+            }
+
+
+            _dbContext.RoomsEquipment.Remove(roomEquipment);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task AssignAsync(IEnumerable<CreateRoomEquipmentDto> dtos)
+        {
+            var items = dtos.ToList();
+            if (!items.Any())
+            {
+                throw new InvalidOperationException("Wybierz co najmniej jedno wyposażenie.");
+            }
+
+            if (_dbContext.Database.IsRelational())
+            {
+                await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+                try
+                {
+                    foreach (var dto in items)
+                    {
+                        await CreateAsync(dto);
+                    }
+                    await transaction.CommitAsync();
+                }
+                catch
+                {
+                    await transaction.RollbackAsync();
+                    throw;
+                }
+                return;
+            }
+
+            foreach (var dto in items)
+            {
+                await CreateAsync(dto);
+            }
+        }
     }
 }

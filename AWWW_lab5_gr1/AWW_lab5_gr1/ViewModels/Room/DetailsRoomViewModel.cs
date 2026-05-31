@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Web.ViewModels.RoomEquipment;
 
 namespace Web.ViewModels.Room
 {
@@ -20,5 +21,7 @@ namespace Web.ViewModels.Room
 
         [Display(Name = "Status dostępności")]
         public bool IsActive { get; set; }
+
+        public List<RoomEquipmentItemViewModel> Equipment { get; set; } = new();
     }
 }

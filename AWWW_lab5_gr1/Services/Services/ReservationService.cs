@@ -53,6 +53,11 @@ namespace Services.Services
             entity.Status = ReservationStatus.Pending;
             entity.CreatedAt = DateTime.Now;
 
+            if (string.IsNullOrEmpty(entity.Notes))
+            {
+                entity.Notes = "Brak uwag";
+            }
+
             _dbContext.Reservations.Add(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
@@ -76,6 +81,18 @@ namespace Services.Services
 
             await _dbContext.SaveChangesAsync();
             return true;
+        }
+
+        public async Task UpdateStatusAsync(int id, Model.ReservationStatus status)
+        {
+            var reservation = await _dbContext.Reservations.FindAsync(id);
+            if (reservation == null)
+            {
+                throw new InvalidOperationException("Nie odnaleziono wskazanej rezerwacji.");
+            }
+
+            reservation.Status = status;
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -108,6 +125,15 @@ namespace Services.Services
             if (ev == null) throw new InvalidOperationException("Wybrane wydarzenie nie istnieje.");
 
             return room.Capacity >= ev.ParticipantsLimit;
+        }
+
+        public async Task<List<ReservationDto>> GetByEventIdAsync(int eventId)
+        {
+            return await _dbContext.Reservations
+                .AsNoTracking()
+                .Where(r => r.EventId == eventId)
+                .ProjectTo<ReservationDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
     }
 }

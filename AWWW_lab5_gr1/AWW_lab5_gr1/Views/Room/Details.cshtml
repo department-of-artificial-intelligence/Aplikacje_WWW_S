@@ -1,17 +1,81 @@
 ﻿@model Web.ViewModels.Room.DetailsRoomViewModel
 
-<div class="w3-card-4 w3-padding w3-white" style="max-width:600px;">
-    <h3>Karta sali: @Model.Name</h3>
-    <ul class="w3-ul w3-border">
-        <li><strong>Lokalizacja:</strong> Budynek @Model.BuildingName (Piętro @Model.Floor)</li>
-        <li><strong>Pojemność:</strong> @Model.Capacity miejsc siedzących</li>
-        <li>
-            <strong>Status:</strong>
-            @(Model.IsActive ? "Sala dostępna do rezerwacji" : "Sala wyłączona z użytku")
-        </li>
-    </ul>
-    <p class="w3-margin-top">
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
-        <a asp-action="Index" class="w3-button w3-light-grey">Powrót</a>
+<div class="w3-card-4 w3-padding w3-white" style="max-width:800px; margin-top:20px;">
+    <h2>Szczegóły sali</h2>
+
+    <div class="w3-margin-bottom">
+        <p><strong>Nazwa:</strong> @Model.Name</p>
+        <p><strong>Budynek:</strong> @Model.BuildingName</p>
+        <p><strong>Pojemność:</strong> @Model.Capacity</p>
+        <p><strong>Piętro:</strong> @Model.Floor</p>
+        <p><strong>Aktywna:</strong> @(Model.IsActive ? "Tak" : "Nie")</p>
+    </div>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green w3-round">Edytuj</a>
+
+        <a asp-controller="RoomEquipment" asp-action="Add" asp-route-roomId="@Model.Id" class="w3-button w3-blue w3-round">
+            Dodaj wyposażenie
+        </a>
+
+        <a asp-controller="Building" asp-action="Details" asp-route-id="@ViewBag.BuildingId" class="w3-button w3-light-grey w3-round">
+            Powrót do budynku
+        </a>
     </p>
+
+    <hr />
+
+    <h3>Wyposażenie sali</h3>
+
+    @{
+        bool canManageServiceData = ViewBag.CanManageServiceData ?? true;
+    }
+
+    @if (Model.Equipment != null && Model.Equipment.Any())
+    {
+        <table class="w3-table-all w3-card-4 w3-margin-top">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>Nazwa wyposażenia</th>
+                    <th>Ilość</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Equipment)
+                {
+                    <tr>
+                        <td>@item.EquipmentName</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            @if (canManageServiceData)
+                            {
+                                <div class="w3-bar">
+                                    <a class="w3-button w3-small w3-green w3-round"
+                                       asp-controller="RoomEquipment"
+                                       asp-action="Edit"
+                                       asp-route-roomId="@Model.Id"
+                                       asp-route-equipmentId="@item.EquipmentId">Edytuj ilość</a>
+
+                                    <form asp-controller="RoomEquipment"
+                                          asp-action="Delete"
+                                          asp-route-roomId="@Model.Id"
+                                          asp-route-equipmentId="@item.EquipmentId"
+                                          method="post"
+                                          style="display:inline;"
+                                          onsubmit="return confirm('Czy na pewno usunąć przypisanie?')">
+                                        <button type="submit" class="w3-button w3-small w3-red w3-round">Usuń</button>
+                                    </form>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="w3-text-grey w3-padding-large w3-center w3-light-gray w3-round">Brak przypisanego wyposażenia.</p>
+    }
 </div>

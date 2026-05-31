@@ -1,0 +1,54 @@
+﻿@model Web.ViewModels.Event.EditEventViewModel
+
+<div class="w3-card-4 w3-padding w3-white w3-margin-top" style="max-width: 600px;">
+    <h2>Edycja Wydarzenia</h2>
+    <hr />
+
+    <form asp-action="Edit" method="post" class="w3-container">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="w3-section">
+            <label asp-for="Title"><strong>Tytuł wydarzenia:</strong></label>
+            <input asp-for="Title" class="w3-input w3-border w3-round" />
+            <span asp-validation-for="Title" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="EventTypeId"><strong>Typ wydarzenia:</strong></label>
+            <select asp-for="EventTypeId" asp-items="Model.EventTypes" class="w3-select w3-border w3-round">
+                <option value="">-- Wybierz typ --</option>
+            </select>
+            <span asp-validation-for="EventTypeId" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Description"><strong>Opis:</strong></label>
+            <textarea asp-for="Description" class="w3-input w3-border w3-round" rows="3"></textarea>
+            <span asp-validation-for="Description" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="ParticipantsLimit"><strong>Limit uczestników:</strong></label>
+            <input asp-for="ParticipantsLimit" class="w3-input w3-border w3-round" type="number" style="max-width: 150px;" />
+            <span asp-validation-for="ParticipantsLimit" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <input asp-for="IsPublic" class="w3-check" type="checkbox" />
+            <label asp-for="IsPublic"><strong> Wydarzenie publiczne</strong></label>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="w3-text-red w3-margin-bottom"></div>
+
+        <div class="w3-padding-16">
+            <button type="submit" class="w3-button w3-green w3-round">Zapisz zmiany</button>
+            <a asp-action="Index" class="w3-button w3-light-grey w3-round">Anuluj</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

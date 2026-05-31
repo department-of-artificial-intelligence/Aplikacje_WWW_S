@@ -1,0 +1,97 @@
+﻿@model Web.ViewModels.Event.DetailsEventViewModel
+
+<div class="w3-card-4 w3-padding w3-white" style="max-width:900px; margin-top:20px;">
+    <h2>Szczegóły wydarzenia</h2>
+    <hr />
+
+    <div class="w3-margin-bottom">
+        <p><strong>Tytuł wydarzenia:</strong> @Model.Title</p>
+        <p><strong>Typ wydarzenia:</strong> @Model.EventTypeName</p>
+        <p><strong>Data utworzenia:</strong> @Model.CreatedAt.ToString("d")</p>
+        <p><strong>Widoczność:</strong> @(Model.IsPublic ? "Publiczne" : "Prywatne")</p>
+    </div>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green w3-round">Edytuj wydarzenie</a>
+
+        <a asp-controller="Reservation" asp-action="Create" asp-route-eventId="@Model.Id" class="w3-button w3-blue w3-round">
+            Utwórz rezerwację sali
+        </a>
+
+        <a asp-action="Index" class="w3-button w3-light-grey w3-round">Powrót do listy</a>
+    </p>
+
+    <hr />
+    <h3>Przypisane rezerwacje sal</h3>
+
+    @if (Model.Reservations != null && Model.Reservations.Any())
+    {
+        <table class="w3-table-all w3-card-4 w3-margin-top">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>Sala</th>
+                    <th>Czas rozpoczęcia</th>
+                    <th>Czas zakończenia</th>
+                    <th>Notatki</th>
+                    <th>Status</th>
+                    <th>Zarządzanie statusem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var res in Model.Reservations)
+                {
+                    <tr>
+                        <td><strong>@res.RoomName</strong></td>
+                        <td>@res.StartTime.ToString("g")</td>
+                        <td>@res.EndTime.ToString("g")</td>
+                        <td><small class="w3-text-grey">@res.Notes</small></td>
+                        <td>
+                            @if (res.Status == "Pending" || res.Status == "Oczekująca")
+                            {
+                                <span class="w3-tag w3-orange w3-round">Oczekuje</span>
+                            }
+                            else if (res.Status == "Approved" || res.Status == "Accepted" || res.Status == "Zaakceptowana")
+                            {
+                                <span class="w3-tag w3-green w3-round">Zaakceptowana</span>
+                            }
+                            else
+                            {
+                                <span class="w3-tag w3-red w3-round">Odrzucona</span>
+                            }
+                        </td>
+                        <td>
+                            @if (res.Status == "Pending" || res.Status == "Oczekująca")
+                            {
+                                <div class="w3-bar">
+                                    <form asp-controller="Reservation" asp-action="UpdateStatus" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@res.Id" />
+
+                                        <input type="hidden" name="status" value="Approved" />
+
+                                        <input type="hidden" name="redirectEventId" value="@Model.Id" />
+                                        <button type="submit" class="w3-button w3-small w3-green w3-round">Akceptuj</button>
+                                    </form>
+
+                                    <form asp-controller="Reservation" asp-action="UpdateStatus" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@res.Id" />
+                                        <input type="hidden" name="status" value="Rejected" />
+                                        <input type="hidden" name="redirectEventId" value="@Model.Id" />
+                                        <button type="submit" class="w3-button w3-small w3-red w3-round">Odrzuć</button>
+                                    </form>
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="w3-text-grey w3-small">Zakończono</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="w3-text-grey w3-padding w3-light-gray w3-round w3-center">To wydarzenie nie posiada jeszcze żadnych rezerwacji sal.</p>
+    }
+</div>

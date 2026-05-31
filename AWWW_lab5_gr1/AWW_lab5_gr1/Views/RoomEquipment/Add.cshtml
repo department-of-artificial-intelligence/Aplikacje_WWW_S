@@ -1,0 +1,66 @@
+﻿@model Web.ViewModels.RoomEquipment.AddRoomEquipmentsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Dodaj wyposażenie do sali</h2>
+
+    <p><strong>Sala:</strong> @Model.RoomName</p>
+    <p><strong>Budynek:</strong> @Model.BuildingName</p>
+
+    @if (Model.Items == null || !Model.Items.Any())
+    {
+        <p>Brak dostępnego wyposażenia do przypisania.</p>
+        <a class="w3-button w3-light-grey" asp-controller="Room" asp-action="Details" asp-route-id="@Model.RoomId">Powrót do sali</a>
+    }
+    else
+    {
+        <form asp-action="Add" method="post" class="w3-container">
+            <input asp-for="RoomId" type="hidden" />
+
+            <table class="w3-table-all w3-card-4">
+                <thead>
+                    <tr class="w3-light-grey">
+                        <th>Dodaj</th>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Mobilne</th>
+                        <th>Ilość</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.Items.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <input asp-for="Items[i].IsSelected" class="w3-check" type="checkbox" />
+                            </td>
+                            <td>
+                                @Model.Items[i].EquipmentName
+                                <input asp-for="Items[i].RoomId" type="hidden" />
+                                <input asp-for="Items[i].EquipmentId" type="hidden" />
+                                <input asp-for="Items[i].EquipmentName" type="hidden" />
+                                <input asp-for="Items[i].Description" type="hidden" />
+                                <input asp-for="Items[i].IsMobile" type="hidden" />
+                            </td>
+                            <td>@Model.Items[i].Description</td>
+                            <td>@(Model.Items[i].IsMobile ? "Tak" : "Nie")</td>
+                            <td>
+                                <input asp-for="Items[i].Quantity" class="w3-input w3-border" type="number" min="1" style="max-width:100px;" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div asp-validation-summary="ModelOnly" class="w3-text-red w3-margin-top"></div>
+
+            <div class="w3-section">
+                <button class="w3-button w3-blue" type="submit">Zapisz przypisania</button>
+                <a class="w3-button w3-light-grey" asp-controller="Room" asp-action="Details" asp-route-id="@Model.RoomId">Anuluj</a>
+            </div>
+        </form>
+    }
+</div>
