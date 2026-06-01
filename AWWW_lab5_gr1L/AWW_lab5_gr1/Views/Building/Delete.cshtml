@@ -1,0 +1,18 @@
+﻿@model Web.ViewModels.Building.EditBuildingViewModel
+
+<div class="w3-card-4 w3-padding" style="max-width:600px; margin-top:20px;">
+    <h3 class="w3-text-red">Usuń budynek</h3>
+    <p>Czy na pewno chcesz usunąć ten budynek z systemu?</p>
+
+    <ul class="w3-ul w3-border w3-margin-bottom">
+        <li><strong>Nazwa:</strong> @Model.Name</li>
+        <li><strong>Adres:</strong> @Model.Address</li>
+        <li><strong>Opis:</strong> @Model.Description</li>
+    </ul>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="w3-button w3-red">Usuń</button>
+        <a asp-action="Index" class="w3-button w3-light-grey">Anuluj</a>
+    </form>
+</div>

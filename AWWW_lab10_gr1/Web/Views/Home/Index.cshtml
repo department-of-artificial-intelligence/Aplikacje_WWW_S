@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "System Zarządzania Budynkami";
+}
+
+<div class="container py-5">
+    <div class="row align-items-center min-vh-75">
+
+        <div class="col-lg-6">
+            <h1 class="display-3 fw-bold mb-4">
+                System Zarządzania Budynkami
+            </h1>
+
+            <p class="lead text-muted mb-4">
+                Aplikacja umożliwiająca zarządzanie budynkami, salami,
+                wyposażeniem oraz wydarzeniami.
+            </p>
+
+            <a asp-controller="Building"
+               asp-action="Index"
+               class="btn btn-primary btn-lg px-4">
+                Przejdź do budynków
+            </a>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow border-0">
+                <div class="card-body p-5">
+
+                    <h3 class="mb-4">Dostępne funkcjonalności</h3>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Zarządzanie budynkami
+                        </li>
+                        <li class="list-group-item">
+                            Zarządzanie salami
+                        </li>
+                        <li class="list-group-item">
+                            Zarządzanie wyposażeniem
+                        </li>
+                        <li class="list-group-item">
+                            Zarządzanie typami wydarzeń
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

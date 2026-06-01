@@ -1,0 +1,18 @@
+﻿@{
+    var success = TempData["Success"] as string;
+    var error = TempData["Error"] as string;
+}
+
+@if (!string.IsNullOrEmpty(success))
+{
+    <div class="w3-panel w3-green w3-padding">
+        <p>@success</p>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <div class="w3-panel w3-red w3-padding">
+        <p>@error</p>
+    </div>
+}

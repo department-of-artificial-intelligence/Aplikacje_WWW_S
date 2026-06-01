@@ -1,0 +1,17 @@
+﻿@model Web.ViewModels.Equipment.DeleteEquipmentViewModel
+
+<div class="w3-card-4 w3-padding" style="max-width:600px; margin-top:20px;">
+    <h3 class="w3-text-red">Usuń element ze słownika</h3>
+    <p>Czy na pewno chcesz bezpowrotnie usunąć to wyposażenie z systemu?</p>
+
+    <ul class="w3-ul w3-border w3-margin-bottom">
+        <li><strong>Nazwa:</strong> @Model.Name</li>
+        <li><strong>Opis:</strong> @Model.Description</li>
+    </ul>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="w3-button w3-red">Potwierdź trwałe usunięcie</button>
+        <a asp-action="Index" class="w3-button w3-light-grey">Anuluj</a>
+    </form>
+</div>

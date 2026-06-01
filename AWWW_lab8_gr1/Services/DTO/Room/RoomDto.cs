@@ -14,6 +14,6 @@ namespace Services.DTO.Room
         public int Floor { get; set; }
         public bool IsActive { get; set; }
         public int BuildingId { get; set; }
-        public string BuldingName { get; set; } = null!;
+        public string BuildingName { get; set; } = null!;
     }
 }

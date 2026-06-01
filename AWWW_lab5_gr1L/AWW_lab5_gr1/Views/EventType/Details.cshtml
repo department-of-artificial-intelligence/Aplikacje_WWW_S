@@ -1,0 +1,15 @@
+﻿@model Web.ViewModels.EventType.DetailsEventTypeViewModel
+
+<div class="w3-card-4 w3-padding w3-white" style="max-width:600px; margin-top:20px;">
+    <h3>Szczegóły typu wydarzenia</h3>
+
+    <ul class="w3-ul w3-border w3-margin-bottom">
+        <li><strong>Nazwa typu:</strong> @Model.Name</li>
+        <li><strong>Opis:</strong> @(string.IsNullOrWhiteSpace(Model.Description) ? "Brak opisu" : Model.Description)</li>
+    </ul>
+
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-green">Edytuj</a>
+        <a asp-action="Index" class="w3-button w3-light-grey">Powrót do listy</a>
+    </p>
+</div>

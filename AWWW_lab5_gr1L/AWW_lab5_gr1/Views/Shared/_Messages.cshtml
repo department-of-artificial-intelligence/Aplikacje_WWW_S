@@ -1,0 +1,15 @@
+﻿@if (TempData["Success"] != null)
+{
+    <div class="w3-panel w3-green w3-display-container w3-padding-16">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>@TempData["Success"]</p>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="w3-panel w3-red w3-display-container w3-padding-16">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>@TempData["Error"]</p>
+    </div>
+}
