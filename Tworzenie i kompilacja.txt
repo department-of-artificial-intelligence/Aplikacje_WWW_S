@@ -1,44 +1,62 @@
-
 UTWORZENIE NOWEGO PROJEKTU:
-
 dotnet new web -n AWWW_lab1_gr1 -f net8.0
 dotnet run --project AWWW_lab1_gr1
 
-
+--------------------------------------------------------------------------VS Code
 Instalacja ENTITY FRAMEWORK:
-
 dotnet add package Microsoft.EntityFrameworkCore --version 8.0.0
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.0
 dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.0
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.0
 
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Design
 
-
-TEST:
-dotnet list package
-
-VS Studio:
-Add-Migration m1
-Update-Database
-
-Remove-Migration
-
-VS Code:
+MIGRACJE I UPDATE:
 dotnet ef migrations add m1
 dotnet ef database update
 
-...
-
-dotnet ef database drop
-
-dotnet ef database update 0
+USUWANIE:
 dotnet ef migrations remove
-
-dotnet restore
-dotnet build
-
-
-
 dotnet ef database drop
+
+TEST:
+dotnet list package
+dotnet build
+dotnet restore
+
+--------------------------------------------------------------------------Visual Studio
+Tools → NuGet Package Manager → Package Manager Console
+Narzędzia → Menedżer Pakietów NuGet → Konsola Menedżera Pakietów
+
+Instalacja ENTITY FRAMEWORK (w DAL jako projekt startowy):
+Install-Package Microsoft.EntityFrameworkCore -Version 8.0.2
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 8.0.2
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 8.0.2
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.2
+
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.2 -Project Web
+Install-Package Microsoft.EntityFrameworkCore.Proxies -Version 8.0.2
+
+Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package M icrosoft.EntityFrameworkCore.Design
+
+MIGRACJE I UPDATE (w DAL jako projekt startowy, wyłącz/włącz i zrób Build):
+Add-Migration m1 -Project DAL -StartupProject Web
+Update-Database -Project DAL -StartupProject Web
+
+USUWANIE:
+Remove-Migration
+Drop-Database
+
+TEST:
+Get-Package
+Ctrl + Shift + B
+Right click solution → Restore NuGet Packages
+
+--------------------------------------------------------------------------
+Web -> Projekt Startowy -> Uruchom

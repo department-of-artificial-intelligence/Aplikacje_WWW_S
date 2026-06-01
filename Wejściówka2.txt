@@ -1,0 +1,14 @@
+1. DI - dependency injection
+nie tworzymy obiektów wewnątrz klasy, tylko prezkazujemy je z zewnątrz, ułatwia to testowanie
+
+2. IoC - Inversion of Control
+
+3. DTO - Data Transfer Object
+obiekt do przenoszenia danych
+
+4. VM - ViewModel
+
+5. SOA - Service-Oriented Architecture
+MOA - Microservices-Oriented Architecture
+
+6. Strategy
