@@ -10,7 +10,7 @@ namespace Services.DTO.Event
     public class EventDetailsDto
     {
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
+        public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string EventTypeName { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
