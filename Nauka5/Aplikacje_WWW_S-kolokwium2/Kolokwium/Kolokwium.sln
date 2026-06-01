@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.Web", "Kolokwium.Web\Kolokwium.Web.csproj", "{DDD1F75D-F8DD-4D91-BBF7-F63EACFDA51D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.Model", "Kolokwium.Model\Kolokwium.Model.csproj", "{2B37BA21-4727-44E6-9855-BBBD66FC9F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.DAL", "Kolokwium.DAL\Kolokwium.DAL.csproj", "{097C791B-6CDD-4C57-8C50-78B469892873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.Services", "Kolokwium.Services\Kolokwium.Services.csproj", "{A86B3244-2037-4CD7-A4C7-C9DC0425FDFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.ViewModel", "Kolokwium.ViewModel\Kolokwium.ViewModel.csproj", "{83B92A5A-E92A-4106-9EEF-20C1A02BE02A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.API", "Kolokwium.API\Kolokwium.API.csproj", "{5FBD3933-79C3-4E32-96D9-3EC8EA93F56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolokwium.Test", "Kolokwium.Test\Kolokwium.Test.csproj", "{898093E7-7A81-40B4-9107-16A3AA57DB5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDD1F75D-F8DD-4D91-BBF7-F63EACFDA51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD1F75D-F8DD-4D91-BBF7-F63EACFDA51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD1F75D-F8DD-4D91-BBF7-F63EACFDA51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD1F75D-F8DD-4D91-BBF7-F63EACFDA51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B37BA21-4727-44E6-9855-BBBD66FC9F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B37BA21-4727-44E6-9855-BBBD66FC9F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B37BA21-4727-44E6-9855-BBBD66FC9F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B37BA21-4727-44E6-9855-BBBD66FC9F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097C791B-6CDD-4C57-8C50-78B469892873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097C791B-6CDD-4C57-8C50-78B469892873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097C791B-6CDD-4C57-8C50-78B469892873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097C791B-6CDD-4C57-8C50-78B469892873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86B3244-2037-4CD7-A4C7-C9DC0425FDFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86B3244-2037-4CD7-A4C7-C9DC0425FDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86B3244-2037-4CD7-A4C7-C9DC0425FDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86B3244-2037-4CD7-A4C7-C9DC0425FDFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B92A5A-E92A-4106-9EEF-20C1A02BE02A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B92A5A-E92A-4106-9EEF-20C1A02BE02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B92A5A-E92A-4106-9EEF-20C1A02BE02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B92A5A-E92A-4106-9EEF-20C1A02BE02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBD3933-79C3-4E32-96D9-3EC8EA93F56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBD3933-79C3-4E32-96D9-3EC8EA93F56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBD3933-79C3-4E32-96D9-3EC8EA93F56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBD3933-79C3-4E32-96D9-3EC8EA93F56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898093E7-7A81-40B4-9107-16A3AA57DB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898093E7-7A81-40B4-9107-16A3AA57DB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898093E7-7A81-40B4-9107-16A3AA57DB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898093E7-7A81-40B4-9107-16A3AA57DB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54DA8B23-FD0F-4B88-91E1-A06BBD71B561}
+	EndGlobalSection
+EndGlobal

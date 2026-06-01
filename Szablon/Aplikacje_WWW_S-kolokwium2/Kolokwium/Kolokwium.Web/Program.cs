@@ -1,18 +1,19 @@
+using AutoMapper;
 using Kolokwium.DAL;
 using Kolokwium.Model.DataModels;
 using Kolokwium.Services.Configuration.AutoMapperProfiles;
+using Kolokwium.Services.Services;
 using Kolokwium.Web.Controllers;
+using Kolokwium.Web.Mapping;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
-using AutoMapper;
-using Kolokwium.Services.Services;
 //using Kolokwium.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddAutoMapper(typeof(MainProfile));
+builder.Services.AddAutoMapper(typeof(MainProfile), typeof(WebMappingProfile));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) //here you can define a database type.//dotnet ef migrations add Migracja1 --project Kolokwium.DAL --startup-project Kolokwium.Web
 );
@@ -37,10 +38,6 @@ builder.Services.AddControllersWithViews()
     .AddViewLocalization()
     .AddDataAnnotationsLocalization();
 
-builder.Services.AddAutoMapper(_ =>
-{ },
-    typeof(Program).Assembly,
-    typeof(BaseService).Assembly);
 
 var app = builder.Build();
 

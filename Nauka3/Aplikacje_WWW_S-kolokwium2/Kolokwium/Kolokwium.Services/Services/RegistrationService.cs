@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace Kolokwium.Services.Services
 {
-    public class RegistartionService : BaseService, IRegistrationService
+    public class RegistrationService : BaseService, IRegistrationService
     {
-        public RegistartionService(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
+        public RegistrationService(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper) { }
 
         public async Task<RegistrationDto?> GetByIdAsync(int id)
         {

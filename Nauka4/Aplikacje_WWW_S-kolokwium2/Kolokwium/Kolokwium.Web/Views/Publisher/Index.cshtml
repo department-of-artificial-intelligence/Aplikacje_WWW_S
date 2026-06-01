@@ -1,0 +1,90 @@
+﻿@model Kolokwium.Web.ViewModels.Publisher.IndexPublisherViewModel
+
+@{
+    ViewData["Title"] = "Panel Wydawnictw";
+}
+
+<div class="w3-container w3-margin-top">
+    <h2><i class="fa fa-building"></i> Panel Zarządzania Wydawnictwami</h2>
+
+    <p>
+        <a asp-action="Create" class="w3-button w3-green w3-round"><i class="fa fa-plus"></i> Dodaj nowe wydawnictwo</a>
+    </p>
+
+    <div class="w3-row-padding" style="margin:0 -16px;">
+
+        <div class="w3-half">
+            <div class="w3-card-4">
+                <header class="w3-container w3-blue">
+                    <h3>Rejestr Wydawnictw</h3>
+                </header>
+                <div class="w3-container w3-padding w3-white">
+                    <table class="w3-table w3-striped w3-bordered w3-hoverable">
+                        <thead>
+                            <tr class="w3-light-grey">
+                                <th>Nazwa Wydawnictwa</th>
+                                <th class="w3-center">Wydane Książki</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!Model.Publishers.Any())
+                            {
+                                <tr>
+                                    <td colspan="2" class="w3-center w3-text-grey">Brak zarejestrowanych wydawnictw.</td>
+                                </tr>
+                            }
+                            @foreach (var pub in Model.Publishers)
+                            {
+                                <tr>
+                                    <td><b>@pub.Name</b></td>
+                                    <td class="w3-center">
+                                        <span class="w3-badge w3-blue">@pub.Books.Count</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-half">
+            <div class="w3-card-4">
+                <header class="w3-container w3-teal">
+                    <h3>Wszystkie Książki w Systemie</h3>
+                </header>
+                <div class="w3-container w3-padding w3-white">
+                    <table class="w3-table w3-striped w3-bordered w3-hoverable">
+                        <thead>
+                            <tr class="w3-light-grey">
+                                <th>Tytuł publikacji</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!Model.Books.Any())
+                            {
+                                <tr>
+                                    <td colspan="2" class="w3-center w3-text-grey">Katalog książek jest pusty.</td>
+                                </tr>
+                            }
+                            @foreach (var book in Model.Books)
+                            {
+                                <tr>
+                                    <td>@book.Title</td>
+                                    <td>
+                                        @{
+                                            var tagColor = book.Status == "Dostępna" ? "w3-green" : "w3-orange";
+                                        }
+                                        <span class="w3-tag @tagColor w3-round w3-small">@book.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

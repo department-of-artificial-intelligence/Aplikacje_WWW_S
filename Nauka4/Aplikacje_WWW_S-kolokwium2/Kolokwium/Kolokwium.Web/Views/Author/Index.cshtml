@@ -1,0 +1,41 @@
+﻿@model Kolokwium.Web.ViewModels.Author.IndexAuthorViewModel
+
+@{
+    ViewData["Title"] = "Lista Autorów";
+}
+
+<div class="w3-container w3-margin-top">
+    <h2><i class="fa fa-users"></i> Lista Autorow</h2>
+
+    <p>
+        <a asp-action="Create" class="w3-button w3-green w3-round"><i class="fa fa-user-plus"></i> Dodaj nowego autora</a>
+    </p>
+
+    <table class="w3-table-all w3-card-4 w3-hoverable">
+        <thead>
+            <tr class="w3-blue">
+                <th>Imię i Nazwisko</th>
+                <th class="w3-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Authors.Any())
+            {
+                <tr>
+                    <td colspan="2" class="w3-center w3-text-grey">Brak zarejestrowanych autorów.</td>
+                </tr>
+            }
+            @foreach (var author in Model.Authors)
+            {
+                <tr>
+                    <td>@author.FullName</td>
+                    <td class="w3-center">
+                        <a asp-action="Details" asp-route-id="@author.Id" class="w3-button w3-small w3-teal w3-round"><i class="fa fa-search"></i> Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@author.Id" class="w3-button w3-small w3-amber w3-round"><i class="fa fa-edit"></i> Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@author.Id" class="w3-button w3-small w3-red w3-round"><i class="fa fa-trash"></i> Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

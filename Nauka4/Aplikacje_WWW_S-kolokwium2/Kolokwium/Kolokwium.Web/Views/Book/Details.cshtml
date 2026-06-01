@@ -1,0 +1,49 @@
+﻿@model Kolokwium.Web.ViewModels.Book.DetailsBookViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły Książki";
+}
+
+<div class="w3-container w3-margin-top" style="max-width: 700px;">
+    <div class="w3-card-4">
+        <div class="w3-container w3-teal">
+            <h2>Karta Książki</h2>
+        </div>
+
+        <div class="w3-container w3-padding">
+            <h3><b>@Model.Title</b></h3>
+            <hr />
+
+            <p><b>Wydawnictwo:</b> @Model.PublisherName</p>
+
+            <p>
+                <b>Status:</b>
+                @{
+                    var color = Model.Status == "Dostępna" ? "w3-text-green" : "w3-text-orange";
+                }
+                <span class="@color"><b>@Model.Status</b></span>
+            </p>
+
+            <hr />
+            <h4><b>Autorzy (Relacja M:N):</b></h4>
+            @if (!Model.Authors.Any())
+            {
+                <p class="w3-text-grey">Brak przypisanych autorów do tej publikacji.</p>
+            }
+            else
+            {
+                <ul class="w3-ul w3-border w3-light-grey w3-round">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <li><i class="fa fa-user"></i> @author.FullName</li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <div class="w3-container w3-light-grey w3-padding-16">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-amber w3-round">Edytuj</a>
+            <a asp-action="Index" class="w3-button w3-grey w3-round">Powrót do listy</a>
+        </div>
+    </div>
+</div>

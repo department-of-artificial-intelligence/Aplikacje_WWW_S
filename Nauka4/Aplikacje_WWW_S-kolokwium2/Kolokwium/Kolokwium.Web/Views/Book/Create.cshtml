@@ -1,0 +1,73 @@
+﻿@model Kolokwium.Web.ViewModels.Book.CreateBookViewModel
+
+@{
+    ViewData["Title"] = "Nowa Książka";
+}
+
+<div class="w3-container w3-margin-top" style="max-width: 600px;">
+    <div class="w3-card-4">
+        <div class="w3-container w3-green">
+            <h2>Dodaj Książkę</h2>
+        </div>
+
+        <form asp-action="Create" method="post" class="w3-container w3-padding">
+            @Html.AntiForgeryToken()
+
+            <p>
+                <label asp-for="Title" class="w3-text-dark-grey"><b>Tytuł książki</b></label>
+                <input asp-for="Title" class="w3-input w3-border w3-round" type="text" />
+                <span asp-validation-for="Title" class="w3-text-red w3-small"></span>
+            </p>
+
+            <p>
+                <label asp-for="Status" class="w3-text-dark-grey"><b>Status na starcie</b></label>
+                <select asp-for="Status" class="w3-select w3-border w3-round">
+                    <option value="Dostępna">Dostępna</option>
+                    <option value="Wypożyczona">Wypożyczona</option>
+                    <option value="W renowacji">W renowacji</option>
+                </select>
+                <span asp-validation-for="Status" class="w3-text-red w3-small"></span>
+            </p>
+
+            <p>
+                <label asp-for="PublisherId" class="w3-text-dark-grey"><b>Wydawnictwo (Relacja 1:N)</b></label>
+                <select asp-for="PublisherId" asp-items="Model.Publishers" class="w3-select w3-border w3-round">
+                    <option value="">-- Wybierz wydawnictwo --</option>
+                </select>
+                <span asp-validation-for="PublisherId" class="w3-text-red w3-small"></span>
+            </p>
+
+            <div class="w3-margin-top w3-padding-small">
+                <label class="w3-text-dark-grey"><b>Autorzy (Relacja Wiele do Wielu)</b></label>
+
+                @if (!Model.Authors.Any())
+                {
+                    <p class="w3-text-grey w3-small">Brak dostępnych autorów w bazie danych. Dodaj ich najpierw!</p>
+                }
+                else
+                {
+                    <div class="w3-border w3-round w3-padding w3-white w3-margin-top" style="max-height: 150px; overflow-y: auto;">
+                        @foreach (var author in Model.Authors)
+                        {
+                            <p style="margin: 6px 0;">
+                                <input type="checkbox"
+                                       name="AuthorIds"
+                                       value="@author.Value"
+                                       id="author_@author.Value"
+                                       class="w3-check"
+                                       @(Model.AuthorIds.Contains(int.Parse(author.Value)) ? "checked" : "") />
+                                <label for="author_@author.Value" class="w3-validate" style="padding-left: 8px;">@author.Text</label>
+                            </p>
+                        }
+                    </div>
+                }
+                <span asp-validation-for="AuthorIds" class="w3-text-red w3-small"></span>
+            </div>
+
+            <div class="w3-margin-top w3-padding-16">
+                <button type="submit" class="w3-button w3-green w3-round"><i class="fa fa-save"></i> Zapisz do bazy</button>
+                <a asp-action="Index" class="w3-button w3-grey w3-round">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>

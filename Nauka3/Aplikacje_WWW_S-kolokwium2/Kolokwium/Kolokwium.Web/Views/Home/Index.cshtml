@@ -1,8 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona Główna";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="w3-center w3-padding-64">
+    <h1 class="display-4 w3-animate-top">System Zarządzania Pojazdami</h1>
+
+    <hr style="max-width: 400px; margin: 20px auto;" />
+
+    <div class="w3-margin-top">
+        <a asp-controller="Driver" asp-action="Index" class="w3-button w3-xlarge w3-green w3-round-large w3-margin">
+            <i class="fa fa-users"></i> Zarządzaj Kierowcami
+        </a>
+        <br />
+        <a asp-controller="Car" asp-action="Index" class="w3-button w3-xlarge w3-blue w3-round-large w3-margin">
+            <i class="fa fa-car"></i> Zarządzaj Pojazdami
+        </a>
+    </div>
 </div>

@@ -1,0 +1,33 @@
+﻿@model Kolokwium.Web.ViewModels.Driver.CreateDriverViewModel
+
+@{
+    ViewData["Title"] = "Nowy Kierowca";
+}
+
+<div class="w3-container w3-margin-top" style="max-width: 500px;">
+    <div class="w3-card-4">
+        <div class="w3-container w3-blue">
+            <h2>Dodaj Kierowcę</h2>
+        </div>
+        <form asp-action="Create" method="post" class="w3-container w3-padding">
+            @Html.AntiForgeryToken()
+
+            <p>
+                <label asp-for="FirstName" class="w3-text-blue"><b>Imię</b></label>
+                <input asp-for="FirstName" class="w3-input w3-border w3-round" type="text" />
+                <span asp-validation-for="FirstName" class="w3-text-red w3-small"></span>
+            </p>
+
+            <p>
+                <label asp-for="LastName" class="w3-text-blue"><b>Nazwisko</b></label>
+                <input asp-for="LastName" class="w3-input w3-border w3-round" type="text" />
+                <span asp-validation-for="LastName" class="w3-text-red w3-small"></span>
+            </p>
+
+            <div class="w3-margin-top w3-padding-16">
+                <button type="submit" class="w3-button w3-green w3-round"><i class="fa fa-save"></i> Zapisz</button>
+                <a asp-action="Index" class="w3-button w3-grey w3-round">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>

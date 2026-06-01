@@ -8,7 +8,7 @@ namespace Kolokwium.DAL
     {
         // table properties
         // public virtual DbSet<Entity> TableName { get; set; } = null!;
-
+        //dotnet ef migrations add migracja1 --project Kolokwium.DAL --startup-project Kolokwium.Web
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

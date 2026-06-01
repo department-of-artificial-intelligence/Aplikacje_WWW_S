@@ -1,0 +1,37 @@
+﻿@model Kolokwium.Web.ViewModels.Car.IndexCarViewModel
+
+@{
+    ViewData["Title"] = "Lista Samochodów";
+}
+
+<div class="w3-container w3-margin-top">
+    <h2><i class="fa fa-car"></i> Lista Pojazdów</h2>
+
+    <p>
+        <a asp-action="Create" class="w3-button w3-green w3-round"><i class="fa fa-plus"></i> Dodaj nowy samochód</a>
+    </p>
+
+    <table class="w3-table-all w3-card-4 w3-hoverable">
+        <thead>
+            <tr class="w3-blue">
+                <th>Marka</th>
+                <th>Model</th>
+                <th class="w3-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model.Cars)
+            {
+                <tr>
+                    <td>@car.Brand</td>
+                    <td>@car.Model</td>
+                    <td class="w3-center">
+                        <a asp-action="Details" asp-route-id="@car.Id" class="w3-button w3-small w3-teal w3-round"><i class="fa fa-search"></i> Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@car.Id" class="w3-button w3-small w3-amber w3-round"><i class="fa fa-edit"></i> Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@car.Id" class="w3-button w3-small w3-red w3-round"><i class="fa fa-trash"></i> Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

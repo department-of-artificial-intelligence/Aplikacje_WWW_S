@@ -1,0 +1,43 @@
+﻿@model Kolokwium.Web.ViewModels.Driver.IndexDriverViewModel
+
+@{
+    ViewData["Title"] = "Lista Kierowców";
+}
+
+<div class="w3-container w3-margin-top">
+    <h2><i class="fa fa-users"></i> Lista Kierowców</h2>
+
+    <p>
+        <a asp-action="Create" class="w3-button w3-green w3-round"><i class="fa fa-user-plus"></i> Dodaj nowego kierowcę</a>
+    </p>
+
+    <table class="w3-table-all w3-card-4 w3-hoverable">
+        <thead>
+            <tr class="w3-blue">
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th class="w3-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Drivers.Any())
+            {
+                <tr>
+                    <td colspan="3" class="w3-center w3-text-grey">Brak zarejestrowanych kierowców.</td>
+                </tr>
+            }
+            @foreach (var driver in Model.Drivers)
+            {
+                <tr>
+                    <td>@driver.FirstName</td>
+                    <td>@driver.LastName</td>
+                    <td class="w3-center">
+                        <a asp-action="Details" asp-route-id="@driver.Id" class="w3-button w3-small w3-teal w3-round"><i class="fa fa-search"></i> Szczegóły</a>
+                        <a asp-action="Edit" asp-route-id="@driver.Id" class="w3-button w3-small w3-amber w3-round"><i class="fa fa-edit"></i> Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@driver.Id" class="w3-button w3-small w3-red w3-round"><i class="fa fa-trash"></i> Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
