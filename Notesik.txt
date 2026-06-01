@@ -1,0 +1,24 @@
+VS Code -> nowy projekt -> pusty projekt -> umieść w tym samym
+
+Prawym -> Dodaj -> projekt:
+	Model / DAL / Services -> Class Library (.NET)
+	Web -> ASP.NET Core Web App (Model-View-Controller)
+	
+Prawym -> Odwołanie do projektu:
+	Web → Services
+	Services → Model + DAL
+	DAL → Model
+
+
+
+
+...
+
+
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // potrzebne do migracji
+
+
+dodawanie projektow: prawym na solution -> add -> istneijacy projekt -> wybierz
