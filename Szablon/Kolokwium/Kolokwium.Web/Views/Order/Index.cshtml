@@ -1,0 +1,47 @@
+@model IEnumerable<Kolokwium.ViewModel.VM.OrderVm>
+
+    <div class="w3-container w3-padding">
+
+        <h2>Lista zamówień</h2>
+
+        <a asp-action="Create" class="w3-button w3-blue w3-margin-bottom">Dodaj</a>
+
+
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>ID</th>
+                    <th>Data zamówienia</th>
+                    <th>Data dostawy</th>
+                    <th>Cena</th>
+                    <th>Adres dostawy</th>
+                    <th>Meals</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model){
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.DeliveryDate</td>
+                        <td>@item.TotalPrice</td>
+                        <td>@item.DeliveryAddress</td>
+                        <td>
+                            @if (item.Meals != null && item.Meals.Any()){
+                                @string.Join(", ", item.Meals)
+                            }
+                            else
+                            {
+                                <span class="w3-text-gray">Brak</span>
+                            }
+                        </td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display: inline;">
+                                <button type="submit" class="w3-button w3-red w3-small">Usuń</button>
+                                </form>
+                            </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

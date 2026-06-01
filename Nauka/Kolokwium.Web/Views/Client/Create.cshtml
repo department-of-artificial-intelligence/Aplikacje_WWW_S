@@ -1,0 +1,58 @@
+@model Kolokwium.ViewModel.VM.Client.CreateClientVm
+@{
+        ViewData["Title"] = "Dodaj produkt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Kolokwium.ViewModel.VM.Order
+
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Dodaj nowego klienta</h2>
+    <form asp-action="Create" method="post" class="w3-container">
+
+        <div class="w3-section">
+            <label asp-for="RegistrationDate">Data rejestracji</label>
+            <input class="w3-input" asp-for="RegistrationDate"/>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="FirstName">Imię</label>
+            <input class="w3-input" asp-for="FirstName"/>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="LastName">Nazwisko</label>
+            <input class="w3-input" asp-for="LastName"/>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Email">Email</label>
+            <input class="w3-input" asp-for="Email"/>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="Phone">Telefon</label>
+            <input class="w3-input" asp-for="Phone"/>
+        </div>
+
+        <div class="w3-section">
+            <label>Zamówienia</label>
+            <div style="border: 1px solid #ddd; padding: 10px; max-height: 300px; overflow-y: auto;">
+                @foreach (var order in (IEnumerable<OrderVm>)ViewBag.Orders)
+                    {
+                        <div style="margin-bottom: 10px;">
+                            <input type="checkbox" name="OrderIds" value="@order.Id" id="order_@order.Id" />
+                            <label for="order_@order.Id" style="display: inline; margin-left: 5px;">
+                                <strong>@order.Id</strong> - @order.ShippingAddress 
+                                <span style="color: gray; font-size: 0.9em;">(@order.Status)</span>
+                            </label>
+                        </div>
+                    }
+            </div>
+        </div>
+
+        <div class="w3-section">
+            <button class="w3-button w3-blue" type="submit">Zapisz</button>
+            <a class="w3-button w3-light-grey" asp-action="Index">Anuluj</a>
+        </div>
+    </form>
+</div>

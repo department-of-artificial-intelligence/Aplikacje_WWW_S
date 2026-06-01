@@ -1,0 +1,39 @@
+@model Kolokwium.ViewModel.VM.CreateOrderVm
+@{
+    ViewData["Title"] = "Dodaj produkt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Kolokwium.ViewModel.VM
+<div class="w3-panel w3-card-4 w3-padding">
+    <h2>Dodaj nowy produkt</h2>
+
+    <form asp-action="Create" method="post" class="w3-container">
+        
+        <div class="w3-section">
+            <label asp-for="OrderDate">Order Date</label>
+            <input class="w3-input" asp-for="OrderDate" />
+            <span asp-validation-for="OrderDate" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label asp-for="DeliveryAddressId">ID Adresu (Wpisz np. 1)</label>
+            <input class="w3-input" asp-for="DeliveryAddressId" type="number" />
+            <span asp-validation-for="DeliveryAddressId" class="w3-text-red"></span>
+        </div>
+
+        <div class="w3-section">
+            <label>Posiłki</label>
+            <div>
+               @foreach (var meal in (IEnumerable<MealVm>)ViewBag.Meals)
+                {
+                    <div>
+                        <input type="checkbox" name="MealIds" value="@meal.Id" />
+                        @meal.Description
+                    </div>
+                }
+            </div>
+        
+        <button class="w3-button w3-blue" type="submit">Zapisz</button>
+            <a class="w3-button w3-light-grey" asp-action="Index">Anuluj</a>
+    </form>
+</div>
