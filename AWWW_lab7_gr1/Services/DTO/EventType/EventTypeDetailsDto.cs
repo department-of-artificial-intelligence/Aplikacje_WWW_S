@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Services.DTO.EventType
 {
-    public class EventTypeDetailsDto
+    internal class EventTypeDetailsDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
+
     }
 }

@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="DTO\Event\" />
-    <Folder Include="DTO\Reservation\" />
   </ItemGroup>
 
 </Project>

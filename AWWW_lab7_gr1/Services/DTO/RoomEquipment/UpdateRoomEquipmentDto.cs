@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.DTO.EventType
+namespace Services.DTO.RoomEquipment
 {
-    public class EventTypeDetailsDto
+    public class UpdateRoomEquipmentDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public int Quantity { get; set; }
     }
 }

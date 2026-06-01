@@ -22,3 +22,7 @@ Prawym -> Odwołanie do projektu:
 
 
 dodawanie projektow: prawym na solution -> add -> istneijacy projekt -> wybierz
+
+
+using Microsoft.EntityFrameworkCore;
+i serwisy
