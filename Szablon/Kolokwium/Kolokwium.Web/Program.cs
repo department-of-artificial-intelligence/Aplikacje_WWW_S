@@ -81,3 +81,14 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+/*.Include(c => c.Orders) // Tutaj to
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+            if(entity == null) return false;
+
+            // Ta petla wymagana
+            foreach(var order in entity.Orders)
+            {
+                order.ClientId = null;
+            }*/
