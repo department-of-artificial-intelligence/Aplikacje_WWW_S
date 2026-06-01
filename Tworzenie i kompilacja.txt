@@ -40,10 +40,9 @@ Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.2
 Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.2 -Project Web
 Install-Package Microsoft.EntityFrameworkCore.Proxies -Version 8.0.2
 
-Install-Package Microsoft.EntityFrameworkCore
-Install-Package Microsoft.EntityFrameworkCore.SqlServer
-Install-Package Microsoft.EntityFrameworkCore.Tools
-Install-Package M icrosoft.EntityFrameworkCore.Design
+AutoMapper:
+Install-Package AutoMapper -Version 12.0.1
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 12.0.1
 
 MIGRACJE I UPDATE (w DAL jako projekt startowy, wyłącz/włącz i zrób Build):
 Add-Migration m1 -Project DAL -StartupProject Web

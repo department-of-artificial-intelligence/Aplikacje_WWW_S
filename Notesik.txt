@@ -29,3 +29,10 @@ i serwisy
 
 
 stage all changes (+) -> commit (lokanie) -> push (na gita)
+
+AUTOMAPPER:
+
+using AutoMapper.QueryableExtensions;  //mapper
+.ProjectTo<EquipmentDto>(_mapper.ConfigurationProvider)  //mapper
+var entity = _mapper.Map<Equipment>(dto);  //mapper
+_mapper.Map(dto, entity);  //mapper

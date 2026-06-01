@@ -19,7 +19,7 @@ namespace DAL
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<RoomEquipment> RoomEquipment { get; set; }
+        public DbSet<RoomEquipment> RoomEquipments { get; set; }
 
     }
 

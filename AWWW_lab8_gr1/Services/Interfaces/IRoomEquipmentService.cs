@@ -8,10 +8,10 @@ using Services.DTO.RoomEquipment;
 
 namespace Services.Interfaces
 {
-    public interface IRoomEquipment
+    public interface IRoomEquipmentService
     {
         Task<List<RoomEquipmentDto>> GetAllAsync();
-        Task<RoomEquipmentDto> GetByRoomIdAsync(int roomId);
+        Task<List<RoomEquipmentDto>> GetByRoomIdAsync(int roomId);
         Task<RoomEquipmentDto?> GetByIdAsync(int id);
         Task<int> CreateAsync(CreateRoomEquipmentDto dto);
         Task<bool> UpdateAsync(UpdateRoomEquipmentDto dto);
