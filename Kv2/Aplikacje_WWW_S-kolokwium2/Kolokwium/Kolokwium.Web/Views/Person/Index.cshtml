@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Kolokwium.Web.ViewModels.Person.PersonViewModel>
+
+@{
+    ViewData["Title"] = "Lista Osób";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5 fw-bold text-dark m-0">Lista Osób</h1>
+        <a asp-action="Create" class="btn btn-primary btn-lg shadow-sm">
+            <i class="bi bi-person-plus-fill"></i> Dodaj nową osobę
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="ps-4">Pełne Imię i Nazwisko</th>
+                        <th scope="col">Data rejestracji</th>
+                        <th scope="col">Wiek</th>
+                        <th scope="col" class="text-center pe-4" style="width: 300px;">Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-semibold text-secondary">
+                                    @item.FullName
+                                </td>
+                                <td>
+                                    @item.RegistrationDate.ToString("yyyy-MM-dd")
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border fs-6">@item.Age</span>
+                                </td>
+                                <td class="text-center pe-4">
+                                    <div class="btn-group gap-2" role="group">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white rounded shadow-sm">
+                                            Szczegóły
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning rounded shadow-sm">
+                                            Edytuj
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger rounded shadow-sm">
+                                            Usuń
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">
+                                Brak zarejestrowanych osób w bazie danych.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

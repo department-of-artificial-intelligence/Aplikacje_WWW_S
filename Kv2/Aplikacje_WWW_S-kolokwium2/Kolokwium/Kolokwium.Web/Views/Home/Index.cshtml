@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Panel Główny aplikacji";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5 p-4 bg-light rounded shadow-sm">
+        <h1 class="display-4 text-primary font-weight-bold">System Zarządzania Bazą Danych</h1>
+        <p class="lead text-muted">Witaj w panelu administracyjnym. Wybierz jedną z poniższych akcji, aby zarządzać kartoteką osób.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-4">
+
+        <div class="col-md-5">
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3 text-primary" style="font-size: 2.5rem;">
+                            <i class="bi bi-table"></i>
+                        </div>
+                        <h4 class="card-title fw-bold">Przeglądaj Osoby</h4>
+                        <p class="card-text text-muted">Wyświetl pełną listę zarejestrowanych osób w formie tabeli, skąd przejdziesz bezpiecznie do edycji i szczegółów.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a asp-controller="Person" asp-action="Index" class="btn btn-primary w-100 btn-lg">
+                            Otwórz listę (Tabela)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3 text-success" style="font-size: 2.5rem;">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold">Nowy Rekord</h4>
+                        <p class="card-text text-muted">Uruchom kreator dodawania nowej osoby do bazy danych z pełną walidacją pól formularza.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a asp-controller="Person" asp-action="Create" class="btn btn-success w-100">
+                            Dodaj nową osobę
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+        <div class="col text-center text-muted">
+            <small>Aplikacja .NET MVC realizuje pełny cykl operacji CRUD z wykorzystaniem mapowania obiektów DTO/ViewModel oraz mechanizmu Lazy Loading.</small>
+        </div>
+    </div>
+</div>

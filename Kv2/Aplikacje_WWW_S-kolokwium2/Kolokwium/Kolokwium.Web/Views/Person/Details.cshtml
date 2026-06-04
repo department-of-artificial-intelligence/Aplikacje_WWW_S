@@ -1,0 +1,36 @@
+﻿@model Kolokwium.Web.ViewModels.Person.DetailsPersonViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły Osoby";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h3 class="card-title mb-0">Szczegóły Osoby</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row fs-5">
+                        <dt class="col-sm-4 text-muted">Identyfikator (ID):</dt>
+                        <dd class="col-sm-8 fw-bold">@Model.Id</dd>
+
+                        <dt class="col-sm-4 text-muted">@Html.DisplayNameFor(model => model.FullName):</dt>
+                        <dd class="col-sm-8">@Model.FullName</dd>
+
+                        <dt class="col-sm-4 text-muted">@Html.DisplayNameFor(model => model.RegistrationDate):</dt>
+                        <dd class="col-sm-8">@Model.RegistrationDate.ToString("dd.MM.yyyy")</dd>
+
+                        <dt class="col-sm-4 text-muted">@Html.DisplayNameFor(model => model.Age):</dt>
+                        <dd class="col-sm-8">@Model.Age lat</dd>
+                    </dl>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light">
+                    <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Przejdź do edycji</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
