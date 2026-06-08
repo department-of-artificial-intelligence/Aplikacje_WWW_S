@@ -26,7 +26,7 @@ namespace Kolokwium.Services
             var screenings = await DbContext.Screenings
                 .Include(s => s.Cinema)
                 .ToListAsync();
-            return base.Mapper.Map<IEnumerable<ScreeningDto>>(screenings);
+            return Mapper.Map<IEnumerable<ScreeningDto>>(screenings);
         }
 
         public async Task<ScreeningDto> GetByIdAsync(int id)
@@ -34,13 +34,13 @@ namespace Kolokwium.Services
             var screening = await DbContext.Screenings
                 .Include(s => s.Cinema)
                 .FirstOrDefaultAsync(s => s.Id == id);
-            return base.Mapper.Map<ScreeningDto>(screening);
+            return Mapper.Map<ScreeningDto>(screening);
         }
 
         public async Task CreateAsync(ScreeningDto dto)
         {
             // 1. Mapujemy podstawowe pola (Tytuł, Data)
-            var screening = base.Mapper.Map<Screening>(dto);
+            var screening = Mapper.Map<Screening>(dto);
 
             // 2. Wymuszamy przypisanie ID kina bezpośrednio na klucz obcy
             screening.CinemaId = dto.CinemaId;
